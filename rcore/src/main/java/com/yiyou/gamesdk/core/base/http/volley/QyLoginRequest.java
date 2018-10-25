@@ -25,14 +25,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class QtRequest<T> extends Request<T> {
+public class QyLoginRequest extends Request<String> {
 
-    private static final String TAG = "RSDK: QtRequest";
-    private final Gson gson = new Gson();
-    protected TtRespListener<T> mListener;
+    private static final String TAG = "RSDK: QyLoginRequest";
+    protected TtRespListener<String> mListener;
     protected Map<String, String> mParams, mHeader;
     private String mUrl;
-    private Class<T> mClazz;
     protected JSONObject postParams;
     private int mContentType;
 
@@ -62,20 +60,19 @@ public class QtRequest<T> extends Request<T> {
     public static final int CONTENT_TYPE_X_WWW_FORM_URLENCODED = 0;
     public static final int CONTENT_TYPE_RAW_JSON = 1;
 
-    public QtRequest(int method, String url, Response.ErrorListener listener) {
+    public QyLoginRequest(int method, String url, Response.ErrorListener listener) {
         super(method, url, listener);
         setRetryPolicy(new DefaultRetryPolicy(DEFAULT_TIMEOUT, DEFAULT_MAX_RETRIES, 1f));
         setShouldCache(false);
     }
 
     //post
-    public QtRequest(String url, Map<String, String> params, Class<T> clazz, TtRespListener<T> listener) {
+    public QyLoginRequest(String url, Map<String, String> params, TtRespListener<String> listener) {
         this(Method.POST, url, null);
         mListener = listener;
         mParams = params;
         src = mParams.get("src");
         mUrl = url;
-        mClazz = clazz;
         mContentType = CONTENT_TYPE_RAW_JSON;
         if (params != null) {
             postParams = new JSONObject(params);
@@ -124,7 +121,7 @@ public class QtRequest<T> extends Request<T> {
     }
 
     @Override
-    protected Response<T> parseNetworkResponse(NetworkResponse response) {
+    protected Response<String> parseNetworkResponse(NetworkResponse response) {
         try {
             String json = new String(
                     response.data,
@@ -132,7 +129,7 @@ public class QtRequest<T> extends Request<T> {
             Log.i(TAG, "parseNetworkResponse:url=" + mUrl + "  params=" + (postParams == null ? mParams : postParams));
             Log.i(TAG, "parseNetworkResponse:json =" + json);
             return Response.success(
-                    gson.fromJson(json, mClazz),
+                    json,
                     HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
@@ -142,7 +139,7 @@ public class QtRequest<T> extends Request<T> {
     }
 
     @Override
-    protected void deliverResponse(T response) {
+    protected void deliverResponse(String response) {
         Log.e(TAG, "deliverResponse:response:" + response.toString());
         mListener.onNetSucc(mUrl, mParams, response);
     }

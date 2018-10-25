@@ -26,7 +26,7 @@ import com.yiyou.gamesdk.core.base.http.utils.HttpUtils;
 import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwAppRequest;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
-import com.yiyou.gamesdk.core.base.http.volley.QtRequest;
+import com.yiyou.gamesdk.core.base.http.volley.QyLoginRequest;
 import com.yiyou.gamesdk.core.base.http.volley.bean.VerifyCodeBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
@@ -151,17 +151,17 @@ class AuthManager implements IAuthApi {
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
     @Override
-    public void requestVerificationCode2(String phone, int type, int retry, TtRespListener<VerifyCodeBean> callback) {
+    public void requestVerificationCode2(String phone, int type, int retry, TtRespListener<String> callback) {
         Map<String, String> params = new TreeMap<>();
 //        String game_id = String.valueOf(ApiFacade.getInstance().getCurrentGameID() + "");
-        String game_id = QtRequest.GAMW_ID;
+        String game_id = QyLoginRequest.GAMW_ID;
         String ctime = String.valueOf(System.currentTimeMillis()/1000);
         params.put("mobile_phone", phone);
         params.put("game_id", game_id);
         params.put("ctime", ctime);
         String src = String.format("ctime=%s&game_id=%s&mobile_phone=%s",ctime,game_id,phone);
         params.put("src",src);
-        QtRequest request = new QtRequest<>(Urlpath.GET_PHONE_VERIFY_CODE, params, VerifyCodeBean.class, callback);
+        QyLoginRequest request = new QyLoginRequest(Urlpath.GET_PHONE_VERIFY_CODE, params,callback);
         try {
             Log.d(TAG, "requestVerificationCode:requestHeader:"+request.getHeaders().toString());
         } catch (AuthFailureError authFailureError) {

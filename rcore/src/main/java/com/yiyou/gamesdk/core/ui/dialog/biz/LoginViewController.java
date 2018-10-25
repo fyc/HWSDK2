@@ -344,14 +344,15 @@ public class LoginViewController extends BaseAuthViewController {
      */
     private void getVerificationCodeButtonImpl(String phone) {
         showLoading();
-        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new TtRespListener<VerifyCodeBean>() {
+        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new TtRespListener<String>() {
             @Override
-            public void onNetSucc(String url, Map<String, String> params, VerifyCodeBean result) {
+            public void onNetSucc(String url, Map<String, String> params, String result) {
                 hideLoading();
                 retryTime++;
                 if (params != null) {
                     waitingVerifyCode = true;
                     Log.d(TAG, "success request verify code ");
+                    Log.d(TAG, "success request result "+result);
                     ToastUtils.showMsg(R.string.already_sent_verification_tips);
                     reGetVerifyCodeButtonController.prepare();
                     reGetVerifyCodeButtonController.startCountDown();
@@ -374,10 +375,10 @@ public class LoginViewController extends BaseAuthViewController {
         });
     }
 
-    private void loginImpl(String account, String password) {
+    private void loginImpl(String account, String code) {
         loginButton.setEnabled(false);
         showLoading();
-        ApiFacade.getInstance().login(account, password, new TtRespListener<AuthModel>() {
+        ApiFacade.getInstance().login(account, code, new TtRespListener<AuthModel>() {
             @Override
             public void onNetworkComplete() {
                 loginButton.setEnabled(true);

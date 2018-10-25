@@ -192,7 +192,7 @@ public class ApiFacade implements IApiFacade {
         authApi().requestVerificationCode(phone,type,retry,callback);
     }
     @Override
-    public void requestVerificationCode2(String phone, int type, int retry, TtRespListener<VerifyCodeBean> callback) {
+    public void requestVerificationCode2(String phone, int type, int retry, TtRespListener<String> callback) {
         authApi().requestVerificationCode2(phone,type,retry,callback);
     }
 

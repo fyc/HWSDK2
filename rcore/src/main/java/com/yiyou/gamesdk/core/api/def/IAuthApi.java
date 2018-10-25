@@ -58,7 +58,7 @@ public interface IAuthApi extends IApiWrapping {
      * @param retry  重试次数
      */
     void requestVerificationCode(String phone, int type, int retry, TtRespListener<Void> callback);
-    void requestVerificationCode2(String phone, int type, int retry, TtRespListener<VerifyCodeBean> callback);
+    void requestVerificationCode2(String phone, int type, int retry, TtRespListener<String> callback);
     /**
      * 账号登录，用于用户手工登录
      *
