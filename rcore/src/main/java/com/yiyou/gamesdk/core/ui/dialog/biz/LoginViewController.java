@@ -19,7 +19,6 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
-import com.yiyou.gamesdk.core.base.http.volley.bean.VerifyCodeBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
@@ -410,7 +409,7 @@ public class LoginViewController extends BaseAuthViewController {
     private void visitorsToLoginImpl() {
         loginButton.setEnabled(false);
         showLoading();
-        ApiFacade.getInstance().visitorsToLogin(new TtRespListener<LoginBean>() {
+        ApiFacade.getInstance().loginVisitors(new TtRespListener<LoginBean>() {
             @Override
             public void onNetworkComplete() {
             }

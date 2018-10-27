@@ -22,7 +22,6 @@ import com.yiyou.gamesdk.core.api.def.ISecurityApi;
 import com.yiyou.gamesdk.core.api.def.IUpgradeApi;
 import com.yiyou.gamesdk.core.api.impl.ApiLoader;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
-import com.yiyou.gamesdk.core.base.http.volley.bean.VerifyCodeBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
@@ -206,8 +205,8 @@ public class ApiFacade implements IApiFacade {
         authApi().login2(account,pwd,callback);
     }
     @Override
-    public void visitorsToLogin(TtRespListener<LoginBean> callback) {
-        authApi().visitorsToLogin(callback);
+    public void loginVisitors(TtRespListener<LoginBean> callback) {
+        authApi().loginVisitors(callback);
     }
     @Override
     public void logout(IOperateCallback<String> iOperateCallback) {

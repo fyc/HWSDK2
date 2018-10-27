@@ -257,7 +257,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void visitorsToLogin(TtRespListener<LoginBean> callback) {
+    public void loginVisitors(TtRespListener<LoginBean> callback) {
         Map<String, String> params = new TreeMap<>();
         String game_id = QyLoginRequest.GAMW_ID;
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
@@ -268,7 +268,7 @@ class AuthManager implements IAuthApi {
         String src = String.format("channel=%s&ctime=%s&game_id=%s&sid=%s", "1002", "1539777398", "1001", "0ZPPje3mTK7AdKToucDuiAVVBD73vFBX");
         params.put("src", src);
 
-        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.VisitorsToLogin, params, LoginBean.class, newAuthModelRespListenerWrapper2(callback));
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN_VISITORS, params, LoginBean.class, newAuthModelRespListenerWrapper2(callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
     }

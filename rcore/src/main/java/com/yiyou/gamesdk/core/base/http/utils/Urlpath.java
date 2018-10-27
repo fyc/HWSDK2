@@ -72,7 +72,7 @@ public class Urlpath {
     /**
      * 游客登录
      * */
-    public static final String VisitorsToLogin = HEAD + "/rest/user/reg_guest";
+    public static final String LOGIN_VISITORS = HEAD + "/rest/user/reg_guest";
     /**
      * 用户事件上报
      */
