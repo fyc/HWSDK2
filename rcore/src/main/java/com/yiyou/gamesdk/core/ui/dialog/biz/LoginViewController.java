@@ -76,7 +76,7 @@ public class LoginViewController extends BaseAuthViewController {
     public LoginViewController(Context context, IDialogParam params) {
         super(context, params);
         initView();
-        tryShowLastLoginAccount();
+//        tryShowLastLoginAccount();
     }
 
     @Override
@@ -190,7 +190,7 @@ public class LoginViewController extends BaseAuthViewController {
             @Override
             public void onDataDeleted(DataPicker picker, AccountHistoryWrapper data) {
                 ApiFacade.getInstance().deleteAccountHistory(String.valueOf(data.data().userID));
-                tryShowLastLoginAccount();
+//                tryShowLastLoginAccount();
 
                 if (picker.getSourceData().size() < 2) {
                     accountEdit.post(new Runnable() {
