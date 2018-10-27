@@ -25,15 +25,16 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class QyLoginRequest extends Request<String> {
+public class QyLoginRequest<T> extends Request<T> {
 
     private static final String TAG = "RSDK: QyLoginRequest";
-    protected TtRespListener<String> mListener;
+    private final Gson gson = new Gson();
+    protected TtRespListener<T> mListener;
     protected Map<String, String> mParams, mHeader;
     private String mUrl;
     protected JSONObject postParams;
     private int mContentType;
-
+    private Class<T> mClazz;
     private String src;
     private static final int KEY = 123123123;
     public static final String GAMW_ID = "201810221735413530001013eed";
@@ -67,12 +68,13 @@ public class QyLoginRequest extends Request<String> {
     }
 
     //post
-    public QyLoginRequest(String url, Map<String, String> params, TtRespListener<String> listener) {
+    public QyLoginRequest(String url, Map<String, String> params, Class<T> clazz, TtRespListener<T> listener) {
         this(Method.POST, url, null);
         mListener = listener;
         mParams = params;
         src = mParams.get("src");
         mUrl = url;
+        mClazz = clazz;
         mContentType = CONTENT_TYPE_RAW_JSON;
         if (params != null) {
             postParams = new JSONObject(params);
@@ -121,15 +123,21 @@ public class QyLoginRequest extends Request<String> {
     }
 
     @Override
-    protected Response<String> parseNetworkResponse(NetworkResponse response) {
+    protected Response<T> parseNetworkResponse(NetworkResponse response) {
         try {
             String json = new String(
                     response.data,
                     HttpHeaderParser.parseCharset(response.headers));
             Log.i(TAG, "parseNetworkResponse:url=" + mUrl + "  params=" + (postParams == null ? mParams : postParams));
             Log.i(TAG, "parseNetworkResponse:json =" + json);
+            if (mClazz == null || mClazz == Void.class || mClazz == String.class) {
+                //如果为null 表示不需要解析body内容
+                return (Response<T>) Response.success(
+                        json,
+                        HttpHeaderParser.parseCacheHeaders(response));
+            }
             return Response.success(
-                    json,
+                    gson.fromJson(json, mClazz),
                     HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
@@ -139,7 +147,7 @@ public class QyLoginRequest extends Request<String> {
     }
 
     @Override
-    protected void deliverResponse(String response) {
+    protected void deliverResponse(T response) {
         Log.e(TAG, "deliverResponse:response:" + response.toString());
         mListener.onNetSucc(mUrl, mParams, response);
     }

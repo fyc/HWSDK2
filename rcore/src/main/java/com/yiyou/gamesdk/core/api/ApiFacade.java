@@ -21,6 +21,7 @@ import com.yiyou.gamesdk.core.api.def.IReportApi;
 import com.yiyou.gamesdk.core.api.def.ISecurityApi;
 import com.yiyou.gamesdk.core.api.def.IUpgradeApi;
 import com.yiyou.gamesdk.core.api.impl.ApiLoader;
+import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.bean.VerifyCodeBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
@@ -199,6 +200,10 @@ public class ApiFacade implements IApiFacade {
     @Override
     public void login(String account, String pwd, TtRespListener<AuthModel> callback) {
         authApi().login(account,pwd,callback);
+    }
+    @Override
+    public void login2(String account, String pwd, TtRespListener<LoginBean> callback) {
+        authApi().login2(account,pwd,callback);
     }
 
     @Override
@@ -423,6 +428,10 @@ public class ApiFacade implements IApiFacade {
     @Override
     public void bindPhone(String phoneNum, String smsVCode, TtRespListener callback) {
         securityApi().bindPhone(phoneNum,smsVCode,callback);
+    }
+    @Override
+    public void bindPhone2(String phoneNum, String smsVCode, TtRespListener callback) {
+        securityApi().bindPhone2(phoneNum,smsVCode,callback);
     }
 
     @Override

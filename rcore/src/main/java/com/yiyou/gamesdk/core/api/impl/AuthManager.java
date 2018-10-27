@@ -27,7 +27,7 @@ import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwAppRequest;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
 import com.yiyou.gamesdk.core.base.http.volley.QyLoginRequest;
-import com.yiyou.gamesdk.core.base.http.volley.bean.VerifyCodeBean;
+import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.memcache.LoginInfo;
@@ -63,11 +63,9 @@ class AuthManager implements IAuthApi {
     private static final String TAG = "RSDK:AuthManager ";
     private static final String MD5_PWD_PREFIX = "\u0d62\u0d63\u135f";
     private AuthModel authModel = null;
-    private String password="";
+    private LoginBean loginBean = null;
+    private String password = "";
     private String phone = "";
-
-
-
 
 
     //用户注册
@@ -89,10 +87,10 @@ class AuthManager implements IAuthApi {
 
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
-        params.put("userName",userName);
-        params.put("password",ByteUtils.generateMd5(password));
+        params.put("userName", userName);
+        params.put("password", ByteUtils.generateMd5(password));
         TaoziSignUtils.addSign(params);
-        HwRequest<AuthModel> hwRequest = new HwRequest<>(Urlpath.REGISTER,params,AuthModel.class,newAuthModelRespListenerWrapper(callback));
+        HwRequest<AuthModel> hwRequest = new HwRequest<>(Urlpath.REGISTER, params, AuthModel.class, newAuthModelRespListenerWrapper(callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
     }
@@ -115,11 +113,11 @@ class AuthManager implements IAuthApi {
 
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
-        params.put("userName",phone);
-        params.put("password",ByteUtils.generateMd5(password));
-        params.put("vcode",verificationCode);
+        params.put("userName", phone);
+        params.put("password", ByteUtils.generateMd5(password));
+        params.put("vcode", verificationCode);
         TaoziSignUtils.addSign(params);
-        HwRequest<AuthModel> hwRequest = new HwRequest<>(Urlpath.REGISTER,params,AuthModel.class,newAuthModelRespListenerWrapper(callback));
+        HwRequest<AuthModel> hwRequest = new HwRequest<>(Urlpath.REGISTER, params, AuthModel.class, newAuthModelRespListenerWrapper(callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
     }
@@ -129,9 +127,9 @@ class AuthManager implements IAuthApi {
 
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
-        params.put("childUserName",childUserName);
-        params.put("accessToken",ApiFacade.getInstance().getSession());
-        HwRequest request = new HwRequest<>(Urlpath.REGISTER_CHILD,params,AuthModel.childAccount.class,callback);
+        params.put("childUserName", childUserName);
+        params.put("accessToken", ApiFacade.getInstance().getSession());
+        HwRequest request = new HwRequest<>(Urlpath.REGISTER_CHILD, params, AuthModel.childAccount.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
@@ -140,30 +138,31 @@ class AuthManager implements IAuthApi {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("mobile", phone);
-        params.put("type",type+"");
-        params.put("retry", retry+"");
+        params.put("type", type + "");
+        params.put("retry", retry + "");
 
-        if(type == IAuthApi.VCODE_TYPE_REGISTER){
+        if (type == IAuthApi.VCODE_TYPE_REGISTER) {
             TaoziSignUtils.addSign(params);
         }
         HwRequest request = new HwRequest<>(Urlpath.GET_PHONE_VERIFY_CODE, params, null, callback);
         Log.d(TAG, "requestVerificationCode:Urlpath.GET_PHONE_VERIFY_CODE");
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
+
     @Override
     public void requestVerificationCode2(String phone, int type, int retry, TtRespListener<String> callback) {
         Map<String, String> params = new TreeMap<>();
 //        String game_id = String.valueOf(ApiFacade.getInstance().getCurrentGameID() + "");
         String game_id = QyLoginRequest.GAMW_ID;
-        String ctime = String.valueOf(System.currentTimeMillis()/1000);
+        String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         params.put("mobile_phone", phone);
         params.put("game_id", game_id);
         params.put("ctime", ctime);
-        String src = String.format("ctime=%s&game_id=%s&mobile_phone=%s",ctime,game_id,phone);
-        params.put("src",src);
-        QyLoginRequest request = new QyLoginRequest(Urlpath.GET_PHONE_VERIFY_CODE, params,callback);
+        String src = String.format("ctime=%s&game_id=%s&mobile_phone=%s", ctime, game_id, phone);
+        params.put("src", src);
+        QyLoginRequest request = new QyLoginRequest(Urlpath.GET_PHONE_VERIFY_CODE, params, String.class, callback);
         try {
-            Log.d(TAG, "requestVerificationCode:requestHeader:"+request.getHeaders().toString());
+            Log.d(TAG, "requestVerificationCode:requestHeader:" + request.getHeaders().toString());
         } catch (AuthFailureError authFailureError) {
             authFailureError.printStackTrace();
         }
@@ -184,7 +183,7 @@ class AuthManager implements IAuthApi {
             "message":"成功"
         }
         */
-       requestVerificationCode(phone, type, 0, callback);
+        requestVerificationCode(phone, type, 0, callback);
     }
 
     //** /rest/user/verifyMC
@@ -193,7 +192,6 @@ class AuthManager implements IAuthApi {
     public AuthModel getAuth() {
         return authModel;
     }
-
 
 
     //登录
@@ -213,20 +211,50 @@ class AuthManager implements IAuthApi {
         }
 
         Map<String, String> params = new TreeMap<>();
-        if (pwd.startsWith(MD5_PWD_PREFIX) && pwd.length() == (MD5_PWD_PREFIX.length() + 32)){
+        if (pwd.startsWith(MD5_PWD_PREFIX) && pwd.length() == (MD5_PWD_PREFIX.length() + 32)) {
             String md5pwd = pwd.substring(MD5_PWD_PREFIX.length(), pwd.length());
             params.put("password", md5pwd);
-        }else {
+        } else {
             params.put("password", ByteUtils.generateMd5(pwd));
         }
         params.put("userName", account);
         RequestHelper.buildParamsWithBaseInfo(params);
 
-        HwRequest hwRequest = new HwRequest(Urlpath.LOGIN,params,AuthModel.class,newAuthModelRespListenerWrapper(callback));
+        HwRequest hwRequest = new HwRequest(Urlpath.LOGIN, params, AuthModel.class, newAuthModelRespListenerWrapper(callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
     }
 
+    @Override
+    public void login2(String account, String code, TtRespListener<LoginBean> callback) {
+        if (StringUtils.isBlank(account)) {
+            if (callback != null) {
+                callback.onFail(StatusCodeDef.LOGIN_FAIL_INVALID_PWD, ResourceHelper.getString(R.string.account_null));
+            }
+            return;
+        }
+        if (StringUtils.isBlank(code) || code.length() < 4) {
+            if (callback != null) {
+                callback.onFail(StatusCodeDef.LOGIN_FAIL_INVALID_PWD, ResourceHelper.getString(R.string.please_input_at_least_6_len));
+            }
+            return;
+        }
+
+        Map<String, String> params = new TreeMap<>();
+//        RequestHelper.buildParamsWithBaseInfo(params);
+        String game_id = QyLoginRequest.GAMW_ID;
+        String ctime = String.valueOf(System.currentTimeMillis() / 1000);
+        params.put("mobile_phone", account);
+        params.put("game_id", game_id);
+        params.put("ctime", ctime);
+        params.put("code", code);
+        String src = String.format("code=%s&ctime=%s&game_id=%s&mobile_phone=%s", code, ctime, game_id, account);
+        params.put("src", src);
+
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN, params, LoginBean.class, newAuthModelRespListenerWrapper2(callback));
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
+
+    }
     //** /rest/user/logout
 
     /**
@@ -244,7 +272,7 @@ class AuthManager implements IAuthApi {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
 
-        HwRequest hwRequest = new HwRequest<>(Urlpath.LOGOUT, params, null,new TtRespListener<Object>() {
+        HwRequest hwRequest = new HwRequest<>(Urlpath.LOGOUT, params, null, new TtRespListener<Object>() {
             @Override
             public void onNetSucc(String url, Map params, Object result) {
                 if (params != null) {
@@ -296,8 +324,8 @@ class AuthManager implements IAuthApi {
     public void getBalance(TtRespListener<BalanceInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
-        params.put("accessToken",ApiFacade.getInstance().getSession());
-        HwRequest request = new HwRequest<>(Urlpath.GET_BALANCE, params,BalanceInfo.class,callback);
+        params.put("accessToken", ApiFacade.getInstance().getSession());
+        HwRequest request = new HwRequest<>(Urlpath.GET_BALANCE, params, BalanceInfo.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
@@ -308,32 +336,32 @@ class AuthManager implements IAuthApi {
 
     @Override
     public long getMainUid() {
-        return authModel != null ? authModel.getUserID() : 0 ;
+        return authModel != null ? authModel.getUserID() : 0;
     }
 
     @Override
     public long getSubUid() {
-        SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid()+"", Context.MODE_PRIVATE);
-        Long uid = preferences.getLong("rsdk_childUserID",0);
+        SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
+        Long uid = preferences.getLong("rsdk_childUserID", 0);
         return uid;
     }
 
     @Override
     public String getUserName() {
-        return authModel != null ? authModel.getUserName() : null ;
+        return authModel != null ? authModel.getUserName() : null;
     }
 
     @Override
     public String getSubUserName() {
-        SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid()+"", Context.MODE_PRIVATE);
-        String UserName = preferences.getString("rsdk_childUserName","");
+        SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
+        String UserName = preferences.getString("rsdk_childUserName", "");
         return UserName;
     }
 
     @Override
-    public String getPhone(){
+    public String getPhone() {
         AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
-        if (info != null){
+        if (info != null) {
             return info.phone;
         }
         return "";
@@ -355,20 +383,20 @@ class AuthManager implements IAuthApi {
     @Override
     public void getInventories(TtRespListener<InventoriesInfo> callback) {
         Map<String, String> params = new TreeMap<>();
-        params.put("gameID", ApiFacade.getInstance().getCurrentGameID()+"");
-        params.put("startIndex","0");
+        params.put("gameID", ApiFacade.getInstance().getCurrentGameID() + "");
+        params.put("startIndex", "0");
         String url = HttpUtils.buildUrl(Urlpath.INVENTORY_LIST, params);
-        HwAppRequest request = new HwAppRequest<>(url, params,InventoriesInfo.class,callback);
+        HwAppRequest request = new HwAppRequest<>(url, params, InventoriesInfo.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
     @Override
     public void getGamePackage(TtRespListener<GamePackages> callback) {
         Map<String, String> params = new TreeMap<>();
-        params.put("gameId", ApiFacade.getInstance().getCurrentGameID()+"");
+        params.put("gameId", ApiFacade.getInstance().getCurrentGameID() + "");
         RequestHelper.buildParamsWithAppInfo(params);
         String url = HttpUtils.buildUrl(Urlpath.GAME_PACKAGE, params);
-        HwAppRequest request = new HwAppRequest<>(url, GamePackages.class,callback);
+        HwAppRequest request = new HwAppRequest<>(url, GamePackages.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
@@ -380,7 +408,7 @@ class AuthManager implements IAuthApi {
 //        params.put("userId", String.valueOf(ApiFacade.getInstance().getMainUid()));
         RequestHelper.buildParamsWithAppInfo(params);
         String url = HttpUtils.buildUrl(Urlpath.RECEIVE_PACKAGE, params);
-        HwAppRequest request = new HwAppRequest<>(url,GamePackages.GamePackageInfo.class,callback);
+        HwAppRequest request = new HwAppRequest<>(url, GamePackages.GamePackageInfo.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
@@ -391,7 +419,7 @@ class AuthManager implements IAuthApi {
         params.put("packageId", packageId);
         RequestHelper.buildParamsWithAppInfo(params);
         String url = HttpUtils.buildUrl(Urlpath.GAME_PACKAGE_DETAIL, params);
-        HwAppRequest request = new HwAppRequest<>(url,GamePackages.GamePackageInfo.class,callback);
+        HwAppRequest request = new HwAppRequest<>(url, GamePackages.GamePackageInfo.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
@@ -403,29 +431,99 @@ class AuthManager implements IAuthApi {
                 password = params.get("password");
                 LoginInfo.getInstance().setAuthModel(result);
 
-                if (result.getPhone() == null){
+                if (result.getPhone() == null) {
                     phone = "";
-                }else {
+                } else {
                     phone = result.getPhone();
                 }
                 updateAccountHistory(result);
                 updateChildAccountHistory(result);
                 long subUid = getSubUid();
-                if (subUid == 0){
+                if (subUid == 0) {
                     ApiFacade.getInstance().setLastLoginChildAccount(result.getChildAccounts().get(0));
-                }else {
+                } else {
                     boolean flag = false;
                     List<ChildrenAccountHistoryInfo> list = ApiFacade.getInstance().getCurrentChildrenAccountHistory();
-                    for (ChildrenAccountHistoryInfo info : list){
-                        if (subUid == info.childrenUserID){
+                    for (ChildrenAccountHistoryInfo info : list) {
+                        if (subUid == info.childrenUserID) {
                             flag = true;
                         }
                     }
-                    if (!flag){
+                    if (!flag) {
                         ApiFacade.getInstance().setLastLoginChildAccount(result.getChildAccounts().get(0));
                     }
                 }
                 childAccountEvent();
+                initLoginSuccessUiTip();
+                PluginManager.getInstance().getFloatService().startCountDown();
+                if (callback != null) {
+                    callback.onNetSucc(url, params, result);
+                }
+
+            }
+
+            @Override
+            public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
+                super.onNetError(url, params, errno, errmsg);
+                if (callback != null) {
+                    callback.onNetError(url, params, errno, errmsg);
+                }
+            }
+
+            @Override
+            public void onFail(int errorNo, String errmsg) {
+                super.onFail(errorNo, errmsg);
+                if (callback != null) {
+                    callback.onFail(errorNo, errmsg);
+                }
+            }
+
+            @Override
+            public void onNetworkComplete() {
+                super.onNetworkComplete();
+                if (callback != null) {
+                    callback.onNetworkComplete();
+                }
+            }
+        };
+    }
+
+    private TtRespListener<LoginBean> newAuthModelRespListenerWrapper2(final TtRespListener<LoginBean> callback) {
+        return new TtRespListener<LoginBean>() {
+            @Override
+            public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
+                Log.e(TAG, "onNetSucc:");
+//
+                loginBean = result;
+                LoginInfo.getInstance().setLoginBean(loginBean);
+//                try {
+//                    Log.e(TAG, "onNetSucc:result.toString()" + result.toString());
+//                     authModel = LoginBean.convertedToAuthModel(loginBean);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    Log.e(TAG, "authModel= Exception:" + e.toString());
+//                }
+
+//                LoginInfo.getInstance().setAuthModel(authModel);
+
+//                updateAccountHistory(authModel);
+//                updateChildAccountHistory(authModel);
+//                long subUid = getSubUid();
+//                if (subUid == 0) {
+//                    ApiFacade.getInstance().setLastLoginChildAccount(authModel.getChildAccounts().get(0));
+//                } else {
+//                    boolean flag = false;
+//                    List<ChildrenAccountHistoryInfo> list = ApiFacade.getInstance().getCurrentChildrenAccountHistory();
+//                    for (ChildrenAccountHistoryInfo info : list) {
+//                        if (subUid == info.childrenUserID) {
+//                            flag = true;
+//                        }
+//                    }
+//                    if (!flag) {
+//                        ApiFacade.getInstance().setLastLoginChildAccount(authModel.getChildAccounts().get(0));
+//                    }
+//                }
+//                childAccountEvent();
                 initLoginSuccessUiTip();
                 PluginManager.getInstance().getFloatService().startCountDown();
                 if (callback != null) {
@@ -476,13 +574,13 @@ class AuthManager implements IAuthApi {
     private void updateChildAccountHistory(AuthModel result) {
         List<AuthModel.childAccount> list = result.getChildAccounts();
         List<ChildrenAccountHistoryInfo> childrenAccountHistoryInfoList = new ArrayList<>();
-        for (AuthModel.childAccount childAccount : list){
+        for (AuthModel.childAccount childAccount : list) {
             ChildrenAccountHistoryInfo history = new ChildrenAccountHistoryInfo();
             history.userID = childAccount.getUserID();
             history.bundleID = childAccount.getBundleID();
             history.childrenUserID = childAccount.getChildUserID();
             history.childrenUsername = childAccount.getChildUserName();
-            history.gameId = ApiFacade.getInstance().getCurrentGameID()+"";
+            history.gameId = ApiFacade.getInstance().getCurrentGameID() + "";
             history.TTAccount = childAccount.getTTAccount();
             history.lastLoginTime = new Date().getTime();
             childrenAccountHistoryInfoList.add(history);
@@ -502,7 +600,7 @@ class AuthManager implements IAuthApi {
         Toast toast = new Toast(CoreManager.getContext());
         View toastRoot = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.tt_sdk_loginsuccess_tip, null);
         TextView txtContent = (TextView) toastRoot.findViewById(R.id.account);
-        txtContent.setText("你好, <" +getUserName() + ">");
+        txtContent.setText("你好, <" + getUserName() + ">");
         toast.setGravity(Gravity.TOP, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(toastRoot);
@@ -514,10 +612,10 @@ class AuthManager implements IAuthApi {
 //        Log.d(TAG, "getCouponInfos: ");
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
-        params.put("accessToken",ApiFacade.getInstance().getSession());
-        params.put("gameId",String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
-        params.put("status",type);
-        HwRequest request = new HwRequest<>(Urlpath.COUPON,params,CouponInfo.class,callback);
+        params.put("accessToken", ApiFacade.getInstance().getSession());
+        params.put("gameId", String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
+        params.put("status", type);
+        HwRequest request = new HwRequest<>(Urlpath.COUPON, params, CouponInfo.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
@@ -526,10 +624,10 @@ class AuthManager implements IAuthApi {
 //        Log.d(TAG, "getCouponCount: ");
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
-        params.put("accessToken",ApiFacade.getInstance().getSession());
-        params.put("gameId",String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
-        params.put("status",type);
-        HwRequest request = new HwRequest<>(Urlpath.COUPON_COUNT,params,CouponCountInfo.class,callback);
+        params.put("accessToken", ApiFacade.getInstance().getSession());
+        params.put("gameId", String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
+        params.put("status", type);
+        HwRequest request = new HwRequest<>(Urlpath.COUPON_COUNT, params, CouponCountInfo.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
@@ -537,41 +635,41 @@ class AuthManager implements IAuthApi {
     public void childAccountEvent() {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
-        params.put("childUserId",String.valueOf(getSubUid()));
-        HwRequest request = new HwRequest<>(Urlpath.CHILD_ACCOUNT_EVENT,params,null,null);
-        RequestManager.getInstance(CoreManager.getContext()).addRequest(request,null);
+        params.put("childUserId", String.valueOf(getSubUid()));
+        HwRequest request = new HwRequest<>(Urlpath.CHILD_ACCOUNT_EVENT, params, null, null);
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
     @Override
     public void requestGameDiscount(TtRespListener<GameDiscountInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("devId", PhoneUtils.getDeviceId(CoreManager.getContext()));
-        params.put("gameId",String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
+        params.put("gameId", String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
         params.put("accessToken", ApiFacade.getInstance().getSession());
         params.put("bundleId", ResourceHelper.getPackageName());
-        HwRequest<GameDiscountInfo> request = new HwRequest<>(Urlpath.GAME_DISCOUNT,params,GameDiscountInfo.class,callback);
-        RequestManager.getInstance(CoreManager.getContext()).addRequest(request,null);
+        HwRequest<GameDiscountInfo> request = new HwRequest<>(Urlpath.GAME_DISCOUNT, params, GameDiscountInfo.class, callback);
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
     @Override
     public void getCoupon(int actId, TtRespListener<GetCouponInfo> callback) {
         Map<String, String> params = new TreeMap<>();
-        params.put("actId",String.valueOf(actId));
-        params.put("channelId",ApiFacade.getInstance().getChannel());
+        params.put("actId", String.valueOf(actId));
+        params.put("channelId", ApiFacade.getInstance().getChannel());
         params.put("devId", PhoneUtils.getDeviceId(CoreManager.getContext()));
         params.put("accessToken", ApiFacade.getInstance().getSession());
-        HwRequest<GetCouponInfo> request = new HwRequest<>(Urlpath.GET_COUPON,params,GetCouponInfo.class,callback);
-        RequestManager.getInstance(CoreManager.getContext()).addRequest(request,null);
+        HwRequest<GetCouponInfo> request = new HwRequest<>(Urlpath.GET_COUPON, params, GetCouponInfo.class, callback);
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
     @Override
     public void getCouponByRule(int ruleId, TtRespListener<GetCouponInfo> callback) {
         Map<String, String> params = new TreeMap<>();
-        params.put("ruleId",String.valueOf(ruleId));
-        params.put("channelId",ApiFacade.getInstance().getChannel());
+        params.put("ruleId", String.valueOf(ruleId));
+        params.put("channelId", ApiFacade.getInstance().getChannel());
         params.put("devId", PhoneUtils.getDeviceId(CoreManager.getContext()));
         params.put("accessToken", ApiFacade.getInstance().getSession());
-        HwRequest<GetCouponInfo> request = new HwRequest<>(Urlpath.GET_COUPON_BY_RULE,params,GetCouponInfo.class,callback);
-        RequestManager.getInstance(CoreManager.getContext()).addRequest(request,null);
+        HwRequest<GetCouponInfo> request = new HwRequest<>(Urlpath.GET_COUPON_BY_RULE, params, GetCouponInfo.class, callback);
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 }

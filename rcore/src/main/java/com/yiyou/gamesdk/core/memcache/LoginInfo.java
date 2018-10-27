@@ -2,6 +2,7 @@ package com.yiyou.gamesdk.core.memcache;
 
 import android.net.Uri;
 
+import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.model.AuthModel;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class LoginInfo {
 
     public static LoginInfo instance;
     private AuthModel authModel;
+    private LoginBean loginBean;
     private LoginInfo() {
 
     }
@@ -34,7 +36,16 @@ public class LoginInfo {
         return authModel;
     }
 
+    public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
+    }
+
     public void clear() {
+        loginBean = null;
         authModel = null;
         instance = null;
     }

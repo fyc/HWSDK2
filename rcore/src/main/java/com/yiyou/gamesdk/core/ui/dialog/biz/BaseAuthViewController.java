@@ -6,6 +6,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.yiyou.gamesdk.R;
+import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.ui.dialog.BaseViewController;
 import com.yiyou.gamesdk.model.AuthModel;
 import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
@@ -49,6 +50,17 @@ public abstract class BaseAuthViewController extends BaseViewController {
     }
 
     void notifyAuthResult(int code, String resultMsg, AuthModel authModel) {
+        willCloseByAuthResult = true;
+        if(dialogParam != null) {
+            if(dialogParam.getAppCallback() != null) {
+                dialogParam.getAppCallback().onResult(code, resultMsg);
+            }
+//            if(dialogParam.getGameCallback() != null && authModel != null) {
+//                dialogParam.getGameCallback().process(authModel.getAccount(), authModel.getPassword());
+//            }
+        }
+    }
+    void notifyAuthResult2(int code, String resultMsg, LoginBean loginBean) {
         willCloseByAuthResult = true;
         if(dialogParam != null) {
             if(dialogParam.getAppCallback() != null) {

@@ -18,6 +18,7 @@ public interface ISecurityApi extends IApiWrapping {
     void forgetPassword(String mobile, String newPwd, String vcode,TtRespListener callback);
 
     void bindPhone(String phoneNum, String smsVCode, TtRespListener callback);
+    void bindPhone2(String phoneNum, String smsVCode, TtRespListener callback);
 
     void unbindPhone(String phoneNum, String smsVCode, TtRespListener callback);
 

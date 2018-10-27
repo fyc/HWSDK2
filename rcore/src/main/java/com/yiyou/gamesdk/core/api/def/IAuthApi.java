@@ -1,6 +1,7 @@
 package com.yiyou.gamesdk.core.api.def;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
+import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.bean.VerifyCodeBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.yiyou.gamesdk.model.AuthModel;
@@ -66,6 +67,7 @@ public interface IAuthApi extends IApiWrapping {
      * @param pwd     明文密码
      */
     void login(String account, String pwd,TtRespListener<AuthModel> callback);
+    void login2(String account, String code,TtRespListener<LoginBean> callback);
 
     /**
      * 登出当前账号带CP回调

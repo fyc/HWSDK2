@@ -18,6 +18,7 @@ import com.mobilegamebar.rsdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
+import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.bean.VerifyCodeBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
@@ -248,7 +249,7 @@ public class LoginViewController extends BaseAuthViewController {
             @Override
             public void onClick(View view) {
                 IMEUtil.hideIME(LoginViewController.this);
-//                loginImpl(accountEdit.getText().toString(), passwordEdit.getText().toString());
+                loginImpl(accountEdit.getText().toString(), verificationCodeEdit.getText().toString());
             }
         });
         backRegisterButton.setOnClickListener(new OnClickListener() {
@@ -378,15 +379,18 @@ public class LoginViewController extends BaseAuthViewController {
     private void loginImpl(String account, String code) {
         loginButton.setEnabled(false);
         showLoading();
-        ApiFacade.getInstance().login(account, code, new TtRespListener<AuthModel>() {
+        ApiFacade.getInstance().login2(account, code, new TtRespListener<LoginBean>() {
             @Override
             public void onNetworkComplete() {
                 loginButton.setEnabled(true);
             }
 
             @Override
-            public void onNetSucc(String url, Map<String, String> params, AuthModel result) {
-                onLoginSuccess(result);
+            public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
+//                onLoginSuccess(result);
+                hideLoading();
+                notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
+                close();
             }
 
             @Override

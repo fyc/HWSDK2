@@ -9,6 +9,9 @@ import com.yiyou.gamesdk.core.base.http.RequestHelper;
 import com.yiyou.gamesdk.core.base.http.RequestManager;
 import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
+import com.yiyou.gamesdk.core.base.http.volley.QyLoginRequest;
+import com.yiyou.gamesdk.core.base.http.volley.bean.BindPhoneBean;
+import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.StringUtils;
@@ -16,6 +19,7 @@ import com.yiyou.gamesdk.util.ByteUtils;
 import com.yiyou.gamesdk.util.ToastUtils;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by win on 15/6/8.
@@ -112,6 +116,23 @@ class SecurityManager implements ISecurityApi {
         params.put("vcode",smsVCode);
         params.put("mobile",phoneNum);
         HwRequest hwRequest = new HwRequest<>(Urlpath.BIND_PHONE,params,null,callback);
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
+    }
+    @Override
+    public void bindPhone2(String phoneNum, String smsVCode, TtRespListener callback) {
+        Map<String, String> params = new ArrayMap<>();
+        String game_id = QyLoginRequest.GAMW_ID;
+        String ctime = String.valueOf(System.currentTimeMillis() / 1000);
+        params.put("user_id", "22");
+        params.put("token", "e3fc60f2d87845679251c4b42b26ef44rXLcLY1l");
+        params.put("mobile_phone", phoneNum);
+        params.put("game_id", game_id);
+        params.put("ctime", ctime);
+        params.put("code", smsVCode);
+        String src = String.format("code=%s&ctime=%s&game_id=%s&mobile_phone=%s&token=%s&user_id=%s", smsVCode, ctime, game_id, phoneNum,"e3fc60f2d87845679251c4b42b26ef44rXLcLY1l","22");
+        params.put("src", src);
+
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.BIND_PHONE, params, BindPhoneBean.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
     }
 

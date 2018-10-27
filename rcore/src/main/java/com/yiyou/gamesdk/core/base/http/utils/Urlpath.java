@@ -61,15 +61,13 @@ public class Urlpath {
      * 获取手机验证码
      */
 //    public static final String GET_PHONE_VERIFY_CODE = HEAD + "/rest/vcode/get.view";
-    /**
-     * 获取手机验证码
-     */
     public static final String GET_PHONE_VERIFY_CODE = HEAD + "/rest/user/get_vcode";
 
     /**
      * 账号登录
      */
-    public static final String LOGIN = HEAD + "/rest/user/login.view";
+//    public static final String LOGIN = HEAD + "/rest/user/login.view";
+    public static final String LOGIN = HEAD + "/rest/user/login_mobile";
 
     /**
      * 用户事件上报
@@ -102,8 +100,8 @@ public class Urlpath {
     /**
      * 绑定手机，验证码发到新的手机号
      */
-    public static final String BIND_PHONE = HEAD + "/rest/user/bindMobile.view";
-
+//    public static final String BIND_PHONE = HEAD + "/rest/user/bindMobile.view";
+    public static final String BIND_PHONE = HEAD + "/rest/user/bind_mp";
     //
     public static final String UNBIND_PHONE = HEAD + "/rest/user/unbindMobile.view";
 

@@ -62,24 +62,24 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
             @Override
             public void onResult(int i, String s) {
                 if (i == 0) {
-                    RGameSDK.getInstance().setLogoutListener(new IOperateCallback<String>() {
-                        @Override
-                        public void onResult(int code, String msg) {
-                            if (code == TTCodeDef.LOGOUT_NO_INIT || code == TTCodeDef.LOGOUT_FAIL) {
-                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG)
-                                        .show();
-                            } else if (code == TTCodeDef.LOGOUT_NO_LOGIN || code == TTCodeDef.SUCCESS) {
-                                RGameSDK.getInstance().hideFloatView(LoginActivity.this);
-                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                                ft.remove(mainFragment);
-                                ft.commitAllowingStateLoss();
-                                findViewById(R.id.choose).setVisibility(View.VISIBLE);
-                                findViewById(R.id.file).setVisibility(View.VISIBLE);
-                                loginImpl();
-                                mCurrentView = 0; //0:LoginActivity,1:MainFragment ,2:PayFragment
-                            }
-                        }
-                    });
+//                    RGameSDK.getInstance().setLogoutListener(new IOperateCallback<String>() {
+//                        @Override
+//                        public void onResult(int code, String msg) {
+//                            if (code == TTCodeDef.LOGOUT_NO_INIT || code == TTCodeDef.LOGOUT_FAIL) {
+//                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG)
+//                                        .show();
+//                            } else if (code == TTCodeDef.LOGOUT_NO_LOGIN || code == TTCodeDef.SUCCESS) {
+//                                RGameSDK.getInstance().hideFloatView(LoginActivity.this);
+//                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                                ft.remove(mainFragment);
+//                                ft.commitAllowingStateLoss();
+//                                findViewById(R.id.choose).setVisibility(View.VISIBLE);
+//                                findViewById(R.id.file).setVisibility(View.VISIBLE);
+//                                loginImpl();
+//                                mCurrentView = 0; //0:LoginActivity,1:MainFragment ,2:PayFragment
+//                            }
+//                        }
+//                    });
                     loginImpl();
                 }
             }
