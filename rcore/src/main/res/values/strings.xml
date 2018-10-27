@@ -46,6 +46,7 @@
     <string name="btn_set_pay_password">设置支付密码</string>
     <string name="no_connection">无网络连接，请检查网络配置。</string>
     <string name="bind_phone_succ">绑定手机号成功</string>
+    <string name="real_name_auth_succ">实名认证成功</string>
     <string name="str_bind_phone_tip">绑定后可通过手机号登录找回密码</string>
     <string name="coupon_discount">满减券</string>
     <string name="coupon_cash">现金券</string>

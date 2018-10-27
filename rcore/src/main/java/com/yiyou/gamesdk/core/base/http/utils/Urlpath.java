@@ -99,7 +99,8 @@ public class Urlpath {
     public static final String MODIFY_PAY_PWD = HEAD + "/rest/user/changepaypwd.view";
 
     //实名认证接口
-    public static final String REALNAME_INFO = HEAD + "/rest/user/realInfo.view";
+//    public static final String REALNAME_INFO = HEAD + "/rest/user/realInfo.view";
+    public static final String REALNAME_INFO = HEAD + "/rest/user/user_real";
 
     //修改支付密码
     public static final String SET_PAY_PWD = HEAD + "/rest/user/setpaypwd.view";

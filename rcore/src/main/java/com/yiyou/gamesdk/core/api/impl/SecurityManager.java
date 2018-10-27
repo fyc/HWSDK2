@@ -151,6 +151,25 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
+    public void realNameAuth(String real_name, String card_no, TtRespListener callback) {
+        Map<String, String> params = new ArrayMap<>();
+        String game_id = QyLoginRequest.GAMW_ID;
+        String ctime = String.valueOf(System.currentTimeMillis() / 1000);
+        params.put("user_id", "22");
+        params.put("token", "e3fc60f2d87845679251c4b42b26ef44rXLcLY1l");
+        params.put("real_name", real_name);
+        params.put("mobile_phone", "15992344724");
+        params.put("ctime", ctime);
+        params.put("card_no", card_no);
+        String src = String.format("card_no=%s&ctime=%s&game_id=%s&mobile_phone=%s&real_name=%s&token=%s&user_id=%s",
+                "123456789012345678", "1539952696", "1001", "12313123","Test","86092b1924e1424fb1802e344d48006fjWbsaVSD","1");
+        params.put("src", src);
+
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.BIND_PHONE, params, String.class, callback);
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
+    }
+
+    @Override
     public void verifyPayPassword(String payPassword, TtRespListener callback) {
         Map<String, String> params = new ArrayMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);

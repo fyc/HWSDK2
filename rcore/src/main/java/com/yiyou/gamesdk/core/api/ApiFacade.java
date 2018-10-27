@@ -444,7 +444,10 @@ public class ApiFacade implements IApiFacade {
     public void unbindPhone(String phoneNum, String smsVCode, TtRespListener callback) {
         securityApi().unbindPhone(phoneNum,smsVCode,callback);
     }
-
+    @Override
+    public void realNameAuth(String real_name, String card_no, TtRespListener callback) {
+        securityApi().realNameAuth(real_name,card_no,callback);
+    }
     @Override
     public void setPayPassword(String password, TtRespListener callback) {
         securityApi().setPayPassword(password, callback);

@@ -23,4 +23,5 @@ public interface ISecurityApi extends IApiWrapping {
     void unbindPhone(String phoneNum, String smsVCode, TtRespListener callback);
 
     void verifyPayPassword(String payPassword, TtRespListener callback);
+    void realNameAuth(String real_name, String card_no, TtRespListener callback);
 }

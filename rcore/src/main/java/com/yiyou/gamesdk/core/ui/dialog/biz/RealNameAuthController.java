@@ -9,9 +9,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mobilegamebar.rsdk.outer.event.IDialogParam;
+import com.mobilegamebar.rsdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.R;
+import com.yiyou.gamesdk.core.api.ApiFacade;
+import com.yiyou.gamesdk.core.base.http.volley.bean.BindPhoneBean;
+import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.yiyou.gamesdk.util.IMEUtil;
+import com.yiyou.gamesdk.util.ToastUtils;
 import com.yiyou.gamesdk.util.ViewUtils;
+
+import java.util.Map;
 
 public class RealNameAuthController extends BaseAuthViewController {
 
@@ -62,6 +69,7 @@ public class RealNameAuthController extends BaseAuthViewController {
             @Override
             public void onClick(View view) {
                 IMEUtil.hideIME(RealNameAuthController.this);
+                submitRealName(edit_real_name_container_name.getText().toString(),edit_real_name_container_card_number.getText().toString());
             }
         });
 
@@ -95,5 +103,35 @@ public class RealNameAuthController extends BaseAuthViewController {
         } else {
             ViewUtils.setViewEnable(btn_real_name_container_ensure, true);
         }
+    }
+
+    private void submitRealName(String real_name, String card_no){
+        if (StringUtils.isBlank(real_name)|| StringUtils.isBlank(card_no)){
+            ToastUtils.showMsg("请不要输入空字符");
+            return;
+        }
+        ApiFacade.getInstance().realNameAuth(real_name,card_no,new TtRespListener<String>(){
+            @Override
+            public void onNetSucc(String url, Map params, String result) {
+                super.onNetSucc(url, params, result);
+                ToastUtils.showMsg(R.string.real_name_auth_succ);
+            }
+
+            @Override
+            public void onFail(int errorNo, String errmsg) {
+                super.onFail(errorNo, errmsg);
+            }
+
+            @Override
+            public void onNetError(String url, Map params, String errno, String errmsg) {
+                super.onNetError(url, params, errno, errmsg);
+            }
+
+            @Override
+            public void onNetworkComplete() {
+                super.onNetworkComplete();
+//                loadingDialog.dismiss();
+            }
+        });
     }
 }
