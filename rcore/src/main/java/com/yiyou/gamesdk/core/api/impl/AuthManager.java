@@ -255,6 +255,24 @@ class AuthManager implements IAuthApi {
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
     }
+
+    @Override
+    public void visitorsToLogin(TtRespListener<LoginBean> callback) {
+        Map<String, String> params = new TreeMap<>();
+        String game_id = QyLoginRequest.GAMW_ID;
+        String ctime = String.valueOf(System.currentTimeMillis() / 1000);
+        params.put("game_id", game_id);
+        params.put("channel", "1002");
+        params.put("sid", "0ZPPje3mTK7AdKToucDuiAVVBD73vFBX");
+        params.put("ctime", ctime);
+        String src = String.format("channel=%s&ctime=%s&game_id=%s&sid=%s", "1002", "1539777398", "1001", "0ZPPje3mTK7AdKToucDuiAVVBD73vFBX");
+        params.put("src", src);
+
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.VisitorsToLogin, params, LoginBean.class, newAuthModelRespListenerWrapper2(callback));
+        RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
+
+    }
+
     //** /rest/user/logout
 
     /**

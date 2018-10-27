@@ -68,7 +68,7 @@ public interface IAuthApi extends IApiWrapping {
      */
     void login(String account, String pwd,TtRespListener<AuthModel> callback);
     void login2(String account, String code,TtRespListener<LoginBean> callback);
-
+    void visitorsToLogin(TtRespListener<LoginBean> callback);
     /**
      * 登出当前账号带CP回调
      */

@@ -70,6 +70,10 @@ public class Urlpath {
     public static final String LOGIN = HEAD + "/rest/user/login_mobile";
 
     /**
+     * 游客登录
+     * */
+    public static final String VisitorsToLogin = HEAD + "/rest/user/reg_guest";
+    /**
      * 用户事件上报
      */
     public static final String REPORT = HEAD + "/rest/user/gameOnlineTime.view";

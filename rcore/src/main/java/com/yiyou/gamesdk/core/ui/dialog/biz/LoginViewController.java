@@ -397,14 +397,41 @@ public class LoginViewController extends BaseAuthViewController {
             public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
                 super.onNetError(url, params, errno, errmsg);
                 onLoginFail();
-                accountOrPwdErrorHandle(errmsg);
             }
 
             @Override
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);
                 onLoginFail();
-                accountOrPwdErrorHandle(errmsg);
+            }
+        });
+    }
+
+    private void visitorsToLoginImpl() {
+        loginButton.setEnabled(false);
+        showLoading();
+        ApiFacade.getInstance().visitorsToLogin(new TtRespListener<LoginBean>() {
+            @Override
+            public void onNetworkComplete() {
+            }
+
+            @Override
+            public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
+                hideLoading();
+                notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
+                close();
+            }
+
+            @Override
+            public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
+                super.onNetError(url, params, errno, errmsg);
+                onLoginFail();
+            }
+
+            @Override
+            public void onFail(int errorNo, String errmsg) {
+                super.onFail(errorNo, errmsg);
+                onLoginFail();
             }
         });
     }
@@ -492,11 +519,6 @@ public class LoginViewController extends BaseAuthViewController {
             String pwdToFill = MD5_PWD_PREFIX + pwd;
 //            passwordEdit.setText(pwdToFill);
         }
-    }
-
-    private void accountOrPwdErrorHandle(String errmsg) {
-
-
     }
 
     class AccountEditViewController {
