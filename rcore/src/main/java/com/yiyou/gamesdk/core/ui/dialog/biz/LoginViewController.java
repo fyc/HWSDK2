@@ -406,10 +406,36 @@ public class LoginViewController extends BaseAuthViewController {
         });
     }
 
-    private void visitorsToLoginImpl() {
-        loginButton.setEnabled(false);
+    private void loginVisitorsImpl() {
         showLoading();
         ApiFacade.getInstance().loginVisitors(new TtRespListener<LoginBean>() {
+            @Override
+            public void onNetworkComplete() {
+            }
+
+            @Override
+            public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
+                hideLoading();
+                notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
+                close();
+            }
+
+            @Override
+            public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
+                super.onNetError(url, params, errno, errmsg);
+                onLoginFail();
+            }
+
+            @Override
+            public void onFail(int errorNo, String errmsg) {
+                super.onFail(errorNo, errmsg);
+                onLoginFail();
+            }
+        });
+    }
+    private void loginAutoImpl() {
+        showLoading();
+        ApiFacade.getInstance().loginAuto(new TtRespListener<LoginBean>() {
             @Override
             public void onNetworkComplete() {
             }

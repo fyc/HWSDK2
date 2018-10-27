@@ -74,6 +74,10 @@ public class Urlpath {
      * */
     public static final String LOGIN_VISITORS = HEAD + "/rest/user/reg_guest";
     /**
+     * 自动登录
+     * */
+    public static final String LOGIN_AUTO = HEAD + "/rest/user/login_token";
+    /**
      * 用户事件上报
      */
     public static final String REPORT = HEAD + "/rest/user/gameOnlineTime.view";

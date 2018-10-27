@@ -209,6 +209,10 @@ public class ApiFacade implements IApiFacade {
         authApi().loginVisitors(callback);
     }
     @Override
+    public void loginAuto(TtRespListener<LoginBean> callback) {
+        authApi().loginAuto(callback);
+    }
+    @Override
     public void logout(IOperateCallback<String> iOperateCallback) {
         authApi().logout(iOperateCallback);
     }
