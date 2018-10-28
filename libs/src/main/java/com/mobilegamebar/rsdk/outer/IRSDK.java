@@ -38,6 +38,10 @@ public interface IRSDK {
      */
     void login(Activity activity, IOperateCallback<String> callback);
 
+    void loginVisitors(Activity activity, IOperateCallback<String> callback);
+
+    void loginAuto(Activity activity, IOperateCallback<String> callback);
+
     /**
      * 设置登出回调
      *

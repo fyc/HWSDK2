@@ -278,6 +278,8 @@ public class LoginViewController extends BaseAuthViewController {
                 IMEUtil.hideIME(LoginViewController.this);
 //                ViewControllerNavigator.getInstance().toResetPassword(getDialogParam());
                 ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
+
+//                loginVisitorsImpl();
             }
         });
 //        ViewUtils.bindEditWithButton(passwordEdit, loginButton);
@@ -406,7 +408,7 @@ public class LoginViewController extends BaseAuthViewController {
         });
     }
 
-    private void loginVisitorsImpl() {
+    public void loginVisitorsImpl() {
         showLoading();
         ApiFacade.getInstance().loginVisitors(new TtRespListener<LoginBean>() {
             @Override
@@ -433,7 +435,7 @@ public class LoginViewController extends BaseAuthViewController {
             }
         });
     }
-    private void loginAutoImpl() {
+    public void loginAutoImpl() {
         showLoading();
         ApiFacade.getInstance().loginAuto(new TtRespListener<LoginBean>() {
             @Override

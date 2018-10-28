@@ -80,6 +80,18 @@ public class LoadPlugin {
         }
     }
 
+    public void loginVisitors(Activity activity, IOperateCallback<String> callback){
+        if (isInit) {
+            RSDKApi.loginVisitors(activity, callback);
+        }
+    }
+
+    public void loginAuto(Activity activity, IOperateCallback<String> callback){
+        if (isInit) {
+            RSDKApi.loginAuto(activity, callback);
+        }
+    }
+
     public void setLogoutListener(IOperateCallback<String> callback) {
         if (isInit) {
             RSDKApi.setLogoutListener(callback);

@@ -64,6 +64,24 @@ public class ViewControllerNavigator {
 //        return getDialog(activityContext).show(new TestViewController(activityContext));
     }
 
+    public boolean loginVisitors(IDialogParam params) {
+        Log.d(TAG, "toLogin: ");
+        checkParam(params);
+        return getDialog(params.getActivityContext())
+                .show(new LoginViewController(params.getActivityContext(), params));
+//        return getDialog(activityContext).show(new TestViewController(activityContext));
+//        new LoginViewController(params.getActivityContext(), params).loginVisitorsImpl();
+    }
+
+    public void loginAuto(IDialogParam params) {
+        Log.d(TAG, "toLogin: ");
+        checkParam(params);
+//        return getDialog(params.getActivityContext())
+//                .show(new LoginViewController(params.getActivityContext(), params));
+//        return getDialog(activityContext).show(new TestViewController(activityContext));
+        new LoginViewController(params.getActivityContext(), params).loginAutoImpl();
+    }
+
     public boolean toRegister(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())

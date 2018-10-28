@@ -52,6 +52,16 @@ public class RGameSDK implements IRSDK {
     }
 
     @Override
+    public void loginVisitors(Activity activity, IOperateCallback<String> callback) {
+        LoadPlugin.getInstance().loginVisitors(activity,callback);
+    }
+
+    @Override
+    public void loginAuto(Activity activity, IOperateCallback<String> callback) {
+        LoadPlugin.getInstance().loginAuto(activity,callback);
+    }
+
+    @Override
     public void setLogoutListener(IOperateCallback<String> callback) {
         LoadPlugin.getInstance().setLogoutListener(callback);
     }
