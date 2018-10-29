@@ -530,13 +530,9 @@ class AuthManager implements IAuthApi {
 //
                 loginBean = result;
                 LoginInfo.getInstance().setLoginBean(loginBean);
-//                try {
-//                    Log.e(TAG, "onNetSucc:result.toString()" + result.toString());
-//                     authModel = LoginBean.convertedToAuthModel(loginBean);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    Log.e(TAG, "authModel= Exception:" + e.toString());
-//                }
+
+                authModel = loginBean.convertedToAuthModel();
+                updateAccountHistory(authModel);
 
 //                LoginInfo.getInstance().setAuthModel(authModel);
 

@@ -84,11 +84,11 @@ public class LoginBean {
 //                '}';
 //    }
 
-    public static AuthModel convertedToAuthModel(LoginBean bean) {
+    public  AuthModel convertedToAuthModel() {
         AuthModel authModel = new AuthModel();
-        authModel.setUserID(123456);
-//        authModel.setAccessToken(bean.getData().getToken());
-//        authModel.setRealVerified(bean.getData().getNeed_real());
+        authModel.setUserID(getData().getUser_id());
+        authModel.setAccessToken(getData().getToken());
+        authModel.setRealVerified(getData().getNeed_real());
         return authModel;
     }
 }
