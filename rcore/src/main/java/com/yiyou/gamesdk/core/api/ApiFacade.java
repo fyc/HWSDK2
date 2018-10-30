@@ -802,5 +802,11 @@ public class ApiFacade implements IApiFacade {
         }
     }
 
+    public void setLastLoginAccount(AuthModel lastLoginAccount){
+        if (lastLoginAccount!= null){
+            SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid()+"", Context.MODE_PRIVATE);
+            preferences.edit().putLong("rsdk_childUserID",lastLoginAccount.getUserID()).apply();
+        }
+    }
 
 }

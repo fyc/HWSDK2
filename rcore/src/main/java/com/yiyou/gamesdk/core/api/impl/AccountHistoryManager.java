@@ -43,9 +43,9 @@ class AccountHistoryManager implements IAccountHistoryApi {
     public AccountHistoryInfo getAccountHistoryByUserName(String username) {
         AccountHistoryInfo info = null;
         for (AccountHistoryInfo historyInfo : cache.values()) {
-            if (historyInfo.username.equals(username)) {
-                info = historyInfo;
-            }
+//            if (historyInfo.username.equals(username)) {
+//                info = historyInfo;
+//            }
         }
         return info;
     }
@@ -125,9 +125,9 @@ class AccountHistoryManager implements IAccountHistoryApi {
     @Override
     public String getPasswordFromHistory(String account) {
         AccountHistoryInfo info = getAccountHistoryByUid(account);
-        if (info != null) {
-            return info.password;
-        }
+//        if (info != null) {
+//            return info.password;
+//        }
         return null;
     }
 
@@ -151,18 +151,18 @@ class AccountHistoryManager implements IAccountHistoryApi {
     @Override
     public String getPasswordFromHistoryByUsername(String username) {
         AccountHistoryInfo historyInfo = getAccountHistoryByUserName(username);
-        if (historyInfo != null) {
-            return historyInfo.password;
-        }
+//        if (historyInfo != null) {
+//            return historyInfo.password;
+//        }
         return null;
     }
 
     @Override
     public String getPasswordFromHistoryByPhone(String phone){
         AccountHistoryInfo historyInfo = getHistoryAccountByPhone(phone);
-        if (historyInfo != null) {
-            return historyInfo.password;
-        }
+//        if (historyInfo != null) {
+//            return historyInfo.password;
+//        }
         return null;
     }
 

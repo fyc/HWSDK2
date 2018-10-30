@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.event.FinishFragmentEvent;
 import com.mobilegamebar.rsdk.outer.event.IDialogParam;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
@@ -38,6 +36,7 @@ public class BindPhoneViewController extends BaseAuthViewController {
     ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
     private int retryTime = 0;
     private boolean waitingVerifyCode = false;
+
     public BindPhoneViewController(Context context, IDialogParam params) {
         super(context, params);
         mContext = context;
@@ -58,6 +57,7 @@ public class BindPhoneViewController extends BaseAuthViewController {
     public void onHide() {
 
     }
+
     private void initView() {
         titleTv = (TextView) findViewById(R.id.tv_title_container_title);
         titleTv.setText(R.string.str_bind_phone_title);
@@ -103,7 +103,7 @@ public class BindPhoneViewController extends BaseAuthViewController {
                 ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() != 0);
             }
         });
-        addTextWatcher(accountEdit,verificationCodeEdit);
+        addTextWatcher(accountEdit, verificationCodeEdit);
 
         getVerificationCodeButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -164,22 +164,29 @@ public class BindPhoneViewController extends BaseAuthViewController {
         }
     }
 
-    private void bindPhone(){
-        if (StringUtils.isBlank(accountEdit.getText().toString())|| StringUtils.isBlank(verificationCodeEdit.getText().toString())){
+    private void bindPhone() {
+        final String phone = accountEdit.getText().toString();
+        if (StringUtils.isBlank(phone) || StringUtils.isBlank(verificationCodeEdit.getText().toString())) {
             ToastUtils.showMsg("请不要输入空字符");
             return;
         }
-        ApiFacade.getInstance().bindPhone2(accountEdit.getText().toString(),verificationCodeEdit.getText().toString(),new TtRespListener<BindPhoneBean>(){
+        ApiFacade.getInstance().bindPhone2(accountEdit.getText().toString(), verificationCodeEdit.getText().toString(), new TtRespListener<BindPhoneBean>() {
             @Override
             public void onNetSucc(String url, Map params, BindPhoneBean result) {
                 super.onNetSucc(url, params, result);
-                ToastUtils.showMsg(R.string.bind_phone_succ);
-//                AccountHistoryInfo accountHistoryInfo = ApiFacade.getInstance().getCurrentHistoryAccount();
-//                accountHistoryInfo.phone = requestPhone;
-//                ApiFacade.getInstance().insertOrUpdateAccountHistory(accountHistoryInfo);
+                if (result.getCode() == 1) {
+                    AccountHistoryInfo accountHistoryInfo = ApiFacade.getInstance().getCurrentHistoryAccount();
+                    accountHistoryInfo.phone = phone;
+                    ApiFacade.getInstance().insertOrUpdateAccountHistory(accountHistoryInfo);
+                    ToastUtils.showMsg(R.string.bind_phone_succ + result.getMsg());
+                    close();
 //                clearRequestInput();
 //                EventDispatcherAgent.defaultAgent().broadcast(FinishFragmentEvent.TYPE_FINISH_FRAGMENT,
 //                        new FinishFragmentEvent.Param(0, getActivity(), getParentFragment()));
+                } else {
+                    super.onFail(result.getCode(), R.string.bind_phone_succ + result.getMsg());
+                }
+
             }
 
             @Override
@@ -215,7 +222,7 @@ public class BindPhoneViewController extends BaseAuthViewController {
                 if (params != null) {
                     waitingVerifyCode = true;
                     Log.d(TAG, "success request verify code ");
-                    Log.d(TAG, "success request result "+result);
+                    Log.d(TAG, "success request result " + result);
                     ToastUtils.showMsg(R.string.already_sent_verification_tips);
                     reGetVerifyCodeButtonController.prepare();
                     reGetVerifyCodeButtonController.startCountDown();

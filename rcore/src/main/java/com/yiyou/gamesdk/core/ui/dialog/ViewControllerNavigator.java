@@ -4,11 +4,13 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.text.TextUtils;
 
 import com.mobilegamebar.rsdk.outer.event.IDialogParam;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.R;
+import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.yiyou.gamesdk.core.ui.dialog.biz.RealNameAuthController;
@@ -16,7 +18,10 @@ import com.yiyou.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.yiyou.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
 import com.yiyou.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.yiyou.gamesdk.core.ui.widget.GameDownloadDialogView;
+import com.yiyou.gamesdk.model.AccountHistoryInfo;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
+
+import java.util.List;
 
 /**
  * Created by Win on 15/6/10.
@@ -30,7 +35,7 @@ public class ViewControllerNavigator {
 
     private TTMainDialog mDialog;//do not access directly
 
-    private ViewControllerNavigator(){
+    private ViewControllerNavigator() {
 
     }
 
@@ -42,7 +47,7 @@ public class ViewControllerNavigator {
     }
 
 
-    public void uninit(){
+    public void uninit() {
 //        mDialog = null;
         _instance = null;
     }
@@ -59,9 +64,27 @@ public class ViewControllerNavigator {
     public boolean toLogin(IDialogParam params) {
         Log.d(TAG, "toLogin: ");
         checkParam(params);
+        List<AccountHistoryInfo> allGameAuthHistories
+                = ApiFacade.getInstance().getAccountHistories();
+        if (!allGameAuthHistories.isEmpty()) {
+            AccountHistoryInfo historyInfo = allGameAuthHistories
+                    .get(0);
+            if (!TextUtils.isEmpty(historyInfo.guest) && historyInfo.guest.equals("1")) {
+                return loginVisitors(params);
+            } else {
+                if (historyInfo.userID != 0 && !TextUtils.isEmpty(historyInfo.accessToken)) {
+                    loginAuto(params);
+                    return true;
+                }
+
+            }
+        }
+        return loginPhone(params);
+    }
+
+    public boolean loginPhone(IDialogParam params){
         return getDialog(params.getActivityContext())
                 .show(new LoginViewController(params.getActivityContext(), params));
-//        return getDialog(activityContext).show(new TestViewController(activityContext));
     }
 
     public boolean loginVisitors(IDialogParam params) {
@@ -69,8 +92,6 @@ public class ViewControllerNavigator {
         checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new LoginViewController(params.getActivityContext(), params));
-//        return getDialog(activityContext).show(new TestViewController(activityContext));
-//        new LoginViewController(params.getActivityContext(), params).loginVisitorsImpl();
     }
 
     public void loginAuto(IDialogParam params) {
@@ -87,6 +108,7 @@ public class ViewControllerNavigator {
         return getDialog(params.getActivityContext())
                 .show(new RegisterViewController(params.getActivityContext(), params));
     }
+
     public boolean toRealNameAuth(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())
@@ -112,9 +134,9 @@ public class ViewControllerNavigator {
         return alertDialogView;
     }
 
-    public GameDownloadDialogView toGameDownloadDialogView(Context context , GameUpdateInfo gameUpdateInfo) {
-        GameDownloadDialogView alertDialogView = new GameDownloadDialogView(context,gameUpdateInfo);
-        TTMainDialog dialog = getDialog(context) ;
+    public GameDownloadDialogView toGameDownloadDialogView(Context context, GameUpdateInfo gameUpdateInfo) {
+        GameDownloadDialogView alertDialogView = new GameDownloadDialogView(context, gameUpdateInfo);
+        TTMainDialog dialog = getDialog(context);
         dialog.setCancelable(false);
         dialog.show(alertDialogView);
 

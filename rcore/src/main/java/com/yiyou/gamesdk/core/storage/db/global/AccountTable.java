@@ -16,7 +16,7 @@ public class AccountTable implements ITable{
     public static final String COL_USERNAME                   = "username";
     public static final String COL_PHONE                      = "phone";
     public static final String COL_PWD                        = "pwd";
-//    public static final String COL_ACCESS_TOKEN               = "access_token";
+    public static final String COL_ACCESS_TOKEN               = "access_token";
 //    public static final String COL_REFRESH_TOKEN              = "refresh_token";
 //    public static final String COL_EXPIRES_IN                 = "expires_in";
     public static final String COL_AVATAR_URL                 = "avatar_url";
@@ -24,6 +24,11 @@ public class AccountTable implements ITable{
     public static final String COL_LAST_LOGIN_TIME            = "last_login_time";
 //    public static final String COL_LAST_GAME_ID               = "last_login_game_id";
     public static final String COL_HAS_PAYPASSWORD            = "has_pay_password";
+
+    public static final String COL_NEED_REAL               = "need_real";
+    public static final String COL_ACCOUNT_ID               = "account_id";
+    public static final String COL_GUEST               = "guest";
+    public static final String COL_FIRST               = "first";
 
     //reverse cols
     public static final String COL_REVERSE_TEXT_0           = "reverse_text_0";
@@ -47,7 +52,7 @@ public class AccountTable implements ITable{
     public static final int INDEX_USERNAME                     = 2;
     public static final int INDEX_PHONE                        = 3;
     public static final int INDEX_PWD                          = 4;
-//    public static final int INDEX_ACCESS_TOKEN                 = 5;
+    public static final int INDEX_ACCESS_TOKEN                 = 5;
 //    public static final int INDEX_REFRESH_TOKEN                = 6;
 //    public static final int INDEX_EXPIRES_IN                   = 7;
     public static final int INDEX_AVATAR_URL                   = 5;
@@ -74,6 +79,11 @@ public class AccountTable implements ITable{
     public static final int INDEX_REVERSE_BLOB_1           = 21;
     public static final int INDEX_REVERSE_BLOB_2           = 22;
 
+    public static final int INDEX_NEED_REAL               = 23;
+    public static final int INDEX_ACCOUNT_ID               = 24;
+    public static final int INDEX_GUEST               = 25;
+    public static final int INDEX_FIRST               = 26;
+
     @Override
     public String tableName() {
         return TABLE_NAME;
@@ -86,13 +96,18 @@ public class AccountTable implements ITable{
 
     @Override
     public String createTableSQL() {
-        return "CREATE TABLE IF NOT EXISTS '"+tableName()+"' ( "
+        String str = "CREATE TABLE IF NOT EXISTS '"+tableName()+"' ( "
                 + COL_USERID + " number primary key, "
                 + COL_TT_ACCOUNT + " text, "
                 + COL_USERNAME + " text, "
                 + COL_PHONE + " text, "
                 + COL_PWD + " text, "
-//                    + COL_ACCESS_TOKEN     + " text, "
+                    + COL_ACCESS_TOKEN     + " text, "
+
+                + COL_NEED_REAL     + " text, "
+                + COL_ACCOUNT_ID     + " number, "
+                + COL_GUEST     + " text, "
+                + COL_FIRST     + " text, "
 //                + COL_REFRESH_TOKEN     + " text, "
 //                + COL_EXPIRES_IN     + " number, "
                 + COL_AVATAR_URL + " text, "
@@ -115,6 +130,8 @@ public class AccountTable implements ITable{
                 + COL_REVERSE_BLOB_0 + " blob, "
                 + COL_REVERSE_BLOB_1 + " blob, "
                 + COL_REVERSE_BLOB_2 + " blob ) ";
+        Log.d("AccountTable-createTableSQL=", str );
+        return str;
     }
 
     @Override

@@ -46,45 +46,26 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
 
     private void initSdk() {
 
-//        GameParamInfo paramInfo = new GameParamInfo();
-//        paramInfo.setGameId(10000);
-////        正式环境
-////        paramInfo.setSdkKey("c9f3532184ecd7e2ddb7ac9bcac35c7c");
-//        //测试环境
-////        paramInfo.setSdkKey("c32538c00d360d505eca2290eafeac7f");
-//        paramInfo.setGameId(10001);
-//        paramInfo.setSdkKey("ba004a68f0dc487c623191c5b17af8fa");
-//
-//        mCurrentView = 0;  //0:LoginActivity,1:MainFragment ,2:PayFragmen
-//
-//        RGameSDK.getInstance().init(this, paramInfo, true, this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ?
-//                Configuration.ORIENTATION_LANDSCAPE : Configuration.ORIENTATION_PORTRAIT, new IOperateCallback<String>() {
-//            @Override
-//            public void onResult(int i, String s) {
-//                if (i == 0) {
-////                    RGameSDK.getInstance().setLogoutListener(new IOperateCallback<String>() {
-////                        @Override
-////                        public void onResult(int code, String msg) {
-////                            if (code == TTCodeDef.LOGOUT_NO_INIT || code == TTCodeDef.LOGOUT_FAIL) {
-////                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG)
-////                                        .show();
-////                            } else if (code == TTCodeDef.LOGOUT_NO_LOGIN || code == TTCodeDef.SUCCESS) {
-////                                RGameSDK.getInstance().hideFloatView(LoginActivity.this);
-////                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-////                                ft.remove(mainFragment);
-////                                ft.commitAllowingStateLoss();
-////                                findViewById(R.id.choose).setVisibility(View.VISIBLE);
-////                                findViewById(R.id.file).setVisibility(View.VISIBLE);
-////                                loginImpl();
-////                                mCurrentView = 0; //0:LoginActivity,1:MainFragment ,2:PayFragment
-////                            }
-////                        }
-////                    });
-//                    loginImpl();
-//                }
-//            }
-//        });
-        loginImpl();
+        GameParamInfo paramInfo = new GameParamInfo();
+        paramInfo.setGameId(10000);
+//        正式环境
+//        paramInfo.setSdkKey("c9f3532184ecd7e2ddb7ac9bcac35c7c");
+        //测试环境
+//        paramInfo.setSdkKey("c32538c00d360d505eca2290eafeac7f");
+        paramInfo.setGameId(10001);
+        paramInfo.setSdkKey("ba004a68f0dc487c623191c5b17af8fa");
+
+        mCurrentView = 0;  //0:LoginActivity,1:MainFragment ,2:PayFragmen
+
+        RGameSDK.getInstance().init(this, paramInfo, true, this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ?
+                Configuration.ORIENTATION_LANDSCAPE : Configuration.ORIENTATION_PORTRAIT, new IOperateCallback<String>() {
+            @Override
+            public void onResult(int i, String s) {
+                if (i == 0) {
+                    loginImpl();
+                }
+            }
+        });
     }
 
 
@@ -144,6 +125,26 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
 
     private void loginVisitorsImpl() {
         RGameSDK.getInstance().loginVisitors(this, new IOperateCallback<String>() {
+            @Override
+            public void onResult(int code, String s) {
+                if (code == TTCodeDef.SUCCESS) {
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.add(R.id.container, mainFragment);
+                    ft.commitAllowingStateLoss();
+                    findViewById(R.id.choose).setVisibility(View.GONE);
+                    findViewById(R.id.file).setVisibility(View.GONE);
+                    mCurrentView = 1;  //0:LoginActivity,1:MainFragment ,2:PayFragment
+                    RGameSDK.getInstance().showFloatView(LoginActivity.this);
+                    // TODO: cp可以在这里检验login
+                    Log.d(TAG, "session: " + RGameSDK.getInstance().getSession());
+                    Toast.makeText(LoginActivity.this, "session: " + RGameSDK.getInstance().getSession() + "\n" + "uid: " + RGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private void loginAuto() {
+        RGameSDK.getInstance().loginAuto(this, new IOperateCallback<String>() {
             @Override
             public void onResult(int code, String s) {
                 if (code == TTCodeDef.SUCCESS) {

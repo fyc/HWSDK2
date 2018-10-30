@@ -1,5 +1,6 @@
 package com.yiyou.gamesdk.core.ui.dialog.biz;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.Editable;
@@ -28,6 +29,7 @@ import com.yiyou.gamesdk.core.ui.widget.StandardDialog;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
 import com.yiyou.gamesdk.model.AuthModel;
 import com.yiyou.gamesdk.util.IMEUtil;
+import com.yiyou.gamesdk.util.PopUtil;
 import com.yiyou.gamesdk.util.ToastUtils;
 import com.yiyou.gamesdk.util.ViewUtils;
 
@@ -42,7 +44,7 @@ public class LoginViewController extends BaseAuthViewController {
 
     private static final String TAG = "RSDK:LoginViewController ";
     private static final String MD5_PWD_PREFIX = "\u0d62\u0d63\u135f";
-
+    Context context;
     private InputFilter[] phoneLengthFilter = new InputFilter[]{
             new InputFilter.LengthFilter(11)
     };
@@ -75,8 +77,9 @@ public class LoginViewController extends BaseAuthViewController {
 
     public LoginViewController(Context context, IDialogParam params) {
         super(context, params);
+        this.context = context;
         initView();
-//        tryShowLastLoginAccount();
+        tryShowLastLoginAccount();
     }
 
     @Override
@@ -275,11 +278,10 @@ public class LoginViewController extends BaseAuthViewController {
         btn_login_container_visitors_to_login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                IMEUtil.hideIME(LoginViewController.this);
-//                ViewControllerNavigator.getInstance().toResetPassword(getDialogParam());
-                ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
+//                IMEUtil.hideIME(LoginViewController.this);
+//                ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
 
-//                loginVisitorsImpl();
+                loginVisitorsImpl();
             }
         });
 //        ViewUtils.bindEditWithButton(passwordEdit, loginButton);
@@ -354,7 +356,7 @@ public class LoginViewController extends BaseAuthViewController {
                 if (params != null) {
                     waitingVerifyCode = true;
                     Log.d(TAG, "success request verify code ");
-                    Log.d(TAG, "success request result "+result);
+                    Log.d(TAG, "success request result " + result);
                     ToastUtils.showMsg(R.string.already_sent_verification_tips);
                     reGetVerifyCodeButtonController.prepare();
                     reGetVerifyCodeButtonController.startCountDown();
@@ -391,6 +393,13 @@ public class LoginViewController extends BaseAuthViewController {
 //                onLoginSuccess(result);
                 hideLoading();
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
+                PopUtil.show((Activity) context, result.getData().getMobile_phone() + "欢迎进入游戏",
+                        new PopUtil.PopOnClick() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        });
                 close();
             }
 
@@ -419,6 +428,13 @@ public class LoginViewController extends BaseAuthViewController {
             public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
                 hideLoading();
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
+                PopUtil.show((Activity) context, "游客：" + result.getData().getUser_id() + "欢迎进入游戏",
+                        new PopUtil.PopOnClick() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        });
                 close();
             }
 
@@ -435,6 +451,7 @@ public class LoginViewController extends BaseAuthViewController {
             }
         });
     }
+
     public void loginAutoImpl() {
         showLoading();
         ApiFacade.getInstance().loginAuto(new TtRespListener<LoginBean>() {
@@ -446,7 +463,30 @@ public class LoginViewController extends BaseAuthViewController {
             public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
                 hideLoading();
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
-                close();
+//                showPopToast(result);
+                if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("true")) { //游客，进入手机绑定
+                    PopUtil.show((Activity) context, "游客：" + result.getData().getUser_id() + "欢迎进入游戏",
+                            new PopUtil.PopOnClick() {
+                                @Override
+                                public void onClick(View v) {
+//                                    ViewControllerNavigator.getInstance().loginPhone(getDialogParam());
+                                    ApiFacade.getInstance().logout();
+                                }
+                            });
+                    ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
+                } else if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("false") && result.getData().getNeed_real().equals("1")) {//手机用户，进入实名认证
+                    PopUtil.show((Activity) context, result.getData().getMobile_phone() + "欢迎进入游戏",
+                            new PopUtil.PopOnClick() {
+                                @Override
+                                public void onClick(View v) {
+//                                    ViewControllerNavigator.getInstance().loginPhone(getDialogParam());
+                                    ApiFacade.getInstance().logout();
+                                }
+                            });
+                    ViewControllerNavigator.getInstance().toRealNameAuth(getDialogParam());
+                } else {
+                    close();
+                }
             }
 
             @Override
@@ -480,11 +520,12 @@ public class LoginViewController extends BaseAuthViewController {
     }
 
     private void putHistoryAccount2Input(AccountHistoryInfo historyInfo) {
-        if (TextUtils.isEmpty(historyInfo.phone)) {
-            autoFillCache = historyInfo.username;
-            accountEdit.setText(historyInfo.username);
-            accountEdit.setSelection(historyInfo.username.length());
-        } else {
+//        if (TextUtils.isEmpty(historyInfo.username)) {
+//            autoFillCache = historyInfo.username;
+//            accountEdit.setText(historyInfo.username);
+//            accountEdit.setSelection(historyInfo.username.length());
+//        } else {
+        if (!TextUtils.isEmpty(historyInfo.phone)) {
             autoFillCache = historyInfo.phone;
             accountEdit.setText(historyInfo.phone);
             accountEdit.setSelection(historyInfo.phone.length());
@@ -497,39 +538,21 @@ public class LoginViewController extends BaseAuthViewController {
 //                = ApiFacade.getInstance().getCurrentGameAuthHistories();
         List<AccountHistoryInfo> allGameAuthHistories
                 = ApiFacade.getInstance().getAccountHistories();
-        if (allGameAuthHistories.size() > 1) {
+        if (allGameAuthHistories != null && allGameAuthHistories.size() > 1) {
             Log.d(TAG, "tryShowLastLoginAccount: size:" + allGameAuthHistories.size());
-            accountEditViewController.resetRightDrawableState();
-        } else {
-            accountEditViewController.noRightDrawableSate();
+            for (AccountHistoryInfo ai : allGameAuthHistories) {
+                Log.d(TAG, "tryShowLastLoginAccount: size:" + ai.toString());
+            }
         }
-//        if (!currentGameAuthHistories.isEmpty()) {
-//            //优先填上次在这个游戏登录过的
-//            AccountHistoryInfo historyInfo = currentGameAuthHistories
-//                    .get(0);
-//            putHistoryAccount2Input(historyInfo);
-//            tryFillPasswordFromHistory(historyInfo.username);
-//        } else
         if (!allGameAuthHistories.isEmpty()) {
             AccountHistoryInfo historyInfo = allGameAuthHistories
                     .get(0);
             putHistoryAccount2Input(historyInfo);
-            tryFillPasswordFromHistory(historyInfo.username);
+//            tryFillPasswordFromHistory(historyInfo.username);
         } else {
             //什么都没得填
             cleanInputs();
         }
-
-        //有一键注册账号就填一键注册账号
-//        Pair<String, String> lastAutoRegisterInfo
-//                = ApiFacade.getInstance().getLastAutoRegisterInfo();
-//        if (lastAutoRegisterInfo != null) {
-//            //同一次使用周期有一键注册过账号并成功了
-//            autoFillCache = lastAutoRegisterInfo.first;
-//            accountEdit.setText(lastAutoRegisterInfo.first);
-//            String rPwd = lastAutoRegisterInfo.second;
-//            passwordEdit.setText(rPwd == null ? "" : rPwd);
-//        }
     }
 
     private void tryFillPasswordFromHistory(String usernameOrPhone) {
@@ -659,7 +682,7 @@ public class LoginViewController extends BaseAuthViewController {
         @Override
         public String dataName() {
 
-            return TextUtils.isEmpty(orgInfo.phone) ? String.valueOf(orgInfo.username) : orgInfo.phone;
+            return orgInfo.phone;
         }
 
         @Override

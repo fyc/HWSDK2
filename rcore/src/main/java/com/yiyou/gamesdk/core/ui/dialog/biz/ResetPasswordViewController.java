@@ -214,7 +214,7 @@ public class ResetPasswordViewController extends BaseAuthViewController {
                 super.onNetSucc(url, params, result);
                 ToastUtils.showMsg(R.string.resetpasswd_succ);
                 AccountHistoryInfo info = ApiFacade.getInstance().getHistoryAccountByPhone(requestingPhoneNumber);
-                info.password = (String)params.get("newpwd");
+//                info.password = (String)params.get("newpwd");
                 ApiFacade.getInstance().insertOrUpdateAccountHistory(info);
                 waitingVerifyCode = false;
                 clearRequestInput();

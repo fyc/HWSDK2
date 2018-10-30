@@ -66,6 +66,9 @@ class AuthManager implements IAuthApi {
     private LoginBean loginBean = null;
     private String password = "";
     private String phone = "";
+    private static final int LoginPhone = 1;
+    private static final int LoginVisitors = 2;
+    private static final int LoginAuto = 3;
 
 
     //用户注册
@@ -251,7 +254,7 @@ class AuthManager implements IAuthApi {
         String src = String.format("code=%s&ctime=%s&game_id=%s&mobile_phone=%s", code, ctime, game_id, account);
         params.put("src", src);
 
-        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN, params, LoginBean.class, newAuthModelRespListenerWrapper2(callback));
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN, params, LoginBean.class, newAuthModelRespListenerWrapper2(LoginPhone, callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
     }
@@ -265,27 +268,34 @@ class AuthManager implements IAuthApi {
         params.put("channel", "1002");
         params.put("sid", "0ZPPje3mTK7AdKToucDuiAVVBD73vFBX");
         params.put("ctime", ctime);
-        String src = String.format("channel=%s&ctime=%s&game_id=%s&sid=%s", "1002", "1539777398", "1001", "0ZPPje3mTK7AdKToucDuiAVVBD73vFBX");
+        String src = String.format("channel=%s&ctime=%s&game_id=%s&sid=%s", "1002", ctime, game_id, "0ZPPje3mTK7AdKToucDuiAVVBD73vFBX");
         params.put("src", src);
 
-        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN_VISITORS, params, LoginBean.class, newAuthModelRespListenerWrapper2(callback));
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN_VISITORS, params, LoginBean.class, newAuthModelRespListenerWrapper2(LoginVisitors, callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
     }
+
     @Override
     public void loginAuto(TtRespListener<LoginBean> callback) {
         Map<String, String> params = new TreeMap<>();
         String game_id = QyLoginRequest.GAMW_ID;
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
-        params.put("user_id", "22");
-        params.put("token", "e3fc60f2d87845679251c4b42b26ef44rXLcLY1l");
-        params.put("game_id", game_id);
-        params.put("ctime", ctime);
-        String src = String.format("ctime=%s&game_id=%s&token=&user_id=%s", "1539777398", "1001", "b2e4170bc43e44b986d7163dc86c0636Dj71VKpZ","40");
-        params.put("src", src);
+        List<AccountHistoryInfo> allGameAuthHistories
+                = ApiFacade.getInstance().getAccountHistories();
+        if (!allGameAuthHistories.isEmpty()) {
+            AccountHistoryInfo historyInfo = allGameAuthHistories
+                    .get(0);
+            params.put("user_id", historyInfo.userID + "");
+            params.put("token", historyInfo.accessToken);
+            params.put("game_id", game_id);
+            params.put("ctime", ctime);
+            String src = String.format("ctime=%s&game_id=%s&token=%s&user_id=%s", ctime, game_id, historyInfo.accessToken, historyInfo.userID + "");
+            params.put("src", src);
 
-        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN_VISITORS, params, LoginBean.class, newAuthModelRespListenerWrapper2(callback));
-        RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
+            QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN_AUTO, params, LoginBean.class, newAuthModelRespListenerWrapper2(LoginAuto, callback));
+            RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
+        }
 
     }
 
@@ -522,44 +532,31 @@ class AuthManager implements IAuthApi {
         };
     }
 
-    private TtRespListener<LoginBean> newAuthModelRespListenerWrapper2(final TtRespListener<LoginBean> callback) {
+    private TtRespListener<LoginBean> newAuthModelRespListenerWrapper2(int loginType, final TtRespListener<LoginBean> callback) {
         return new TtRespListener<LoginBean>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
-                Log.e(TAG, "onNetSucc:");
-//
-                loginBean = result;
-                LoginInfo.getInstance().setLoginBean(loginBean);
+                Log.e(TAG, "onNetSucc:result=" + result.toString());
+                if (result.getCode() == 1) {
+                    loginBean = result;
+                    LoginInfo.getInstance().setLoginBean(loginBean);
 
-                authModel = loginBean.convertedToAuthModel();
-                updateAccountHistory(authModel);
+                    authModel = loginBean.convertedToAuthModel();
+                    LoginInfo.getInstance().setAuthModel(authModel);
+//                    updateAccountHistory(authModel);
+                    updateAccountHistory2(loginBean);
 
-//                LoginInfo.getInstance().setAuthModel(authModel);
-
-//                updateAccountHistory(authModel);
-//                updateChildAccountHistory(authModel);
-//                long subUid = getSubUid();
-//                if (subUid == 0) {
-//                    ApiFacade.getInstance().setLastLoginChildAccount(authModel.getChildAccounts().get(0));
-//                } else {
-//                    boolean flag = false;
-//                    List<ChildrenAccountHistoryInfo> list = ApiFacade.getInstance().getCurrentChildrenAccountHistory();
-//                    for (ChildrenAccountHistoryInfo info : list) {
-//                        if (subUid == info.childrenUserID) {
-//                            flag = true;
-//                        }
-//                    }
-//                    if (!flag) {
-//                        ApiFacade.getInstance().setLastLoginChildAccount(authModel.getChildAccounts().get(0));
-//                    }
-//                }
-//                childAccountEvent();
-                initLoginSuccessUiTip();
-                PluginManager.getInstance().getFloatService().startCountDown();
-                if (callback != null) {
-                    callback.onNetSucc(url, params, result);
+                    ApiFacade.getInstance().setLastLoginAccount(authModel);
+//                    initLoginSuccessUiTip(); //toast 提示
+                    PluginManager.getInstance().getFloatService().startCountDown();//上报在线
+                    if (callback != null) {
+                        callback.onNetSucc(url, params, result);
+                    }
+                } else {
+                    if (callback != null) {
+                        callback.onFail(result.getCode(), result.getMsg());
+                    }
                 }
-
             }
 
             @Override
@@ -591,13 +588,23 @@ class AuthManager implements IAuthApi {
     private void updateAccountHistory(AuthModel result) {
         ContentValues cv = new ContentValues();
         cv.put(AccountTable.COL_USERID, result.getUserID());
-        cv.put(AccountTable.COL_TT_ACCOUNT, result.getTTAccount());
-        cv.put(AccountTable.COL_USERNAME, result.getUserName());
-        cv.put(AccountTable.COL_PHONE, phone);
-        cv.put(AccountTable.COL_PWD, password);
-        cv.put(AccountTable.COL_AVATAR_URL, result.getAvatarURL());
+        cv.put(AccountTable.COL_PHONE, result.getPhone());
+        cv.put(AccountTable.COL_ACCESS_TOKEN, result.getAccessToken());
         cv.put(AccountTable.COL_LAST_LOGIN_TIME, new Date().getTime());
-        cv.put(AccountTable.COL_HAS_PAYPASSWORD, result.isHasPayPassword());
+        ApiFacade.getInstance().insertOrUpdateAccountHistory(cv);
+    }
+    private void updateAccountHistory2(LoginBean bean) {
+        ContentValues cv = new ContentValues();
+        cv.put(AccountTable.COL_USERID, bean.getData().getUser_id());
+        cv.put(AccountTable.COL_PHONE, bean.getData().getMobile_phone());
+        cv.put(AccountTable.COL_ACCESS_TOKEN, bean.getData().getToken());
+        cv.put(AccountTable.COL_NEED_REAL, bean.getData().getNeed_real());
+
+        cv.put(AccountTable.COL_ACCOUNT_ID, bean.getData().getAccount_id());
+        cv.put(AccountTable.COL_GUEST, bean.getData().getGuest());
+        cv.put(AccountTable.COL_FIRST, bean.getData().getFirst());
+
+        cv.put(AccountTable.COL_LAST_LOGIN_TIME, new Date().getTime());
         ApiFacade.getInstance().insertOrUpdateAccountHistory(cv);
     }
 
@@ -630,7 +637,7 @@ class AuthManager implements IAuthApi {
         Toast toast = new Toast(CoreManager.getContext());
         View toastRoot = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.tt_sdk_loginsuccess_tip, null);
         TextView txtContent = (TextView) toastRoot.findViewById(R.id.account);
-        txtContent.setText("你好, <" + getUserName() + ">");
+        txtContent.setText("你好, <" + getPhone() + ">");
         toast.setGravity(Gravity.TOP, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(toastRoot);

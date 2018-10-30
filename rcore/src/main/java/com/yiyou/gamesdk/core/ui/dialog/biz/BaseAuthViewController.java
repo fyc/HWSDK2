@@ -60,6 +60,13 @@ public abstract class BaseAuthViewController extends BaseViewController {
 //            }
         }
     }
+
+    /**
+     * 进入游戏主界面
+     * @param code
+     * @param resultMsg
+     * @param loginBean
+     */
     void notifyAuthResult2(int code, String resultMsg, LoginBean loginBean) {
         willCloseByAuthResult = true;
         if(dialogParam != null) {

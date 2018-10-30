@@ -124,7 +124,7 @@ public class ForgetPasswordFragment extends BaseFragment {
                 ToastUtils.showMsg(R.string.modify_password_succ);
                 AccountHistoryInfo info = ApiFacade.getInstance().getHistoryAccountByPhone(requestPhone);
                 if (info!=null){
-                    info.password = (String)params.get("newpwd");
+//                    info.password = (String)params.get("newpwd");
                     ApiFacade.getInstance().insertOrUpdateAccountHistory(info);
                 }
                 clearRequestInput();

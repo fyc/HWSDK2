@@ -15,6 +15,7 @@ import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.yiyou.gamesdk.model.AccountHistoryInfo;
 import com.yiyou.gamesdk.util.ByteUtils;
 import com.yiyou.gamesdk.util.ToastUtils;
 
@@ -121,15 +122,18 @@ class SecurityManager implements ISecurityApi {
     @Override
     public void bindPhone2(String phoneNum, String smsVCode, TtRespListener callback) {
         Map<String, String> params = new ArrayMap<>();
+        AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
+        String user_id = info.userID+"";
+        String token = info.accessToken;
         String game_id = QyLoginRequest.GAMW_ID;
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
-        params.put("user_id", "22");
-        params.put("token", "e3fc60f2d87845679251c4b42b26ef44rXLcLY1l");
+        params.put("user_id", user_id);
+        params.put("token", token);
         params.put("mobile_phone", phoneNum);
         params.put("game_id", game_id);
         params.put("ctime", ctime);
         params.put("code", smsVCode);
-        String src = String.format("code=%s&ctime=%s&game_id=%s&mobile_phone=%s&token=%s&user_id=%s", smsVCode, ctime, game_id, phoneNum,"e3fc60f2d87845679251c4b42b26ef44rXLcLY1l","22");
+        String src = String.format("code=%s&ctime=%s&game_id=%s&mobile_phone=%s&token=%s&user_id=%s", smsVCode, ctime, game_id, phoneNum,token,user_id);
         params.put("src", src);
 
         QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.BIND_PHONE, params, BindPhoneBean.class, callback);
@@ -153,19 +157,24 @@ class SecurityManager implements ISecurityApi {
     @Override
     public void realNameAuth(String real_name, String card_no, TtRespListener callback) {
         Map<String, String> params = new ArrayMap<>();
+        AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
+        String user_id = info.userID+"";
+        String token = info.accessToken;
+        String mobile_phone = info.phone;
         String game_id = QyLoginRequest.GAMW_ID;
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
-        params.put("user_id", "22");
-        params.put("token", "e3fc60f2d87845679251c4b42b26ef44rXLcLY1l");
+        params.put("user_id", user_id);
+        params.put("token",token );
         params.put("real_name", real_name);
-        params.put("mobile_phone", "15992344724");
+        params.put("mobile_phone", mobile_phone);
         params.put("ctime", ctime);
+        params.put("game_id", game_id);
         params.put("card_no", card_no);
         String src = String.format("card_no=%s&ctime=%s&game_id=%s&mobile_phone=%s&real_name=%s&token=%s&user_id=%s",
-                "123456789012345678", "1539952696", "1001", "12313123","Test","86092b1924e1424fb1802e344d48006fjWbsaVSD","1");
+                card_no, ctime, game_id, mobile_phone,real_name,token,user_id);
         params.put("src", src);
 
-        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.BIND_PHONE, params, String.class, callback);
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.REALNAME_INFO, params, String.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
     }
 

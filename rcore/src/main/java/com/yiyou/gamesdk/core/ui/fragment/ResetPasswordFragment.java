@@ -163,7 +163,7 @@ public class ResetPasswordFragment extends BaseFragment implements View.OnClickL
                 ToastUtils.showMsg(R.string.modify_password_succ);
                 AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
                 if (info!=null){
-                    info.password = (String)params.get("newpwd");
+//                    info.password = (String)params.get("newpwd");
                     ApiFacade.getInstance().insertOrUpdateAccountHistory(info);
                 }
                 ApiFacade.getInstance().logout(new IOperateCallback<String>() {

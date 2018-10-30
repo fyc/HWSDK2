@@ -64,6 +64,7 @@ dependencies {
     provided files('../third-party-libs/ipaynow_wechatwp_v2.0.0.jar')
     provided files('../third-party-libs/ipaynow_view_v2.0.1.jar')
 //    compile(name:'recyclerview-v7-23.0.0', ext:'aar')
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
 }
 
 task output(type: Copy) {

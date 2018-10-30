@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class GameSDKDatabase extends Database {
 
-    public static final String DB_NAME = "hw_r_game_sdk.db";
+    public static final String DB_NAME = "hw_r_game_sdk_b.db";
     public static final int DB_VERSION = 1;
 
     public GameSDKDatabase(Context context) {

@@ -92,8 +92,6 @@ public class TtRespListener<T> {
 
         ToastUtils.showMsg(errorNo + "  " + errmsg);
 
-
-
     }
 
 
