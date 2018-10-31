@@ -76,26 +76,26 @@ public class ViewControllerNavigator {
                     loginAuto(params);
                     return true;
                 }
-
             }
         }
         return loginPhone(params);
     }
 
     public boolean loginPhone(IDialogParam params){
+        checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new LoginViewController(params.getActivityContext(), params));
     }
 
     public boolean loginVisitors(IDialogParam params) {
-        Log.d(TAG, "toLogin: ");
+        Log.d(TAG, "loginVisitors: ");
         checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new LoginViewController(params.getActivityContext(), params));
     }
 
     public void loginAuto(IDialogParam params) {
-        Log.d(TAG, "toLogin: ");
+        Log.d(TAG, "loginAuto: ");
         checkParam(params);
 //        return getDialog(params.getActivityContext())
 //                .show(new LoginViewController(params.getActivityContext(), params));

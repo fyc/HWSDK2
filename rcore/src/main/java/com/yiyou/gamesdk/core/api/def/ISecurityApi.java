@@ -1,5 +1,6 @@
 package com.yiyou.gamesdk.core.api.def;
 
+import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 
 /**
@@ -23,5 +24,5 @@ public interface ISecurityApi extends IApiWrapping {
     void unbindPhone(String phoneNum, String smsVCode, TtRespListener callback);
 
     void verifyPayPassword(String payPassword, TtRespListener callback);
-    void realNameAuth(String real_name, String card_no, TtRespListener callback);
+    void realNameAuth(String real_name, String card_no, TtRespListener<QyDataBean> callback);
 }

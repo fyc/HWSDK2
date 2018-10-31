@@ -12,6 +12,7 @@ import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
 import com.yiyou.gamesdk.core.base.http.volley.QyLoginRequest;
 import com.yiyou.gamesdk.core.base.http.volley.bean.BindPhoneBean;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
+import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.StringUtils;
@@ -155,7 +156,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void realNameAuth(String real_name, String card_no, TtRespListener callback) {
+    public void realNameAuth(String real_name, String card_no, TtRespListener<QyDataBean> callback) {
         Map<String, String> params = new ArrayMap<>();
         AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
         String user_id = info.userID+"";
@@ -174,7 +175,7 @@ class SecurityManager implements ISecurityApi {
                 card_no, ctime, game_id, mobile_phone,real_name,token,user_id);
         params.put("src", src);
 
-        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.REALNAME_INFO, params, String.class, callback);
+        QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.REALNAME_INFO, params, QyDataBean.class, callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
     }
 

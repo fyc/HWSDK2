@@ -325,9 +325,25 @@ class AuthManager implements IAuthApi {
                     Log.d(TAG, "logout return null;");
                 }
                 authModel = null;
-                iOperateCallback.onResult(TTCodeDef.SUCCESS, "Logout Success!!");
+                if (iOperateCallback != null) {
+                    iOperateCallback.onResult(TTCodeDef.SUCCESS, "Logout Success!!");
+                }
+            }
+
+            @Override
+            public void onFail(int errorNo, String errmsg) {
+                super.onFail(errorNo, errmsg);
+                //todo
+                ApiFacade.getInstance().deleteAccountHistory(getMainUid() + "");
+                authModel = null;
+                Log.d(TAG, "切换账号，假装成功退出"+getMainUid());
+                if (iOperateCallback != null) {
+                    iOperateCallback.onResult(TTCodeDef.SUCCESS, "切换账号，假装成功退出"+getMainUid());
+                }
+                Log.d(TAG, "切换账号，假装成功退出");
             }
         });
+        Log.d(TAG, "点击退出");
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
         //清本地状态
         reset();
@@ -593,6 +609,7 @@ class AuthManager implements IAuthApi {
         cv.put(AccountTable.COL_LAST_LOGIN_TIME, new Date().getTime());
         ApiFacade.getInstance().insertOrUpdateAccountHistory(cv);
     }
+
     private void updateAccountHistory2(LoginBean bean) {
         ContentValues cv = new ContentValues();
         cv.put(AccountTable.COL_USERID, bean.getData().getUser_id());

@@ -39,19 +39,19 @@ import java.util.TreeMap;
 /**
  * Created by Win on 2017/4/13.
  */
-public class RSDKImpl implements IRSDK{
+public class RSDKImpl implements IRSDK {
 
     private static final String TAG = "RSDK:RSDKImpl";
     private IOperateCallback<String> logoutCallback;
 
     @Override
-    public void attach(ContextWrapper contextWrapper ,VersionDir versionDir) {
-        PluginManager.getInstance().attach(contextWrapper,versionDir);
+    public void attach(ContextWrapper contextWrapper, VersionDir versionDir) {
+        PluginManager.getInstance().attach(contextWrapper, versionDir);
     }
 
     @Override
     public void init(Activity context, GameParamInfo rGameInfo, boolean debugMode, int orientation, IOperateCallback<String> rsdkCallback) {
-        PluginManager.getInstance().init(context,debugMode,rGameInfo,orientation,rsdkCallback);
+        PluginManager.getInstance().init(context, debugMode, rGameInfo, orientation, rsdkCallback);
     }
 
     @Override
@@ -96,14 +96,14 @@ public class RSDKImpl implements IRSDK{
     @Override
     public void login(Activity activity, final IOperateCallback<String> callback) {
 
-        if (!PermissionHelper.Storage.hasStoragePermission(activity)){
+        if (!PermissionHelper.Storage.hasStoragePermission(activity)) {
             ToastUtils.showMsg("未获得文件存储权限，请前往权限管理打开。");
-            callback.onResult(1,"登录失败");
+            callback.onResult(1, "登录失败");
             return;
         }
         ApiFacade.getInstance().setupChannelInfo();
 
-        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity,callback,"RSDK");
+        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, callback, "RSDK");
         final AuthEvent.LoginParams loginParamsProxy = new AuthEvent.LoginParams(activity,
                 new IOperateCallback<String>() {
                     @Override
@@ -116,24 +116,25 @@ public class RSDKImpl implements IRSDK{
                     }
                 }, "RSDK");
         FloatViewManager.getInstance().hide();
-        if(isHasAccountInLocal()){
-            ViewControllerNavigator.getInstance().toLogin(loginParamsProxy);
-        }else{
-            ViewControllerNavigator.getInstance().toRegister(loginParamsProxy);
-        }
+        ViewControllerNavigator.getInstance().toLogin(loginParamsProxy);
+//        if (isHasAccountInLocal()) {
+//            ViewControllerNavigator.getInstance().toLogin(loginParamsProxy);
+//        } else {
+//            ViewControllerNavigator.getInstance().toRegister(loginParamsProxy);
+//        }
     }
 
     @Override
     public void loginVisitors(Activity activity, final IOperateCallback<String> callback) {
 
-        if (!PermissionHelper.Storage.hasStoragePermission(activity)){
+        if (!PermissionHelper.Storage.hasStoragePermission(activity)) {
             ToastUtils.showMsg("未获得文件存储权限，请前往权限管理打开。");
-            callback.onResult(1,"登录失败");
+            callback.onResult(1, "登录失败");
             return;
         }
         ApiFacade.getInstance().setupChannelInfo();
 
-        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity,callback,"RSDK");
+        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, callback, "RSDK");
         final AuthEvent.LoginParams loginParamsProxy = new AuthEvent.LoginParams(activity,
                 new IOperateCallback<String>() {
                     @Override
@@ -194,11 +195,12 @@ public class RSDKImpl implements IRSDK{
 
     @Override
     public void logout() {
-        if (logoutCallback==null){
-            ApiFacade.getInstance().logout();
-        }else{
-            ApiFacade.getInstance().logout(logoutCallback);
-        }
+//        if (logoutCallback==null){
+//            ApiFacade.getInstance().logout();
+//        }else{
+//            ApiFacade.getInstance().logout(logoutCallback);
+//        }
+        ApiFacade.getInstance().logout(logoutCallback);
     }
 
     @Override
@@ -223,12 +225,12 @@ public class RSDKImpl implements IRSDK{
 
     @Override
     public String getGameId() {
-        return PluginManager.getInstance().getGameId()+"";
+        return PluginManager.getInstance().getGameId() + "";
     }
 
     @Override
     public String getUid() {
-        return PluginManager.getInstance().getUid()+"";
+        return PluginManager.getInstance().getUid() + "";
     }
 
     @Override
@@ -252,12 +254,12 @@ public class RSDKImpl implements IRSDK{
         ApiFacade.getInstance().onCharacterEvent(map, null);
     }
 
-    private boolean isHasAccountInLocal(){
+    private boolean isHasAccountInLocal() {
         List<AccountHistoryInfo> AccountHistories = ApiFacade.getInstance().getAccountHistories();
-        if(AccountHistories == null){
+        if (AccountHistories == null) {
             return false;
         }
-        if(AccountHistories.isEmpty()){
+        if (AccountHistories.isEmpty()) {
             return false;
         }
         return true;

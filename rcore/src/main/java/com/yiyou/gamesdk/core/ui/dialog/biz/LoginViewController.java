@@ -16,6 +16,7 @@ import com.mobilegamebar.rsdk.outer.event.IDialogParam;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
@@ -393,13 +394,7 @@ public class LoginViewController extends BaseAuthViewController {
 //                onLoginSuccess(result);
                 hideLoading();
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
-                PopUtil.show((Activity) context, result.getData().getMobile_phone() + "欢迎进入游戏",
-                        new PopUtil.PopOnClick() {
-                            @Override
-                            public void onClick(View v) {
-
-                            }
-                        });
+                PopUtil.get((Activity) context).showNoButton(result.getData().getMobile_phone() + "欢迎进入游戏");
                 close();
             }
 
@@ -428,13 +423,7 @@ public class LoginViewController extends BaseAuthViewController {
             public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
                 hideLoading();
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
-                PopUtil.show((Activity) context, "游客：" + result.getData().getUser_id() + "欢迎进入游戏",
-                        new PopUtil.PopOnClick() {
-                            @Override
-                            public void onClick(View v) {
-
-                            }
-                        });
+                PopUtil.get((Activity) context).showNoButton("游客：" + result.getData().getUser_id() + "欢迎进入游戏");
                 close();
             }
 
@@ -465,22 +454,32 @@ public class LoginViewController extends BaseAuthViewController {
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
 //                showPopToast(result);
                 if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("true")) { //游客，进入手机绑定
-                    PopUtil.show((Activity) context, "游客：" + result.getData().getUser_id() + "欢迎进入游戏",
+                    final PopUtil popUtil = PopUtil.get((Activity) context);
+                    popUtil.showHasButton("游客：" + result.getData().getUser_id() + "欢迎进入游戏",
                             new PopUtil.PopOnClick() {
                                 @Override
                                 public void onClick(View v) {
 //                                    ViewControllerNavigator.getInstance().loginPhone(getDialogParam());
-                                    ApiFacade.getInstance().logout();
+//                                    PluginManager.getInstance().getLogoutCallback().onResult(TTCodeDef.SUCCESS,"切换账号，假装成功退出");
+                                    ApiFacade.getInstance().logout(PluginManager.getInstance().getLogoutCallback());
+                                    ApiFacade.getInstance().deleteAccountHistory(ApiFacade.getInstance().getMainUid() + "");
+                                    ToastUtils.showMsg("切换账号" + ApiFacade.getInstance().getMainUid());
+                                    Log.d(TAG, "切换账号，假装成功退出");
+                                    popUtil.dismiss();
                                 }
                             });
                     ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
                 } else if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("false") && result.getData().getNeed_real().equals("1")) {//手机用户，进入实名认证
-                    PopUtil.show((Activity) context, result.getData().getMobile_phone() + "欢迎进入游戏",
+                    final PopUtil popUtil = PopUtil.get((Activity) context);
+                    popUtil.showHasButton(result.getData().getMobile_phone() + "欢迎进入游戏",
                             new PopUtil.PopOnClick() {
                                 @Override
                                 public void onClick(View v) {
-//                                    ViewControllerNavigator.getInstance().loginPhone(getDialogParam());
-                                    ApiFacade.getInstance().logout();
+                                    Log.d(TAG, "切换账号，假装成功退出=1=" + ApiFacade.getInstance().getMainUid());
+                                    ApiFacade.getInstance().deleteAccountHistory(ApiFacade.getInstance().getMainUid() + "");
+                                    ApiFacade.getInstance().logout(PluginManager.getInstance().getLogoutCallback());
+                                    ToastUtils.showMsg("切换账号" + ApiFacade.getInstance().getMainUid());
+                                    popUtil.dismiss();
                                 }
                             });
                     ViewControllerNavigator.getInstance().toRealNameAuth(getDialogParam());
@@ -547,6 +546,7 @@ public class LoginViewController extends BaseAuthViewController {
         if (!allGameAuthHistories.isEmpty()) {
             AccountHistoryInfo historyInfo = allGameAuthHistories
                     .get(0);
+            Log.d(TAG, "tryShowLastLoginAccount: historyInfo:" + historyInfo.toString());
             putHistoryAccount2Input(historyInfo);
 //            tryFillPasswordFromHistory(historyInfo.username);
         } else {

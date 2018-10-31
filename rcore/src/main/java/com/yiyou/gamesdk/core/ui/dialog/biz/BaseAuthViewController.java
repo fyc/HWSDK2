@@ -62,7 +62,7 @@ public abstract class BaseAuthViewController extends BaseViewController {
     }
 
     /**
-     * 进入游戏主界面
+     * 执行LoginActivity中的‘登录成功回调’
      * @param code
      * @param resultMsg
      * @param loginBean
