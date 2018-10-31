@@ -69,19 +69,16 @@ public class ViewControllerNavigator {
         if (!allGameAuthHistories.isEmpty()) {
             AccountHistoryInfo historyInfo = allGameAuthHistories
                     .get(0);
-            if (!TextUtils.isEmpty(historyInfo.guest) && historyInfo.guest.equals("1")) {
-                return loginVisitors(params);
-            } else {
-                if (historyInfo.userID != 0 && !TextUtils.isEmpty(historyInfo.accessToken)) {
-                    loginAuto(params);
-                    return true;
-                }
+            Log.d(TAG, "toLogin: historyInfo:" + historyInfo.toString());
+            if(historyInfo.is_logout==0){
+                loginAuto(params);
+                return true;
             }
         }
         return loginPhone(params);
     }
 
-    public boolean loginPhone(IDialogParam params){
+    public boolean loginPhone(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new LoginViewController(params.getActivityContext(), params));
@@ -97,9 +94,6 @@ public class ViewControllerNavigator {
     public void loginAuto(IDialogParam params) {
         Log.d(TAG, "loginAuto: ");
         checkParam(params);
-//        return getDialog(params.getActivityContext())
-//                .show(new LoginViewController(params.getActivityContext(), params));
-//        return getDialog(activityContext).show(new TestViewController(activityContext));
         new LoginViewController(params.getActivityContext(), params).loginAutoImpl();
     }
 

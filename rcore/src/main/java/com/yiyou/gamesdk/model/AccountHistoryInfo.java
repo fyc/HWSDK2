@@ -34,6 +34,7 @@ public class AccountHistoryInfo {
     public int account_id = 0;
     public String guest = "";
     public String first = "";
+    public int is_logout = 0;
 
     @Override
     public String toString() {
@@ -47,6 +48,7 @@ public class AccountHistoryInfo {
                 ", account_id=" + account_id +
                 ", guest='" + guest + '\'' +
                 ", first='" + first + '\'' +
+                ", is_logout=" + is_logout +
                 '}';
     }
 
@@ -61,6 +63,7 @@ public class AccountHistoryInfo {
         cv.put(AccountTable.COL_ACCOUNT_ID, info.account_id);
         cv.put(AccountTable.COL_GUEST, info.guest);
         cv.put(AccountTable.COL_FIRST, info.first);
+        cv.put(AccountTable.COL_IS_LOGOUT, info.is_logout);
         return cv;
     }
 
@@ -101,6 +104,9 @@ public class AccountHistoryInfo {
         if (contentValues.containsKey(AccountTable.COL_FIRST)){
             info.first = contentValues.getAsString(AccountTable.COL_FIRST);
         }
+        if (contentValues.containsKey(AccountTable.COL_IS_LOGOUT)){
+            info.is_logout = contentValues.getAsInteger(AccountTable.COL_IS_LOGOUT);
+        }
         return info;
     }
 
@@ -120,6 +126,7 @@ public class AccountHistoryInfo {
         info.account_id = cursor.getInt(AccountTable.INDEX_ACCOUNT_ID);
         info.guest = cursor.getString(AccountTable.INDEX_GUEST);
         info.first = cursor.getString(AccountTable.INDEX_FIRST);
+        info.is_logout = cursor.getInt(AccountTable.INDEX_IS_LOGOUT);
         return info;
     }
 }

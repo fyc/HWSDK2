@@ -334,9 +334,11 @@ class AuthManager implements IAuthApi {
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);
                 //todo
-                ApiFacade.getInstance().deleteAccountHistory(getMainUid() + "");
+//                ApiFacade.getInstance().deleteAccountHistory(getMainUid() + "");
+                AccountHistoryInfo accountHistoryInfo = ApiFacade.getInstance().getCurrentHistoryAccount();
+                accountHistoryInfo.is_logout = 1;
+                ApiFacade.getInstance().insertOrUpdateAccountHistory(accountHistoryInfo);
                 authModel = null;
-                Log.d(TAG, "切换账号，假装成功退出"+getMainUid());
                 if (iOperateCallback != null) {
                     iOperateCallback.onResult(TTCodeDef.SUCCESS, "切换账号，假装成功退出"+getMainUid());
                 }
@@ -620,6 +622,7 @@ class AuthManager implements IAuthApi {
         cv.put(AccountTable.COL_ACCOUNT_ID, bean.getData().getAccount_id());
         cv.put(AccountTable.COL_GUEST, bean.getData().getGuest());
         cv.put(AccountTable.COL_FIRST, bean.getData().getFirst());
+        cv.put(AccountTable.COL_IS_LOGOUT,0);
 
         cv.put(AccountTable.COL_LAST_LOGIN_TIME, new Date().getTime());
         ApiFacade.getInstance().insertOrUpdateAccountHistory(cv);

@@ -282,7 +282,7 @@ public class LoginViewController extends BaseAuthViewController {
 //                IMEUtil.hideIME(LoginViewController.this);
 //                ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
 
-                loginVisitorsImpl();
+                loginVisitorsWrapImpl();
             }
         });
 //        ViewUtils.bindEditWithButton(passwordEdit, loginButton);
@@ -412,6 +412,23 @@ public class LoginViewController extends BaseAuthViewController {
         });
     }
 
+
+    public void loginVisitorsWrapImpl() {
+        List<AccountHistoryInfo> allGameAuthHistories
+                = ApiFacade.getInstance().getAccountHistories();
+        if (!allGameAuthHistories.isEmpty()) {
+            AccountHistoryInfo historyInfo = allGameAuthHistories
+                    .get(0);
+            if (!TextUtils.isEmpty(historyInfo.guest) && historyInfo.guest.equals("false")) {
+                loginVisitorsImpl();
+            }else{
+                loginAutoImpl();
+            }
+        } else {
+            loginVisitorsImpl();
+        }
+    }
+
     public void loginVisitorsImpl() {
         showLoading();
         ApiFacade.getInstance().loginVisitors(new TtRespListener<LoginBean>() {
@@ -462,27 +479,32 @@ public class LoginViewController extends BaseAuthViewController {
 //                                    ViewControllerNavigator.getInstance().loginPhone(getDialogParam());
 //                                    PluginManager.getInstance().getLogoutCallback().onResult(TTCodeDef.SUCCESS,"切换账号，假装成功退出");
                                     ApiFacade.getInstance().logout(PluginManager.getInstance().getLogoutCallback());
-                                    ApiFacade.getInstance().deleteAccountHistory(ApiFacade.getInstance().getMainUid() + "");
-                                    ToastUtils.showMsg("切换账号" + ApiFacade.getInstance().getMainUid());
-                                    Log.d(TAG, "切换账号，假装成功退出");
+//                                    ApiFacade.getInstance().deleteAccountHistory(ApiFacade.getInstance().getMainUid() + "");
+//                                    AccountHistoryInfo accountHistoryInfo = ApiFacade.getInstance().getCurrentHistoryAccount();
+//                                    accountHistoryInfo.is_logout = 1;
+//                                    ApiFacade.getInstance().insertOrUpdateAccountHistory(accountHistoryInfo);
                                     popUtil.dismiss();
                                 }
                             });
                     ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
-                } else if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("false") && result.getData().getNeed_real().equals("1")) {//手机用户，进入实名认证
+                } else if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("false")) {//手机用户，进入实名认证
                     final PopUtil popUtil = PopUtil.get((Activity) context);
                     popUtil.showHasButton(result.getData().getMobile_phone() + "欢迎进入游戏",
                             new PopUtil.PopOnClick() {
                                 @Override
                                 public void onClick(View v) {
                                     Log.d(TAG, "切换账号，假装成功退出=1=" + ApiFacade.getInstance().getMainUid());
-                                    ApiFacade.getInstance().deleteAccountHistory(ApiFacade.getInstance().getMainUid() + "");
+//                                    AccountHistoryInfo accountHistoryInfo = ApiFacade.getInstance().getCurrentHistoryAccount();
+//                                    accountHistoryInfo.is_logout = 1;
+//                                    ApiFacade.getInstance().insertOrUpdateAccountHistory(accountHistoryInfo);
+//                                    ApiFacade.getInstance().deleteAccountHistory(ApiFacade.getInstance().getMainUid() + "");
                                     ApiFacade.getInstance().logout(PluginManager.getInstance().getLogoutCallback());
-                                    ToastUtils.showMsg("切换账号" + ApiFacade.getInstance().getMainUid());
                                     popUtil.dismiss();
                                 }
                             });
-                    ViewControllerNavigator.getInstance().toRealNameAuth(getDialogParam());
+                    if (result.getData().getNeed_real().equals("1")) {
+                        ViewControllerNavigator.getInstance().toRealNameAuth(getDialogParam());
+                    }
                 } else {
                     close();
                 }
