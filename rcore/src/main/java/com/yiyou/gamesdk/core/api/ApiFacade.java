@@ -773,6 +773,10 @@ public class ApiFacade implements IApiFacade {
     public void requestAnnouncement(int from, IOperateCallback<List<AnnouncementInfo>> callback) {
         announcementApi().requestAnnouncement(from,callback);
     }
+    @Override
+    public void requestAnnouncement2(int from, IOperateCallback<List<AnnouncementInfo>> callback) {
+        announcementApi().requestAnnouncement2(from,callback);
+    }
 
     @Override
     public List<AnnouncementInfo> getLocalAnnouncement() {

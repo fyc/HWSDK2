@@ -150,7 +150,8 @@ public class MessageTipView implements IDialogView, ImageView.OnClickListener {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Log.d(TAG, "load url:" + url);
-                if (CommonUtils.handleUrl(url, activity, true)){
+//                if (CommonUtils.handleUrl(url, activity, true)){
+                    if (CommonUtils.handleUrl(url, activity, false)){
                     return true;
                 }else {
                     return super.shouldOverrideUrlLoading(view,url);

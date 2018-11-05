@@ -27,7 +27,7 @@ public class LoginNoticeInterceptor implements LoginInterceptor {
             chain.proceed(chain.getData());
             return;
         }
-        ApiFacade.getInstance().requestAnnouncement(1, new IOperateCallback<List<AnnouncementInfo>>() {
+        ApiFacade.getInstance().requestAnnouncement2(1, new IOperateCallback<List<AnnouncementInfo>>() {
             @Override
             public void onResult(int i, List<AnnouncementInfo> announcementInfos) {
                 if (announcementInfos != null && announcementInfos.size() > 0){

@@ -123,7 +123,8 @@ public class AnnouncementManager {
         htmlText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (CommonUtils.handleUrl(currentAnnouncement.getUrl(), mActivity, true)){
+//                if (CommonUtils.handleUrl(currentAnnouncement.getUrl(), mActivity, true)){
+                    if (CommonUtils.handleUrl(currentAnnouncement.getUrl(), mActivity, false)){
                     uninit();
                 }
             }
@@ -142,6 +143,17 @@ public class AnnouncementManager {
         }else if(mType == 2){
             closeBtn.setVisibility(View.GONE);
             mHandler.postDelayed(runable,20000);
+        }else{
+            closeBtn.setVisibility(View.VISIBLE);
+            closeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    currentAnnouncement = null;
+                    if (!nextAnnouncement()){
+                        tryUninit();
+                    }
+                }
+            });
         }
     }
 
@@ -150,14 +162,14 @@ public class AnnouncementManager {
      * @param info 公告
      */
     public void addAnnouncement(AnnouncementInfo info){
-        if (info.getType() == 3){
-            announcementList0.add(info);
-        }else if (info.getType() == 4){
-            announcementList1.add(info);
-        }else if (info.getType() == 1 || info.getType() == 2){
-            announcementWindows.add(info);
-        }
-
+//        if (info.getType() == 3){
+//            announcementList0.add(info);
+//        }else if (info.getType() == 4){
+//            announcementList1.add(info);
+//        }else if (info.getType() == 1 || info.getType() == 2){
+//            announcementWindows.add(info);
+//        }
+        announcementWindows.add(info);
     }
 
 
@@ -205,6 +217,7 @@ public class AnnouncementManager {
     public void show(Activity activity){
         mActivity = activity;
         if(!isShow && nextAnnouncement()){
+//        if(!isShow){
             isShow = true;
             tipsWM.addView(mFloatLayout,tipsLayoutParams);
             Log.d(TAG,"show mType: " + mType);
@@ -321,6 +334,26 @@ public class AnnouncementManager {
             accurateDialog.show();
             dialogs.add(accurateDialog);
             Log.d(TAG, "MessageInfo SMALL: show ");
+        }else{
+            CommDialog.Builder builder = new CommDialog.Builder(mActivity);
+            MessageTipView dialogView = new MessageTipView(mContext, 0, mActivity);
+            dialogView.setTitle(MessageInfo.getTitle());
+            dialogView.setWebView(MessageInfo.getUrl());
+            dialogView.disableclose(false);
+            builder.setFullScreen(true);
+            dialogView.respondHyperlink(mActivity);
+            builder.setView(dialogView);
+            final CommDialog msgDialog = builder.create();
+            msgDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    dialogs.remove(msgDialog);
+                    tryUninit();
+                }
+            });
+            msgDialog.show();
+            dialogs.add(msgDialog);
+            Log.d(TAG, "MessageInfo NORMAL_WITHOUT_BTN: show ");
         }
     }
 

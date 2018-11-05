@@ -13,6 +13,7 @@ import java.util.List;
 public interface IAnnouncementApi extends IApiWrapping {
 
     void requestAnnouncement(int from, IOperateCallback<List<AnnouncementInfo>> callback);
+    void requestAnnouncement2(int from, IOperateCallback<List<AnnouncementInfo>> callback);
 
     List<AnnouncementInfo> getLocalAnnouncement();
 

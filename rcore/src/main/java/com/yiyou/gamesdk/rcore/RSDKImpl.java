@@ -108,6 +108,7 @@ public class RSDKImpl implements IRSDK {
                 new IOperateCallback<String>() {
                     @Override
                     public void onResult(int i, String s) {
+                        Log.d(TAG, "Chain:i="+i+"--s="+s);
                         List<Interceptor> interceptors = new ArrayList<>();
                         interceptors.add(new LoginNoticeInterceptor());
                         LoginInterceptor.LoginParams params = new LoginInterceptor.LoginParams(loginParams, i, s);
@@ -127,27 +128,28 @@ public class RSDKImpl implements IRSDK {
     @Override
     public void loginVisitors(Activity activity, final IOperateCallback<String> callback) {
 
-        if (!PermissionHelper.Storage.hasStoragePermission(activity)) {
-            ToastUtils.showMsg("未获得文件存储权限，请前往权限管理打开。");
-            callback.onResult(1, "登录失败");
-            return;
-        }
-        ApiFacade.getInstance().setupChannelInfo();
+//        if (!PermissionHelper.Storage.hasStoragePermission(activity)) {
+//            ToastUtils.showMsg("未获得文件存储权限，请前往权限管理打开。");
+//            callback.onResult(1, "登录失败");
+//            return;
+//        }
+//        ApiFacade.getInstance().setupChannelInfo();
+//
+//        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, callback, "RSDK");
+//        final AuthEvent.LoginParams loginParamsProxy = new AuthEvent.LoginParams(activity,
+//                new IOperateCallback<String>() {
+//                    @Override
+//                    public void onResult(int i, String s) {
+//                        List<Interceptor> interceptors = new ArrayList<>();
+//                        interceptors.add(new LoginNoticeInterceptor());
+//                        LoginInterceptor.LoginParams params = new LoginInterceptor.LoginParams(loginParams, i, s);
+//                        LoginChain loginChain = new LoginChain(params, 0, interceptors);
+//                        loginChain.proceed(params);
+//                    }
+//                }, "RSDK");
+//        FloatViewManager.getInstance().hide();
+//        ViewControllerNavigator.getInstance().loginVisitors(loginParamsProxy);
 
-        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, callback, "RSDK");
-        final AuthEvent.LoginParams loginParamsProxy = new AuthEvent.LoginParams(activity,
-                new IOperateCallback<String>() {
-                    @Override
-                    public void onResult(int i, String s) {
-                        List<Interceptor> interceptors = new ArrayList<>();
-                        interceptors.add(new LoginNoticeInterceptor());
-                        LoginInterceptor.LoginParams params = new LoginInterceptor.LoginParams(loginParams, i, s);
-                        LoginChain loginChain = new LoginChain(params, 0, interceptors);
-                        loginChain.proceed(params);
-                    }
-                }, "RSDK");
-        FloatViewManager.getInstance().hide();
-        ViewControllerNavigator.getInstance().loginVisitors(loginParamsProxy);
 //        if(isHasAccountInLocal()){
 //            ViewControllerNavigator.getInstance().toLogin( loginParamsProxy);
 //        }else{

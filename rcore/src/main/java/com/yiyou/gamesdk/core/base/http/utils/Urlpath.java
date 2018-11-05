@@ -152,8 +152,9 @@ public class Urlpath {
     /**
      * 获取公告
      */
-    public static final String ANNOUNCEMENT = CoreManager.isDebug() ? "https://sdktest.52hwgame.com:8004/syb.bulletin/api/getlist.view"
-            : "https://sdk.52tzgame.com/bulletin/api/getlist.view";
+//    public static final String ANNOUNCEMENT = CoreManager.isDebug() ? "https://sdktest.52hwgame.com:8004/syb.bulletin/api/getlist.view"
+//            : "https://sdk.52tzgame.com/bulletin/api/getlist.view";
+    public static final String ANNOUNCEMENT = HEAD + "/rest/user/gm_announcement";
     /**
      * 获取优惠券
      */

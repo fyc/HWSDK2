@@ -38,6 +38,7 @@ public class QyLoginRequest<T> extends Request<T> {
     private String src;
     private static final int KEY = 123123123;
     public static final String GAMW_ID = "201810221735413530001013eed";
+    public static final String CHANNEL_ID = "100";
     /**
      * 超时时间
      */
