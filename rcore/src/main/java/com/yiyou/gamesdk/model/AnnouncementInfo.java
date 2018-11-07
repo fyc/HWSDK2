@@ -11,6 +11,9 @@ import com.yiyou.gamesdk.core.storage.db.global.AnnouncementTable;
  */
 public class AnnouncementInfo {
 
+    public static int NORMAL = 2;
+    public static int SMALL = 1;
+
     int id;             //公告唯一标识
     String url;         //公告主体展示的页面
     String title;       //公告title

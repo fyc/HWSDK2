@@ -170,4 +170,8 @@
     <string name="edit_bind_phone_number_hint">请输入绑定手机号码</string>
     <string name="str_bind_phone_button">绑定账号</string>
     <string name="str_bind_phone_tips">为了游客状态安全，请绑定一个号码</string>
+
+    <!--欢迎进入游戏tips-->
+    <string name="str_visitors_welcome" formatted="false">游客:%d,%s进入游戏</string>
+    <string name="str_phone_welcome" formatted="false">%d, %s进入游戏</string>
 </resources>

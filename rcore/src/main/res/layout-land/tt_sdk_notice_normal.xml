@@ -32,7 +32,7 @@
                     android:gravity="center"
                     android:shadowColor="#000"
                     android:shadowRadius="1"
-                    android:text="王者荣耀赛事通告"
+                    android:text="公告"
                     android:textColor="@color/str_normal_light_black"
                     android:textSize="@dimen/text_size_t6" />
                 <ImageView

@@ -53,7 +53,9 @@ public class AnnouncementManager {
     private List<AnnouncementInfo> announcementWindows = new ArrayList<>();
     private List<CommDialog> dialogs = new ArrayList<>();
 
-    /**1:滚动，可关闭  2:滚动，不可关闭*/
+    /**
+     * 1:滚动，可关闭  2:滚动，不可关闭
+     */
     private int mType = 0;
 
     public AnnouncementManager(Context context) {
@@ -61,22 +63,22 @@ public class AnnouncementManager {
         createFloatview();
     }
 
-    public static synchronized AnnouncementManager getInstance(){
-        if(instance == null){
+    public static synchronized AnnouncementManager getInstance() {
+        if (instance == null) {
             instance = new AnnouncementManager(CoreManager.getContext());
         }
         return instance;
     }
 
-    private void createFloatview(){
+    private void createFloatview() {
         Log.d(TAG, "createFloatview: ");
         tipsWM = (WindowManager) mContext.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         tipsLayoutParams = new WindowManager.LayoutParams();
         if (SystemHelper.Device.isBelowXiaomi2S() || SystemHelper.Device.isHongMi() || SystemHelper.Device.isXiaoMi()) {
             if (Build.VERSION.SDK_INT >= 19) {
-                if(Build.VERSION.SDK_INT > 24){
+                if (Build.VERSION.SDK_INT > 24) {
                     tipsLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
-                }else{
+                } else {
                     tipsLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
                 }
             } else {
@@ -93,15 +95,15 @@ public class AnnouncementManager {
         tipsLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         tipsLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        mFloatLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.tt_sdk_bar_tips,null);
+        mFloatLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.tt_sdk_bar_tips, null);
         htmlText = (TextView) mFloatLayout.findViewById(R.id.tv_tips);
         closeBtn = (ImageView) mFloatLayout.findViewById(R.id.back_icon);
     }
 
-    public void initFloatView(){
+    public void initFloatView() {
         Log.d(TAG, "initFloatView: mType: " + mType);
-        if (currentAnnouncement == null){
-            if (isShow){
+        if (currentAnnouncement == null) {
+            if (isShow) {
                 tipsWM.removeView(mFloatLayout);
                 isShow = false;
             }
@@ -109,9 +111,9 @@ public class AnnouncementManager {
         }
         Spannable sp = (Spannable) Html.fromHtml(currentAnnouncement.getContent());
         final URLSpan[] urls = sp.getSpans(0, sp.length(), URLSpan.class);
-        if (urls.length > 0){
+        if (urls.length > 0) {
             currentAnnouncement.setUrl(urls[0].getURL());
-        }else{
+        } else {
             currentAnnouncement.setUrl("");
         }
         htmlText.setText(sp);
@@ -124,32 +126,32 @@ public class AnnouncementManager {
             @Override
             public void onClick(View v) {
 //                if (CommonUtils.handleUrl(currentAnnouncement.getUrl(), mActivity, true)){
-                    if (CommonUtils.handleUrl(currentAnnouncement.getUrl(), mActivity, false)){
+                if (CommonUtils.handleUrl(currentAnnouncement.getUrl(), mActivity, false)) {
                     uninit();
                 }
             }
         });
-        if(mType ==1){
+        if (mType == 1) {
             closeBtn.setVisibility(View.VISIBLE);
             closeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     currentAnnouncement = null;
-                    if (!nextAnnouncement()){
+                    if (!nextAnnouncement()) {
                         tryUninit();
                     }
                 }
             });
-        }else if(mType == 2){
+        } else if (mType == 2) {
             closeBtn.setVisibility(View.GONE);
-            mHandler.postDelayed(runable,20000);
-        }else{
+            mHandler.postDelayed(runable, 20000);
+        } else {
             closeBtn.setVisibility(View.VISIBLE);
             closeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     currentAnnouncement = null;
-                    if (!nextAnnouncement()){
+                    if (!nextAnnouncement()) {
                         tryUninit();
                     }
                 }
@@ -159,9 +161,10 @@ public class AnnouncementManager {
 
     /**
      * 添加公告
+     *
      * @param info 公告
      */
-    public void addAnnouncement(AnnouncementInfo info){
+    public void addAnnouncement(AnnouncementInfo info) {
 //        if (info.getType() == 3){
 //            announcementList0.add(info);
 //        }else if (info.getType() == 4){
@@ -171,7 +174,6 @@ public class AnnouncementManager {
 //        }
         announcementWindows.add(info);
     }
-
 
 
 //    private boolean handleUrl(String url){
@@ -207,51 +209,51 @@ public class AnnouncementManager {
 //        }
 //    }
 
-    public boolean nextAnnouncement(){
+    public boolean nextAnnouncement() {
         boolean flag = updateList();
         initFloatView();
         return flag;
     }
 
 
-    public void show(Activity activity){
+    public void show(Activity activity) {
         mActivity = activity;
-        if(!isShow && nextAnnouncement()){
-//        if(!isShow){
+        if (!isShow && nextAnnouncement()) {
             isShow = true;
-            tipsWM.addView(mFloatLayout,tipsLayoutParams);
-            Log.d(TAG,"show mType: " + mType);
+            tipsWM.addView(mFloatLayout, tipsLayoutParams);
+            Log.d(TAG, "show mType: " + mType);
         }
-        for (AnnouncementInfo info : announcementWindows){
+        for (AnnouncementInfo info : announcementWindows) {
             popupWindow(info);
         }
     }
-    public void hide(){
-        if(isShow){
+
+    public void hide() {
+        if (isShow) {
             isShow = false;
             tipsWM.removeView(mFloatLayout);
-            Log.d(TAG,"hide");
+            Log.d(TAG, "hide");
         }
-        for (CommDialog dialog : dialogs){
+        for (CommDialog dialog : dialogs) {
             dialog.dismiss();
         }
     }
 
-    public boolean isShowing(){
+    public boolean isShowing() {
         return isShow;
     }
 
 
-    public boolean updateList(){
+    public boolean updateList() {
         Log.d(TAG, "updateList: " + announcementList0.size() + "; " + announcementList1.size());
-        if (announcementList0.size() > 0){
-            currentAnnouncement = announcementList0.get(announcementList0.size()-1);
-            announcementList0.remove(announcementList0.size()-1);
+        if (announcementList0.size() > 0) {
+            currentAnnouncement = announcementList0.get(announcementList0.size() - 1);
+            announcementList0.remove(announcementList0.size() - 1);
             mType = 1;
             return true;
-        }else if (announcementList1.size() > 0){
-            currentAnnouncement = announcementList1.get(announcementList1.size()-1);
-            announcementList1.remove(announcementList1.size()-1);
+        } else if (announcementList1.size() > 0) {
+            currentAnnouncement = announcementList1.get(announcementList1.size() - 1);
+            announcementList1.remove(announcementList1.size() - 1);
             mType = 2;
             return true;
         }
@@ -260,7 +262,7 @@ public class AnnouncementManager {
 
     }
 
-    public void uninit(){
+    public void uninit() {
         hide();
         clearList();
         currentAnnouncement = null;
@@ -268,14 +270,14 @@ public class AnnouncementManager {
         mHandler.removeCallbacksAndMessages(null);
         instance = null;
         mActivity = null;
-        Log.d(TAG,"uninit");
+        Log.d(TAG, "uninit");
     }
 
-    public void clearList(){
+    public void clearList() {
         announcementList0.clear();
         announcementList1.clear();
         announcementWindows.clear();
-        Log.d(TAG,"clearList");
+        Log.d(TAG, "clearList");
     }
 
     private Runnable runable = new Runnable() {
@@ -284,15 +286,15 @@ public class AnnouncementManager {
             currentAnnouncement = null;
             updateList();
             initFloatView();
-            if (currentAnnouncement == null){
+            if (currentAnnouncement == null) {
                 mHandler.removeCallbacksAndMessages(null);
                 tryUninit();
             }
         }
     };
 
-    private void popupWindow(AnnouncementInfo MessageInfo){
-        if (MessageInfo.getType() == 2) {//normal = NORMAL_WITHOUT_BTN
+    private void popupWindow(AnnouncementInfo MessageInfo) {
+        if (MessageInfo.getType() == AnnouncementInfo.NORMAL) {//normal = NORMAL_WITHOUT_BTN
             CommDialog.Builder builder = new CommDialog.Builder(mActivity);
             MessageTipView dialogView = new MessageTipView(mContext, 0, mActivity);
             dialogView.setTitle(MessageInfo.getTitle());
@@ -312,8 +314,7 @@ public class AnnouncementManager {
             msgDialog.show();
             dialogs.add(msgDialog);
             Log.d(TAG, "MessageInfo NORMAL_WITHOUT_BTN: show ");
-        }
-        if (MessageInfo.getType() == 1) {//Accurate = SMALL
+        } else if (MessageInfo.getType() == AnnouncementInfo.SMALL) {//Accurate = SMALL
             final CommDialog accurateDialog;
             CommDialog.Builder builder = new CommDialog.Builder(mActivity);
             MessageTipView dialogView = new MessageTipView(mContext, 1, mActivity);
@@ -334,7 +335,7 @@ public class AnnouncementManager {
             accurateDialog.show();
             dialogs.add(accurateDialog);
             Log.d(TAG, "MessageInfo SMALL: show ");
-        }else{
+        } else {
             CommDialog.Builder builder = new CommDialog.Builder(mActivity);
             MessageTipView dialogView = new MessageTipView(mContext, 0, mActivity);
             dialogView.setTitle(MessageInfo.getTitle());
@@ -357,10 +358,23 @@ public class AnnouncementManager {
         }
     }
 
-    private void tryUninit(){
-        Log.d(TAG, "tryUninit: " + announcementList0.size() + "; " + announcementList1.size() + "; "+dialogs.size());
-        if (announcementList0.size() == 0 && announcementList1.size() == 0 && dialogs.size() == 0 && currentAnnouncement == null){
+    private void tryUninit() {
+        Log.d(TAG, "tryUninit: " + announcementList0.size() + "; " + announcementList1.size() + "; " + dialogs.size());
+        if (announcementList0.size() == 0 && announcementList1.size() == 0 && dialogs.size() == 0 && currentAnnouncement == null) {
             uninit();
+            if (announceInterface != null) {
+                announceInterface.afterUninit();
+            }
         }
+    }
+
+    AnnounceInterface announceInterface;
+
+    public void setAnnounceInterface(AnnounceInterface announceInterface) {
+        this.announceInterface = announceInterface;
+    }
+
+    public interface AnnounceInterface {
+        void afterUninit();
     }
 }

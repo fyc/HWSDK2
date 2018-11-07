@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_white"
+    android:paddingBottom="@dimen/margin_32px">
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="信息提示"
+        android:textColor="@color/login_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="为保证你的数据安全，建议你绑定一个账号，以免因刷机等原因导致数据丢失！"
+        android:textColor="@color/login_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+    <Button
+        android:id="@+id/button_cancle"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/tt_sdk_selector_right_btn"
+        android:text="取消"
+        android:textColor="@color/dk_gamesdk_white"
+        android:textSize="@dimen/right_btn_str_size"
+        app:layout_constraintStart_toStartOf="@+id/txt_content"
+        app:layout_constraintTop_toBottomOf="@+id/txt_content" />
+
+    <Button
+        android:id="@+id/button_sure"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/dk_color_fd711d"
+        android:text="确定"
+        android:textColor="@color/dk_gamesdk_white"
+        android:textSize="@dimen/right_btn_str_size"
+        app:layout_constraintEnd_toEndOf="@+id/txt_content"
+        app:layout_constraintTop_toBottomOf="@+id/txt_content" />
+
+    <Button
+        android:id="@+id/button_single"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/tt_sdk_selector_right_btn"
+        android:text="确定"
+        android:textColor="@color/dk_gamesdk_white"
+        android:textSize="@dimen/right_btn_str_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_content" />
+</android.support.constraint.ConstraintLayout>

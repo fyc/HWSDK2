@@ -8,9 +8,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;
 
@@ -26,10 +28,15 @@ public class PopUtil extends PopupWindow {
 
     private Activity activity;//代表LoginActivity
     private View mPopWindow;
-    public TextView txtToastMessage, txt_change_account;
+    public TextView txtToastAcount, txtToastCountTime;
+    Button button_change_account;
 
-    public interface PopOnClick {
+    public interface PopOnListener {
         void onClick(View v);
+
+        void onTick(long millisUntilFinished);
+
+        void onFinish();
     }
 
     public PopUtil(Activity activity) {
@@ -37,11 +44,15 @@ public class PopUtil extends PopupWindow {
 //        LayoutInflater inflater = LayoutInflater.from(activity);
 //        mPopWindow = inflater.inflate(R.layout.login_pop_toast, null);//使用LoginActivity加载不到布局资源
         mPopWindow = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.login_pop_toast, null);
-        txtToastMessage = (TextView) mPopWindow.findViewById(R.id.txtToastMessage);
-        txt_change_account = (TextView) mPopWindow.findViewById(R.id.txt_change_account);
+        txtToastAcount = (TextView) mPopWindow.findViewById(R.id.txtToastAcount);
+        txtToastCountTime = (TextView) mPopWindow.findViewById(R.id.txtToastCountTime);
+        button_change_account = (Button) mPopWindow.findViewById(R.id.button_change_account);
         setmPopWindow();
     }
 
+    /**
+     * 初始化一些相关的参数
+     */
     private void setmPopWindow() {
         // 把View添加到PopWindow中
         this.setContentView(mPopWindow);
@@ -61,15 +72,17 @@ public class PopUtil extends PopupWindow {
     }
 
     /**
-     * @param str
+     * @param acount
      * @return
      */
-    public PopUtil showNoButton(String str) {
-        txtToastMessage.setText(str);
-        txt_change_account.setVisibility(View.GONE);
+    public PopUtil showNoButton(final String acount) {
+//        txtToastMessage.setText(str);
+        button_change_account.setVisibility(View.GONE);
         new CountDownTimer(3000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                txtToastAcount.setText(acount);
+                txtToastCountTime.setText("欢迎");
                 showAtLocation(activity.getWindow().getDecorView(),
                         Gravity.TOP, 0, 0);
             }
@@ -85,25 +98,24 @@ public class PopUtil extends PopupWindow {
     }
 
     /**
-     * @param str
-     * @param popOnClick
+     * @param acount
+     * @param popOnListener
      * @return
      */
-    public PopUtil showHasButton(String str, final PopOnClick popOnClick) {
-        txtToastMessage.setText(str);
-        txt_change_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (popOnClick != null) {
-                    popOnClick.onClick(v);
-                }
-            }
-        });
-        new CountDownTimer(6000, 1000) {
+    public PopUtil showHasButton(final String acount, final PopOnListener popOnListener) {
+//        txtToastMessage.setText(str);
+        final CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+//                String str = ResourceHelper.getString(R.string.str_visitors_welcome, result.getData().getUser_id(), millisUntilFinished / 1000 + "s");
+                txtToastAcount.setText(acount);
+                txtToastCountTime.setText(millisUntilFinished / 1000 + "S");
+                txtToastCountTime.setTextColor(ResourceHelper.getColor(R.color.login_red));
                 showAtLocation(activity.getWindow().getDecorView(),
                         Gravity.TOP, 0, 0);
+                if (popOnListener != null) {
+                    popOnListener.onTick(millisUntilFinished);
+                }
             }
 
             @Override
@@ -111,8 +123,21 @@ public class PopUtil extends PopupWindow {
                 if (isShowing()) {
                     dismiss();
                 }
+                if (popOnListener != null) {
+                    popOnListener.onFinish();
+                }
             }
-        }.start();
+        };
+        button_change_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countDownTimer.cancel();
+                if (popOnListener != null) {
+                    popOnListener.onClick(v);
+                }
+            }
+        });
+        countDownTimer.start();
         return this;
     }
 

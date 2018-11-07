@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import android.text.TextUtils;
 
+import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.event.IDialogParam;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
@@ -16,9 +16,11 @@ import com.yiyou.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.yiyou.gamesdk.core.ui.dialog.biz.RealNameAuthController;
 import com.yiyou.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.yiyou.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
+import com.yiyou.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.yiyou.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.yiyou.gamesdk.core.ui.widget.GameDownloadDialogView;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
+import com.yiyou.gamesdk.model.AnnouncementInfo;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
 
 import java.util.List;
@@ -70,13 +72,34 @@ public class ViewControllerNavigator {
             AccountHistoryInfo historyInfo = allGameAuthHistories
                     .get(0);
             Log.d(TAG, "toLogin: historyInfo:" + historyInfo.toString());
-            if(historyInfo.is_logout==0){
+            if (historyInfo.is_logout == 0) {
                 loginAuto(params);
                 return true;
             }
         }
         return loginPhone(params);
     }
+
+    public void beforeLogin(final IDialogParam params) {
+        ApiFacade.getInstance().requestAnnouncement2(1, new IOperateCallback<List<AnnouncementInfo>>() {
+            @Override
+            public void onResult(int i, List<AnnouncementInfo> announcementInfos) {
+                if (announcementInfos != null && announcementInfos.size() > 0) {
+                    for (AnnouncementInfo announcementInfo : announcementInfos) {
+                        AnnouncementManager.getInstance().addAnnouncement(announcementInfo);
+                    }
+                    AnnouncementManager.getInstance().show((Activity) params.getActivityContext());
+                    AnnouncementManager.getInstance().setAnnounceInterface(new AnnouncementManager.AnnounceInterface() {
+                        @Override
+                        public void afterUninit() {
+                            toLogin(params);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
 
     public boolean loginPhone(IDialogParam params) {
         checkParam(params);

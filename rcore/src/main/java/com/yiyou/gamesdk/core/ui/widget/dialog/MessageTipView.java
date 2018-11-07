@@ -65,8 +65,6 @@ public class MessageTipView implements IDialogView, ImageView.OnClickListener {
     public MessageTipView(Context context, int MessageType, Activity activity) {
         mContext = context;
         initView(context, MessageType, activity);
-
-
     }
 
     private void initView(Context context, int MessageType, Activity activity) {

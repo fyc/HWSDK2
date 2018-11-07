@@ -260,4 +260,8 @@
         <item name="android:textColor">@color/d_gray_2</item>
     </style>
     <!--  字体样式 end-->
+
+    <style name="Theme_Dialog_Fragment" parent="android:style/Theme.Dialog">
+        <item name="android:backgroundDimEnabled">true</item> //背景变暗
+    </style>
 </resources>
