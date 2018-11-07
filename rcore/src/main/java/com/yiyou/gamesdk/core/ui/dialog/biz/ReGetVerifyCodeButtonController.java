@@ -10,7 +10,7 @@ import com.yiyou.gamesdk.util.ViewUtils;
 
 public class ReGetVerifyCodeButtonController {
     TextView textView;
-
+    long mMillisUntilFinished = 0;
     public ReGetVerifyCodeButtonController(TextView textView) {
         this.textView = textView;
     }
@@ -28,6 +28,7 @@ public class ReGetVerifyCodeButtonController {
         timer = new CountDownTimer(60 * 1000l, 1000l) {
             @Override
             public void onTick(long millisUntilFinished) {
+                mMillisUntilFinished =  millisUntilFinished;
                 if (textView.getVisibility() == View.VISIBLE){
                     int sec = (int) (millisUntilFinished / 1000l);
                     textView.setText(ResourceHelper.getString(R.string.re_get_verification_fmt, sec));
@@ -58,4 +59,7 @@ public class ReGetVerifyCodeButtonController {
         }
     }
 
+    public long getmMillisUntilFinished() {
+        return mMillisUntilFinished;
+    }
 }

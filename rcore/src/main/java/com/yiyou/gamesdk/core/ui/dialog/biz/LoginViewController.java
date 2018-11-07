@@ -3,7 +3,6 @@ package com.yiyou.gamesdk.core.ui.dialog.biz;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -11,9 +10,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.mobilegamebar.rsdk.outer.RSDKSpace;
 import com.mobilegamebar.rsdk.outer.event.IDialogParam;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
@@ -28,8 +27,9 @@ import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.yiyou.gamesdk.core.ui.widget.DataPicker;
 import com.yiyou.gamesdk.core.ui.widget.DrawableEditText;
+import com.yiyou.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.yiyou.gamesdk.core.ui.widget.StandardDialog;
-import com.yiyou.gamesdk.core.ui.widget.dialog.TtSdkTipDialog;
+import com.yiyou.gamesdk.core.ui.widget.TipsAlertDialogView;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
 import com.yiyou.gamesdk.model.AuthModel;
 import com.yiyou.gamesdk.util.IMEUtil;
@@ -384,6 +384,18 @@ public class LoginViewController extends BaseAuthViewController {
     }
 
     private void loginImpl(String account, String code) {
+        if (StringUtils.isBlank(account)) {
+            ToastUtils.showMsg(ResourceHelper.getString(R.string.phone_blank));
+            return;
+        }
+        if (account.length() != 11) {
+            ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_11_phone_number));
+            return;
+        }
+        if (!account.startsWith("1") && !account.startsWith("9")) {
+            ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_valid_number));
+            return;
+        }
         loginButton.setEnabled(false);
         showLoading();
         ApiFacade.getInstance().login2(account, code, new TtRespListener<LoginBean>() {
@@ -405,12 +417,14 @@ public class LoginViewController extends BaseAuthViewController {
             public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
                 super.onNetError(url, params, errno, errmsg);
                 onLoginFail();
+                loginButton.setEnabled(true);
             }
 
             @Override
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);
                 onLoginFail();
+                loginButton.setEnabled(true);
             }
         });
     }
@@ -478,7 +492,7 @@ public class LoginViewController extends BaseAuthViewController {
                     final PopUtil popUtil = PopUtil.get((Activity) context);
 //                    String str ="游客：" + result.getData().getUser_id() + "欢迎进入游戏";
 //                    String str = ResourceHelper.getString(R.string.str_visitors_welcome, result.getData().getUser_id(), "3s");
-                    popUtil.showHasButton("游客：" + result.getData().getUser_id()+"，",
+                    popUtil.showHasButton("游客：" + result.getData().getUser_id() + "，",
                             new PopUtil.PopOnListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -493,16 +507,28 @@ public class LoginViewController extends BaseAuthViewController {
 
                                 @Override
                                 public void onFinish() {
-                                    TtSdkTipDialog.show((FragmentActivity) context, new TtSdkTipDialog.Onclick() {
-                                        @Override
-                                        public void onPositive() {
-                                            ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
-                                        }
+                                    ViewControllerNavigator.getInstance().toTipsAlertDialogView(context)
+                                            .setOnclick(new TipsAlertDialogView.Onclick() {
+                                                @Override
+                                                public void onPositive() {
+                                                    ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
+                                                }
 
-                                        @Override
-                                        public void onNegative() {
-                                        }
-                                    });
+                                                @Override
+                                                public void onNegative() {
+                                                }
+                                            });
+
+//                                    TtSdkTipDialog.show((FragmentActivity) context, new TtSdkTipDialog.Onclick() {
+//                                        @Override
+//                                        public void onPositive() {
+//                                            ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
+//                                        }
+//
+//                                        @Override
+//                                        public void onNegative() {
+//                                        }
+//                                    });
                                 }
                             });
                 } else if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("false")) {//手机用户，进入实名认证

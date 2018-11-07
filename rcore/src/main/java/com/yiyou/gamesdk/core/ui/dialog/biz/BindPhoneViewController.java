@@ -99,11 +99,11 @@ public class BindPhoneViewController extends BaseAuthViewController {
                 } else {
                     blankHit = false;
                 }
-                ViewUtils.setViewEnable(bindButton, accountEdit.length() != 0);
-                ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() != 0);
+                ViewUtils.setViewEnable(bindButton, accountEdit.length() == 11 & verificationCodeEdit.length() != 0);
+                ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() == 11 && reGetVerifyCodeButtonController.getmMillisUntilFinished() == 0);
             }
         });
-        addTextWatcher(accountEdit, verificationCodeEdit);
+//        addTextWatcher(accountEdit, verificationCodeEdit);
 
         getVerificationCodeButton.setOnClickListener(new OnClickListener() {
             @Override

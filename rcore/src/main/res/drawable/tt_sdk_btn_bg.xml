@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:bottomLeftRadius="@dimen/right_btn_bg_corner"
+        android:bottomRightRadius="@dimen/right_btn_bg_corner"
+        android:topLeftRadius="@dimen/right_btn_bg_corner"
+        android:topRightRadius="@dimen/right_btn_bg_corner" />
+    <solid android:color="@color/login_blue" />
+</shape>

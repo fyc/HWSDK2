@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/tt_sdk_selector_right_btn"
+            android:background="@drawable/tt_sdk_btn_bg"
             android:text="切换账号"
             android:textColor="#ffffff"
             android:textSize="@dimen/text_size_t7" />
