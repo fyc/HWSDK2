@@ -12,6 +12,7 @@
         layout="@layout/tt_sdk_container_item_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dialog_title_login_container_height"
+        android:layout_marginTop="@dimen/margin_16px"
         android:layout_gravity="center" />
 
     <View style="@style/DialogDivider.Horizontal" />

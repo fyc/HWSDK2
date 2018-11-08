@@ -34,23 +34,6 @@ public class TipsAlertDialogView extends BaseViewController implements View.OnCl
         btn_cancle.setOnClickListener(this);
         btn_sure = (Button) findViewById(R.id.button_sure);
         btn_sure.setOnClickListener(this);
-//        btn_sure.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (onclick != null) {
-//                    onclick.onPositive();
-//                }
-//            }
-//        });
-//        btn_cancle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (onclick != null) {
-//                    onclick.onNegative();
-//                    close();
-//                }
-//            }
-//        });
     }
 
     @Override

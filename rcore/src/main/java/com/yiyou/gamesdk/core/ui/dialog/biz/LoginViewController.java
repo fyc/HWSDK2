@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.RSDKSpace;
 import com.mobilegamebar.rsdk.outer.event.IDialogParam;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
@@ -27,7 +26,6 @@ import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.yiyou.gamesdk.core.ui.widget.DataPicker;
 import com.yiyou.gamesdk.core.ui.widget.DrawableEditText;
-import com.yiyou.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.yiyou.gamesdk.core.ui.widget.StandardDialog;
 import com.yiyou.gamesdk.core.ui.widget.TipsAlertDialogView;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
@@ -56,7 +54,7 @@ public class LoginViewController extends BaseAuthViewController {
 
     private Button loginButton; //登录按钮
     private View backRegisterButton; //跳转至注册
-    View btnRealNameAuth; //用于测试跳转实名验证
+    View btn_terms_of_sevrvice;
     //    private View resetPasswordBtn;
     private EditText verificationCodeEdit; //验证码
     private Button getVerificationCodeButton; //获取验证码
@@ -108,7 +106,7 @@ public class LoginViewController extends BaseAuthViewController {
         titleImg = findViewById(R.id.img_title_container_title);
 //        resetPasswordBtn = findViewById(R.id.btn_login_container_forget_password);
         backRegisterButton = findViewById(R.id.btn_login_container_back_register);
-        btnRealNameAuth = findViewById(R.id.btn_login_container_register_the_terms_of_service);
+        btn_terms_of_sevrvice = findViewById(R.id.btn_login_container_register_the_terms_of_service);
         accountEdit = (DrawableEditText) findViewById(R.id.edit_login_container_account);
         accountEditViewController = new AccountEditViewController(accountEdit);
         accountEditViewController.noRightDrawableSate();
@@ -261,15 +259,15 @@ public class LoginViewController extends BaseAuthViewController {
         backRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                IMEUtil.hideIME(LoginViewController.this);
-                ViewControllerNavigator.getInstance().toRegister(getDialogParam());
+//                IMEUtil.hideIME(LoginViewController.this);
+//                ViewControllerNavigator.getInstance().toRegister(getDialogParam());
             }
         });
-        btnRealNameAuth.setOnClickListener(new OnClickListener() {
+        btn_terms_of_sevrvice.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 IMEUtil.hideIME(LoginViewController.this);
-                ViewControllerNavigator.getInstance().toRealNameAuth(getDialogParam());
+                ViewControllerNavigator.getInstance().toTermsOfServiceAlertDialogView(context, getDialogParam());
             }
         });
 //        resetPasswordBtn.setOnClickListener(new OnClickListener() {

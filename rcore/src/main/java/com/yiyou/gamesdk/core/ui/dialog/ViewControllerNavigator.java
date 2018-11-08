@@ -19,6 +19,7 @@ import com.yiyou.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
 import com.yiyou.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.yiyou.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.yiyou.gamesdk.core.ui.widget.GameDownloadDialogView;
+import com.yiyou.gamesdk.core.ui.widget.TermsOfServiceAlertDialogView;
 import com.yiyou.gamesdk.core.ui.widget.TipsAlertDialogView;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
 import com.yiyou.gamesdk.model.AnnouncementInfo;
@@ -152,8 +153,15 @@ public class ViewControllerNavigator {
         return alertDialogView;
     }
 
+
     public TipsAlertDialogView toTipsAlertDialogView(Context context) {
         TipsAlertDialogView alertDialogView = new TipsAlertDialogView(context);
+        getDialog(context).show(alertDialogView);
+        return alertDialogView;
+    }
+
+    public TermsOfServiceAlertDialogView toTermsOfServiceAlertDialogView(Context context, IDialogParam params) {
+        TermsOfServiceAlertDialogView alertDialogView = new TermsOfServiceAlertDialogView(context, params);
         getDialog(context).show(alertDialogView);
         return alertDialogView;
     }
