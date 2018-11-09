@@ -22,7 +22,7 @@ public interface IPaymentApi extends IApiWrapping {
      * @param startUpActivity 来源页面
      */
     void order(PaymentInfo paymentInfo, @Nullable Activity startUpActivity, IOperateCallback<String> orderCallback);
-
+    void orderH5(String payUrl, @Nullable Activity startUpActivity, IOperateCallback<String> orderCallback);
     /**
      * 支付操作部分在webview中进行，sdk-client会一直持有orderCallback,直到支付页面调用js接口
      * notifyPayResult(String orderInfo)通知支付完毕。

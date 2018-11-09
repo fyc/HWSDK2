@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.model.PaymentInfo;
@@ -645,6 +646,11 @@ public class ApiFacade implements IApiFacade {
     @Override
     public void order(PaymentInfo paymentInfo, Activity startUpActivity, IOperateCallback<String> orderCallback) {
         paymentApi().order(paymentInfo, startUpActivity, orderCallback);
+    }
+
+    @Override
+    public void orderH5(String payUrl, @Nullable Activity startUpActivity, IOperateCallback<String> orderCallback) {
+        paymentApi().orderH5(payUrl, startUpActivity, orderCallback);
     }
 
     @Override

@@ -87,6 +87,11 @@ public class RGameSDK implements IRSDK {
     }
 
     @Override
+    public void pay2(Activity activity,String s, IOperateCallback<String> callback) {
+        LoadPlugin.getInstance().pay2(activity,s,callback);
+    }
+
+    @Override
     public boolean isLogin() {
         return LoadPlugin.getInstance().isLogin();
     }

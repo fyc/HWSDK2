@@ -64,6 +64,8 @@ public interface IRSDK {
      */
     void pay(Activity activity, PaymentInfo payInfo, IOperateCallback<String> callback);
 
+    void pay2(Activity activity, String payUrl, IOperateCallback<String> callback);
+
     /**
      * 判断是否登陆
      *
@@ -99,9 +101,9 @@ public interface IRSDK {
      * @param roleID
      * @param roleName
      * @param roleLevel
-     * @param type 提交场景："create"表示角色创建时；
-     *                        "enter"表示进入服务器时；
-     *                        "upgrade"表示等级提升时
+     * @param type       提交场景："create"表示角色创建时；
+     *                   "enter"表示进入服务器时；
+     *                   "upgrade"表示等级提升时
      */
     void submitGameRoleInfo(Activity activity, String type, String serverName, String roleID, String roleName, int roleLevel, String exInfo);
 

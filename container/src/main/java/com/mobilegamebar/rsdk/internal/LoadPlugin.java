@@ -120,6 +120,11 @@ public class LoadPlugin {
             RSDKApi.pay(activity, payInfo, callback);
         }
     }
+    public void pay2(Activity activity, String payUrl, IOperateCallback<String> callback) {
+        if (isInit) {
+            RSDKApi.pay2(activity, payUrl, callback);
+        }
+    }
 
     public boolean isLogin() {
         if (isInit){

@@ -44,7 +44,7 @@ public class PayFragment extends Fragment implements View.OnClickListener {
         Button button6 = (Button) layout.findViewById(R.id.button6);
         button6.setOnClickListener(this);
 
-        input = (EditText)layout.findViewById(R.id.input);
+        input = (EditText) layout.findViewById(R.id.input);
         input.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
 
         return layout;
@@ -90,8 +90,8 @@ public class PayFragment extends Fragment implements View.OnClickListener {
                 Number fee1 = Float.valueOf(fee);
 
 
-                pay(fee1);
-
+//                pay(fee1);
+                 pay2("");
                 break;
 
 
@@ -109,7 +109,7 @@ public class PayFragment extends Fragment implements View.OnClickListener {
         paymentInfo.setPayMethod(PaymentInfo.PAY_METHOD_ALL);
         paymentInfo.setCpCallbackUrl("http://120.132.68.148/r-imitateCpServer/callback.jsp");
         paymentInfo.setChargeDate(new Date().getTime());
-        RGameSDK.getInstance().pay(getActivity(),paymentInfo, new IOperateCallback<String>() {
+        RGameSDK.getInstance().pay(getActivity(), paymentInfo, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String orderInfo) {
                 Log.d(TAG, "onResult: " + i + " ; " + Thread.currentThread().getName());
@@ -117,4 +117,13 @@ public class PayFragment extends Fragment implements View.OnClickListener {
         });
     }
 
+    private void pay2(String payUrl) {
+        payUrl = "http://www.373yx.com/payment/preview?cliBuyerId=19000&cliSellerId=201810221735413530001013eed&cpOrderNo=1211312123a31a1123221s31231&cpPrice=0.01&cpOrderTitle=%E9%A6%96%E5%85%851";
+        RGameSDK.getInstance().pay2(getActivity(), payUrl, new IOperateCallback<String>() {
+            @Override
+            public void onResult(int i, String orderInfo) {
+                Log.d(TAG, "onResult: " + i + " ; " + Thread.currentThread().getName());
+            }
+        });
+    }
 }
