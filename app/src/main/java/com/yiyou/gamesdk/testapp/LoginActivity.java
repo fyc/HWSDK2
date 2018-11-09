@@ -288,10 +288,12 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
     public void onBackPressed() {
         //mCurrentView : 0:LoginActivity,1:MainFragment ,2:PayFragment
         if (mCurrentView == 2) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.container, mainFragment);
-            ft.commitAllowingStateLoss();
-            mCurrentView = 1;
+            if (!payFragment.onBackPressed()) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.container, mainFragment);
+                ft.commitAllowingStateLoss();
+                mCurrentView = 1;
+            }
         } else {
             exitImpl();
         }

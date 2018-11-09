@@ -116,6 +116,16 @@ public class PayFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    public boolean onBackPressed(){
+        if(payWebView!=null){
+            payWebView.removeAllViews();
+            payWebView.destroy();
+            payWebView = null;
+            return true;
+        }
+        return false;
+    }
+
     private void pay(Number fee) {
         PaymentInfo paymentInfo = new PaymentInfo();
         paymentInfo.setBody("很厉害的的奇药");
