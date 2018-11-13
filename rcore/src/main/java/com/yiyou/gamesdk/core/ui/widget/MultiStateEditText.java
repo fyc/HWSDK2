@@ -87,7 +87,7 @@ public class MultiStateEditText extends RelativeLayout {
 
     private void init() {
 
-        inflate(getContext(), R.layout.tt_sdk_view_account_multistate_edittext, this);
+        inflate(getContext(), R.layout.qy_sdk_view_account_multistate_edittext, this);
         editText = (DrawableEditText) findViewById(R.id.input);
         iv_delete = (ImageView) findViewById(R.id.iv_delete);
         if (hintres != 0)

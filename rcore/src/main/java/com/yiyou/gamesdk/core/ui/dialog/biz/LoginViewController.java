@@ -86,7 +86,7 @@ public class LoginViewController extends BaseAuthViewController {
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.tt_sdk_container_login;
+        return R.layout.qy_sdk_container_login;
     }
 
     @Override
@@ -517,7 +517,7 @@ public class LoginViewController extends BaseAuthViewController {
                                                 }
                                             });
 
-//                                    TtSdkTipDialog.show((FragmentActivity) context, new TtSdkTipDialog.Onclick() {
+//                                    QySdkTipDialog.show((FragmentActivity) context, new QySdkTipDialog.Onclick() {
 //                                        @Override
 //                                        public void onPositive() {
 //                                            ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());

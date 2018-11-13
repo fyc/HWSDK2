@@ -24,7 +24,7 @@ public class BindPhoneTipView implements IDialogView, View.OnClickListener {
     }
 
     private void initView(Context context) {
-        layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_dialog_bindphone_tip, null);
+        layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_dialog_bindphone_tip, null);
 
         tv_account = (TextView) layout.findViewById(R.id.tv_account);
         layout.findViewById(R.id.cancel).setOnClickListener(this);

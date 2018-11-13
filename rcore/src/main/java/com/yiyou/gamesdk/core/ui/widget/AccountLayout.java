@@ -49,7 +49,7 @@ public class AccountLayout extends RelativeLayout {
     }
 
     private void init() {
-        View layout = inflate(getContext(), R.layout.tt_sdk_view_account_layout, this);
+        View layout = inflate(getContext(), R.layout.qy_sdk_view_account_layout, this);
         leftTv = (TextView) layout.findViewById(R.id.left_text);
         rightTv = (TextView) layout.findViewById(R.id.right_text);
         iv_redpoint = (ImageView) layout.findViewById(R.id.iv_redpoint);

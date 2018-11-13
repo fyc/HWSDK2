@@ -63,7 +63,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View layout = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_account, container, false);
+        View layout = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_account, container, false);
         container.addView(layout);
         loadingDialog = new LoadingDialog(getActivity());
         walletAl = (AccountLayout) layout.findViewById(R.id.ll_wallet);

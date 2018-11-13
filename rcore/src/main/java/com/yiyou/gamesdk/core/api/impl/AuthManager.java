@@ -655,7 +655,7 @@ class AuthManager implements IAuthApi {
 
     private void initLoginSuccessUiTip() {
         Toast toast = new Toast(CoreManager.getContext());
-        View toastRoot = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.tt_sdk_loginsuccess_tip, null);
+        View toastRoot = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.qy_sdk_loginsuccess_tip, null);
         TextView txtContent = (TextView) toastRoot.findViewById(R.id.account);
         txtContent.setText("你好, <" + getPhone() + ">");
         toast.setGravity(Gravity.TOP, 0, 0);

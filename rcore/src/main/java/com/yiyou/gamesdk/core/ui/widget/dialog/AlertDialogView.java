@@ -25,7 +25,7 @@ public class AlertDialogView implements IDialogView, View.OnClickListener {
 
     private void initView(Context context) {
 
-        layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_dialog_common_alert, null);
+        layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_dialog_common_alert, null);
 
         tv_title = (TextView) layout.findViewById(R.id.title);
         tv_message = (TextView) layout.findViewById(R.id.message);

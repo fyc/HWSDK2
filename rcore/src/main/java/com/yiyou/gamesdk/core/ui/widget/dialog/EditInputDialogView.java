@@ -98,7 +98,7 @@ public class EditInputDialogView implements IDialogView, View.OnClickListener  {
 
     private void initView(Context context) {
 
-        layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_dialog_edittext_alert, null);
+        layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_dialog_edittext_alert, null);
         delDrawable = layout.getContext().getResources().getDrawable(R.drawable.icon_all_del);
 
         titleTv = (TextView) layout.findViewById(R.id.title);

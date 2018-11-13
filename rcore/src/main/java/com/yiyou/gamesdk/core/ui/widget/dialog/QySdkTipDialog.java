@@ -3,8 +3,6 @@ package com.yiyou.gamesdk.core.ui.widget.dialog;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,14 +11,12 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;
 
-public class TtSdkTipDialog extends DialogFragment {
+public class QySdkTipDialog extends DialogFragment {
 
     public interface Onclick {
         void onPositive();
@@ -42,8 +38,8 @@ public class TtSdkTipDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        LayoutInflater inflater = getActivity().getLayoutInflater();
-//        final View view = inflater.inflate(R.layout.tt_sdk_tip_dialog, null);//使用LoginActivity加载不到布局资源
-        final View view = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.tt_sdk_tip_dialog, null);
+//        final View view = inflater.inflate(R.layout.qy_sdk_tip_dialog, null);//使用LoginActivity加载不到布局资源
+        final View view = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.qy_sdk_tip_dialog, null);
         btn_cancle = (Button) view.findViewById(R.id.button_cancle);
         btn_sure = (Button) view.findViewById(R.id.button_sure);
         if (onclick != null) {
@@ -101,7 +97,7 @@ public class TtSdkTipDialog extends DialogFragment {
 
     //静态调用方法
     public static void show(FragmentActivity mActivity, Onclick onClick) {
-        TtSdkTipDialog dialogFragment = new TtSdkTipDialog();
+        QySdkTipDialog dialogFragment = new QySdkTipDialog();
         dialogFragment.show(mActivity.getSupportFragmentManager(), onClick);
     }
 }

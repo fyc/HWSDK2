@@ -38,7 +38,7 @@ public class RealNameAuthController extends BaseAuthViewController {
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.tt_sdk_container_real_name;
+        return R.layout.qy_sdk_container_real_name;
     }
 
     @Override

@@ -9,7 +9,7 @@
 
     <!-- Title -->
     <include
-        layout="@layout/tt_sdk_container_item_title2"
+        layout="@layout/qy_sdk_container_item_title2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dialog_title_register_container_height" />
     <View
@@ -18,7 +18,7 @@
     <!-- center -->
     <include
         android:id="@+id/container_item_register_phone"
-        layout="@layout/tt_sdk_container_item_real_name_account"
+        layout="@layout/qy_sdk_container_item_real_name_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_32px"
@@ -26,7 +26,7 @@
 
     <include
         android:id="@+id/container_item_register_account"
-        layout="@layout/tt_sdk_container_item_register_account"
+        layout="@layout/qy_sdk_container_item_register_account"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
     <!-- Bottom -->
     <include
         android:id="@+id/container_item_register_bottom"
-        layout="@layout/tt_sdk_container_item_real_name_bottom"
+        layout="@layout/qy_sdk_container_item_real_name_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_8"

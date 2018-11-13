@@ -230,7 +230,7 @@ public class DataPicker<T extends DataPicker.IDataWrapper> {
             DataViewHolder holder;
             if (convertView == null) {
                 LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-                convertView = inflater.inflate(R.layout.tt_sdk_item_data_pick, null);
+                convertView = inflater.inflate(R.layout.qy_sdk_item_data_pick, null);
                 holder = new DataViewHolder(convertView);
                 convertView.setTag(holder);
             } else {

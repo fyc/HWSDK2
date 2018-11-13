@@ -29,7 +29,7 @@ public class LoadingDialog extends Dialog {
     }
 
     private void initView() {
-        View view = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.tt_sdk_common_loading, null);
+        View view = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.qy_sdk_common_loading, null);
         setContentView(view);
         loadingAnimator = findViewById(R.id.loading_animator);
         Animation animation = AnimationUtils.loadAnimation(ResourceHelper.getContextHolder().get(),

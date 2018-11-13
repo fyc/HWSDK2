@@ -95,7 +95,7 @@ public class AnnouncementManager {
         tipsLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         tipsLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        mFloatLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.tt_sdk_bar_tips, null);
+        mFloatLayout = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.qy_sdk_bar_tips, null);
         htmlText = (TextView) mFloatLayout.findViewById(R.id.tv_tips);
         closeBtn = (ImageView) mFloatLayout.findViewById(R.id.back_icon);
     }

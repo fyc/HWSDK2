@@ -65,7 +65,7 @@ public class ForgetPasswordFragment extends BaseFragment {
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View root = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_forget_password,container,false);
+        View root = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_forget_password,container,false);
         phoneEdt = (EditText)root.findViewById(R.id.edt_phone);
         phoneEdt.setText(ApiFacade.getInstance().getPhone());
         vCodeEdt = (EditText)root.findViewById(R.id.edt_phone_vcode);

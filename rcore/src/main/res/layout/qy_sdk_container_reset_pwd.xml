@@ -9,14 +9,14 @@
 
     <!-- Title -->
     <include
-        layout="@layout/tt_sdk_container_item_title"
+        layout="@layout/qy_sdk_container_item_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dialog_title_register_container_height" />
 
     <!-- center -->
     <include
         android:id="@+id/container_item_register_phone"
-        layout="@layout/tt_sdk_container_item_register_phone"
+        layout="@layout/qy_sdk_container_item_register_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_32px"
@@ -36,7 +36,7 @@
         android:text="@string/ensure" />
     <!--<include-->
         <!--android:id="@+id/container_item_register_bottom"-->
-        <!--layout="@layout/tt_sdk_container_item_register_bottom"-->
+        <!--layout="@layout/qy_sdk_container_item_register_bottom"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/space_12"-->

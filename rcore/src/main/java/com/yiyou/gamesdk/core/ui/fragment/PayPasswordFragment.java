@@ -63,7 +63,7 @@ public class PayPasswordFragment extends BaseFragment implements View.OnClickLis
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View root = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_pay_password,container,false);
+        View root = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_pay_password,container,false);
         newPayPasswordLL = (LinearLayout)root.findViewById(R.id.ll_new_pay_password);
         changePayPasswordLL = (LinearLayout)root.findViewById(R.id.ll_change_pay_password);
         oldPayPwdEdt = (EditText)root.findViewById(R.id.edt_old_pay_pwd);

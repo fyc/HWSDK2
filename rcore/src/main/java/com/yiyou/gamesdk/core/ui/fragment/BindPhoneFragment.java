@@ -63,7 +63,7 @@ public class BindPhoneFragment extends BaseFragment {
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View root = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_bind_phone,container,false);
+        View root = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_bind_phone,container,false);
         phoneEdt = (EditText)root.findViewById(R.id.edt_bind_phone);
         vCodeEdt = (EditText)root.findViewById(R.id.edt_bind_phone_vcode);
         vCodeGetBtn = (Button)root.findViewById(R.id.btn_verification_code_get);

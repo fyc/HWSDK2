@@ -60,7 +60,7 @@ public class ChildrenAccountFragment extends BaseFragment implements View.OnClic
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
         Log.d(TAG, "setFragmentContent: ");
-        View root = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_children_account,container,false);
+        View root = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_children_account,container,false);
         loadingDialog = new LoadingDialog(getActivity());
         childrenAccountLv = (ListView)root.findViewById(R.id.lv_children_account);
         addChildrenAccountBtn = (Button)root.findViewById(R.id.btn_add_children_account);
@@ -145,7 +145,7 @@ public class ChildrenAccountFragment extends BaseFragment implements View.OnClic
         public View getView(int position, View convertView, ViewGroup parent) {
             ChildrenAccountHolder holder;
             if (convertView == null){
-                convertView = LayoutInflater.from(context).inflate(R.layout.tt_sdk_layout_children_account,parent,false);
+                convertView = LayoutInflater.from(context).inflate(R.layout.qy_sdk_layout_children_account,parent,false);
                 holder = new ChildrenAccountHolder();
                 holder.usernameTv = (TextView)convertView.findViewById(R.id.tv_children_account_username);
                 holder.isSelectedTv = (TextView)convertView.findViewById(R.id.tv_is_selected);

@@ -34,7 +34,7 @@ public class StandardDialog extends AlertDialog implements View.OnClickListener{
     private View contentView;
     private void init() {
         LayoutInflater inflater = LayoutInflater.from(ResourceHelper.getContextHolder().get());
-        contentView = inflater.inflate(R.layout.tt_sdk_dialog_common_alert, null);
+        contentView = inflater.inflate(R.layout.qy_sdk_dialog_common_alert, null);
         tv_title = (TextView) contentView.findViewById(R.id.title);
         tv_message = (TextView) contentView.findViewById(R.id.message);
         tv_ensure = (TextView) contentView.findViewById(R.id.ensure);

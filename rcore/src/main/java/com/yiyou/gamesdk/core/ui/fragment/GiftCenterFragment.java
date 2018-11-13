@@ -41,7 +41,7 @@ public class GiftCenterFragment extends BaseFragment {
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View layout = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_gift_center, container, false);
+        View layout = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_gift_center, container, false);
         mEmptyHint = layout.findViewById(R.id.empty_hint);
         mGiftListView = (ListView) layout.findViewById(R.id.list);
         mAdapter = new Adapter();

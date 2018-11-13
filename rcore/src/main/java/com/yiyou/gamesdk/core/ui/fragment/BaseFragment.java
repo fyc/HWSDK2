@@ -209,7 +209,7 @@ public abstract class BaseFragment extends Fragment {
      * @return 默认布局资源ID.
      */
     protected int getDefaultFragmentLayoutResId() {
-        return R.layout.tt_sdk_fragment_base_default;
+        return R.layout.qy_sdk_fragment_base_default;
     }
 
     protected Fragment getTitleBarFragment() {

@@ -918,7 +918,7 @@ public class TabLayout extends LinearLayout {
             // If there isn't a custom view, we'll us our own in-built layouts
             if (mIconView == null) {
                 ImageView iconView = (ImageView) LayoutInflater.from(getContext())
-                        .inflate(R.layout.tt_sdk_layout_tab_icon, this, false);
+                        .inflate(R.layout.qy_sdk_layout_tab_icon, this, false);
 //                ImageView iconView = new ImageView(getContext());
 //                ViewGroup.LayoutParams layoutParams = new LayoutParams(24,24);
 //                iconView.setLayoutParams(layoutParams);
@@ -928,7 +928,7 @@ public class TabLayout extends LinearLayout {
             }
             if (mTextView == null) {
                 TextView textView = (TextView) LayoutInflater.from(getContext())
-                        .inflate(R.layout.tt_sdk_layout_tab_text, this, false);
+                        .inflate(R.layout.qy_sdk_layout_tab_text, this, false);
 //                TextView textView = new TextView(getContext());
 //                ViewGroup.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 //                textView.setLayoutParams(layoutParams);

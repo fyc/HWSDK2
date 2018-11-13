@@ -70,13 +70,13 @@ public class MessageTipView implements IDialogView, ImageView.OnClickListener {
     private void initView(Context context, int MessageType, Activity activity) {
         switch (MessageType) {
             case NORMAL_WITHOUT_BTN:
-                layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_notice_normal, null);
+                layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_notice_normal, null);
                 break;
             case SMALL:
-                layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_notice_small, null);
+                layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_notice_small, null);
                 break;
             default:
-                layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_notice_normal, null);
+                layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_notice_normal, null);
         }
 
 

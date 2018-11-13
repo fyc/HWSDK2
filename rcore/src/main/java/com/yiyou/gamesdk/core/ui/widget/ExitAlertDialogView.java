@@ -52,7 +52,7 @@ public class ExitAlertDialogView extends BaseViewController implements View.OnCl
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.tt_sdk_exit_dialog_alert;
+        return R.layout.qy_sdk_exit_dialog_alert;
     }
 
     @Override

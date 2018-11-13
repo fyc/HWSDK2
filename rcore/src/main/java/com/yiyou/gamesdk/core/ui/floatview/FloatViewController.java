@@ -152,7 +152,7 @@ class FloatViewController implements IViewController {
 
     @SuppressLint("InflateParams")
     public void inite(Context context) {
-        moveView = LayoutInflater.from(context).inflate(R.layout.tt_sdk_float_view, null);
+        moveView = LayoutInflater.from(context).inflate(R.layout.qy_sdk_float_view, null);
         imgFloatView = (ImageView) moveView.findViewById(R.id.img_floatview);
 
         int w1 = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);

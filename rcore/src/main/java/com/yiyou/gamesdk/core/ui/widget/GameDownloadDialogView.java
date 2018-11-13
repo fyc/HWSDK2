@@ -109,7 +109,7 @@ public class GameDownloadDialogView extends BaseViewController implements View.O
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.tt_sdk_dialog_game_download_alert;
+        return R.layout.qy_sdk_dialog_game_download_alert;
     }
 
     @Override

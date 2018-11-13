@@ -36,7 +36,7 @@ public class YunWeiDialogView implements IDialogView ,View.OnClickListener{
     }
 
     private void initView(Context context){
-        layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_before_login_notice, null);
+        layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_before_login_notice, null);
         htmlText = (TextView) layout.findViewById(R.id.textView);
         tv_title = (TextView) layout.findViewById(R.id.popup_title);
         Iv_close = (ImageView) layout.findViewById(R.id.back_icon);

@@ -1,10 +1,7 @@
 package com.yiyou.gamesdk.core.ui.widget;
 
-import android.app.Activity;
 import android.content.Context;
-import android.view.Display;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 
@@ -51,7 +48,7 @@ public class TermsOfServiceAlertDialogView extends BaseViewController implements
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.tt_sdk_container_terms_of_service;
+        return R.layout.qy_sdk_container_terms_of_service;
     }
 
     @Override

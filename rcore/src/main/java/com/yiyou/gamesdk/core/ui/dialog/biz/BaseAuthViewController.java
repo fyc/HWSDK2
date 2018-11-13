@@ -29,7 +29,7 @@ public abstract class BaseAuthViewController extends BaseViewController {
         layoutParams.addRule(CENTER_IN_PARENT);
         contentView.setLayoutParams(layoutParams);
         inflate(ResourceHelper.getContextHolder().get(),
-                R.layout.tt_sdk_loading, this);
+                R.layout.qy_sdk_loading, this);
         loading = findViewById(R.id.global_loading);
         loadingAnimator = findViewById(R.id.loading_animator);
         dialogParam = params;

@@ -30,7 +30,7 @@ public class GiftGetSuccDialogView implements IDialogView, View.OnClickListener 
     }
 
     private void initView(Context context) {
-        layout = LayoutInflater.from(context).inflate(R.layout.tt_sdk_dialog_get_package, null);
+        layout = LayoutInflater.from(context).inflate(R.layout.qy_sdk_dialog_get_package, null);
         mPackageCode = (TextView) layout.findViewById(R.id.package_code);
         layout.findViewById(R.id.dialog_cancel).setOnClickListener(this);
         layout.findViewById(R.id.dialog_confirm).setOnClickListener(this);

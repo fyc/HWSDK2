@@ -18,7 +18,7 @@ public class SplashDialogView implements IDialogView {
     private View floatView;
 
     public SplashDialogView() {
-        floatView = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.tt_sdk_splash_view, null);
+        floatView = LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.qy_sdk_splash_view, null);
     }
 
     @Override

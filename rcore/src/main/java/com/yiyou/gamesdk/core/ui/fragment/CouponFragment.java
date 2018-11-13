@@ -49,7 +49,7 @@ public class CouponFragment extends BaseFragment {
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
         Log.d(TAG, "setFragmentContent: ");
-        View root = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_coupon, container, false);
+        View root = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_coupon, container, false);
         initChildrenFragment();
         mTabLayout = (SlidingTabLayout) root.findViewById(R.id.tl_coupon);
         mCouponFragmentVp = (ViewPager) root.findViewById(R.id.vp_coupon);
@@ -211,7 +211,7 @@ public class CouponFragment extends BaseFragment {
         @Override
         public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             Log.d(TAG, "onCreateView: " + title);
-            contentView = inflater.inflate(R.layout.tt_sdk_fragment_base_coupon, container, false);
+            contentView = inflater.inflate(R.layout.qy_sdk_fragment_base_coupon, container, false);
             final ListView listView = (ListView) contentView.findViewById(R.id.lv_coupon_list);
             tip = (TextView) contentView.findViewById(R.id.tv_no_coupon);
             adapter = new BaseAdapter() {
@@ -234,7 +234,7 @@ public class CouponFragment extends BaseFragment {
                 public View getView(int position, View convertView, ViewGroup parent) {
                     final CouponInfoHolder holder;
                     if (convertView == null) {
-                        convertView = LayoutInflater.from(context).inflate(R.layout.tt_sdk_layout_coupon, parent, false);
+                        convertView = LayoutInflater.from(context).inflate(R.layout.qy_sdk_layout_coupon, parent, false);
                         holder = new CouponInfoHolder();
                         holder.amountRl = (RelativeLayout) convertView.findViewById(R.id.rl_main);
                         holder.amountTv = (TextView) convertView.findViewById(R.id.tv_coupon_amount);

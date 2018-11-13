@@ -58,7 +58,7 @@ public class TipsAlertDialogView extends BaseViewController implements View.OnCl
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.tt_sdk_tip_dialog;
+        return R.layout.qy_sdk_tip_dialog;
     }
 
     @Override

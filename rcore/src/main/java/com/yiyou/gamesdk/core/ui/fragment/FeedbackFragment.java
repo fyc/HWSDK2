@@ -36,7 +36,7 @@ public class FeedbackFragment extends BaseFragment {
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View root = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_feedback, container, false);
+        View root = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_feedback, container, false);
         contentEdt = (EditText) root.findViewById(R.id.content_edt);
         loadingDialog = new LoadingDialog(getActivity());
         container.addView(root);

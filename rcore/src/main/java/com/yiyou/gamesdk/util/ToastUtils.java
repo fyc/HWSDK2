@@ -42,7 +42,7 @@ public class ToastUtils {
                 if (toast == null) {
                     toast = new Toast(context);
                     View customView = LayoutInflater.from(context)
-                            .inflate(R.layout.tt_sdk_custom_toast, null);
+                            .inflate(R.layout.qy_sdk_custom_toast, null);
                     toast.setView(customView);
                     toastInstanceHolder = new WeakReference<Toast>(toast);
                 }

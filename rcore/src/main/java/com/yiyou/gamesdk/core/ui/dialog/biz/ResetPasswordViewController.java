@@ -244,7 +244,7 @@ public class ResetPasswordViewController extends BaseAuthViewController {
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.tt_sdk_container_reset_pwd;
+        return R.layout.qy_sdk_container_reset_pwd;
     }
 
     @Override

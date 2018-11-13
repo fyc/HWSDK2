@@ -87,7 +87,7 @@ public class CommonTitlePrimaryFragment extends Fragment implements OnClickListe
 
         addEvent();
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.tt_sdk_common_fragment_title_primary, container, false);
+            rootView = inflater.inflate(R.layout.qy_sdk_common_fragment_title_primary, container, false);
             tvTitleContent = (TextView) rootView.findViewById(R.id.tv_title_content);
             imgClose = (ImageView) rootView.findViewById(R.id.img_close);
             imgBack = (ImageView) rootView.findViewById(R.id.img_back);

@@ -27,7 +27,7 @@ public class CommonAlertDialog extends Dialog implements View.OnClickListener {
     public CommonAlertDialog init() {
         //context 获取资源的context必须为重写之后的
         LayoutInflater inflater = LayoutInflater.from(CoreManager.getContext());
-        View layout = inflater.inflate(R.layout.tt_sdk_dialog_common_alert, null);
+        View layout = inflater.inflate(R.layout.qy_sdk_dialog_common_alert, null);
         setContentView(layout);
         tv_title = (TextView) layout.findViewById(R.id.title);
         tv_message = (TextView) layout.findViewById(R.id.message);

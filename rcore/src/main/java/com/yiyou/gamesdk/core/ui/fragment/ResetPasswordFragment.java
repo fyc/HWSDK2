@@ -53,7 +53,7 @@ public class ResetPasswordFragment extends BaseFragment implements View.OnClickL
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View root = LayoutInflater.from(content).inflate(R.layout.tt_sdk_fragment_reset_password, container, false);
+        View root = LayoutInflater.from(content).inflate(R.layout.qy_sdk_fragment_reset_password, container, false);
         oldPwdEdt = (EditText)root.findViewById(R.id.edt_old_pwd);
         newPwdEdt = (EditText)root.findViewById(R.id.edt_new_pwd);
         newPwdReEdt = (EditText)root.findViewById(R.id.edt_new_pwd_re);
