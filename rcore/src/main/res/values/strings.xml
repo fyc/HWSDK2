@@ -142,8 +142,8 @@
     <string name="str_price_compare">原价：¥%1$.2f 已省：¥%2$.2f</string>
     <string name="str_price">￥%.2f</string>
     <string name="str_sub_price">-￥%.2f</string>
-    <string name="tip_discount">已享受桃子手游充值折扣 </string>
-    <string name="tip_gold_discount">已享受桃子手游黄金限时 </string>
+    <string name="tip_discount">已享受起源手游充值折扣 </string>
+    <string name="tip_gold_discount">已享受起源手游黄金限时 </string>
     <!--个人中心-->
     <string name="user_center">个人中心</string>
     <string name="user_account">账号</string>

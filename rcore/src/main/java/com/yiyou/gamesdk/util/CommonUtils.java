@@ -56,7 +56,7 @@ public class CommonUtils {
         if (CoreManager.isDebug()) {
             if (!(PackageUtil.isPkgInstalled(activity, StringConstant.APP_DEBUG_PACKAGE))) {
                 ((MainActivity) activity).startFragment(new UnInternalLinkFragment());
-//                ToastUtils.showMsg("未安装桃子手游APP");
+//                ToastUtils.showMsg("未安装起源手游APP");
                 return true;
             }
             if (activity != null) {
@@ -73,7 +73,7 @@ public class CommonUtils {
         } else {
             if (!(PackageUtil.isPkgInstalled(activity, StringConstant.APP_PACKAGE))) {
                 ((MainActivity) activity).startFragment(new UnInternalLinkFragment());
-//                ToastUtils.showMsg("未安装桃子手游APP");
+//                ToastUtils.showMsg("未安装起源手游APP");
                 return true;
             }
             if (activity != null) {
@@ -89,7 +89,7 @@ public class CommonUtils {
             }
         }
 //        if (!(PackageUtil.isPkgInstalled(activity, StringConstant.APP_DEBUG_PACKAGE) || PackageUtil.isPkgInstalled(activity, StringConstant.APP_PACKAGE))) {
-////            ToastUtils.showMsg("未安装桃子手游APP");
+////            ToastUtils.showMsg("未安装起源手游APP");
 //            if (((MainActivity) activity) != null) {
 //                ((MainActivity) activity).showDownloadFragment();
 //            }
@@ -124,7 +124,7 @@ public class CommonUtils {
                                     StartActivityEvent.DISPLAY_TYPE_FULLSCREEN,
                                     null,UnInternalLinkFragment.class.getName(), null));
                 }
-//                ToastUtils.showMsg("未安装桃子手游APP");
+//                ToastUtils.showMsg("未安装起源手游APP");
                 return true;
             }
             int gameId = ApiFacade.getInstance().getCurrentGameID();

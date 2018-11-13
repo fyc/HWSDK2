@@ -183,7 +183,7 @@ public class AnnouncementManager {
 //        if (url.contains("tzsy://")){
 ////            if(!PackageUtil.isPkgInstalled(mContext,"com.sjyx8.tzsy.debug")){
 //            if(! (PackageUtil.isPkgInstalled(mContext,"com.sjyx8.tzsy")&&PackageUtil.isPkgInstalled(mContext,"com.sjyx8.tzsy.debug"))){
-//                ToastUtils.showMsg("未安装桃子手游APP");
+//                ToastUtils.showMsg("未安装起源手游APP");
 //                return false;
 //            }
 //            int gameId = ApiFacade.getInstance().getCurrentGameID();

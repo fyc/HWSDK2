@@ -157,7 +157,7 @@ public class MessageFragment extends BaseFragment {
                 Log.d(TAG, "app名字: " + PackageUtil.getAppName(context));
                 holder.type.setText(PackageUtil.getAppName(context));
             }else {
-                holder.type.setText("桃子官方");
+                holder.type.setText("起源官方");
             }
             return convertView;
         }

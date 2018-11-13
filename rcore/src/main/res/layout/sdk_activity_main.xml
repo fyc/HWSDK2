@@ -85,7 +85,7 @@
                 android:drawableTop="@drawable/sdk_icon_taozi_default"
                 android:enabled="false"
                 android:gravity="center"
-                android:text="打开桃子"
+                android:text="打开起源"
                 android:textColor="@drawable/selector_tab_text"
                 android:textSize="@dimen/text_size_t2"/>
         </RelativeLayout>

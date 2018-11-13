@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
-            android:text="没有安装桃子手游，请先下载安装"
+            android:text="没有安装起源手游，请先下载安装"
             android:textColor="@color/item_text_dark"
             android:textSize="@dimen/text_size_t3"
             android:textStyle="bold"/>

@@ -4,7 +4,7 @@
           android:layout_height="30dp"
           android:gravity="center"
           android:orientation="vertical"
-          android:text="打开桃子查看全部"
+          android:text="打开起源查看全部"
           android:textColor="@color/btn_selected_bg"
           android:textSize="@dimen/text_size_t3">
 
