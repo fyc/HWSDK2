@@ -760,8 +760,8 @@ public final class TypeAdapters {
     }
   };
 
-  public static <TT> TypeAdapterFactory newFactory(
-          final TypeToken<TT> type, final TypeAdapter<TT> typeAdapter) {
+  public static <Y> TypeAdapterFactory newFactory(
+          final TypeToken<Y> type, final TypeAdapter<Y> typeAdapter) {
     return new TypeAdapterFactory() {
       @SuppressWarnings("unchecked") // we use a runtime check to make sure the 'T's equal
       public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
@@ -770,8 +770,8 @@ public final class TypeAdapters {
     };
   }
 
-  public static <TT> TypeAdapterFactory newFactory(
-      final Class<TT> type, final TypeAdapter<TT> typeAdapter) {
+  public static <Y> TypeAdapterFactory newFactory(
+      final Class<Y> type, final TypeAdapter<Y> typeAdapter) {
     return new TypeAdapterFactory() {
       @SuppressWarnings("unchecked") // we use a runtime check to make sure the 'T's equal
       public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
@@ -783,8 +783,8 @@ public final class TypeAdapters {
     };
   }
 
-  public static <TT> TypeAdapterFactory newFactory(
-      final Class<TT> unboxed, final Class<TT> boxed, final TypeAdapter<? super TT> typeAdapter) {
+  public static <Y> TypeAdapterFactory newFactory(
+      final Class<Y> unboxed, final Class<Y> boxed, final TypeAdapter<? super Y> typeAdapter) {
     return new TypeAdapterFactory() {
       @SuppressWarnings("unchecked") // we use a runtime check to make sure the 'T's equal
       public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
@@ -798,8 +798,8 @@ public final class TypeAdapters {
     };
   }
 
-  public static <TT> TypeAdapterFactory newFactoryForMultipleTypes(final Class<TT> base,
-      final Class<? extends TT> sub, final TypeAdapter<? super TT> typeAdapter) {
+  public static <Y> TypeAdapterFactory newFactoryForMultipleTypes(final Class<Y> base,
+      final Class<? extends Y> sub, final TypeAdapter<? super Y> typeAdapter) {
     return new TypeAdapterFactory() {
       @SuppressWarnings("unchecked") // we use a runtime check to make sure the 'T's equal
       public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
@@ -813,8 +813,8 @@ public final class TypeAdapters {
     };
   }
 
-  public static <TT> TypeAdapterFactory newTypeHierarchyFactory(
-      final Class<TT> clazz, final TypeAdapter<TT> typeAdapter) {
+  public static <Y> TypeAdapterFactory newTypeHierarchyFactory(
+      final Class<Y> clazz, final TypeAdapter<Y> typeAdapter) {
     return new TypeAdapterFactory() {
       @SuppressWarnings("unchecked")
       public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> typeToken) {
