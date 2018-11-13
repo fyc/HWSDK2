@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tt_sdk_account_history_list_item_selector"
+    android:background="@drawable/qy_sdk_account_history_list_item_selector"
     >
     <LinearLayout 
         android:orientation="horizontal" android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_height="1px"/>
     <ImageView
         android:id="@+id/dp_green_dot"
-        android:src="@drawable/tt_sdk_ic_green_dot_deep"
+        android:src="@drawable/qy_sdk_ic_green_dot_deep"
         android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -45,7 +45,7 @@ public class DataPicker<T extends DataPicker.IDataWrapper> {
         int paddingPx = Math.round(context.getResources().getDisplayMetrics().density * PADDING);
         listView.setPadding(paddingPx,0,paddingPx,paddingPx);
         container.addView(listView, params);
-        container.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.tt_sdk_popup_normal_bg));
+        container.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.qy_sdk_popup_normal_bg));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

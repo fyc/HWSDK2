@@ -59,7 +59,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
         android:layout_toLeftOf="@id/right_text"
-        android:src="@drawable/tt_sdk_account_redpoint"
+        android:src="@drawable/qy_sdk_account_redpoint"
         android:visibility="gone"/>
 
 

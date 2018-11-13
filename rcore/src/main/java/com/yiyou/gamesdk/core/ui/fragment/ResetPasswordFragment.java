@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.consts.StartType;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
@@ -169,7 +169,7 @@ public class ResetPasswordFragment extends BaseFragment implements View.OnClickL
                 ApiFacade.getInstance().logout(new IOperateCallback<String>() {
                     @Override
                     public void onResult(int i, String s) {
-                        if (i == TTCodeDef.SUCCESS){
+                        if (i == QYCodeDef.SUCCESS){
                             getActivity().finish();
                             if (PluginManager.getInstance().getLogoutCallback()!= null){
                                 PluginManager.getInstance().getLogoutCallback().onResult(i,s);

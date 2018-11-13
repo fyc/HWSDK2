@@ -19,8 +19,8 @@ import com.mobilegamebar.rsdk.outer.util.IBackPressedHandler;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.base.web.WebViewBuilder;
 import com.yiyou.gamesdk.core.base.web.jsi.JSBridge;
-import com.yiyou.gamesdk.core.base.web.jsi.TTCompactDelegate;
-import com.yiyou.gamesdk.core.base.web.jsi.TTCompactJSAPI;
+import com.yiyou.gamesdk.core.base.web.jsi.QYCompactDelegate;
+import com.yiyou.gamesdk.core.base.web.jsi.QYCompactJSAPI;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.util.CommonUtils;
 import com.yiyou.gamesdk.util.PhoneUtils;
@@ -33,11 +33,11 @@ import java.util.regex.Pattern;
  * 由客服端自由控制页面
  * Created by charles on 6/6/16.
  */
-public abstract class WebFragment extends BaseFragment implements IBackPressedHandler, TTCompactDelegate {
+public abstract class WebFragment extends BaseFragment implements IBackPressedHandler, QYCompactDelegate {
 
     private static final String TAG = "RSDK:WebFragment";
     private WebView webView;
-    TTCompactJSAPI compactTTJS;
+    QYCompactJSAPI compactTTJS;
     private ProgressBar progressBar;
     CommonTitlePrimaryFragment titlePrimaryFragment;
 
@@ -142,8 +142,8 @@ public abstract class WebFragment extends BaseFragment implements IBackPressedHa
     protected WebView obtainWebView(Context context) {
         WebViewBuilder builder = WebViewBuilder.obtain();
         Map<String, Object> jsi = new ArrayMap<>();
-        compactTTJS = new TTCompactJSAPI(context, this);
-        jsi.put(TTCompactJSAPI.NAME, compactTTJS);
+        compactTTJS = new QYCompactJSAPI(context, this);
+        jsi.put(QYCompactJSAPI.NAME, compactTTJS);
         return builder.addJavascriptInterface(jsi).build(context);
     }
 

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="410dp"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/tt_sdk_popup_normal_bg"
+    android:background="@drawable/qy_sdk_popup_normal_bg"
     android:layout_height="255dp">
     <LinearLayout
         android:id="@+id/container_pay_center"

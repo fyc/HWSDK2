@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.android.volley1.AuthFailureError;
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.mobilegamebar.rsdk.outer.util.StringUtils;
@@ -326,7 +326,7 @@ class AuthManager implements IAuthApi {
                 }
                 authModel = null;
                 if (iOperateCallback != null) {
-                    iOperateCallback.onResult(TTCodeDef.SUCCESS, "Logout Success!!");
+                    iOperateCallback.onResult(QYCodeDef.SUCCESS, "Logout Success!!");
                 }
             }
 
@@ -340,7 +340,7 @@ class AuthManager implements IAuthApi {
                 ApiFacade.getInstance().insertOrUpdateAccountHistory(accountHistoryInfo);
                 authModel = null;
                 if (iOperateCallback != null) {
-                    iOperateCallback.onResult(TTCodeDef.SUCCESS, "切换账号，假装成功退出"+getMainUid());
+                    iOperateCallback.onResult(QYCodeDef.SUCCESS, "切换账号，假装成功退出"+getMainUid());
                 }
                 Log.d(TAG, "切换账号，假装成功退出");
             }

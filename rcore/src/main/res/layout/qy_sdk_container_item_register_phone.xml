@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dialog_edit_height"
         android:orientation="horizontal"
-        android:background="@drawable/tt_sdk_edt_bg"
+        android:background="@drawable/qy_sdk_edt_bg"
         android:layout_marginBottom="@dimen/margin_16px">
         <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
             android:id="@+id/edit_register_container_verification_code"
@@ -36,7 +36,7 @@
             android:imeOptions="actionNext|flagNoExtractUi" />
         <Button
             android:id="@+id/btn_register_container_get_verification_code"
-            android:background="@drawable/tt_sdk_selector_right_btn"
+            android:background="@drawable/qy_sdk_selector_right_btn"
             android:text="@string/request_get_verification_code"
             android:textSize="@dimen/right_btn_str_size"
             android:textColor="@color/dk_gamesdk_white"

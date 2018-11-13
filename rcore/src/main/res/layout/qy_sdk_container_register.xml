@@ -3,7 +3,7 @@
     android:layout_width="@dimen/login_layout_width"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/tt_sdk_dialog_white_bg_corner"
+    android:background="@drawable/qy_sdk_dialog_white_bg_corner"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -29,9 +29,9 @@
             android:button="@null"
             android:checked="true"
             android:textSize="@dimen/text_size_t6"
-            android:drawableBottom="@drawable/tt_sdk_shape_dialog_radio_button_bg_empty"
+            android:drawableBottom="@drawable/qy_sdk_shape_dialog_radio_button_bg_empty"
             android:gravity="center"
-            android:textColor="@color/tt_sdk_selector_text_color_dialog_register_container_tab_radio_button"
+            android:textColor="@color/qy_sdk_selector_text_color_dialog_register_container_tab_radio_button"
             android:text="@string/register_by_phone"
             android:textStyle="normal|bold" />
 
@@ -46,12 +46,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableBottom="@drawable/tt_sdk_shape_dialog_radio_button_bg_empty"
+            android:drawableBottom="@drawable/qy_sdk_shape_dialog_radio_button_bg_empty"
             android:drawablePadding="@dimen/margin_6px"
             android:gravity="center"
             android:text="@string/register_by_account"
             android:textStyle="normal|bold"
-            android:textColor="@color/tt_sdk_selector_text_color_dialog_register_container_tab_radio_button"
+            android:textColor="@color/qy_sdk_selector_text_color_dialog_register_container_tab_radio_button"
             android:textSize="@dimen/text_size_t6" />
     </LinearLayout>
 

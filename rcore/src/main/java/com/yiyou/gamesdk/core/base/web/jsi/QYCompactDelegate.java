@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.base.web.jsi;
 
 
 
-public interface TTCompactDelegate {
+public interface QYCompactDelegate {
 
 
     void finish();

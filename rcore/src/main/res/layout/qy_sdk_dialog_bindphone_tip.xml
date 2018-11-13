@@ -3,7 +3,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_gravity="center"
-              android:background="@drawable/tt_sdk_shape_dialog_border_bg"
+              android:background="@drawable/qy_sdk_shape_dialog_border_bg"
               android:orientation="vertical">
 
     <LinearLayout

@@ -20,7 +20,7 @@
         android:layout_marginRight="16dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/tt_sdk_account_delete"
+        android:src="@drawable/qy_sdk_account_delete"
         android:id="@+id/iv_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

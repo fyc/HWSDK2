@@ -3,7 +3,7 @@
     android:layout_width="@dimen/login_layout_width"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/tt_sdk_dialog_white_bg_corner"
+    android:background="@drawable/qy_sdk_dialog_white_bg_corner"
     android:gravity="center"
     android:orientation="vertical">
 

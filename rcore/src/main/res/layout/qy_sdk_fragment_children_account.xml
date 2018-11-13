@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/str_normal_light_black"
-            android:divider="@drawable/tt_sdk_listview_divider"
+            android:divider="@drawable/qy_sdk_listview_divider"
             android:dividerHeight="0.5dp"
             android:scrollbars="none"/>
 

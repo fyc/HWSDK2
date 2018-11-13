@@ -16,7 +16,7 @@ import com.gamesdk.shouyouba.tzsy.R;
 import com.mobilegamebar.rsdk.container.RGameSDK;
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.consts.OrientationDef;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.model.GameParamInfo;
 import com.mobilegamebar.rsdk.outer.util.Log;
 
@@ -86,10 +86,10 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
                     RGameSDK.getInstance().setLogoutListener(new IOperateCallback<String>() {
                         @Override
                         public void onResult(int code, String msg) {
-                            if (code == TTCodeDef.LOGOUT_NO_INIT || code == TTCodeDef.LOGOUT_FAIL) {
+                            if (code == QYCodeDef.LOGOUT_NO_INIT || code == QYCodeDef.LOGOUT_FAIL) {
                                 Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG)
                                         .show();
-                            } else if (code == TTCodeDef.LOGOUT_NO_LOGIN || code == TTCodeDef.SUCCESS) {
+                            } else if (code == QYCodeDef.LOGOUT_NO_LOGIN || code == QYCodeDef.SUCCESS) {
                                 RGameSDK.getInstance().hideFloatView(LoginActivity.this);
                                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                                 ft.remove(mainFragment);
@@ -107,7 +107,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
         RGameSDK.getInstance().login(this, new IOperateCallback<String>() {
             @Override
             public void onResult(int code, String s) {
-                if (code == TTCodeDef.SUCCESS) {
+                if (code == QYCodeDef.SUCCESS) {
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.add(R.id.container, mainFragment);
                     ft.commitAllowingStateLoss();
@@ -127,7 +127,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
         RGameSDK.getInstance().loginVisitors(this, new IOperateCallback<String>() {
             @Override
             public void onResult(int code, String s) {
-                if (code == TTCodeDef.SUCCESS) {
+                if (code == QYCodeDef.SUCCESS) {
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.add(R.id.container, mainFragment);
                     ft.commitAllowingStateLoss();
@@ -147,7 +147,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
         RGameSDK.getInstance().loginAuto(this, new IOperateCallback<String>() {
             @Override
             public void onResult(int code, String s) {
-                if (code == TTCodeDef.SUCCESS) {
+                if (code == QYCodeDef.SUCCESS) {
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.add(R.id.container, mainFragment);
                     ft.commitAllowingStateLoss();
@@ -167,7 +167,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
         RGameSDK.getInstance().uninit(LoginActivity.this, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String s) {
-                if (i == TTCodeDef.SUCCESS) {
+                if (i == QYCodeDef.SUCCESS) {
                     System.exit(0);
                 }
             }

@@ -37,7 +37,7 @@ public class ViewControllerNavigator {
 
     private static ViewControllerNavigator _instance;
 
-    private TTMainDialog mDialog;//do not access directly
+    private QYMainDialog mDialog;//do not access directly
 
     private ViewControllerNavigator() {
 
@@ -170,7 +170,7 @@ public class ViewControllerNavigator {
 
     public GameDownloadDialogView toGameDownloadDialogView(Context context, GameUpdateInfo gameUpdateInfo) {
         GameDownloadDialogView alertDialogView = new GameDownloadDialogView(context, gameUpdateInfo);
-        TTMainDialog dialog = getDialog(context);
+        QYMainDialog dialog = getDialog(context);
         dialog.setCancelable(false);
         dialog.show(alertDialogView);
 
@@ -188,7 +188,7 @@ public class ViewControllerNavigator {
     // ************ Interface END ************** //
 
     @TargetApi(17)
-    private TTMainDialog getDialog(Context context) {
+    private QYMainDialog getDialog(Context context) {
         if (!(context instanceof Activity)) {
             throw new RuntimeException("context is not an activity !!");
         }
@@ -202,10 +202,10 @@ public class ViewControllerNavigator {
             Log.w(TAG, "ownerActivity is Destroyed");
         }
         if (mDialog == null || mDialog.getOwnerActivity() == null || mDialog.getOwnerActivity() != context) {
-            mDialog = new TTMainDialog(context);
+            mDialog = new QYMainDialog(context);
             mDialog.setOwnerActivity((Activity) context);
         } else if (Build.VERSION.SDK_INT >= 17 && mDialog.getOwnerActivity().isDestroyed()) {
-            mDialog = new TTMainDialog(context);
+            mDialog = new QYMainDialog(context);
         }
         return mDialog;
     }

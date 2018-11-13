@@ -32,9 +32,9 @@ public class MultiStateButton extends Button {
 
     private void init(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.MultiStateButton);
-        disableRes = a.getResourceId(R.styleable.MultiStateButton_disable_bg, R.drawable.tt_sdk_account_button_disable);
-        enableRes = a.getResourceId(R.styleable.MultiStateButton_enable_bg, R.drawable.tt_sdk_account_button_enable);
-        press_selectorRes = a.getResourceId(R.styleable.MultiStateButton_press_selector, R.drawable.tt_sdk_account_button_selector);
+        disableRes = a.getResourceId(R.styleable.MultiStateButton_disable_bg, R.drawable.qy_sdk_account_button_disable);
+        enableRes = a.getResourceId(R.styleable.MultiStateButton_enable_bg, R.drawable.qy_sdk_account_button_enable);
+        press_selectorRes = a.getResourceId(R.styleable.MultiStateButton_press_selector, R.drawable.qy_sdk_account_button_selector);
 
         a.recycle();
 

@@ -7,7 +7,7 @@ import android.support.v4.util.ArrayMap;
 
 import com.google.gson1.Gson;
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.event.BackToMainFragmentEvent;
 import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.event.StartActivityEvent;
@@ -169,7 +169,7 @@ public class PaymentManager implements IPaymentApi{
     public void orderThroughClient(int payWay, String dataJsonStr, final boolean isFromApp) {
         Activity paymentActivity = paymentActivityHolder.get();
         if (paymentActivity == null) {
-            releaseOrderCallbackOnFail(TTCodeDef.ERROR_PAY_CONTEXT, "调起第三方支付失败");
+            releaseOrderCallbackOnFail(QYCodeDef.ERROR_PAY_CONTEXT, "调起第三方支付失败");
             return;
         }
         PaymentAdapter.sharedInstance().startPay(payWay, paymentActivity, dataJsonStr, new IOperateCallback<String>() {
@@ -212,7 +212,7 @@ public class PaymentManager implements IPaymentApi{
         paymentActivityHolder.get().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                releaseOrderCallbackOnFail(TTCodeDef.ERROR_USER_CANCEL_ORDER, "cancel pay");
+                releaseOrderCallbackOnFail(QYCodeDef.ERROR_USER_CANCEL_ORDER, "cancel pay");
 
             }
         });}

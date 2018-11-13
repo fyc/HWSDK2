@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.api.impl.payment;
 import android.app.Activity;
 import android.support.v4.util.SparseArrayCompat;
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.util.Log;
 
 /**
@@ -68,7 +68,7 @@ public class PaymentAdapter {
         if (payImpl == null) {
             Log.e(TAG, String.format("pay-way %d not found.", payWay));
             if (callback != null) {
-                callback.onResult(TTCodeDef.ERROR_PAY_WAY_NOT_SUPPORT, "支付失败");
+                callback.onResult(QYCodeDef.ERROR_PAY_WAY_NOT_SUPPORT, "支付失败");
             }
             return;
         }

@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.PluginManager;
@@ -131,7 +131,7 @@ public class ForgetPasswordFragment extends BaseFragment {
                 ApiFacade.getInstance().logout(new IOperateCallback<String>() {
                     @Override
                     public void onResult(int i, String s) {
-                        if (i == TTCodeDef.SUCCESS){
+                        if (i == QYCodeDef.SUCCESS){
                             getActivity().finish();
                             if (PluginManager.getInstance().getLogoutCallback()!= null){
                                 PluginManager.getInstance().getLogoutCallback().onResult(i,s);

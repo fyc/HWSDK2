@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.PluginManager;
@@ -44,17 +44,17 @@ import java.util.TreeMap;
 /**
  * Created by levin on 16-3-24.
  */
-public class TTCompactJSAPI {
+public class QYCompactJSAPI {
 
     public static final String NAME = "RSDKJSBridge";
-    public static final String TAG = "RSDK:TTCompactJSAPI ";
+    public static final String TAG = "RSDK:QYCompactJSAPI ";
 
-    private TTCompactDelegate delegate;
+    private QYCompactDelegate delegate;
     private Context mContext;
     private WebView webView;
     private LoadingDialog loadingDialog;
 
-    public TTCompactJSAPI(Context context, TTCompactDelegate delegate) {
+    public QYCompactJSAPI(Context context, QYCompactDelegate delegate) {
         this.delegate = delegate;
         this.mContext = context;
     }
@@ -147,7 +147,7 @@ public class TTCompactJSAPI {
 
     @JavascriptInterface
     public void closeSuccess() {
-        ApiFacade.getInstance().notifyOrderState(TTCodeDef.SUCCESS, "支付成功");
+        ApiFacade.getInstance().notifyOrderState(QYCodeDef.SUCCESS, "支付成功");
         delegate.finish();
     }
     /**

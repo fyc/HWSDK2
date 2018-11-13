@@ -649,7 +649,7 @@ public class LoginViewController extends BaseAuthViewController {
         public void resetRightDrawableState() {
             noRightDrawable = false;
             rightDrawableStateCount = 0;
-            editView.setDrawableRight(R.drawable.tt_sdk_icon_expand);
+            editView.setDrawableRight(R.drawable.qy_sdk_icon_expand);
         }
 
         public int nextRightDrawableState() {
@@ -659,9 +659,9 @@ public class LoginViewController extends BaseAuthViewController {
             }
             state = ++rightDrawableStateCount % 2;
             if (state == 0) {
-                editView.setDrawableRight(R.drawable.tt_sdk_icon_expand);
+                editView.setDrawableRight(R.drawable.qy_sdk_icon_expand);
             } else {
-                editView.setDrawableRight(R.drawable.tt_sdk_icon_collapse);
+                editView.setDrawableRight(R.drawable.qy_sdk_icon_collapse);
             }
             return state;
         }

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.PluginManager;
@@ -316,7 +316,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
                                 @Override
                                 public void onResult(int i, String s) {
                                     loadingDialog.dismiss();
-                                    if (i == TTCodeDef.SUCCESS) {
+                                    if (i == QYCodeDef.SUCCESS) {
                                         getActivity().finish();
                                         if (PluginManager.getInstance().getLogoutCallback() != null) {
                                             PluginManager.getInstance().getLogoutCallback().onResult(i, s);

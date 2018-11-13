@@ -2,15 +2,15 @@ package com.yiyou.gamesdk.core.consts;
 
 import android.support.v4.util.ArrayMap;
 
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.util.StringUtils;
 
 /**
  * Created by levyyoung on 15/4/30.
  */
 public class StatusCodeDef {
-    public static final int SUCCESS = TTCodeDef.SUCCESS;
-    public static final int UNKNOWN = TTCodeDef.UNKNOWN;
+    public static final int SUCCESS = QYCodeDef.SUCCESS;
+    public static final int UNKNOWN = QYCodeDef.UNKNOWN;
 
     //FAIL STATUS
     public static final int FAIL_INIT_SDK_DB_OPEN_ERROR = -100100;

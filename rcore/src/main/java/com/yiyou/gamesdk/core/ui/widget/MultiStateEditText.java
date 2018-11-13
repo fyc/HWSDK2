@@ -38,8 +38,8 @@ public class MultiStateEditText extends RelativeLayout {
 
     public MultiStateEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        normalBg = R.drawable.tt_sdk_account_input_normal;
-        errorBg = R.drawable.tt_sdk_account_input_error;
+        normalBg = R.drawable.qy_sdk_account_input_normal;
+        errorBg = R.drawable.qy_sdk_account_input_error;
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MultiStateEditText);
         hintres = a.getResourceId(R.styleable.MultiStateEditText_hint, 0);

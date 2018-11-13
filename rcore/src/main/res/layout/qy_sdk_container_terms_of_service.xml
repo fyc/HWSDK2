@@ -7,7 +7,7 @@
     android:layout_marginBottom="@dimen/margin_56px"
     android:layout_marginLeft="@dimen/margin_16px"
     android:layout_marginRight="@dimen/margin_16px"
-    android:background="@drawable/tt_sdk_dialog_white_bg_corner">
+    android:background="@drawable/qy_sdk_dialog_white_bg_corner">
     <!-- Title -->
     <TextView
         android:id="@+id/title"
@@ -45,7 +45,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/tt_sdk_btn_bg"
+        android:background="@drawable/qy_sdk_btn_bg"
         android:text="确定"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

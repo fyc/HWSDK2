@@ -71,7 +71,7 @@ class FloatViewController implements IViewController {
 
                 case MES_ANIMA_LEFT:
                     animationleft = AnimationUtils.loadAnimation(context,
-                            R.anim.tt_sdk_anim_float_view_left);
+                            R.anim.qy_sdk_anim_float_view_left);
                     animationleft.setFillAfter(true);
                     imgFloatView.startAnimation(animationleft);
                     animationleft.setAnimationListener(ainimaLeft);
@@ -80,7 +80,7 @@ class FloatViewController implements IViewController {
 
                 case MES_ANIMA_RIGHT:
                     animationright = AnimationUtils.loadAnimation(context,
-                            R.anim.tt_sdk_anim_float_view_right);
+                            R.anim.qy_sdk_anim_float_view_right);
                     animationright.setFillAfter(true);
                     imgFloatView.startAnimation(animationright);
 
@@ -120,7 +120,7 @@ class FloatViewController implements IViewController {
 
         @Override
         public void onAnimationEnd(Animation animation) {
-            imgFloatView.setImageResource(R.drawable.tt_sdk_floatview_close_left);
+            imgFloatView.setImageResource(R.drawable.qy_sdk_floatview_close_left);
         }
     };
 
@@ -138,7 +138,7 @@ class FloatViewController implements IViewController {
 
         @Override
         public void onAnimationEnd(Animation animation) {
-            imgFloatView.setImageResource(R.drawable.tt_sdk_floatview_close_right);
+            imgFloatView.setImageResource(R.drawable.qy_sdk_floatview_close_right);
         }
     };
 

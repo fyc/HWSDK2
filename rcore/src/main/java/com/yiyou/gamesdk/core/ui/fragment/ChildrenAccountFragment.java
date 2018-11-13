@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
@@ -217,7 +217,7 @@ public class ChildrenAccountFragment extends BaseFragment implements View.OnClic
                 @Override
                 public void onResult(int i, String s) {
                     loadingDialog.dismiss();
-                    if (i == TTCodeDef.SUCCESS) {
+                    if (i == QYCodeDef.SUCCESS) {
                         getActivity().finish();
                         if (PluginManager.getInstance().getLogoutCallback() != null) {
                             Log.d(TAG, "onResult: getLogoutCallback" );

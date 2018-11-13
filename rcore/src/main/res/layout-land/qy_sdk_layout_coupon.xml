@@ -75,7 +75,7 @@
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@id/rl_main"
             android:layout_toRightOf="@id/rl_main"
-            android:background="@drawable/tz_sdk_radius_unused_bg"
+            android:background="@drawable/qy_sdk_radius_unused_bg"
             android:gravity="center"
             android:text="现金券"
             android:textColor="@android:color/white"

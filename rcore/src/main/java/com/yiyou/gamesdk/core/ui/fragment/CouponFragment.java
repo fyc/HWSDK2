@@ -295,16 +295,16 @@ public class CouponFragment extends BaseFragment {
                         holder.dateTv.setText(TimeUtils.times(info.getSpendingTime()) + "  已使用 ");
                         holder.usedImg.setVisibility(View.VISIBLE);
                         holder.amountRl.setBackgroundResource(R.drawable.sdk_bg_coupons_gray);
-                        holder.typeTv.setBackgroundResource(R.drawable.tz_sdk_radius_expired_bg);
+                        holder.typeTv.setBackgroundResource(R.drawable.qy_sdk_radius_expired_bg);
                     } else if (CouponInfo.UNUSED.equals(type)) {
                         holder.dateTv.setText("有效期：" + TimeUtils.times(info.getEffectiveDate()) + " - " + TimeUtils.times(info.getExpiryDate()));
-                        holder.typeTv.setBackgroundResource(R.drawable.tz_sdk_radius_unused_bg);
+                        holder.typeTv.setBackgroundResource(R.drawable.qy_sdk_radius_unused_bg);
                         holder.usedImg.setVisibility(View.GONE);
                         holder.amountRl.setBackgroundResource(R.drawable.sdk_bg_coupons_red);
                     } else if (CouponInfo.EXPIRED.equals(type)) {
                         holder.usedImg.setVisibility(View.GONE);
                         holder.amountRl.setBackgroundResource(R.drawable.sdk_bg_coupons_gray);
-                        holder.typeTv.setBackgroundResource(R.drawable.tz_sdk_radius_expired_bg);
+                        holder.typeTv.setBackgroundResource(R.drawable.qy_sdk_radius_expired_bg);
                         holder.dateTv.setText("有效期：" + TimeUtils.times(info.getEffectiveDate()) + " - " + TimeUtils.times(info.getExpiryDate()));
                     }
                     return convertView;

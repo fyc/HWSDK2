@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:divider="@drawable/tt_sdk_listview_divider"
+            android:divider="@drawable/qy_sdk_listview_divider"
             android:dividerHeight="0.5dp"
             android:scrollbars="none"
             android:visibility="gone"/>

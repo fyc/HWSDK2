@@ -12,15 +12,15 @@ import com.mobilegamebar.rsdk.outer.util.Log;
 /**
  * Created by Orange on 15/6/9.
  */
-public final class TTMainDialog extends Dialog {
-    private static final String TAG = "RSDK:TTMainDialog ";
+public final class QYMainDialog extends Dialog {
+    private static final String TAG = "RSDK:QYMainDialog ";
 
     private IDialogContent mShowingDialogContent;
 
     /**
      * @param context           必须是activity的context哦哦哦哦哦
      */
-    TTMainDialog(Context context) {
+    QYMainDialog(Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);

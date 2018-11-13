@@ -23,7 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson1.Gson;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.R;
@@ -435,7 +435,7 @@ public class PayCenterFragment extends BaseFragment implements View.OnClickListe
                 super.onNetSucc(url, params, result);
                 Log.d(TAG, "onNetSucc: " + result);
                 if (TextUtils.isEmpty(result)){
-                    ApiFacade.getInstance().notifyOrderState(TTCodeDef.SUCCESS,"支付成功");
+                    ApiFacade.getInstance().notifyOrderState(QYCodeDef.SUCCESS,"支付成功");
                     getActivity().finish();
                     return;
                 }
@@ -450,14 +450,14 @@ public class PayCenterFragment extends BaseFragment implements View.OnClickListe
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);
                 Log.d(TAG, "onFail: ");
-                ApiFacade.getInstance().notifyOrderState(TTCodeDef.PAY_RESULT_FAIL,errmsg);
+                ApiFacade.getInstance().notifyOrderState(QYCodeDef.PAY_RESULT_FAIL,errmsg);
             }
 
             @Override
             public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
                 super.onNetError(url, params, errno, errmsg);
                 Log.d(TAG, "onNetError: ");
-                ApiFacade.getInstance().notifyOrderState(TTCodeDef.PAY_RESULT_FAIL,errmsg);
+                ApiFacade.getInstance().notifyOrderState(QYCodeDef.PAY_RESULT_FAIL,errmsg);
             }
 
             @Override

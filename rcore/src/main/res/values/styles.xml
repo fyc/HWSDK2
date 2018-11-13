@@ -35,7 +35,7 @@
         <item name="android:paddingLeft">@dimen/margin_24px</item>
         <item name="android:paddingRight">@dimen/margin_24px</item>
         <item name="android:drawablePadding">@dimen/margin_24px</item>
-        <item name="android:background">@drawable/tt_sdk_edt_bg</item>
+        <item name="android:background">@drawable/qy_sdk_edt_bg</item>
         <item name="android:imeOptions">flagNoExtractUi</item>
         <item name="android:textColorHint">@color/edt_hint</item>
     </style>

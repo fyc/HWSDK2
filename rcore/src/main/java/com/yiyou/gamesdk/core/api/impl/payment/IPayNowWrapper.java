@@ -7,7 +7,7 @@ import com.ipaynow.plugin.api.IpaynowPlugin;
 import com.ipaynow.plugin.manager.route.dto.ResponseParams;
 import com.ipaynow.plugin.manager.route.impl.ReceivePayResult;
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.util.ToastUtils;
 
@@ -23,7 +23,7 @@ public class IPayNowWrapper implements IPaySDKWrapper{
         if (startUpActivity == null) {
             Log.e(TAG, "no start up activity for payment.");
             if (callback != null) {
-                callback.onResult(TTCodeDef.ERROR_NO_START_UP_ACTIVITY_FOR_PAY, "支付失败");
+                callback.onResult(QYCodeDef.ERROR_NO_START_UP_ACTIVITY_FOR_PAY, "支付失败");
             }
             return;
         }
@@ -57,15 +57,15 @@ public class IPayNowWrapper implements IPaySDKWrapper{
                         if (respCode.equals("00")) { //交易状态:成功
                             temp ="交易状态:成功";
                             PaymentAdapter.sharedInstance()
-                                    .notifyPayResult(TTCodeDef.SUCCESS, temp);
+                                    .notifyPayResult(QYCodeDef.SUCCESS, temp);
                         } else if (respCode.equals("02")) {//交易状态:取消
                             temp ="交易状态:取消";
                             PaymentAdapter.sharedInstance()
-                                    .notifyPayResult(TTCodeDef.IPAY_NOW_RESULT_CANCEL, temp);
+                                    .notifyPayResult(QYCodeDef.IPAY_NOW_RESULT_CANCEL, temp);
                         } else if (respCode.equals("01")) {//交易状态:失败
                             temp="交易状态:失败"+"\n"+"错误码:"+errorCode+"原因:" + respMsg;
                             PaymentAdapter.sharedInstance()
-                                    .notifyPayResult(TTCodeDef.IPAY_NOW_RESULT_FAIL, temp);
+                                    .notifyPayResult(QYCodeDef.IPAY_NOW_RESULT_FAIL, temp);
                             if(errorCode.equals("E004")){
                                 if(respMsg.contains("3000")){
                                     ToastUtils.showMsg("已超过单笔限额:3000.00元，您可使用支付宝充值");
@@ -76,11 +76,11 @@ public class IPayNowWrapper implements IPaySDKWrapper{
                         } else if (respCode.equals("03")) {//交易状态:未知
                             temp = "respCode="+respCode+"\n"+"respMsg="+respMsg;
                             PaymentAdapter.sharedInstance()
-                                    .notifyPayResult(TTCodeDef.ERROR_ORDER_FAIL_ALL_IN_PAY, temp);
+                                    .notifyPayResult(QYCodeDef.ERROR_ORDER_FAIL_ALL_IN_PAY, temp);
                         } else { //其他
                             temp = "respCode="+respCode+"\n"+"respMsg="+respMsg;
                             PaymentAdapter.sharedInstance()
-                                    .notifyPayResult(TTCodeDef.ERROR_ORDER_FAIL_ALL_IN_PAY, temp);
+                                    .notifyPayResult(QYCodeDef.ERROR_ORDER_FAIL_ALL_IN_PAY, temp);
                         }
                         ToastUtils.showMsg(temp);
                     }

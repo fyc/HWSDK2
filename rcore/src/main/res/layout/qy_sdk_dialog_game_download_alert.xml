@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/tt_sdk_shape_dialog_border_bg"
+    android:background="@drawable/qy_sdk_shape_dialog_border_bg"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -50,7 +50,7 @@
             android:textColor="@android:color/black"
             android:layout_marginLeft="@dimen/margin_40px"
             android:layout_marginRight="@dimen/margin_40px"
-            android:button="@drawable/tt_sdk_checkbox_selector"
+            android:button="@drawable/qy_sdk_checkbox_selector"
             android:layout_marginBottom="3dp"
             android:padding="5dp"
             />
@@ -70,7 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/tt_sdk_selector_dialog_btn_bg"
+                android:background="@drawable/qy_sdk_selector_dialog_btn_bg"
                 android:gravity="center"
                 android:text="@string/not_download"
                 android:textColor="@color/dk_color_acacac"
@@ -88,7 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/tt_sdk_selector_dialog_btn_bg"
+                android:background="@drawable/qy_sdk_selector_dialog_btn_bg"
                 android:gravity="center"
                 android:text="@string/go_download"
                 android:textColor="@color/btn_selected_bg"
@@ -110,7 +110,7 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="250dp"
             android:layout_height="12dp"
-            android:progressDrawable="@drawable/tt_sdk_progress_download" />
+            android:progressDrawable="@drawable/qy_sdk_progress_download" />
 
         <TextView
             android:layout_marginTop="4dp"

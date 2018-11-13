@@ -3,7 +3,7 @@ package com.mobilegamebar.rsdk.outer.consts;
 /**
  * Created by chenshuide on 15/7/23.
  */
-public class TTCodeDef {
+public class QYCodeDef {
     public static  final int SUCCESS = 0;
     public static  final int UNKNOWN = -1;
 

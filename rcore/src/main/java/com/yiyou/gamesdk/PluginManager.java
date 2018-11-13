@@ -13,7 +13,7 @@ import com.mobilegamebar.rsdk.outer.ContextWrapper;
 import com.mobilegamebar.rsdk.outer.ICoreManager;
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.TempLibHelper;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.event.IEventListener;
 import com.mobilegamebar.rsdk.outer.event.StartActivityEvent;
@@ -84,7 +84,7 @@ public class PluginManager {
 
     public void callBack() {
         if (coreManager != null) {
-            initCallback.onResult(TTCodeDef.SUCCESS, "sdk already init");
+            initCallback.onResult(QYCodeDef.SUCCESS, "sdk already init");
             return;
         }
         coreManager = new CoreManager();

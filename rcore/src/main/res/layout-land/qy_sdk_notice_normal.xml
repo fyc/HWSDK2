@@ -22,7 +22,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/tt_sdk_pop_title_bg">
+                android:background="@drawable/qy_sdk_pop_title_bg">
                 <TextView
                     android:id="@+id/popup_title"
                     android:layout_width="fill_parent"

@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.interceptor;
 import android.content.Context;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.event.IEventListener;
 import com.mobilegamebar.rsdk.outer.model.GameParamInfo;
@@ -58,7 +58,7 @@ public class InitStorageInterceptor implements InitInterceptor {
                 StorageEvent.TYPE_ALL_DB_PREPARED, dbPreListener);
         int sdkGameId = peekGameId(gameParamInfo);
         if (sdkGameId == 0) {
-            sdkInitCallback.onResult(TTCodeDef.ERROR_INIT_INVALID_GAME_ID,
+            sdkInitCallback.onResult(QYCodeDef.ERROR_INIT_INVALID_GAME_ID,
                     mContext.getResources().getString(R.string.error_init_invaild_gameid));
             return;
         }

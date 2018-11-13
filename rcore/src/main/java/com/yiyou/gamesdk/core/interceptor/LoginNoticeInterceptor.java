@@ -1,7 +1,7 @@
 package com.yiyou.gamesdk.core.interceptor;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;
@@ -23,7 +23,7 @@ public class LoginNoticeInterceptor implements LoginInterceptor {
 
     @Override
     public void intercept(final Chain<LoginParams> chain) {
-        if (chain.getData().getCode() != TTCodeDef.SUCCESS) {
+        if (chain.getData().getCode() != QYCodeDef.SUCCESS) {
             chain.proceed(chain.getData());
             return;
         }

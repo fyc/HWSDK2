@@ -9,7 +9,7 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.ui.dialog.BaseViewController;
 import com.yiyou.gamesdk.model.AuthModel;
-import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
+import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
 import com.mobilegamebar.rsdk.outer.event.IDialogParam;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 
@@ -83,7 +83,7 @@ public abstract class BaseAuthViewController extends BaseViewController {
     public void onDismiss() {
         if (!willCloseByAuthResult && dialogParam != null) {
             if (dialogParam.getAppCallback() != null) {
-                dialogParam.getAppCallback().onResult(TTCodeDef.ERROR_USER_CANCEL_LOGIN, ResourceHelper.getString(R.string.user_cancel_login));
+                dialogParam.getAppCallback().onResult(QYCodeDef.ERROR_USER_CANCEL_LOGIN, ResourceHelper.getString(R.string.user_cancel_login));
             }
         }
     }

@@ -556,10 +556,10 @@ public class RegisterViewController extends BaseAuthViewController {
                 registerAccountRadioButton.setSelected(false);
                 registerPhoneRadioButton
                         .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0,
-                                R.drawable.tt_sdk_shape_dialog_radio_button_bg);
+                                R.drawable.qy_sdk_shape_dialog_radio_button_bg);
                 registerAccountRadioButton
                         .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0,
-                                R.drawable.tt_sdk_shape_dialog_radio_button_bg_empty);
+                                R.drawable.qy_sdk_shape_dialog_radio_button_bg_empty);
 
                 break;
             case STATE_REGISTER_ACCOUNT:
@@ -569,10 +569,10 @@ public class RegisterViewController extends BaseAuthViewController {
                 registerAccountRadioButton.setSelected(true);
                 registerPhoneRadioButton
                         .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0,
-                                R.drawable.tt_sdk_shape_dialog_radio_button_bg_empty);
+                                R.drawable.qy_sdk_shape_dialog_radio_button_bg_empty);
                 registerAccountRadioButton
                         .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0,
-                                R.drawable.tt_sdk_shape_dialog_radio_button_bg);
+                                R.drawable.qy_sdk_shape_dialog_radio_button_bg);
                 break;
             default:
                 return;
