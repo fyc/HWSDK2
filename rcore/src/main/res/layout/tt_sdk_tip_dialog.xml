@@ -30,7 +30,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:text="为保证你的数据安全，建议你绑定一个账号，以免因刷机等原因导致数据丢失！"
+        android:text="@string/str_bind_phone_dialog_tips"
         android:textColor="@color/login_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

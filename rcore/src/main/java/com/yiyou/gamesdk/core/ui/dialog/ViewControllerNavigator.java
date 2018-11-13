@@ -97,6 +97,8 @@ public class ViewControllerNavigator {
                             toLogin(params);
                         }
                     });
+                }else {
+                    toLogin(params);
                 }
             }
         });

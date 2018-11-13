@@ -46,7 +46,7 @@ public class FloatViewManager {
             @Override
             public void run() {
                 if (floatViewController != null && ApiFacade.getInstance().getMainUid() != 0) {
-                    floatViewController.show();
+//                    floatViewController.show();
                 }
             }
         });

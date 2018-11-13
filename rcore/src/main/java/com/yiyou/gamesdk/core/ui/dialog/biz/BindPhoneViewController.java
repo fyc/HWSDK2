@@ -76,34 +76,8 @@ public class BindPhoneViewController extends BaseAuthViewController {
                 close();
             }
         });
-        accountEdit.addTextChangedListener(new TextWatcher() {
-            boolean blankHit = false;
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String str = accountEdit.getText().toString();
-                if (!blankHit) {
-                    if (StringUtils.isBlank(str)) {
-                        blankHit = true;
-                    }
-                } else {
-                    blankHit = false;
-                }
-                ViewUtils.setViewEnable(bindButton, accountEdit.length() == 11 & verificationCodeEdit.length() != 0);
-                ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() == 11 && reGetVerifyCodeButtonController.getmMillisUntilFinished() == 0);
-            }
-        });
-//        addTextWatcher(accountEdit, verificationCodeEdit);
+        addTextWatcher();
 
         getVerificationCodeButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -135,6 +109,62 @@ public class BindPhoneViewController extends BaseAuthViewController {
         });
     }
 
+    private void addTextWatcher(){
+        accountEdit.addTextChangedListener(new TextWatcher() {
+            boolean blankHit = false;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                String str = accountEdit.getText().toString();
+//                if (!blankHit) {
+//                    if (StringUtils.isBlank(str)) {
+//                        blankHit = true;
+//                    }
+//                } else {
+//                    blankHit = false;
+//                }
+                ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() == 11 && reGetVerifyCodeButtonController.getmMillisUntilFinished() == 0);
+                ViewUtils.setViewEnable(bindButton, accountEdit.length() == 11 && verificationCodeEdit.length() == 4);
+            }
+        });
+        verificationCodeEdit.addTextChangedListener(new TextWatcher() {
+            boolean blankHit = false;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                String str = accountEdit.getText().toString();
+//                if (!blankHit) {
+//                    if (StringUtils.isBlank(str)) {
+//                        blankHit = true;
+//                    }
+//                } else {
+//                    blankHit = false;
+//                }
+                ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() == 11 && reGetVerifyCodeButtonController.getmMillisUntilFinished() == 0);
+                ViewUtils.setViewEnable(bindButton, accountEdit.length() == 11 && verificationCodeEdit.length() == 4);
+            }
+        });
+    }
     private void addTextWatcher(EditText... editTexts) {
         for (final EditText editText : editTexts) {
             editText.addTextChangedListener(new TextWatcher() {

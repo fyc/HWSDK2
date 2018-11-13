@@ -150,13 +150,13 @@ public class AnnouncementManager implements IAnnouncementApi {
     }
 
 
-        @Override
+    @Override
     public void requestAnnouncement(final int from, final IOperateCallback<List<AnnouncementInfo>> callback) {//from:1-登录，2-悬浮球，3-退出
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("uid", String.valueOf(ApiFacade.getInstance().getSubUid()));
         params.put("gid", String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
-        HwRequest request = new HwRequest<>(Urlpath.ANNOUNCEMENT, params,null,new TtRespListener<JSONObject>(){
+        HwRequest request = new HwRequest<>(Urlpath.ANNOUNCEMENT, params, null, new TtRespListener<JSONObject>() {
 
             @Override
             public void onNetSucc(String url, Map<String, String> params, JSONObject jsonObject) {
@@ -180,6 +180,7 @@ public class AnnouncementManager implements IAnnouncementApi {
 
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
+
     @Override
     public void requestAnnouncement2(final int from, final IOperateCallback<List<AnnouncementInfo>> callback) {//from:1-登录，2-悬浮球，3-退出
         Map<String, String> params = new TreeMap<>();
@@ -206,11 +207,13 @@ public class AnnouncementManager implements IAnnouncementApi {
             @Override
             public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
                 super.onNetError(url, params, errno, errmsg);
+                callback.onResult(Integer.valueOf(errno), null);
             }
 
             @Override
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);
+                callback.onResult(errorNo, null);
             }
         });
 
