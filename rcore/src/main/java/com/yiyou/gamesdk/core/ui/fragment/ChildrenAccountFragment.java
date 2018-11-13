@@ -207,7 +207,7 @@ public class ChildrenAccountFragment extends BaseFragment implements View.OnClic
 
     private void changeChildrenAccount(ChildrenAccountHistoryInfo info){
         Log.d(TAG, "changeChildrenAccount: " + info.childrenUserID);
-        ApiFacade.getInstance().setLastLoginChildAccount(info.childrenUserID,info.childrenUsername,info.TTAccount);
+        ApiFacade.getInstance().setLastLoginChildAccount(info.childrenUserID,info.childrenUsername,info.QYAccount);
         adapter.notifyDataSetChanged();
         if(!PropertiesUtil.parseChangeAccount4Config(this.getContext()).toLowerCase().equals("true")){
             ToastUtils.showMsg("切换成功，即将重启游戏");
@@ -364,7 +364,7 @@ public class ChildrenAccountFragment extends BaseFragment implements View.OnClic
                             historyInfo.bundleID = result.getBundleID();
                             historyInfo.childrenUsername = result.getChildUserName();
                             historyInfo.gameId = String.valueOf(ApiFacade.getInstance().getCurrentGameID());
-                            historyInfo.TTAccount = result.getTTAccount();
+                            historyInfo.QYAccount = result.getQYAccount();
                             historyInfo.lastLoginTime = new Date().getTime();
                             ApiFacade.getInstance().insertOrUpdateChildrenAccountHistory(historyInfo);
                             adapter.setChildrenAccountHistoryInfos(ApiFacade.getInstance().getCurrentChildrenAccountHistory());

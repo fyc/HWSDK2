@@ -638,7 +638,7 @@ class AuthManager implements IAuthApi {
             history.childrenUserID = childAccount.getChildUserID();
             history.childrenUsername = childAccount.getChildUserName();
             history.gameId = ApiFacade.getInstance().getCurrentGameID() + "";
-            history.TTAccount = childAccount.getTTAccount();
+            history.QYAccount = childAccount.getQYAccount();
             history.lastLoginTime = new Date().getTime();
             childrenAccountHistoryInfoList.add(history);
         }

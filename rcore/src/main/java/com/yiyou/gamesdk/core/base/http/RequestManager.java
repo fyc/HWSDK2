@@ -62,7 +62,7 @@ public class RequestManager {
     /**
      * add request to RequestQueue
      *
-     * @param request see{@link com.yiyou.gamesdk.core.base.http.volley.TtRequest}
+     * @param request
      * @param tag     设置tag到请求，当需要取消改请求时候 可以根据该tag {@link BaseFragment#getVolleyTag()}  }
      */
     public void addRequest(Request request, Object tag) {

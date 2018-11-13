@@ -799,7 +799,7 @@ public class ApiFacade implements IApiFacade {
             SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid()+"", Context.MODE_PRIVATE);
             preferences.edit().putLong("rsdk_childUserID",lastLoginChildAccount.getChildUserID()).apply();
             preferences.edit().putString("rsdk_childUserName",lastLoginChildAccount.getChildUserName()).apply();
-            preferences.edit().putString("rsdk_TTAccount",lastLoginChildAccount.getTTAccount()).apply();
+            preferences.edit().putString("rsdk_TTAccount",lastLoginChildAccount.getQYAccount()).apply();
             Log.d(TAG,"setLastLoginChildAccount: " + lastLoginChildAccount.toString());
         }
     }

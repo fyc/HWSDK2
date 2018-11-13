@@ -101,7 +101,7 @@ public class CommonTitlePrimaryFragment extends Fragment implements OnClickListe
         updateViewTitleBar(config);
         if (rootView.getParent() != null) {
             ((ViewGroup) rootView.getParent()).removeView(rootView);
-            Log.e("TTViews", "titleBar reuse. remove from parent.");
+            Log.e("QYViews", "titleBar reuse. remove from parent.");
         }
 
         return rootView;

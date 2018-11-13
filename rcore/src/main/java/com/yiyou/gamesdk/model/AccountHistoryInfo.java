@@ -17,7 +17,7 @@ public class AccountHistoryInfo {
     public static final int ACCOUNT_STATUS_ACTIVATING = 0; //激活
 
     public long userID              = 0;
-//    public String TTAccount           = "";
+//    public String QYAccount           = "";
 //    public String username          = "";
     public String phone             = "";
 //    public String password          = "";
@@ -70,8 +70,8 @@ public class AccountHistoryInfo {
     public static AccountHistoryInfo fromCV(ContentValues contentValues) {
         AccountHistoryInfo info = new AccountHistoryInfo();
         info.userID = contentValues.getAsLong(AccountTable.COL_USERID);
-//        if (contentValues.containsKey(AccountTable.COL_TT_ACCOUNT)) {
-//            info.TTAccount = contentValues.getAsString(AccountTable.COL_TT_ACCOUNT);
+//        if (contentValues.containsKey(AccountTable.COL_QY_ACCOUNT)) {
+//            info.QYAccount = contentValues.getAsString(AccountTable.COL_QY_ACCOUNT);
 //        }
 //        if (contentValues.containsKey(AccountTable.COL_USERNAME)) {
 //            info.username = contentValues.getAsString(AccountTable.COL_USERNAME);
@@ -113,7 +113,7 @@ public class AccountHistoryInfo {
     public static AccountHistoryInfo transformFromCursor(Cursor cursor) {
         AccountHistoryInfo info = new AccountHistoryInfo();
         info.userID = cursor.getLong(AccountTable.INDEX_USERID);
-//        info.TTAccount = cursor.getString(AccountTable.INDEX_TT_ACCOUNT);
+//        info.QYAccount = cursor.getString(AccountTable.INDEX_QY_ACCOUNT);
 //        info.username = cursor.getString(AccountTable.INDEX_USERNAME);
         info.phone = cursor.getString(AccountTable.INDEX_PHONE);
         info.accessToken = cursor.getString(AccountTable.INDEX_ACCESS_TOKEN);

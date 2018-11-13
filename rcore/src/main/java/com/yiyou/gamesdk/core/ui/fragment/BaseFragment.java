@@ -176,7 +176,7 @@ public abstract class BaseFragment extends Fragment {
 
         if (contentView.getParent() != null) {
             ((ViewGroup)contentView.getParent()).removeView(contentView);
-            Log.e("TTViews", this+" contentView reuse. remove from parent.");
+            Log.e("QYViews", this+" contentView reuse. remove from parent.");
         }
 
         return contentView;

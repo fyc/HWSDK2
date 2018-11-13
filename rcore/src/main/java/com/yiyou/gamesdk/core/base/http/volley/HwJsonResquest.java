@@ -45,7 +45,7 @@ public class HwJsonResquest extends Request<JSONObject> {
      */
     private static final String PROTOCOL_CONTENT_TYPE =
             String.format("application/json; charset=%s", PROTOCOL_CHARSET);
-    private static final String TAG = "TtJsonResquest";
+    private static final String TAG = "QyJsonResquest";
 
 
     private Map<String, String> mParams;

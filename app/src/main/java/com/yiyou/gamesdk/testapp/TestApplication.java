@@ -15,7 +15,7 @@ import android.os.Build;
  */
 public class TestApplication extends Application {
 
-    private static final String TAG = "TTSDK: " + TestApplication.class.getSimpleName();
+    private static final String TAG = "QYSDK: " + TestApplication.class.getSimpleName();
 
 
     @Override

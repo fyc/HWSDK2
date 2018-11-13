@@ -20,7 +20,7 @@ import java.security.cert.X509Certificate;
  */
 public class PackageUtil {
 
-    private static final String TAG = "TTSDK:PackageUtil";
+    private static final String TAG = "QYSDK:PackageUtil";
 
     /**
      * 获取签名信息

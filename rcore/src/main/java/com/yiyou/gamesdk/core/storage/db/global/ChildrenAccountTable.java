@@ -17,7 +17,7 @@ public class ChildrenAccountTable implements ITable {
     public static final String COL_CHILDREN_USER_NAME           = "children_user_name";
     public static final String COL_USERID                       = "user_id";
     public static final String COL_BUNDLE_ID                    = "bundle_id";
-    public static final String COL_TT_ACCOUNT                   = "tt_account";
+    public static final String COL_QY_ACCOUNT                   = "qy_account";
     public static final String COL_LAST_LOGIN_TIME              = "last_login_time";
     public static final String COL_GAME_ID                      = "game_id";
 
@@ -43,7 +43,7 @@ public class ChildrenAccountTable implements ITable {
     public static final int INDEX_CHILDREN_USER_NAME              = 1;
     public static final int INDEX_USERID                          = 2;
     public static final int INDEX_BUNDLE_ID                       = 3;
-    public static final int INDEX_TT_ACCOUNT                      = 4;
+    public static final int INDEX_QY_ACCOUNT                      = 4;
     public static final int INDEX_LAST_LOGIN_TIME                 = 5;
     public static final int INDEX_GAME_ID                         = 6;
 
@@ -81,7 +81,7 @@ public class ChildrenAccountTable implements ITable {
                 + COL_CHILDREN_USER_NAME + " text, "
                 + COL_USERID          + " number, "
                 + COL_BUNDLE_ID + " text, "
-                + COL_TT_ACCOUNT + " text, "
+                + COL_QY_ACCOUNT + " text, "
                 + COL_LAST_LOGIN_TIME + " number, "
                 + COL_GAME_ID + " text, "
                 + COL_REVERSE_TEXT_0   + " text, "

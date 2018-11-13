@@ -16,7 +16,7 @@ import com.mobilegamebar.rsdk.outer.util.Log;
 
 
 public class ScalableImageView extends ImageView {
-    private static final String TAG = "TTSDK: "+"ScalableImageView";
+    private static final String TAG = "QYSDK: "+"ScalableImageView";
 
     public static final float DEFAULT_RADIUS = 0f;
     public static final float DEFAULT_BORDER_WIDTH = 0f;

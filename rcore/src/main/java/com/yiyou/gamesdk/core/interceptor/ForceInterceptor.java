@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class ForceInterceptor implements InitInterceptor {
 
-    private static final String TAG = "TTSDK: ForceInterceptor";
+    private static final String TAG = "QYSDK: ForceInterceptor";
 
     @Override
     public void intercept(Chain<InitParams> chain) {

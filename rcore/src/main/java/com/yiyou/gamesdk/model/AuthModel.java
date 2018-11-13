@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class AuthModel {
     private long userID;
-    private String TTAccount;
+    private String QYAccount;
     private String userName;
     private String phone;
     private String avatarURL;
@@ -28,7 +28,7 @@ public class AuthModel {
         private long childUserID;
         private String childUserName;
         private String bundleID;
-        private String TTAccount;
+        private String QYAccount;
 
         public long getUserID() {
             return userID;
@@ -62,12 +62,12 @@ public class AuthModel {
             this.bundleID = bundleID;
         }
 
-        public String getTTAccount() {
-            return TTAccount;
+        public String getQYAccount() {
+            return QYAccount;
         }
 
-        public void setTTAccount(String TTAccount) {
-            this.TTAccount = TTAccount;
+        public void setQYAccount(String QYAccount) {
+            this.QYAccount = QYAccount;
         }
     }
 
@@ -79,12 +79,12 @@ public class AuthModel {
         this.userID = userID;
     }
 
-    public String getTTAccount() {
-        return TTAccount;
+    public String getQYAccount() {
+        return QYAccount;
     }
 
-    public void setTTAccount(String TTAccount) {
-        this.TTAccount = TTAccount;
+    public void setQYAccount(String QYAccount) {
+        this.QYAccount = QYAccount;
     }
 
     public String getUserName() {
@@ -203,7 +203,7 @@ public class AuthModel {
     public String toString() {
         return "AuthModel{" +
                 "userID=" + userID +
-                ", TTAccount='" + TTAccount + '\'' +
+                ", QYAccount='" + QYAccount + '\'' +
                 ", userName='" + userName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", avatarURL='" + avatarURL + '\'' +

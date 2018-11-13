@@ -15,7 +15,7 @@ import com.mobilegamebar.rsdk.outer.util.Log;
  */
 public class ShowForceDialogInterceptor implements InitInterceptor {
 
-    private static final String TAG = "TTSDK:ShowForceDialogInterceptor";
+    private static final String TAG = "QYSDK:ShowForceDialogInterceptor";
 
 
     @Override

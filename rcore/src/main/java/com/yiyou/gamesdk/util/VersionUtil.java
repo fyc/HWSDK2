@@ -12,7 +12,7 @@ import com.yiyou.gamesdk.core.CoreManager;
 public class VersionUtil {
     private static String CORE_VERSION;
 
-    private static final String TAG = "TTSDK: "+"VersionUtil";
+    private static final String TAG = "QYSDK: "+"VersionUtil";
 
     static int sLocalVer[] = null;
     static String sLocalName = null;

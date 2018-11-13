@@ -81,7 +81,7 @@ public class PayCenterTitleFragment extends Fragment implements View.OnClickList
         updateViewTitleBar(config);
         if (rootView.getParent() != null) {
             ((ViewGroup) rootView.getParent()).removeView(rootView);
-            Log.e("TTViews", "titleBar reuse. remove from parent.");
+            Log.e("QYViews", "titleBar reuse. remove from parent.");
         }
 
         return rootView;

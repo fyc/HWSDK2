@@ -314,7 +314,7 @@ public class UnBindPhoneFragment extends BaseFragment {
             if (cursor.moveToNext()) {
                 String body = cursor.getString(cursor.getColumnIndex("body")); //获取短信的内容
                 //根据正则分组表达式获取验证码
-                Pattern pattern = Pattern.compile("(【TT语音】|【趣丸网】)(\\s*验证码\\s*)([0-9]{4})");
+                Pattern pattern = Pattern.compile("(【QY语音】|【趣丸网】)(\\s*验证码\\s*)([0-9]{4})");
                 Matcher matcher = pattern.matcher(body);
                 if (matcher.find()) {
                     vCodeEdt.setText(matcher.group(3));

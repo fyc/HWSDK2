@@ -119,7 +119,7 @@ class ReportManager implements IReportApi {
         params.put("ctime", TimeUtils.formatNowTime());
         RequestHelper.buildParamsWithBaseInfo(params);
 
-//        TtRequest request = new TtRequest<>(Urlpath.REPORT, params, Void.class, new QyRespListener<Void>() {
+//        QyRequest request = new QyRequest<>(Urlpath.REPORT, params, Void.class, new QyRespListener<Void>() {
 //            @Override
 //            public void onNetSucc(String url, Map<String, String> params, Void result) {
 //                if (callback != null)

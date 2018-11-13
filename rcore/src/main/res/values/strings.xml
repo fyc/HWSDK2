@@ -82,8 +82,8 @@
     <string name="bind_phone">绑定手机</string>
     <string name="account_purchase_history">消费记录</string>
     <string name="cancel">取消</string>
-    <string name="bind_phone_tip">该手机号码已经绑定TT账号:</string>
-    <string name="bind_phone_tip1">如果继续绑定，则自动与原TT账号解绑。</string>
+    <string name="bind_phone_tip">该手机号码已经绑定QY账号:</string>
+    <string name="bind_phone_tip1">如果继续绑定，则自动与原QY账号解绑。</string>
     <string name="bind_phone_tip2">手机号已经绑定</string>
     <string name="bind_phone_tip3">继续绑定</string>
     <string name="tip">提示</string>

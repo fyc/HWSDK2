@@ -12,7 +12,7 @@ public class AccountTable implements ITable{
     public static final int TABLE_VERSION = 1;
 
     public static final String COL_USERID                     = "user_id";
-    public static final String COL_TT_ACCOUNT                 = "tt_account";
+    public static final String COL_QY_ACCOUNT                 = "qy_account";
     public static final String COL_USERNAME                   = "username";
     public static final String COL_PHONE                      = "phone";
     public static final String COL_PWD                        = "pwd";
@@ -33,7 +33,7 @@ public class AccountTable implements ITable{
     public static final String COL_IS_LOGOUT               = "is_logout";
 
     public static final int INDEX_USERID                       = 0;
-    public static final int INDEX_TT_ACCOUNT                   = 1;
+    public static final int INDEX_QY_ACCOUNT                   = 1;
     public static final int INDEX_USERNAME                     = 2;
     public static final int INDEX_PHONE                        = 3;
     public static final int INDEX_PWD                          = 4;
@@ -67,7 +67,7 @@ public class AccountTable implements ITable{
     public String createTableSQL() {
         String str = "CREATE TABLE IF NOT EXISTS '"+tableName()+"' ( "
                 + COL_USERID + " number primary key, "
-                + COL_TT_ACCOUNT + " text, "
+                + COL_QY_ACCOUNT + " text, "
                 + COL_USERNAME + " text, "
                 + COL_PHONE + " text, "
                 + COL_PWD + " text, "
@@ -98,7 +98,7 @@ public class AccountTable implements ITable{
 //                    createTableSQL(),
 //                    new StringBuilder().append("insert into ").append(TABLE_NAME).append("(")
 //                            .append(COL_USERID).append(", ")
-//                            .append(COL_TT_ACCOUNT).append(", ")
+//                            .append(COL_QY_ACCOUNT).append(", ")
 //                            .append(COL_USERNAME).append(", ")
 //                            .append(COL_PHONE).append(", ")
 //                            .append(COL_PWD).append(", ")
@@ -127,7 +127,7 @@ public class AccountTable implements ITable{
 //                            .append(COL_REVERSE_BLOB_2).append(") ")
 //                            .append("select ")
 //                            .append(COL_USERID).append(", ")
-//                            .append(COL_TT_ACCOUNT).append(", ")
+//                            .append(COL_QY_ACCOUNT).append(", ")
 //                            .append(COL_USERNAME).append(", ")
 //                            .append(COL_PHONE).append(", ")
 //                            .append(COL_PWD).append(", ")

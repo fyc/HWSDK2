@@ -37,7 +37,7 @@ public abstract class WebFragment extends BaseFragment implements IBackPressedHa
 
     private static final String TAG = "RSDK:WebFragment";
     private WebView webView;
-    QYCompactJSAPI compactTTJS;
+    QYCompactJSAPI compactQYJS;
     private ProgressBar progressBar;
     CommonTitlePrimaryFragment titlePrimaryFragment;
 
@@ -124,7 +124,7 @@ public abstract class WebFragment extends BaseFragment implements IBackPressedHa
                 }
             });
         }
-        compactTTJS.setWebView(webView);
+        compactQYJS.setWebView(webView);
         container.addView(webView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         container.setBackgroundColor(getContext().getResources().getColor(R.color.bg_translucence));
@@ -142,8 +142,8 @@ public abstract class WebFragment extends BaseFragment implements IBackPressedHa
     protected WebView obtainWebView(Context context) {
         WebViewBuilder builder = WebViewBuilder.obtain();
         Map<String, Object> jsi = new ArrayMap<>();
-        compactTTJS = new QYCompactJSAPI(context, this);
-        jsi.put(QYCompactJSAPI.NAME, compactTTJS);
+        compactQYJS = new QYCompactJSAPI(context, this);
+        jsi.put(QYCompactJSAPI.NAME, compactQYJS);
         return builder.addJavascriptInterface(jsi).build(context);
     }
 

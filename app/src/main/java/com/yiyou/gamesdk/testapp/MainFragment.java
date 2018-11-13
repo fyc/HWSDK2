@@ -17,7 +17,7 @@ import com.gamesdk.shouyouba.tzsy.R;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
-    private static final String TAG = "TTSDK: "+"MainActivity";
+    private static final String TAG = "QYSDK: "+"MainActivity";
 
     private int screenWidth;
     private int screenHeigth;
@@ -46,7 +46,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         layout = inflater.inflate(R.layout.activity_main, container, false);
         Log.e(TAG, "onCreateView");
         initView();
-//        TTGameSDK.defaultSDK().createFloatButton(getActivity());
+//        QYGameSDK.defaultSDK().createFloatButton(getActivity());
         return layout;
     }
 
@@ -94,15 +94,15 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-//        if (!StringUtils.isBlank(TTGameSDK.defaultSDK().getSession())) {
-//            TTGameSDK.defaultSDK().createFloatButton(getActivity());
+//        if (!StringUtils.isBlank(QYGameSDK.defaultSDK().getSession())) {
+//            QYGameSDK.defaultSDK().createFloatButton(getActivity());
 //        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-//          TTGameSDK.defaultSDK().destroyFloatButton(getActivity());
+//          QYGameSDK.defaultSDK().destroyFloatButton(getActivity());
     }
 
     @Override
