@@ -54,7 +54,7 @@ import javax.net.ssl.SSLSocketFactory;
 public class HurlStack implements HttpStack {
 
     private static final String HEADER_CONTENT_TYPE = "Content-Type";
-    private static final String TAG = "TTSDK: "+"HurlStack";
+    private static final String TAG = "QYSDK: "+"HurlStack";
 
     /**
      * An interface for transforming URLs before use.

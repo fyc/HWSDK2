@@ -23,7 +23,7 @@ import com.mobilegamebar.rsdk.outer.util.Log;
 @SuppressWarnings("UnusedDeclaration")
 public class RoundedDrawable extends Drawable {
 
-  public static final String TAG = "TTSDK: "+"RoundedDrawable";
+  public static final String TAG = "QYSDK: "+"RoundedDrawable";
   public static final int DEFAULT_BORDER_COLOR = Color.BLACK;
 
   private final RectF mBounds = new RectF();

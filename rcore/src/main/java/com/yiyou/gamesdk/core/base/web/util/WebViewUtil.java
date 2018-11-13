@@ -13,7 +13,7 @@ import com.mobilegamebar.rsdk.outer.util.StringUtils;
  * Created by levyyoung on 15/6/5.
  */
 public class WebViewUtil {
-    public static final String TAG = "TTSDK: "+"WebViewUtil";
+    public static final String TAG = "QYSDK: "+"WebViewUtil";
 
     @TargetApi(19)
     public static void evaluateJavascript(WebView webView, String script) {

@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class WebViewBuilder {
 
-    private static final String TAG = "TTSDK: "+"WebViewBuilder";
+    private static final String TAG = "QYSDK: "+"WebViewBuilder";
 
     private WebView finalWebView;
 

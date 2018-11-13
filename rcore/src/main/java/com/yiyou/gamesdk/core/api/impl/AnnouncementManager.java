@@ -42,7 +42,7 @@ import java.util.TreeMap;
  */
 public class AnnouncementManager implements IAnnouncementApi {
 
-    private static final String TAG = "TTSDK: " + "PostLoginInfoManager";
+    private static final String TAG = "QYSDK: " + "PostLoginInfoManager";
     private static final Object lock = new Object();
 
 

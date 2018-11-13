@@ -54,7 +54,7 @@ public class MessageTipView implements IDialogView, ImageView.OnClickListener {
     private final int HOLD = 100;
 
 
-    protected static final String TAG = "TTSDK: " + "MessageTipView";
+    protected static final String TAG = "QYSDK: " + "MessageTipView";
 
     public MessageTipView(Context context, int MessageType, Activity activity, int messageID) {
         mContext = context;

@@ -10,7 +10,7 @@ import com.yiyou.gamesdk.core.ui.dialog.BaseViewController;
 
 public class TipsAlertDialogView extends BaseViewController implements View.OnClickListener {
 
-    private static final String TAG = "TTSDK: " + "TipsAlertDialogView";
+    private static final String TAG = "QYSDK: " + "TipsAlertDialogView";
     public interface Onclick {
         void onPositive();
 

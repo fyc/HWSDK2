@@ -12,7 +12,7 @@ import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.yiyou.gamesdk.util.AssetsUtil;
 
 public class TermsOfServiceAlertDialogView extends BaseViewController implements View.OnClickListener {
-    private static final String TAG = "TTSDK: " + "TermsOfService";
+    private static final String TAG = "QYSDK: " + "TermsOfService";
     Context mContext;
     WebView webview_content;
     Button btn_sure;

@@ -15,7 +15,7 @@ import com.mobilegamebar.rsdk.outer.util.Log;
  */
 public class WebViewPlus extends WebView {
 
-    public static final String TAG = "[TTSDK:Web]";
+    public static final String TAG = "[QYSDK:Web]";
 
     public WebViewPlus(Context context) {
         super(context);

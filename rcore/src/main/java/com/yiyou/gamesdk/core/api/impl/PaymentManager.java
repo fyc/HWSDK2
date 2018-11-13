@@ -216,7 +216,7 @@ public class PaymentManager implements IPaymentApi{
 
             }
         });}
-//        releaseOrderCallbackOnFail(TTCodeDef.ERROR_USER_CANCEL_ORDER, "cancel pay");
+//        releaseOrderCallbackOnFail(QYCodeDef.ERROR_USER_CANCEL_ORDER, "cancel pay");
     }
 
     @Override
