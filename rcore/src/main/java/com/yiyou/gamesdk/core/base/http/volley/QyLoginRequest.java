@@ -16,7 +16,7 @@ import com.google.gson1.Gson;
 import com.google.gson1.JsonSyntaxException;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.core.base.http.utils.HttpErrorCodeDef;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.util.ByteUtils;
 
 import org.json.JSONObject;
@@ -29,7 +29,7 @@ public class QyLoginRequest<T> extends Request<T> {
 
     private static final String TAG = "RSDK: QyLoginRequest";
     private final Gson gson = new Gson();
-    protected TtRespListener<T> mListener;
+    protected QyRespListener<T> mListener;
     protected Map<String, String> mParams, mHeader;
     private String mUrl;
     protected JSONObject postParams;
@@ -69,7 +69,7 @@ public class QyLoginRequest<T> extends Request<T> {
     }
 
     //post
-    public QyLoginRequest(String url, Map<String, String> params, Class<T> clazz, TtRespListener<T> listener) {
+    public QyLoginRequest(String url, Map<String, String> params, Class<T> clazz, QyRespListener<T> listener) {
         this(Method.POST, url, null);
         mListener = listener;
         mParams = params;

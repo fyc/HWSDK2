@@ -2,7 +2,7 @@ package com.yiyou.gamesdk.core.api.def;
 
 import android.support.annotation.NonNull;
 
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.ChildrenAccountHistoryInfo;
 
 import java.util.List;
@@ -54,6 +54,6 @@ public interface IChildrenAccountHistoryApi extends IApiWrapping {
 
     void updateCurrentChildrenAccount(List<ChildrenAccountHistoryInfo> accountHistoryInfoList);
 
-    void editChildrenAccountName(long childUserId, String childUserName, TtRespListener callback);
+    void editChildrenAccountName(long childUserId, String childUserName, QyRespListener callback);
 
 }

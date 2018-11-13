@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.yiyou.gamesdk.core.ui.widget.StandardDialog;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
@@ -208,7 +208,7 @@ public class ResetPasswordViewController extends BaseAuthViewController {
     public void resetPassword(String phone, String password, String vCode){
         putRequestInput(phone, password);
         showLoading();
-        ApiFacade.getInstance().forgetPassword(requestingPhoneNumber, requestingPhonePwd,vCode,new TtRespListener(){
+        ApiFacade.getInstance().forgetPassword(requestingPhoneNumber, requestingPhonePwd,vCode,new QyRespListener(){
             @Override
             public void onNetSucc(String url, Map params, Object result) {
                 super.onNetSucc(url, params, result);
@@ -371,7 +371,7 @@ public class ResetPasswordViewController extends BaseAuthViewController {
      */
     private void getVerificationCodeButtonImpl(String phone) {
         showLoading();
-        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_RESET_PASSWORD, retryTime, new TtRespListener<Void>() {
+        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_RESET_PASSWORD, retryTime, new QyRespListener<Void>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, Void result) {
                 hideLoading();

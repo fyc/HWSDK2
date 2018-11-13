@@ -24,7 +24,7 @@ import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.model.NativeTitleBarUpdateInfo;
@@ -115,7 +115,7 @@ public class ForgetPayPasswordFragment extends BaseFragment {
 
     private void resetPayPassword(){
         loadingDialog.show();
-        ApiFacade.getInstance().forgetPayPassword(requestPhone,requestPassword,requestVCode,new TtRespListener(){
+        ApiFacade.getInstance().forgetPayPassword(requestPhone,requestPassword,requestVCode,new QyRespListener(){
             @Override
             public void onNetSucc(String url, Map params, Object result) {
                 super.onNetSucc(url, params, result);
@@ -201,7 +201,7 @@ public class ForgetPayPasswordFragment extends BaseFragment {
      */
     private void getVerificationCodeButtonImpl(String phone) {
         loadingDialog.show();
-        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_RESET_PAY_PASSWORD, retryTime, new TtRespListener<Void>() {
+        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_RESET_PAY_PASSWORD, retryTime, new QyRespListener<Void>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, Void result) {
                 retryTime++;

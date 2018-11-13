@@ -24,7 +24,7 @@ import com.yiyou.gamesdk.core.api.def.IUpgradeApi;
 import com.yiyou.gamesdk.core.api.impl.ApiLoader;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
 import com.yiyou.gamesdk.model.AnnouncementInfo;
 import com.yiyou.gamesdk.model.AuthModel;
@@ -170,47 +170,47 @@ public class ApiFacade implements IApiFacade {
 
 
     @Override
-    public void registerByUserName(String password, String userName, TtRespListener<AuthModel> callback) {
+    public void registerByUserName(String password, String userName, QyRespListener<AuthModel> callback) {
         authApi().registerByUserName(password,userName,callback);
     }
     @Override
-    public void registerByPhone(String phone, String password, String verificationCode, TtRespListener<AuthModel> callback) {
+    public void registerByPhone(String phone, String password, String verificationCode, QyRespListener<AuthModel> callback) {
         authApi().registerByPhone(phone,password,verificationCode,callback);
     }
 
     @Override
-    public void registerChildAccount(String childUserName, TtRespListener<AuthModel.childAccount> callback) {
+    public void registerChildAccount(String childUserName, QyRespListener<AuthModel.childAccount> callback) {
         authApi().registerChildAccount(childUserName,callback);
     }
 
     @Override
-    public void requestVerificationCode(String phone, int type, TtRespListener<Void> callback) {
+    public void requestVerificationCode(String phone, int type, QyRespListener<Void> callback) {
         authApi().requestVerificationCode(phone,type,callback);
     }
 
     @Override
-    public void requestVerificationCode(String phone, int type, int retry, TtRespListener<Void> callback) {
+    public void requestVerificationCode(String phone, int type, int retry, QyRespListener<Void> callback) {
         authApi().requestVerificationCode(phone,type,retry,callback);
     }
     @Override
-    public void requestVerificationCode2(String phone, int type, int retry, TtRespListener<String> callback) {
+    public void requestVerificationCode2(String phone, int type, int retry, QyRespListener<String> callback) {
         authApi().requestVerificationCode2(phone,type,retry,callback);
     }
 
     @Override
-    public void login(String account, String pwd, TtRespListener<AuthModel> callback) {
+    public void login(String account, String pwd, QyRespListener<AuthModel> callback) {
         authApi().login(account,pwd,callback);
     }
     @Override
-    public void login2(String account, String pwd, TtRespListener<LoginBean> callback) {
+    public void login2(String account, String pwd, QyRespListener<LoginBean> callback) {
         authApi().login2(account,pwd,callback);
     }
     @Override
-    public void loginVisitors(TtRespListener<LoginBean> callback) {
+    public void loginVisitors(QyRespListener<LoginBean> callback) {
         authApi().loginVisitors(callback);
     }
     @Override
-    public void loginAuto(TtRespListener<LoginBean> callback) {
+    public void loginAuto(QyRespListener<LoginBean> callback) {
         authApi().loginAuto(callback);
     }
     @Override
@@ -224,12 +224,12 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void getBalance(TtRespListener<BalanceInfo> callback) {
+    public void getBalance(QyRespListener<BalanceInfo> callback) {
         authApi().getBalance(callback);
     }
 
     @Override
-    public void getCouponInfos(String type, TtRespListener<CouponInfo> callback) {
+    public void getCouponInfos(String type, QyRespListener<CouponInfo> callback) {
         authApi().getCouponInfos(type,callback);
     }
 
@@ -272,7 +272,7 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void getCouponCount(String type, TtRespListener<CouponCountInfo> callback) {
+    public void getCouponCount(String type, QyRespListener<CouponCountInfo> callback) {
         authApi().getCouponCount(type, callback);
     }
 
@@ -282,42 +282,42 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void getCouponCenter(TtRespListener<CouponInfo> callback) {
+    public void getCouponCenter(QyRespListener<CouponInfo> callback) {
         authApi().getCouponCenter(callback);
     }
 
     @Override
-    public void getInventories(TtRespListener<InventoriesInfo> callback) {
+    public void getInventories(QyRespListener<InventoriesInfo> callback) {
         authApi().getInventories(callback);
     }
 
     @Override
-    public void getGamePackage(TtRespListener<GamePackages> callback) {
+    public void getGamePackage(QyRespListener<GamePackages> callback) {
         authApi().getGamePackage(callback);
     }
 
     @Override
-    public void receiveGamePackage(String packageId, TtRespListener<GamePackages.GamePackageInfo> callback) {
+    public void receiveGamePackage(String packageId, QyRespListener<GamePackages.GamePackageInfo> callback) {
         authApi().receiveGamePackage(packageId, callback);
     }
 
     @Override
-    public void getGamePackageDetail(String packageId, TtRespListener<GamePackages.GamePackageInfo> callback) {
+    public void getGamePackageDetail(String packageId, QyRespListener<GamePackages.GamePackageInfo> callback) {
         authApi().getGamePackageDetail(packageId, callback);
     }
 
     @Override
-    public void requestGameDiscount(TtRespListener<GameDiscountInfo> callback) {
+    public void requestGameDiscount(QyRespListener<GameDiscountInfo> callback) {
         authApi().requestGameDiscount(callback);
     }
 
     @Override
-    public void getCoupon(int actId, TtRespListener<GetCouponInfo> callback) {
+    public void getCoupon(int actId, QyRespListener<GetCouponInfo> callback) {
         authApi().getCoupon(actId, callback);
     }
 
     @Override
-    public void getCouponByRule(int ruleId, TtRespListener<GetCouponInfo> callback) {
+    public void getCouponByRule(int ruleId, QyRespListener<GetCouponInfo> callback) {
         authApi().getCouponByRule(ruleId, callback);
     }
 
@@ -397,7 +397,7 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void editChildrenAccountName(long childUserId, String childUserName, TtRespListener callback) {
+    public void editChildrenAccountName(long childUserId, String childUserName, QyRespListener callback) {
         childrenAccountHistoryApi().editChildrenAccountName(childUserId, childUserName, callback);
     }
 
@@ -413,49 +413,49 @@ public class ApiFacade implements IApiFacade {
      * =============================================================================================
      */
     @Override
-    public void modifyPayPassword(String oldPwd, String newPwd, TtRespListener callback) {
+    public void modifyPayPassword(String oldPwd, String newPwd, QyRespListener callback) {
         securityApi().modifyPayPassword(oldPwd,newPwd,callback);
     }
 
     @Override
-    public void modifyPassword(String oldPwd, String newPwd, TtRespListener callback) {
+    public void modifyPassword(String oldPwd, String newPwd, QyRespListener callback) {
         securityApi().modifyPassword(oldPwd,newPwd,callback);
     }
 
     @Override
-    public void forgetPayPassword(String mobile, String newPwd, String vcode, TtRespListener callback) {
+    public void forgetPayPassword(String mobile, String newPwd, String vcode, QyRespListener callback) {
         securityApi().forgetPayPassword(mobile,newPwd,vcode,callback);
     }
 
     @Override
-    public void forgetPassword(String mobile, String newPwd, String vcode, TtRespListener callback) {
+    public void forgetPassword(String mobile, String newPwd, String vcode, QyRespListener callback) {
         securityApi().forgetPassword(mobile,newPwd,vcode,callback);
     }
 
     @Override
-    public void bindPhone(String phoneNum, String smsVCode, TtRespListener callback) {
+    public void bindPhone(String phoneNum, String smsVCode, QyRespListener callback) {
         securityApi().bindPhone(phoneNum,smsVCode,callback);
     }
     @Override
-    public void bindPhone2(String phoneNum, String smsVCode, TtRespListener callback) {
+    public void bindPhone2(String phoneNum, String smsVCode, QyRespListener callback) {
         securityApi().bindPhone2(phoneNum,smsVCode,callback);
     }
 
     @Override
-    public void unbindPhone(String phoneNum, String smsVCode, TtRespListener callback) {
+    public void unbindPhone(String phoneNum, String smsVCode, QyRespListener callback) {
         securityApi().unbindPhone(phoneNum,smsVCode,callback);
     }
     @Override
-    public void realNameAuth(String real_name, String card_no, TtRespListener callback) {
+    public void realNameAuth(String real_name, String card_no, QyRespListener callback) {
         securityApi().realNameAuth(real_name,card_no,callback);
     }
     @Override
-    public void setPayPassword(String password, TtRespListener callback) {
+    public void setPayPassword(String password, QyRespListener callback) {
         securityApi().setPayPassword(password, callback);
     }
 
     @Override
-    public void verifyPayPassword(String payPassword, TtRespListener callback) {
+    public void verifyPayPassword(String payPassword, QyRespListener callback) {
         securityApi().verifyPayPassword(payPassword, callback);
     }
 
@@ -475,12 +475,12 @@ public class ApiFacade implements IApiFacade {
 
     @Override
     public void upgradeRequest(String cpId, int gameId, String versionName, String versionCode,
-                               TtRespListener<GameUpdateInfo> iOperateCallback) {
+                               QyRespListener<GameUpdateInfo> iOperateCallback) {
         upgradeApi().upgradeRequest(cpId, gameId, versionName, versionCode, iOperateCallback);
     }
 
     @Override
-    public void updateCheck(@NonNull Map<String, String> params, TtRespListener<PatchUpdateBean> listener) {
+    public void updateCheck(@NonNull Map<String, String> params, QyRespListener<PatchUpdateBean> listener) {
         upgradeApi().updateCheck(params, listener);
     }
 
@@ -498,7 +498,7 @@ public class ApiFacade implements IApiFacade {
 
 
     @Override
-    public void feedback(String content, TtRespListener<Void> callback) {
+    public void feedback(String content, QyRespListener<Void> callback) {
         reportApi().feedback(content,callback);
     }
 
@@ -684,7 +684,7 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void orderPay(Map<String, String> params, TtRespListener<String> callback) {
+    public void orderPay(Map<String, String> params, QyRespListener<String> callback) {
         paymentApi().orderPay(params,callback);
     }
 

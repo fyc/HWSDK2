@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.model.PaymentInfo;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 
 import java.util.Map;
 
@@ -59,7 +59,7 @@ public interface IPaymentApi extends IApiWrapping {
 
     void getOrderFromApp(Map<String,String> params);
 
-    void orderPay(Map<String, String> params, TtRespListener<String> callback);
+    void orderPay(Map<String, String> params, QyRespListener<String> callback);
 
     void clearOrderCache();
 }

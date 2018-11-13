@@ -15,7 +15,7 @@ import com.yiyou.gamesdk.core.base.http.RequestHelper;
 import com.yiyou.gamesdk.core.base.http.RequestManager;
 import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.storage.Database;
 import com.yiyou.gamesdk.core.storage.StorageAgent;
 import com.yiyou.gamesdk.core.storage.db.global.ChildrenAccountTable;
@@ -112,7 +112,7 @@ class ChildrenAccountHistoryManager implements IChildrenAccountHistoryApi {
     }
 
     @Override
-    public void editChildrenAccountName(long childUserId, String childUserName, TtRespListener callback) {
+    public void editChildrenAccountName(long childUserId, String childUserName, QyRespListener callback) {
         if (childUserId == 0 || TextUtils.isEmpty(childUserName) ){
             ToastUtils.showMsg("输入错误");
             return;

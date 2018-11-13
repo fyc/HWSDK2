@@ -17,7 +17,7 @@ import com.android.volley1.toolbox.HttpHeaderParser;
 import com.google.gson1.Gson;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.utils.HttpErrorCodeDef;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.util.ByteUtils;
 
@@ -37,7 +37,7 @@ import java.util.TreeMap;
 public class HwRequest<T> extends Request<Result<T>> {
 
     private static final String TAG = "RSDK: HwRequest";
-    protected TtRespListener<T> mListener;
+    protected QyRespListener<T> mListener;
     protected Map<String, String> mParams, mHeader;
     private String mUrl;
     private Class<T> mClazz;
@@ -86,7 +86,7 @@ public class HwRequest<T> extends Request<Result<T>> {
     }
 
     //post
-    public HwRequest(String url, Map<String, String> params, Class<T> clazz, TtRespListener<T> listener) {
+    public HwRequest(String url, Map<String, String> params, Class<T> clazz, QyRespListener<T> listener) {
         this(Method.POST, url, null);
         mListener = listener;
         mParams = params;
@@ -99,7 +99,7 @@ public class HwRequest<T> extends Request<Result<T>> {
     }
 
     //post
-    public HwRequest(String url, Map<String, String> params, Class<T> clazz, TtRespListener<T> listener, int contentType) {
+    public HwRequest(String url, Map<String, String> params, Class<T> clazz, QyRespListener<T> listener, int contentType) {
         this(Method.POST, url, null);
         mListener = listener;
         mParams = params;
@@ -114,7 +114,7 @@ public class HwRequest<T> extends Request<Result<T>> {
     }
 
     //get
-    public HwRequest(String url, Class<T> clazz, TtRespListener<T> listener) {
+    public HwRequest(String url, Class<T> clazz, QyRespListener<T> listener) {
         this(Method.GET, url, null);
         mContentType = CONTENT_TYPE_RAW_JSON;
         mListener = listener;

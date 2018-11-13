@@ -16,7 +16,7 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
 import com.yiyou.gamesdk.core.base.http.volley.bean.BindPhoneBean;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
 import com.yiyou.gamesdk.util.IMEUtil;
 import com.yiyou.gamesdk.util.ToastUtils;
@@ -200,7 +200,7 @@ public class BindPhoneViewController extends BaseAuthViewController {
             ToastUtils.showMsg("请不要输入空字符");
             return;
         }
-        ApiFacade.getInstance().bindPhone2(accountEdit.getText().toString(), verificationCodeEdit.getText().toString(), new TtRespListener<BindPhoneBean>() {
+        ApiFacade.getInstance().bindPhone2(accountEdit.getText().toString(), verificationCodeEdit.getText().toString(), new QyRespListener<BindPhoneBean>() {
             @Override
             public void onNetSucc(String url, Map params, BindPhoneBean result) {
                 super.onNetSucc(url, params, result);
@@ -244,7 +244,7 @@ public class BindPhoneViewController extends BaseAuthViewController {
      */
     private void getVerificationCodeButtonImpl(String phone) {
         showLoading();
-        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new TtRespListener<String>() {
+        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new QyRespListener<String>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, String result) {
                 hideLoading();

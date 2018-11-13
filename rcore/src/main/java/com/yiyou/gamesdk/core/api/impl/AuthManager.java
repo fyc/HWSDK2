@@ -28,7 +28,7 @@ import com.yiyou.gamesdk.core.base.http.volley.HwAppRequest;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
 import com.yiyou.gamesdk.core.base.http.volley.QyLoginRequest;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.memcache.LoginInfo;
 import com.yiyou.gamesdk.core.storage.db.global.AccountTable;
@@ -73,7 +73,7 @@ class AuthManager implements IAuthApi {
 
     //用户注册
     @Override
-    public void registerByUserName(String password, String userName, TtRespListener<AuthModel> callback) {
+    public void registerByUserName(String password, String userName, QyRespListener<AuthModel> callback) {
         if (StringUtils.isBlank(password) || password.length() < 6) {
             if (callback != null) {
                 callback.onFail(StatusCodeDef.REG_FAIL_INVALID_PWD, ResourceHelper.getString(R.string.please_input_at_least_6_len));
@@ -100,7 +100,7 @@ class AuthManager implements IAuthApi {
 
     //手机注册
     @Override
-    public void registerByPhone(String phone, String password, String verificationCode, TtRespListener<AuthModel> callback) {
+    public void registerByPhone(String phone, String password, String verificationCode, QyRespListener<AuthModel> callback) {
         if (StringUtils.isBlank(phone) || phone.length() < 11) {
             if (callback != null) {
                 callback.onFail(StatusCodeDef.REG_FAIL_INVALID_PHONE, ResourceHelper.getString(R.string.please_input_valid_11_phone_num));
@@ -126,7 +126,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void registerChildAccount(String childUserName, TtRespListener<AuthModel.childAccount> callback) {
+    public void registerChildAccount(String childUserName, QyRespListener<AuthModel.childAccount> callback) {
 
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
@@ -137,7 +137,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void requestVerificationCode(String phone, int type, int retry, TtRespListener<Void> callback) {
+    public void requestVerificationCode(String phone, int type, int retry, QyRespListener<Void> callback) {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("mobile", phone);
@@ -153,7 +153,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void requestVerificationCode2(String phone, int type, int retry, TtRespListener<String> callback) {
+    public void requestVerificationCode2(String phone, int type, int retry, QyRespListener<String> callback) {
         Map<String, String> params = new TreeMap<>();
 //        String game_id = String.valueOf(ApiFacade.getInstance().getCurrentGameID() + "");
         String game_id = QyLoginRequest.GAMW_ID;
@@ -179,7 +179,7 @@ class AuthManager implements IAuthApi {
      * @param type  //1-保留，2-注册，3-实名认证，4-找回密码,5-解绑手机，6-解除绑定手机
      */
     @Override
-    public void requestVerificationCode(String phone, int type, TtRespListener<Void> callback) {
+    public void requestVerificationCode(String phone, int type, QyRespListener<Void> callback) {
         /*
         "head":{
             "result":"0",
@@ -199,7 +199,7 @@ class AuthManager implements IAuthApi {
 
     //登录
     @Override
-    public void login(String account, String pwd, TtRespListener<AuthModel> callback) {
+    public void login(String account, String pwd, QyRespListener<AuthModel> callback) {
         if (StringUtils.isBlank(account)) {
             if (callback != null) {
                 callback.onFail(StatusCodeDef.LOGIN_FAIL_INVALID_PWD, ResourceHelper.getString(R.string.account_null));
@@ -229,7 +229,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void login2(String account, String code, TtRespListener<LoginBean> callback) {
+    public void login2(String account, String code, QyRespListener<LoginBean> callback) {
 //        if (StringUtils.isBlank(account)) {
 //            if (callback != null) {
 //                callback.onFail(StatusCodeDef.LOGIN_FAIL_INVALID_PWD, ResourceHelper.getString(R.string.account_null));
@@ -260,7 +260,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void loginVisitors(TtRespListener<LoginBean> callback) {
+    public void loginVisitors(QyRespListener<LoginBean> callback) {
         Map<String, String> params = new TreeMap<>();
         String game_id = QyLoginRequest.GAMW_ID;
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
@@ -277,7 +277,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void loginAuto(TtRespListener<LoginBean> callback) {
+    public void loginAuto(QyRespListener<LoginBean> callback) {
         Map<String, String> params = new TreeMap<>();
         String game_id = QyLoginRequest.GAMW_ID;
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
@@ -316,7 +316,7 @@ class AuthManager implements IAuthApi {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
 
-        HwRequest hwRequest = new HwRequest<>(Urlpath.LOGOUT, params, null, new TtRespListener<Object>() {
+        HwRequest hwRequest = new HwRequest<>(Urlpath.LOGOUT, params, null, new QyRespListener<Object>() {
             @Override
             public void onNetSucc(String url, Map params, Object result) {
                 if (params != null) {
@@ -366,7 +366,7 @@ class AuthManager implements IAuthApi {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
 
-        HwRequest request = new HwRequest<>(Urlpath.LOGOUT, params, null, new TtRespListener<Object>() {
+        HwRequest request = new HwRequest<>(Urlpath.LOGOUT, params, null, new QyRespListener<Object>() {
             @Override
             public void onNetSucc(String url, Map params, Object result) {
                 if (params != null) {
@@ -383,7 +383,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getBalance(TtRespListener<BalanceInfo> callback) {
+    public void getBalance(QyRespListener<BalanceInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("accessToken", ApiFacade.getInstance().getSession());
@@ -438,12 +438,12 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getCouponCenter(TtRespListener<CouponInfo> callback) {
+    public void getCouponCenter(QyRespListener<CouponInfo> callback) {
 //
     }
 
     @Override
-    public void getInventories(TtRespListener<InventoriesInfo> callback) {
+    public void getInventories(QyRespListener<InventoriesInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("gameID", ApiFacade.getInstance().getCurrentGameID() + "");
         params.put("startIndex", "0");
@@ -453,7 +453,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getGamePackage(TtRespListener<GamePackages> callback) {
+    public void getGamePackage(QyRespListener<GamePackages> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("gameId", ApiFacade.getInstance().getCurrentGameID() + "");
         RequestHelper.buildParamsWithAppInfo(params);
@@ -463,7 +463,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void receiveGamePackage(String packageId, TtRespListener<GamePackages.GamePackageInfo> callback) {
+    public void receiveGamePackage(String packageId, QyRespListener<GamePackages.GamePackageInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("packageId", packageId);
         params.put("userName", ApiFacade.getInstance().getUserName());
@@ -475,7 +475,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getGamePackageDetail(String packageId, TtRespListener<GamePackages.GamePackageInfo> callback) {
+    public void getGamePackageDetail(String packageId, QyRespListener<GamePackages.GamePackageInfo> callback) {
         Map<String, String> params = new HashMap<>();
         params.put("userName", ApiFacade.getInstance().getUserName());
         params.put("packageId", packageId);
@@ -485,8 +485,8 @@ class AuthManager implements IAuthApi {
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
-    private TtRespListener<AuthModel> newAuthModelRespListenerWrapper(final TtRespListener<AuthModel> callback) {
-        return new TtRespListener<AuthModel>() {
+    private QyRespListener<AuthModel> newAuthModelRespListenerWrapper(final QyRespListener<AuthModel> callback) {
+        return new QyRespListener<AuthModel>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, AuthModel result) {
                 authModel = result;
@@ -550,8 +550,8 @@ class AuthManager implements IAuthApi {
         };
     }
 
-    private TtRespListener<LoginBean> newAuthModelRespListenerWrapper2(int loginType, final TtRespListener<LoginBean> callback) {
-        return new TtRespListener<LoginBean>() {
+    private QyRespListener<LoginBean> newAuthModelRespListenerWrapper2(int loginType, final QyRespListener<LoginBean> callback) {
+        return new QyRespListener<LoginBean>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
                 Log.e(TAG, "onNetSucc:result=" + result.toString());
@@ -665,7 +665,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getCouponInfos(String type, TtRespListener<CouponInfo> callback) {
+    public void getCouponInfos(String type, QyRespListener<CouponInfo> callback) {
 //        Log.d(TAG, "getCouponInfos: ");
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
@@ -677,7 +677,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getCouponCount(String type, TtRespListener<CouponCountInfo> callback) {
+    public void getCouponCount(String type, QyRespListener<CouponCountInfo> callback) {
 //        Log.d(TAG, "getCouponCount: ");
         Map<String, String> params = new TreeMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
@@ -698,7 +698,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void requestGameDiscount(TtRespListener<GameDiscountInfo> callback) {
+    public void requestGameDiscount(QyRespListener<GameDiscountInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("devId", PhoneUtils.getDeviceId(CoreManager.getContext()));
         params.put("gameId", String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
@@ -709,7 +709,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getCoupon(int actId, TtRespListener<GetCouponInfo> callback) {
+    public void getCoupon(int actId, QyRespListener<GetCouponInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("actId", String.valueOf(actId));
         params.put("channelId", ApiFacade.getInstance().getChannel());
@@ -720,7 +720,7 @@ class AuthManager implements IAuthApi {
     }
 
     @Override
-    public void getCouponByRule(int ruleId, TtRespListener<GetCouponInfo> callback) {
+    public void getCouponByRule(int ruleId, QyRespListener<GetCouponInfo> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("ruleId", String.valueOf(ruleId));
         params.put("channelId", ApiFacade.getInstance().getChannel());

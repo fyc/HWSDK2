@@ -1,14 +1,13 @@
 package com.yiyou.gamesdk.core.update;
 
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.RequestHelper;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.PatchUpdateBean;
 import com.mobilegamebar.rsdk.outer.RSDKSpace;
 import com.mobilegamebar.rsdk.outer.model.RootDir;
@@ -16,7 +15,6 @@ import com.mobilegamebar.rsdk.outer.model.VersionDir;
 import com.mobilegamebar.rsdk.outer.util.Log;
 
 import java.io.File;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -45,7 +43,7 @@ public class DefaultUpdateImpl implements IHotfixUpdate {
         params.put("coreVersion", core_version);
 
 
-        ApiFacade.getInstance().updateCheck(params, new TtRespListener<PatchUpdateBean>() {
+        ApiFacade.getInstance().updateCheck(params, new QyRespListener<PatchUpdateBean>() {
 
             @Override
             public void onNetSucc(String url, Map<String, String> params, PatchUpdateBean result) {

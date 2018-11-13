@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;
@@ -77,7 +77,7 @@ public class GiftDetailFragment extends BaseFragment {
     }
 
     private void requestData() {
-        ApiFacade.getInstance().getGamePackageDetail(mPackageId, new TtRespListener<GamePackages.GamePackageInfo>() {
+        ApiFacade.getInstance().getGamePackageDetail(mPackageId, new QyRespListener<GamePackages.GamePackageInfo>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, GamePackages.GamePackageInfo result) {
                 super.onNetSucc(url, params, result);
@@ -115,7 +115,7 @@ public class GiftDetailFragment extends BaseFragment {
                         //未领取
                         final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
                         loadingDialog.show();
-                        ApiFacade.getInstance().receiveGamePackage(mPackageId + "", new TtRespListener<GamePackages.GamePackageInfo>() {
+                        ApiFacade.getInstance().receiveGamePackage(mPackageId + "", new QyRespListener<GamePackages.GamePackageInfo>() {
                             @Override
                             public void onNetSucc(String url, Map<String, String> params, GamePackages.GamePackageInfo result) {
                                 if (loadingDialog != null && loadingDialog.isShowing()) {

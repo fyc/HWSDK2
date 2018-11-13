@@ -28,7 +28,7 @@ import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.storage.events.NativeTitleBarTitleContentEvent;
 import com.yiyou.gamesdk.core.storage.events.NativeTitleBarUpdateEvent;
 import com.yiyou.gamesdk.core.ui.common.PayCenterTitleFragment;
@@ -387,7 +387,7 @@ public class PayCenterFragment extends BaseFragment implements View.OnClickListe
                     return;
                 }
                 loadingDialog.show();
-                ApiFacade.getInstance().verifyPayPassword(dialogView.getInput(), new TtRespListener() {
+                ApiFacade.getInstance().verifyPayPassword(dialogView.getInput(), new QyRespListener() {
                     @Override
                     public void onNetSucc(String url, Map params, Object result) {
                         super.onNetSucc(url, params, result);
@@ -429,7 +429,7 @@ public class PayCenterFragment extends BaseFragment implements View.OnClickListe
             params.put("amount",String.valueOf(selectCoupon.getAmount()/100));
         }
         loadingDialog.show();
-        ApiFacade.getInstance().orderPay(params,new TtRespListener<String>(){
+        ApiFacade.getInstance().orderPay(params,new QyRespListener<String>(){
             @Override
             public void onNetSucc(String url, Map<String, String> params, String result) {
                 super.onNetSucc(url, params, result);

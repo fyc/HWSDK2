@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.model.CouponInfo;
 import com.yiyou.gamesdk.model.NativeTitleBarUpdateInfo;
@@ -313,7 +313,7 @@ public class CouponFragment extends BaseFragment {
             };
             listView.setAdapter(adapter);
 
-            ApiFacade.getInstance().getCouponInfos(type, new TtRespListener<CouponInfo>() {
+            ApiFacade.getInstance().getCouponInfos(type, new QyRespListener<CouponInfo>() {
                 @Override
                 public void onNetSucc(String url, Map<String, String> params, List<CouponInfo> result) {
                     if (result != null && result.size() > 0) {

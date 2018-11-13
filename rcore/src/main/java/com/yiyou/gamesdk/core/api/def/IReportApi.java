@@ -1,7 +1,7 @@
 package com.yiyou.gamesdk.core.api.def;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public interface IReportApi extends IApiWrapping {
 
-    void feedback(String content, TtRespListener<Void> callback);
+    void feedback(String content, QyRespListener<Void> callback);
 
     // 激活事件请求
     void reportActivate(IOperateCallback<Void> callback);

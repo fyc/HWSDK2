@@ -20,7 +20,7 @@ import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.AlertDialogView;
@@ -156,7 +156,7 @@ public class ResetPasswordFragment extends BaseFragment implements View.OnClickL
     private void resetPassword(){
         putRequesetInput(oldPwdEdt.getText().toString(), newPwdEdt.getText().toString());
         loadingDialog.show();
-        ApiFacade.getInstance().modifyPassword(requestOldPwdInput, requestNewPwdInput, new TtRespListener(){
+        ApiFacade.getInstance().modifyPassword(requestOldPwdInput, requestNewPwdInput, new QyRespListener(){
             @Override
             public void onNetSucc(String url, Map params, Object result) {
                 super.onNetSucc(url, params, result);

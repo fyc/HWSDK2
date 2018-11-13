@@ -1,27 +1,10 @@
 package com.yiyou.gamesdk.core.api.impl;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
-import android.net.http.SslError;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.webkit.JsResult;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
 
-import com.alipay.sdk.app.H5PayCallback;
-import com.alipay.sdk.app.PayTask;
-import com.alipay.sdk.util.H5PayResultModel;
 import com.google.gson1.Gson;
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
@@ -41,7 +24,7 @@ import com.yiyou.gamesdk.core.base.http.utils.HttpUtils;
 import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwJsonResquest;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.ui.fragment.PayCenterFragment;
 import com.yiyou.gamesdk.core.ui.fragment.PayFragment;
@@ -54,7 +37,6 @@ import com.yiyou.gamesdk.util.VersionUtil;
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -238,14 +220,14 @@ public class PaymentManager implements IPaymentApi{
     }
 
     @Override
-    public void orderPay(Map<String, String> params, TtRespListener<String> callback) {
+    public void orderPay(Map<String, String> params, QyRespListener<String> callback) {
         params.put("accessToken", ApiFacade.getInstance().getSession());
         String url = HttpUtils.buildUrl(Urlpath.PAY_URL, params);
         HwRequest request = new HwRequest<>(url,null,String.class,callback);
         RequestManager.getInstance(CoreManager.getContext()).addRequest(request, null);
     }
 
-    private class OrderRespListener extends TtRespListener<InternalOrderInfo>{
+    private class OrderRespListener extends QyRespListener<InternalOrderInfo> {
         private String cpOrderId;
         public OrderRespListener(String orderId) {
             cpOrderId = orderId;
@@ -280,7 +262,7 @@ public class PaymentManager implements IPaymentApi{
 //            EventDispatcherAgent.defaultAgent().broadcast(StartActivityEvent.TYPE_START_ACTIVITY_ENVENT, param);
 
 //            ToastUtils.showMsg(result.getOrderInfoUrl());
-            HwRequest<PayInfo> request = new HwRequest<>(result.getOrderInfoUrl(), params, PayInfo.class, new TtRespListener<PayInfo>() {
+            HwRequest<PayInfo> request = new HwRequest<>(result.getOrderInfoUrl(), params, PayInfo.class, new QyRespListener<PayInfo>() {
                 @Override
                 public void onNetSucc(String url, Map params, PayInfo result) {
                     Bundle arguments = new Bundle();
@@ -335,7 +317,7 @@ public class PaymentManager implements IPaymentApi{
 
     @Override
     public void getOrderFromApp(Map<String,String> params){
-        HwJsonResquest jsonResquest = new HwJsonResquest(Urlpath.FROM_APP_OLDER,params,new TtRespListener<JSONObject>(){
+        HwJsonResquest jsonResquest = new HwJsonResquest(Urlpath.FROM_APP_OLDER,params,new QyRespListener<JSONObject>(){
             @Override
             public void onNetSucc(String url, Map<String, String> params, JSONObject result) {
                 JSONObject head = result.optJSONObject("head");

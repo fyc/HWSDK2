@@ -13,7 +13,7 @@ import com.mobilegamebar.rsdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.util.IMEUtil;
 import com.yiyou.gamesdk.util.ToastUtils;
 import com.yiyou.gamesdk.util.ViewUtils;
@@ -110,7 +110,7 @@ public class RealNameAuthController extends BaseAuthViewController {
             ToastUtils.showMsg("请不要输入空字符");
             return;
         }
-        ApiFacade.getInstance().realNameAuth(real_name, card_no, new TtRespListener<QyDataBean>() {
+        ApiFacade.getInstance().realNameAuth(real_name, card_no, new QyRespListener<QyDataBean>() {
             @Override
             public void onNetSucc(String url, Map params, QyDataBean result) {
                 super.onNetSucc(url, params, result);

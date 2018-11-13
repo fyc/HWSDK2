@@ -18,7 +18,7 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.RequestManager;
 import com.yiyou.gamesdk.core.base.http.utils.AppInternalHandler;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.base.http.volley.view.HttpImageView;
 import com.yiyou.gamesdk.model.InventoriesInfo;
 import com.yiyou.gamesdk.model.InventoryInfo;
@@ -59,7 +59,7 @@ public class AccountTradeFragment extends BaseFragment {
     }
 
     private void getTradeInfo() {
-        ApiFacade.getInstance().getInventories(new TtRespListener<InventoriesInfo>() {
+        ApiFacade.getInstance().getInventories(new QyRespListener<InventoriesInfo>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, InventoriesInfo result) {
                 super.onNetSucc(url, params, result);

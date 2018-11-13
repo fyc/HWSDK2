@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,7 +24,7 @@ import com.mobilegamebar.rsdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.yiyou.gamesdk.core.ui.fragment.LicenseFragment;
@@ -411,7 +410,7 @@ public class RegisterViewController extends BaseAuthViewController {
      */
     private void getVerificationCodeButtonImpl(String phone) {
         showLoading();
-        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime,new TtRespListener<Void>() {
+        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime,new QyRespListener<Void>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, Void result) {
                 hideLoading();
@@ -442,7 +441,7 @@ public class RegisterViewController extends BaseAuthViewController {
     }
     private void registerByPhoneImpl(final String phone, final String password,final String vCode) {
         showLoading();
-        TtRespListener<AuthModel> callback = new TtRespListener<AuthModel>() {
+        QyRespListener<AuthModel> callback = new QyRespListener<AuthModel>() {
             @Override
             public void onNetSucc(String url, Map params, AuthModel result) {
                 if (params != null) {
@@ -474,7 +473,7 @@ public class RegisterViewController extends BaseAuthViewController {
 
     private void invokeRegisterByPhone(String phone, String password, String vCode) {
         showLoading();
-        TtRespListener<AuthModel> callback = new TtRespListener<AuthModel>() {
+        QyRespListener<AuthModel> callback = new QyRespListener<AuthModel>() {
             @Override
             public void onNetSucc(String url, Map params, AuthModel result) {
                 if (params != null) {
@@ -505,7 +504,7 @@ public class RegisterViewController extends BaseAuthViewController {
 
     private void registerByAccountImpl(final String account, final String password){
         showLoading();
-        ApiFacade.getInstance().registerByUserName(password,account,new TtRespListener<AuthModel>(){
+        ApiFacade.getInstance().registerByUserName(password,account,new QyRespListener<AuthModel>(){
             @Override
             public void onNetworkComplete() {
                 super.onNetworkComplete();

@@ -12,9 +12,9 @@ import java.util.Map;
  * Created by chenshuide on 15/6/3.
  * 网络回调接口
  */
-public class TtRespListener<T> {
+public class QyRespListener<T> {
 
-    private static final String TAG = "RSDK:TtRespListener ";
+    private static final String TAG = "RSDK:QyRespListener ";
 
 
     /**

@@ -17,7 +17,7 @@ import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
 import com.yiyou.gamesdk.core.base.http.volley.QyLoginRequest;
 import com.yiyou.gamesdk.core.base.http.volley.bean.AnnouncementBean;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.storage.Database;
 import com.yiyou.gamesdk.core.storage.StorageAgent;
 import com.yiyou.gamesdk.core.storage.db.global.AnnouncementTable;
@@ -156,7 +156,7 @@ public class AnnouncementManager implements IAnnouncementApi {
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("uid", String.valueOf(ApiFacade.getInstance().getSubUid()));
         params.put("gid", String.valueOf(ApiFacade.getInstance().getCurrentGameID()));
-        HwRequest request = new HwRequest<>(Urlpath.ANNOUNCEMENT, params, null, new TtRespListener<JSONObject>() {
+        HwRequest request = new HwRequest<>(Urlpath.ANNOUNCEMENT, params, null, new QyRespListener<JSONObject>() {
 
             @Override
             public void onNetSucc(String url, Map<String, String> params, JSONObject jsonObject) {
@@ -194,7 +194,7 @@ public class AnnouncementManager implements IAnnouncementApi {
         String src = String.format("channel=%s&ctime=%s&game_id=%s", channel, ctime, game_id);
         params.put("src", src);
 
-        QyLoginRequest request = new QyLoginRequest(Urlpath.ANNOUNCEMENT, params, AnnouncementBean.class, new TtRespListener<AnnouncementBean>() {
+        QyLoginRequest request = new QyLoginRequest(Urlpath.ANNOUNCEMENT, params, AnnouncementBean.class, new QyRespListener<AnnouncementBean>() {
 
             @Override
             public void onNetSucc(String url, Map<String, String> params, AnnouncementBean bean) {

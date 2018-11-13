@@ -2,12 +2,11 @@ package com.yiyou.gamesdk.core.interceptor;
 
 import android.content.DialogInterface;
 
-import com.android.volley1.DefaultRetryPolicy;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.RequestManager;
 import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.YunWeiDialogView;
 import com.yiyou.gamesdk.model.NoticeInfo;
@@ -41,7 +40,7 @@ public class NoticeInterceptor implements InitInterceptor {
 
         final String YunWeiUrl = url+String.format("/%s/%s", VersionUtil.getSdkVersion(), VersionUtil.getCoreVersion());
 
-        HwRequest request = new HwRequest<>(YunWeiUrl,NoticeInfo.class,new TtRespListener<NoticeInfo>(){
+        HwRequest request = new HwRequest<>(YunWeiUrl,NoticeInfo.class,new QyRespListener<NoticeInfo>(){
 
             @Override
             public void onNetSucc(String url, Map<String, String> params, NoticeInfo notice) {

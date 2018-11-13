@@ -17,7 +17,7 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.impl.payment.PaymentAdapter;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.base.web.util.WebViewUtil;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;
@@ -360,7 +360,7 @@ public class TTCompactJSAPI {
                             loadingDialog.show();
                     }
                 });
-                ApiFacade.getInstance().verifyPayPassword(dialogView.getInput(), new TtRespListener() {
+                ApiFacade.getInstance().verifyPayPassword(dialogView.getInput(), new QyRespListener() {
                     @Override
                     public void onNetSucc(String url, Map params, Object result) {
                         super.onNetSucc(url, params, result);

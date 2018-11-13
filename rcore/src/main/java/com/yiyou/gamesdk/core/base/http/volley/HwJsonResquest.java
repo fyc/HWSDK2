@@ -9,7 +9,7 @@ import com.android.volley1.Response;
 import com.android.volley1.VolleyError;
 import com.android.volley1.toolbox.HttpHeaderParser;
 import com.yiyou.gamesdk.core.base.http.utils.HttpErrorCodeDef;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.util.ByteUtils;
 
@@ -49,7 +49,7 @@ public class HwJsonResquest extends Request<JSONObject> {
 
 
     private Map<String, String> mParams;
-    private TtRespListener<JSONObject> mListener;
+    private QyRespListener<JSONObject> mListener;
     private String mUrl;
 
 
@@ -78,7 +78,7 @@ public class HwJsonResquest extends Request<JSONObject> {
      * @param params
      * @param listener
      */
-    public HwJsonResquest(String url, Map<String, String> params, TtRespListener<JSONObject> listener) {
+    public HwJsonResquest(String url, Map<String, String> params, QyRespListener<JSONObject> listener) {
         this(Method.POST, url, null);
         Log.d(TAG, "http post " + url + " params  " + params);
 
@@ -94,7 +94,7 @@ public class HwJsonResquest extends Request<JSONObject> {
      * @param url
      * @param listener
      */
-    public HwJsonResquest(String url, TtRespListener<JSONObject> listener) {
+    public HwJsonResquest(String url, QyRespListener<JSONObject> listener) {
         this(Method.GET, url, null);
         Log.d(TAG, "http get " + url);
         mListener = listener;

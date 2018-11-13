@@ -1,28 +1,28 @@
 package com.yiyou.gamesdk.core.api.def;
 
 import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 
 /**
  * Created by win on 17/4/26.
  */
 public interface ISecurityApi extends IApiWrapping {
 
-    void setPayPassword(String password, TtRespListener callback);
+    void setPayPassword(String password, QyRespListener callback);
 
-    void modifyPayPassword(String oldPwd, String newPwd, TtRespListener callback);
+    void modifyPayPassword(String oldPwd, String newPwd, QyRespListener callback);
 
-    void modifyPassword(String oldPwd, String newPwd, TtRespListener callback);
+    void modifyPassword(String oldPwd, String newPwd, QyRespListener callback);
 
-    void forgetPayPassword(String mobile, String newPwd, String vcode,TtRespListener callback);
+    void forgetPayPassword(String mobile, String newPwd, String vcode,QyRespListener callback);
 
-    void forgetPassword(String mobile, String newPwd, String vcode,TtRespListener callback);
+    void forgetPassword(String mobile, String newPwd, String vcode,QyRespListener callback);
 
-    void bindPhone(String phoneNum, String smsVCode, TtRespListener callback);
-    void bindPhone2(String phoneNum, String smsVCode, TtRespListener callback);
+    void bindPhone(String phoneNum, String smsVCode, QyRespListener callback);
+    void bindPhone2(String phoneNum, String smsVCode, QyRespListener callback);
 
-    void unbindPhone(String phoneNum, String smsVCode, TtRespListener callback);
+    void unbindPhone(String phoneNum, String smsVCode, QyRespListener callback);
 
-    void verifyPayPassword(String payPassword, TtRespListener callback);
-    void realNameAuth(String real_name, String card_no, TtRespListener<QyDataBean> callback);
+    void verifyPayPassword(String payPassword, QyRespListener callback);
+    void realNameAuth(String real_name, String card_no, QyRespListener<QyDataBean> callback);
 }

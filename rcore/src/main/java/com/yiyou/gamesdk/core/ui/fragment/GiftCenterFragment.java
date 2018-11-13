@@ -15,7 +15,7 @@ import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.utils.AppInternalHandler;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.GiftGetSuccDialogView;
@@ -53,7 +53,7 @@ public class GiftCenterFragment extends BaseFragment {
     }
 
     private void requestData() {
-        ApiFacade.getInstance().getGamePackage(new TtRespListener<GamePackages>() {
+        ApiFacade.getInstance().getGamePackage(new QyRespListener<GamePackages>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, GamePackages result) {
                 if (isAdded()) {
@@ -186,7 +186,7 @@ public class GiftCenterFragment extends BaseFragment {
                             final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
                             loadingDialog.show();
                             int packageId = item.getPackageId();
-                            ApiFacade.getInstance().receiveGamePackage(packageId + "", new TtRespListener<GamePackages.GamePackageInfo>() {
+                            ApiFacade.getInstance().receiveGamePackage(packageId + "", new QyRespListener<GamePackages.GamePackageInfo>() {
                                 @Override
                                 public void onNetSucc(String url, Map<String, String> params, GamePackages.GamePackageInfo result) {
                                     if (loadingDialog != null && loadingDialog.isShowing()) {

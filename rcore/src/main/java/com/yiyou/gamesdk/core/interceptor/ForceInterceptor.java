@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.interceptor;
 import android.content.Context;
 
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.util.PackageUtil;
@@ -34,7 +34,7 @@ public class ForceInterceptor implements InitInterceptor {
 
         ApiFacade instance = ApiFacade.getInstance();
         instance.upgradeRequest("", instance.getCurrentGameID(), PackageUtil.getVersionName(activity),
-                PackageUtil.getVersionCode(activity) + "", new TtRespListener<GameUpdateInfo>() {
+                PackageUtil.getVersionCode(activity) + "", new QyRespListener<GameUpdateInfo>() {
 
                     @Override
                     public void onNetSucc(String url, Map<String, String> params, GameUpdateInfo result) {

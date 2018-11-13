@@ -9,7 +9,7 @@ import com.yiyou.gamesdk.core.base.http.RequestHelper;
 import com.yiyou.gamesdk.core.base.http.RequestManager;
 import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.util.Base64;
 import com.yiyou.gamesdk.util.TaoziSignUtils;
 import com.yiyou.gamesdk.util.TimeUtils;
@@ -37,7 +37,7 @@ class ReportManager implements IReportApi {
     private final static String TYPE_CHARACTER = "CHARACTER";
 
     @Override
-    public void feedback(String content, TtRespListener<Void> callback) {
+    public void feedback(String content, QyRespListener<Void> callback) {
         Map<String, String> params = new TreeMap<>();
         params.put("content", content);
         RequestHelper.buildParamsWithBaseInfo(params);
@@ -75,7 +75,7 @@ class ReportManager implements IReportApi {
         RequestHelper.buildParamsWithBaseInfo(params);
         TaoziSignUtils.addSign(params);
 
-        HwRequest request = new HwRequest<>(Urlpath.REPORT, params, Void.class, new TtRespListener<Void>() {
+        HwRequest request = new HwRequest<>(Urlpath.REPORT, params, Void.class, new QyRespListener<Void>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, Void result) {
                 if (callback != null)
@@ -119,7 +119,7 @@ class ReportManager implements IReportApi {
         params.put("ctime", TimeUtils.formatNowTime());
         RequestHelper.buildParamsWithBaseInfo(params);
 
-//        TtRequest request = new TtRequest<>(Urlpath.REPORT, params, Void.class, new TtRespListener<Void>() {
+//        TtRequest request = new TtRequest<>(Urlpath.REPORT, params, Void.class, new QyRespListener<Void>() {
 //            @Override
 //            public void onNetSucc(String url, Map<String, String> params, Void result) {
 //                if (callback != null)

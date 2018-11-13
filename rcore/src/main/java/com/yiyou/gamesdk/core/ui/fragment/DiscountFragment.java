@@ -22,7 +22,7 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.utils.AppInternalHandler;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.storage.sharepref.Constant;
 import com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView;
 import com.yiyou.gamesdk.model.GameDiscountInfo;
@@ -154,7 +154,7 @@ public class DiscountFragment extends BaseFragment {
     }
 
     private void requestData() {
-        ApiFacade.getInstance().requestGameDiscount(new TtRespListener<GameDiscountInfo>() {
+        ApiFacade.getInstance().requestGameDiscount(new QyRespListener<GameDiscountInfo>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, GameDiscountInfo result) {
                 super.onNetSucc(url, params, result);
@@ -257,7 +257,7 @@ public class DiscountFragment extends BaseFragment {
                         final GameDiscountInfo.Coupon info = (GameDiscountInfo.Coupon) v.getTag();
                         if (info == null) return;
                         if (info.getSplitable() == 0) {
-                            ApiFacade.getInstance().getCoupon(info.getActId(), new TtRespListener<GetCouponInfo>() {
+                            ApiFacade.getInstance().getCoupon(info.getActId(), new QyRespListener<GetCouponInfo>() {
                                 @Override
                                 public void onNetSucc(String url, Map<String, String> params, GetCouponInfo result) {
                                     super.onNetSucc(url, params, result);
@@ -267,7 +267,7 @@ public class DiscountFragment extends BaseFragment {
                                 }
                             });
                         } else if (info.getSplitable() == 1) {
-                            ApiFacade.getInstance().getCouponByRule(info.getRuleId(), new TtRespListener<GetCouponInfo>() {
+                            ApiFacade.getInstance().getCouponByRule(info.getRuleId(), new QyRespListener<GetCouponInfo>() {
                                 @Override
                                 public void onNetSucc(String url, Map<String, String> params, GetCouponInfo result) {
                                     super.onNetSucc(url, params, result);

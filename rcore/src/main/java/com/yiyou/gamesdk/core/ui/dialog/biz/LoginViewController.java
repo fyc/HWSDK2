@@ -21,7 +21,7 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.yiyou.gamesdk.core.ui.widget.DataPicker;
@@ -350,7 +350,7 @@ public class LoginViewController extends BaseAuthViewController {
      */
     private void getVerificationCodeButtonImpl(String phone) {
         showLoading();
-        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new TtRespListener<String>() {
+        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new QyRespListener<String>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, String result) {
                 hideLoading();
@@ -396,7 +396,7 @@ public class LoginViewController extends BaseAuthViewController {
         }
         loginButton.setEnabled(false);
         showLoading();
-        ApiFacade.getInstance().login2(account, code, new TtRespListener<LoginBean>() {
+        ApiFacade.getInstance().login2(account, code, new QyRespListener<LoginBean>() {
             @Override
             public void onNetworkComplete() {
                 loginButton.setEnabled(true);
@@ -446,7 +446,7 @@ public class LoginViewController extends BaseAuthViewController {
 
     public void loginVisitorsImpl() {
         showLoading();
-        ApiFacade.getInstance().loginVisitors(new TtRespListener<LoginBean>() {
+        ApiFacade.getInstance().loginVisitors(new QyRespListener<LoginBean>() {
             @Override
             public void onNetworkComplete() {
             }
@@ -477,7 +477,7 @@ public class LoginViewController extends BaseAuthViewController {
 
     public void loginAutoImpl() {
         showLoading();
-        ApiFacade.getInstance().loginAuto(new TtRespListener<LoginBean>() {
+        ApiFacade.getInstance().loginAuto(new QyRespListener<LoginBean>() {
             @Override
             public void onNetworkComplete() {
             }

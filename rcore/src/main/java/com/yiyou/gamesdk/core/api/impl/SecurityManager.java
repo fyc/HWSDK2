@@ -11,9 +11,8 @@ import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
 import com.yiyou.gamesdk.core.base.http.volley.QyLoginRequest;
 import com.yiyou.gamesdk.core.base.http.volley.bean.BindPhoneBean;
-import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.mobilegamebar.rsdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
@@ -21,7 +20,6 @@ import com.yiyou.gamesdk.util.ByteUtils;
 import com.yiyou.gamesdk.util.ToastUtils;
 
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by win on 15/6/8.
@@ -31,7 +29,7 @@ class SecurityManager implements ISecurityApi {
     private static final String TAG = "RSDK:SecurityManager ";
 
     @Override
-    public void modifyPayPassword(String oldPwd, String newPwd, TtRespListener callback) {
+    public void modifyPayPassword(String oldPwd, String newPwd, QyRespListener callback) {
         if (StringUtils.isBlank(oldPwd)) {
             Log.e(TAG, "Error ModifyPassword. Old password is null or empty");
             return;
@@ -49,7 +47,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void setPayPassword(String password, TtRespListener callback) {
+    public void setPayPassword(String password, QyRespListener callback) {
         if (StringUtils.isBlank(password)) {
             Log.e(TAG, "Error setPayPassword. password is null or empty");
             return;
@@ -63,7 +61,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void modifyPassword(String oldPwd, String newPwd, TtRespListener callback) {
+    public void modifyPassword(String oldPwd, String newPwd, QyRespListener callback) {
         if (StringUtils.isBlank(oldPwd)) {
             Log.e(TAG, "Error ModifyPassword. Old password is null or empty");
             return;
@@ -82,7 +80,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void forgetPayPassword(String mobile, String newPwd, String vcode, TtRespListener callback) {
+    public void forgetPayPassword(String mobile, String newPwd, String vcode, QyRespListener callback) {
         if (StringUtils.isBlank(mobile)||StringUtils.isBlank(newPwd)||StringUtils.isBlank(vcode) ) {
             ToastUtils.showMsg("请不要输入空字符");
             return;
@@ -97,7 +95,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void forgetPassword(String mobile, String newPwd, String vcode, TtRespListener callback) {
+    public void forgetPassword(String mobile, String newPwd, String vcode, QyRespListener callback) {
         if (StringUtils.isBlank(mobile)||StringUtils.isBlank(newPwd)||StringUtils.isBlank(vcode) ) {
             ToastUtils.showMsg("请不要输入空字符");
             return;
@@ -112,7 +110,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void bindPhone(String phoneNum, String smsVCode, TtRespListener callback) {
+    public void bindPhone(String phoneNum, String smsVCode, QyRespListener callback) {
         Map<String, String> params = new ArrayMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("vcode",smsVCode);
@@ -121,7 +119,7 @@ class SecurityManager implements ISecurityApi {
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
     }
     @Override
-    public void bindPhone2(String phoneNum, String smsVCode, TtRespListener callback) {
+    public void bindPhone2(String phoneNum, String smsVCode, QyRespListener callback) {
         Map<String, String> params = new ArrayMap<>();
         AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
         String user_id = info.userID+"";
@@ -142,7 +140,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void unbindPhone(String phoneNum, String smsVCode, TtRespListener callback) {
+    public void unbindPhone(String phoneNum, String smsVCode, QyRespListener callback) {
         if (StringUtils.isBlank(phoneNum)||StringUtils.isBlank(smsVCode)){
             ToastUtils.showMsg("请不要输入空字符");
             return;
@@ -156,7 +154,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void realNameAuth(String real_name, String card_no, TtRespListener<QyDataBean> callback) {
+    public void realNameAuth(String real_name, String card_no, QyRespListener<QyDataBean> callback) {
         Map<String, String> params = new ArrayMap<>();
         AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
         String user_id = info.userID+"";
@@ -180,7 +178,7 @@ class SecurityManager implements ISecurityApi {
     }
 
     @Override
-    public void verifyPayPassword(String payPassword, TtRespListener callback) {
+    public void verifyPayPassword(String payPassword, QyRespListener callback) {
         Map<String, String> params = new ArrayMap<>();
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("password",ByteUtils.generateMd5(payPassword));

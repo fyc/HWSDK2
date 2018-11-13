@@ -12,7 +12,7 @@ import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.FileDownLoadRequest;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
 import com.yiyou.gamesdk.model.PatchUpdateBean;
 import com.mobilegamebar.rsdk.outer.util.Log;
@@ -31,7 +31,7 @@ class UpgradeManager implements IUpgradeApi {
 
 	@Override
 	public void upgradeRequest(String cpId, int gameId,String versionName,String versionCode ,
-			final TtRespListener<GameUpdateInfo> lisenter) {
+			final QyRespListener<GameUpdateInfo> lisenter) {
 		if (StringUtils.isBlank(cpId)) {
             Log.e(TAG, "Error reqUpGrade. cpId is null or empty");
         }
@@ -51,7 +51,7 @@ class UpgradeManager implements IUpgradeApi {
 	}
 
     @Override
-    public void updateCheck(@NonNull Map<String, String> params, TtRespListener<PatchUpdateBean> listener) {
+    public void updateCheck(@NonNull Map<String, String> params, QyRespListener<PatchUpdateBean> listener) {
         Log.e(TAG, "hitfix  check");
         RequestHelper.buildParamsWithBaseInfo(params);
         HwRequest request = new HwRequest<>(Urlpath.UPDATE_CHECK,params,PatchUpdateBean.class,listener);

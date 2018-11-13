@@ -23,7 +23,7 @@ import com.mobilegamebar.rsdk.outer.consts.TTCodeDef;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.AlertDialogView;
@@ -302,7 +302,7 @@ public class ChildrenAccountFragment extends BaseFragment implements View.OnClic
                     }
                     loadingDialog.show();
                     ApiFacade.getInstance().editChildrenAccountName(adapter.childrenAccountHistoryInfos.get(position).childrenUserID,
-                            dialogView.getInput().trim(),new TtRespListener<AuthModel.childAccount>(){
+                            dialogView.getInput().trim(),new QyRespListener<AuthModel.childAccount>(){
                         @Override
                         public void onNetSucc(String url, Map<String, String> params, AuthModel.childAccount result) {
                             super.onNetSucc(url, params, result);
@@ -354,7 +354,7 @@ public class ChildrenAccountFragment extends BaseFragment implements View.OnClic
                         return;
                     }
                     loadingDialog.show();
-                    ApiFacade.getInstance().registerChildAccount(dialogView.getInput().trim(),new TtRespListener<AuthModel.childAccount>(){
+                    ApiFacade.getInstance().registerChildAccount(dialogView.getInput().trim(),new QyRespListener<AuthModel.childAccount>(){
                         @Override
                         public void onNetSucc(String url, Map<String, String> params, AuthModel.childAccount result) {
                             super.onNetSucc(url, params, result);

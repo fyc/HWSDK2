@@ -16,7 +16,7 @@ import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.storage.events.NativeTitleBarUpdateEvent;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
@@ -151,7 +151,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
         if (walletAl == null) {
             return;
         }
-        ApiFacade.getInstance().getBalance(new TtRespListener<BalanceInfo>() {
+        ApiFacade.getInstance().getBalance(new QyRespListener<BalanceInfo>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, BalanceInfo result) {
                 super.onNetSucc(url, params, result);
@@ -176,7 +176,7 @@ public class AccountFragment extends BaseFragment implements View.OnClickListene
         if (couponAl == null) {
             return;
         }
-        ApiFacade.getInstance().getCouponCount(CouponInfo.UNUSED, new TtRespListener<CouponCountInfo>() {
+        ApiFacade.getInstance().getCouponCount(CouponInfo.UNUSED, new QyRespListener<CouponCountInfo>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, CouponCountInfo result) {
                 if (result != null) {

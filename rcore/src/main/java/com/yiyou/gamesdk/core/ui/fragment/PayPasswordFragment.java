@@ -17,7 +17,7 @@ import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.event.FinishFragmentEvent;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.AlertDialogView;
@@ -182,7 +182,7 @@ public class PayPasswordFragment extends BaseFragment implements View.OnClickLis
         requestNewPwdInput = newPayPwdEdt.getText().toString();
         requestOldPwdInput = oldPayPwdEdt.getText().toString();
         loadingDialog.show();
-        ApiFacade.getInstance().modifyPayPassword(requestOldPwdInput,requestNewPwdInput,new TtRespListener(){
+        ApiFacade.getInstance().modifyPayPassword(requestOldPwdInput,requestNewPwdInput,new QyRespListener(){
             @Override
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);
@@ -218,7 +218,7 @@ public class PayPasswordFragment extends BaseFragment implements View.OnClickLis
             return;
         }
         requestPwdInput = payPwdEdt.getText().toString();
-        ApiFacade.getInstance().setPayPassword(requestPwdInput,new TtRespListener(){
+        ApiFacade.getInstance().setPayPassword(requestPwdInput,new QyRespListener(){
             @Override
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);

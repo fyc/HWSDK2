@@ -12,7 +12,7 @@ import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.event.FinishFragmentEvent;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.yiyou.gamesdk.core.base.http.volley.listener.TtRespListener;
+import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.core.ui.dialog.biz.LoadingDialog;
 import com.yiyou.gamesdk.model.NativeTitleBarUpdateInfo;
@@ -54,7 +54,7 @@ public class FeedbackFragment extends BaseFragment {
         isSubmitting = true;
         IMEUtil.hideIME(contentEdt);
         loadingDialog.show();
-        ApiFacade.getInstance().feedback(contentEdt.getText().toString(),new TtRespListener<Void>(){
+        ApiFacade.getInstance().feedback(contentEdt.getText().toString(),new QyRespListener<Void>(){
             @Override
             public void onNetworkComplete() {
                 super.onNetworkComplete();
