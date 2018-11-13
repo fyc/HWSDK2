@@ -146,7 +146,9 @@ public class PayFragment extends Fragment implements View.OnClickListener {
     }
 
     private void pay2(String payUrl) {
-        payUrl = "http://www.373yx.com/payment/preview?cliBuyerId=19000&cliSellerId=201810221735413530001013eed&cpOrderNo=1211312123a31a1123221s31231&cpPrice=0.01&cpOrderTitle=%E9%A6%96%E5%85%851";
+        payUrl = "http://www.373yx.com/payment/preview?cliBuyerId=19000&cliSellerId=201810221735413530001013eed&" +
+                "cpOrderNo=" + System.currentTimeMillis() +
+                "&cpPrice=0.01&cpOrderTitle=%E9%A6%96%E5%85%851";
 //        RGameSDK.getInstance().pay2(getActivity(), payUrl, new IOperateCallback<String>() {
 //            @Override
 //            public void onResult(int i, String orderInfo) {
