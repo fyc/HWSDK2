@@ -1,1 +1,1 @@
-#ttsdk
+#qysdk

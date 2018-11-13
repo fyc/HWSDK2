@@ -10,7 +10,7 @@ mkdir output
 #zip -r demo.zip  app
 #rm -r app
 #cd ..
-#zip -r ttsdk.zip output
+#zip -r qysdk.zip output
 
 
 
