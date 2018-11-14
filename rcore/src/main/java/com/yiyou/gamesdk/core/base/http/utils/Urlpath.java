@@ -25,7 +25,8 @@ public class Urlpath {
     /**
      * 线上环境
      */
-    public static final String HEAD_ONLINE = "https://sdk.52tzgame.com/sdk";
+//    public static final String HEAD_ONLINE = "https://sdk.52tzgame.com/sdk";/rest/user/login_mobile
+    public static final String HEAD_ONLINE = "http://45.40.243.97:10010/sdkserver";
     public static final String APP_HEAD_ONLINE = "https://api.52tzgame.com";
 
     public static String HEAD;

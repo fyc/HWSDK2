@@ -47,7 +47,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
     private void initSdk() {
 
         GameParamInfo paramInfo = new GameParamInfo();
-        paramInfo.setGameId(10000);
+//        paramInfo.setGameId(10000);
 //        正式环境
 //        paramInfo.setSdkKey("c9f3532184ecd7e2ddb7ac9bcac35c7c");
         //测试环境
@@ -57,7 +57,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
 
         mCurrentView = 0;  //0:LoginActivity,1:MainFragment ,2:PayFragmen
 
-        RGameSDK.getInstance().init(this, paramInfo, true, this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ?
+        RGameSDK.getInstance().init(this, paramInfo, false, this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ?
                 Configuration.ORIENTATION_LANDSCAPE : Configuration.ORIENTATION_PORTRAIT, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String s) {

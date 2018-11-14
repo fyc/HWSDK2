@@ -37,7 +37,8 @@ public class QyLoginRequest<T> extends Request<T> {
     private Class<T> mClazz;
     private String src;
     private static final int KEY = 123123123;
-    public static final String GAMW_ID = "201810221735413530001013eed";
+    private static final String SDK_KEY = "7dc18ce3418bcfb6ffa6e72ba1943884";
+    public static final String GAMW_ID = "2018111415564890400010102c2";
     public static final String CHANNEL_ID = "100";
     /**
      * 超时时间
@@ -115,7 +116,7 @@ public class QyLoginRequest<T> extends Request<T> {
         } else {
             // sign
             Map<String, String> header = new TreeMap<>();
-            String sign = ByteUtils.generateMd5(src + KEY).toLowerCase();
+            String sign = ByteUtils.generateMd5(src + SDK_KEY).toLowerCase();
             header.put("sign", sign);
             Log.d(TAG, "getHeaders:sign= " + sign);
             mHeader = header;
