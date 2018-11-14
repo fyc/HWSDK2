@@ -45,7 +45,7 @@ import com.yiyou.gamesdk.model.GetCouponInfo;
 import com.yiyou.gamesdk.model.InventoriesInfo;
 import com.yiyou.gamesdk.util.ByteUtils;
 import com.yiyou.gamesdk.util.PhoneUtils;
-import com.yiyou.gamesdk.util.TaoziSignUtils;
+import com.yiyou.gamesdk.util.QiyuanSignUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -92,7 +92,7 @@ class AuthManager implements IAuthApi {
         RequestHelper.buildParamsWithBaseInfo(params);
         params.put("userName", userName);
         params.put("password", ByteUtils.generateMd5(password));
-        TaoziSignUtils.addSign(params);
+        QiyuanSignUtils.addSign(params);
         HwRequest<AuthModel> hwRequest = new HwRequest<>(Urlpath.REGISTER, params, AuthModel.class, newAuthModelRespListenerWrapper(callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
@@ -119,7 +119,7 @@ class AuthManager implements IAuthApi {
         params.put("userName", phone);
         params.put("password", ByteUtils.generateMd5(password));
         params.put("vcode", verificationCode);
-        TaoziSignUtils.addSign(params);
+        QiyuanSignUtils.addSign(params);
         HwRequest<AuthModel> hwRequest = new HwRequest<>(Urlpath.REGISTER, params, AuthModel.class, newAuthModelRespListenerWrapper(callback));
         RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
 
@@ -145,7 +145,7 @@ class AuthManager implements IAuthApi {
         params.put("retry", retry + "");
 
         if (type == IAuthApi.VCODE_TYPE_REGISTER) {
-            TaoziSignUtils.addSign(params);
+            QiyuanSignUtils.addSign(params);
         }
         HwRequest request = new HwRequest<>(Urlpath.GET_PHONE_VERIFY_CODE, params, null, callback);
         Log.d(TAG, "requestVerificationCode:Urlpath.GET_PHONE_VERIFY_CODE");

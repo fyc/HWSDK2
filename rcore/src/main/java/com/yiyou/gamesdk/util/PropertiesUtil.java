@@ -118,7 +118,7 @@ public class PropertiesUtil {
         String changeAccountSwitch = "True";
 
         try {
-            InputStream in = assetManager.open("taozi_game_sdk_opt.properties");
+            InputStream in = assetManager.open("qiyuan_game_sdk_opt.properties");
             Log.d(TAG, "found opt properties. try parse changeAccount_switch from this config.");
             Properties p = new Properties();
             p.load(in);

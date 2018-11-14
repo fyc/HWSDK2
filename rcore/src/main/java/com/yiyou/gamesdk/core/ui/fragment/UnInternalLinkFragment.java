@@ -23,7 +23,7 @@ public class UnInternalLinkFragment extends BaseFragment{
 
     @Override
     protected void setFragmentContent(Context content, ViewGroup container, Fragment titleBarFragment) {
-        View layout = LayoutInflater.from(content).inflate(R.layout.sdk_user_center_un_download_taozi, container, false);
+        View layout = LayoutInflater.from(content).inflate(R.layout.sdk_user_center_un_download_qiyuan, container, false);
         container.addView(layout);
         View.OnClickListener l = new View.OnClickListener() {
             @Override
@@ -32,6 +32,6 @@ public class UnInternalLinkFragment extends BaseFragment{
                         getActivity(), true);
             }
         };
-        layout.findViewById(R.id.download_taozi).setOnClickListener(l);
+        layout.findViewById(R.id.download_qiyuan).setOnClickListener(l);
     }
 }

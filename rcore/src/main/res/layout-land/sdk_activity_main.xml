@@ -72,18 +72,18 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/open_taozi_container"
+            android:id="@+id/open_qiyuan_container"
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:layout_alignParentBottom="true">
 
             <TextView
-                android:id="@+id/btn_open_taozi"
+                android:id="@+id/btn_open_qiyuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/sdk_icon_taozi_default"
+                android:drawableTop="@drawable/sdk_icon_qiyuan_default"
                 android:enabled="false"
                 android:gravity="center"
                 android:text="打开起源"

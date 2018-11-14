@@ -20,9 +20,9 @@ import javax.crypto.NoSuchPaddingException;
  * Created by Nekomimi on 2017/8/8.
  */
 
-public class TaoziSignUtils {
+public class QiyuanSignUtils {
 
-    private static final String TAG = "TaoziSignUtils";
+    private static final String TAG = "QiyuanSignUtils";
 
     private static String salt1 = "e76eb5ec2640cbb4f7b6e507990f6411";
     private static String salt2 = "f96a2a13644fad395d03fc1f6f7dcbfa";

@@ -13,12 +13,12 @@ import java.util.Map;
  * Created by Nekomimi on 2017/6/13.
  */
 
-public class TaoZiSdkDatabase extends Database {
+public class QiYuanSdkDatabase extends Database {
 
-    public static final String DB_NAME = "taozi_sdk.db";
+    public static final String DB_NAME = "qiyuan_sdk.db";
     public static final int DB_VERSION = 1;
 
-    public TaoZiSdkDatabase(Context context) {
+    public QiYuanSdkDatabase(Context context) {
         super(context);
     }
 

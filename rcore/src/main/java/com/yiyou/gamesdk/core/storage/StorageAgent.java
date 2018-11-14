@@ -5,7 +5,7 @@ import android.support.v4.util.ArrayMap;
 
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.storage.db.global.GameSDKDatabase;
-import com.yiyou.gamesdk.core.storage.db.global.TaoZiSdkDatabase;
+import com.yiyou.gamesdk.core.storage.db.global.QiYuanSdkDatabase;
 import com.yiyou.gamesdk.core.storage.events.StorageEvent;
 import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
 import com.mobilegamebar.rsdk.outer.event.IEventListener;
@@ -71,7 +71,7 @@ public class StorageAgent {
     public static class DBAgent{
 
         private static final Class<?>[] DBConfig = new Class<?>[]{
-                GameSDKDatabase.class, TaoZiSdkDatabase.class
+                GameSDKDatabase.class, QiYuanSdkDatabase.class
         };
 
         private int preparedCount = 0;
@@ -85,7 +85,7 @@ public class StorageAgent {
         }
 
         public Database getPrivateDatabase() {
-            return dbMap.get(TaoZiSdkDatabase.DB_NAME);
+            return dbMap.get(QiYuanSdkDatabase.DB_NAME);
         }
 
         public Database getDatabase(String dbName) {
@@ -108,7 +108,7 @@ public class StorageAgent {
 
         private void initDatabases(Context context) {
             new GameSDKDatabase(context);
-            new TaoZiSdkDatabase(context);
+            new QiYuanSdkDatabase(context);
         }
 
         private void initEvents() {

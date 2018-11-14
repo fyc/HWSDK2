@@ -11,7 +11,7 @@ import com.yiyou.gamesdk.core.base.http.utils.Urlpath;
 import com.yiyou.gamesdk.core.base.http.volley.HwRequest;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.util.Base64;
-import com.yiyou.gamesdk.util.TaoziSignUtils;
+import com.yiyou.gamesdk.util.QiyuanSignUtils;
 import com.yiyou.gamesdk.util.TimeUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -73,7 +73,7 @@ class ReportManager implements IReportApi {
         params.put("timestamp", String.valueOf(new Date().getTime()));
         params.put("onlineTime", "600");
         RequestHelper.buildParamsWithBaseInfo(params);
-        TaoziSignUtils.addSign(params);
+        QiyuanSignUtils.addSign(params);
 
         HwRequest request = new HwRequest<>(Urlpath.REPORT, params, Void.class, new QyRespListener<Void>() {
             @Override

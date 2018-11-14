@@ -187,7 +187,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         accountTab = findViewById(R.id.account_tab);
         gameTab = findViewById(R.id.game_tab);
         messageTab = findViewById(R.id.message_tab);
-        findViewById(R.id.open_taozi_container).setOnClickListener(this);
+        findViewById(R.id.open_qiyuan_container).setOnClickListener(this);
         findViewById(R.id.message_tab_container).setOnClickListener(this);
         findViewById(R.id.account_tab_container).setOnClickListener(this);
         findViewById(R.id.game_tab_container).setOnClickListener(this);
@@ -458,7 +458,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.space:
                 finish();
                 break;
-            case R.id.open_taozi_container:
+            case R.id.open_qiyuan_container:
                 CommonUtils.openApp(MainActivity.this);
                 break;
         }

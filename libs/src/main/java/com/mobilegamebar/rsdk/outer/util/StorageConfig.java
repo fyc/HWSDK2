@@ -19,7 +19,7 @@ public class StorageConfig {
 
     private static final String TAG_DEBUG_ROOT_DIR = "HaoWanRGameSDK";
     private static final String TAG_PUBLIC = "public";
-    private static final String TAG_ROOT_DIR = "TaoZiGameSDK";
+    private static final String TAG_ROOT_DIR = "QiYuanGameSDK";
     private static final String TAG_DB = "db";
     private static final String TAG_LOG = "logs";
     private static final String TAG_CACHE = "cache";
