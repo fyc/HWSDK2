@@ -17,6 +17,7 @@ import com.mobilegamebar.rsdk.outer.model.GameParamInfo;
 import com.mobilegamebar.rsdk.outer.util.Log;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.impl.payment.PaymentAdapter;
+import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.exception.SDKUncaughtExceptionHandler;
 import com.yiyou.gamesdk.core.interceptor.DismissSplashInterceptor;
@@ -41,6 +42,7 @@ import com.yiyou.gamesdk.util.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by levyyoung on 15/5/15.
  */
@@ -68,7 +70,6 @@ public class CoreManager implements ICoreManager {
     public static final int REQUEST_CODE_PERMISSION = 100;
 
 
-
     private static class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
@@ -86,6 +87,7 @@ public class CoreManager implements ICoreManager {
             }
         }
     }
+
     @Override
     public void init(Context context, boolean debugMode, final @NonNull GameParamInfo gameParamInfo,
                      int orientation, @NonNull final IOperateCallback<String> sdkInitCallback, final Activity activity) {
@@ -109,19 +111,19 @@ public class CoreManager implements ICoreManager {
         manager.getDefaultDisplay().getMetrics(outMetrics);
         int width = outMetrics.widthPixels;
         int height = outMetrics.heightPixels;
-        Log.d(TAG,"Create SplashDialog: " + activity.getWindowManager().getDefaultDisplay().getWidth()+" X "+ activity.getWindowManager().getDefaultDisplay().getHeight());
-        Log.d(TAG,"Create SplashDialog new: " + width + " X " + height);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(width,height);
+        Log.d(TAG, "Create SplashDialog: " + activity.getWindowManager().getDefaultDisplay().getWidth() + " X " + activity.getWindowManager().getDefaultDisplay().getHeight());
+        Log.d(TAG, "Create SplashDialog new: " + width + " X " + height);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(width, height);
         CommDialog.Builder builder = new CommDialog.Builder(activity);
-        builder.setView(new SplashDialogView(),params);
+        builder.setView(new SplashDialogView(), params);
         builder.setFullScreen(true);
         CommDialog splashDialog = builder.create();
         splashDialog.show();
 
         List<Interceptor> interceptors = new ArrayList<>();
         interceptors.add(new InitStorageInterceptor());//初始化存储
-        interceptors.add(new HotfixInterceptor()); //热更检查
-        interceptors.add(new ForceInterceptor());// 游戏强更检查
+//        interceptors.add(new HotfixInterceptor()); //热更检查
+//        interceptors.add(new ForceInterceptor());// 游戏强更检查
         interceptors.add(new DismissSplashInterceptor(splashDialog));// 关闭闪屏
         interceptors.add(new NoticeInterceptor());//运维公告
         interceptors.add(new ShowForceDialogInterceptor()); //显示强更提示框
@@ -155,34 +157,41 @@ public class CoreManager implements ICoreManager {
                 interceptor.intercept(iml);
 
             } else {
-//                reportActiveEvent();
+                reportActiveEvent(initParams.getActivity());
                 IOperateCallback<String> sdkInitCallback = params.getSdkInitCallback();
                 mInitParams = null;
                 sdkInitCallback.onResult(0, "sdk init 成功");
             }
         }
     }
+
     /**
      * 上报激活事件
      */
-    private void reportActiveEvent() {
-        SharedPreferences preferences = mContext.getApplicationContext()
+    private void reportActiveEvent(Activity activity) {
+        final SharedPreferences preferences = mContext.getApplicationContext()
                 .getSharedPreferences(Constant.KEY_DB_NAME, Context.MODE_PRIVATE);
 
         boolean isFirst = preferences.getBoolean(Constant.KEY_FIRST_OPEN_APP, true);
 
         String gameid = preferences.getString(Constant.KEY_GAME_ID, "");
 
-        String cur_gameid = ApiFacade.getInstance().getCurrentGameID() + "";
+        final String cur_gameid = ApiFacade.getInstance().getCurrentGameID() + "";
 
         if (gameid.equals(cur_gameid) && !isFirst && !"0".equals(cur_gameid)) {
             return;
         }
 
-        ApiFacade.getInstance().reportActivate(null);
-        preferences.edit().putBoolean(Constant.KEY_FIRST_OPEN_APP, false).apply();
-        preferences.edit().putString(Constant.KEY_GAME_ID, cur_gameid).apply();
-        Log.d(TAG, "report success!!");
+        ApiFacade.getInstance().reportActivate(activity, new IOperateCallback<QyDataBean>() {
+            @Override
+            public void onResult(int i, QyDataBean qyDataBean) {
+                if (qyDataBean != null && qyDataBean.getCode() == 1) {
+                    preferences.edit().putBoolean(Constant.KEY_FIRST_OPEN_APP, false).apply();
+                    preferences.edit().putString(Constant.KEY_GAME_ID, cur_gameid).apply();
+                    Log.d(TAG, "report success!!");
+                }
+            }
+        });
     }
 
     @Override
@@ -209,7 +218,7 @@ public class CoreManager implements ICoreManager {
 
     @Override
     public void showFloatView() {
-        if (getUid() != 0){
+        if (getUid() != 0) {
             FloatViewManager.getInstance().show();
         }
     }
@@ -217,13 +226,13 @@ public class CoreManager implements ICoreManager {
     @Override
     public void hideFloatView() {
 //        if (getUid() != 0){
-            FloatViewManager.getInstance().hide();
+        FloatViewManager.getInstance().hide();
         AnnouncementManager.getInstance().uninit();
 //        }
     }
 
     public void uninit() {
-        if (ApiFacade.getInstance().isLogin()){
+        if (ApiFacade.getInstance().isLogin()) {
             ApiFacade.getInstance().logout();
         }
         AnnouncementManager.getInstance().uninit();

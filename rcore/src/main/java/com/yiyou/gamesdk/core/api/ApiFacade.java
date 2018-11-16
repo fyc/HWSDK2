@@ -23,6 +23,7 @@ import com.yiyou.gamesdk.core.api.def.ISecurityApi;
 import com.yiyou.gamesdk.core.api.def.IUpgradeApi;
 import com.yiyou.gamesdk.core.api.impl.ApiLoader;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
+import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
@@ -503,8 +504,8 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void reportActivate(IOperateCallback<Void> callback) {
-        reportApi().reportActivate(callback);
+    public void reportActivate(Activity activity,IOperateCallback<QyDataBean> callback) {
+        reportApi().reportActivate(activity,callback);
     }
 
     @Override

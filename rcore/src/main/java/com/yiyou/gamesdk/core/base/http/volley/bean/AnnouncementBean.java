@@ -73,7 +73,7 @@ public class AnnouncementBean {
         List<AnnouncementInfo> results = new ArrayList<>();
         for (DataBean.BulletinBean bulletinBean : getData().getBulletin()) {
             AnnouncementInfo infoBf = new AnnouncementInfo();
-            infoBf.setUrl("https://www.baidu.com/");
+            infoBf.setUrl(bulletinBean.getUrl());
             infoBf.setTitle("公告");
             infoBf.setType(AnnouncementInfo.NORMAL);
             results.add(infoBf);
