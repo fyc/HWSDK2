@@ -18,7 +18,7 @@ public interface IUpgradeApi extends IApiWrapping{
      * @param gameId 游戏id
 	 * @param lisenter 调用方回调。成功返回GameUpdateInfo ，失败返回错误码和错误信息
 	 */
-	void upgradeRequest(String cpId, int gameId, String versionName, String versionCode, QyRespListener<GameUpdateInfo> lisenter) ;
+	void upgradeRequest(String cpId, String gameId, String versionName, String versionCode, QyRespListener<GameUpdateInfo> lisenter) ;
 
 
 	/**

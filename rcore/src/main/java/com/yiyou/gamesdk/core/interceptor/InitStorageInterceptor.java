@@ -1,6 +1,7 @@
 package com.yiyou.gamesdk.core.interceptor;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.mobilegamebar.rsdk.outer.IOperateCallback;
 import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
@@ -56,8 +57,8 @@ public class InitStorageInterceptor implements InitInterceptor {
 
         EventDispatcherAgent.defaultAgent().addEventListener(InitStorageInterceptor.this,
                 StorageEvent.TYPE_ALL_DB_PREPARED, dbPreListener);
-        int sdkGameId = peekGameId(gameParamInfo);
-        if (sdkGameId == 0) {
+        String sdkGameId = peekGameId(gameParamInfo);
+        if (TextUtils.isEmpty(sdkGameId)) {
             sdkInitCallback.onResult(QYCodeDef.ERROR_INIT_INVALID_GAME_ID,
                     mContext.getResources().getString(R.string.error_init_invaild_gameid));
             return;
@@ -73,9 +74,9 @@ public class InitStorageInterceptor implements InitInterceptor {
      * @param paramInfo 初始化游戏参数
      * @return 游戏id
      */
-    private int peekGameId(GameParamInfo paramInfo) {
-        int gameId = paramInfo.getGameId();
-        if (gameId == 0) {
+    private String peekGameId(GameParamInfo paramInfo) {
+        String gameId = paramInfo.getGameId();
+        if (TextUtils.isEmpty(gameId)) {
             ToastUtils.showMsg("no available game id.");
         } else {
             Log.d(TAG, "peek game id " + gameId);

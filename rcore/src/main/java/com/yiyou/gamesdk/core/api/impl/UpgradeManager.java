@@ -30,7 +30,7 @@ class UpgradeManager implements IUpgradeApi {
 	private static final String TAG = "RSDK: "+"[IUpgradeApi]";
 
 	@Override
-	public void upgradeRequest(String cpId, int gameId,String versionName,String versionCode ,
+	public void upgradeRequest(String cpId, String gameId,String versionName,String versionCode ,
 			final QyRespListener<GameUpdateInfo> lisenter) {
 		if (StringUtils.isBlank(cpId)) {
             Log.e(TAG, "Error reqUpGrade. cpId is null or empty");

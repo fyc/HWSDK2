@@ -15,13 +15,13 @@ public interface IChannelApi extends IApiWrapping {
      * 游戏ID由CP传入，initCoreManager时设置。
      * @param gameID 游戏Id
      */
-    void setCurrentGameID(int gameID);
+    void setCurrentGameID(String gameID);
 
     /**
      * 获取
      * @return 当前游戏ID
      */
-    int getCurrentGameID();
+    String getCurrentGameID();
 
 
     /**

@@ -21,7 +21,7 @@ public interface ICoreManager   {
 
      long getUid();
 
-     int getGameId();
+    String getGameId();
 
 
     void uninit(IOperateCallback callback);

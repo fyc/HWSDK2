@@ -27,7 +27,7 @@ public class AppInternalHandler {
         return link;
     }
 
-    public static String inventoryDetail(Activity activity, int inventoryId, int gameId) {
+    public static String inventoryDetail(Activity activity, int inventoryId, String gameId) {
         if (activity == null) {
             return null;
         }
@@ -64,7 +64,7 @@ public class AppInternalHandler {
         return link;
     }
 
-    public static String gameDetail(Activity activity, int gameId) {
+    public static String gameDetail(Activity activity, String gameId) {
         if (activity == null) {
             return null;
         }
@@ -109,7 +109,7 @@ public class AppInternalHandler {
         return link;
     }
 
-    public static String currentInventoryList(Activity activity, int gameId) {
+    public static String currentInventoryList(Activity activity, String gameId) {
         if (activity == null) {
             return null;
         }

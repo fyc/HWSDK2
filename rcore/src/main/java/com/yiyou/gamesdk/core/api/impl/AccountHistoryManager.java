@@ -138,7 +138,7 @@ class AccountHistoryManager implements IAccountHistoryApi {
      */
     @Override
     public List<AccountHistoryInfo> getCurrentGameAuthHistories() {
-        int currentGameID = ApiFacade.getInstance().getCurrentGameID();
+        String currentGameID = ApiFacade.getInstance().getCurrentGameID();
         List<AccountHistoryInfo> histories = new ArrayList<>();
         for (AccountHistoryInfo info : cache.values()) {
 

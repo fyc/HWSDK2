@@ -106,11 +106,11 @@ public class PluginManager {
 
     }
 
-    public int getGameId() {
+    public String getGameId() {
         if (coreManager != null) {
             return coreManager.getGameId();
         }
-        return 0;
+        return "";
     }
 
 

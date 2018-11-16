@@ -184,8 +184,8 @@ public class AnnouncementManager implements IAnnouncementApi {
     @Override
     public void requestAnnouncement2(final int from, final IOperateCallback<List<AnnouncementInfo>> callback) {//from:1-登录，2-悬浮球，3-退出
         Map<String, String> params = new TreeMap<>();
-        String game_id = QyLoginRequest.GAMW_ID;
-//        String channel = ApiFacade.getInstance().getChannel();
+//        String game_id = QyLoginRequest.GAMW_ID;
+        String game_id = ApiFacade.getInstance().getCurrentGameID();
 //        String channel = QyLoginRequest.CHANNEL_ID;
 //        params.put("channel", channel);
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);

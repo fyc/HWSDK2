@@ -474,7 +474,7 @@ public class ApiFacade implements IApiFacade {
      */
 
     @Override
-    public void upgradeRequest(String cpId, int gameId, String versionName, String versionCode,
+    public void upgradeRequest(String cpId, String gameId, String versionName, String versionCode,
                                QyRespListener<GameUpdateInfo> iOperateCallback) {
         upgradeApi().upgradeRequest(cpId, gameId, versionName, versionCode, iOperateCallback);
     }
@@ -720,7 +720,7 @@ public class ApiFacade implements IApiFacade {
      * @param gameID 游戏Id
      */
     @Override
-    public void setCurrentGameID(int gameID) {
+    public void setCurrentGameID(String gameID) {
         channelApi().setCurrentGameID(gameID);
     }
 
@@ -730,7 +730,7 @@ public class ApiFacade implements IApiFacade {
      * @return 当前游戏ID
      */
     @Override
-    public int getCurrentGameID() {
+    public String getCurrentGameID() {
         return channelApi().getCurrentGameID();
     }
 

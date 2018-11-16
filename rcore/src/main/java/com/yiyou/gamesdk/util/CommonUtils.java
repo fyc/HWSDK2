@@ -127,7 +127,7 @@ public class CommonUtils {
 //                ToastUtils.showMsg("未安装起源手游APP");
                 return true;
             }
-            int gameId = ApiFacade.getInstance().getCurrentGameID();
+            String gameId = ApiFacade.getInstance().getCurrentGameID();
             try {
                 Uri uri = Uri.parse("tzsy://home/navigation");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);

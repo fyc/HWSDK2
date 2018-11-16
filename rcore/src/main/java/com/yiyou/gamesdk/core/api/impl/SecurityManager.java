@@ -124,7 +124,8 @@ class SecurityManager implements ISecurityApi {
         AccountHistoryInfo info = ApiFacade.getInstance().getCurrentHistoryAccount();
         String user_id = info.userID+"";
         String token = info.accessToken;
-        String game_id = QyLoginRequest.GAMW_ID;
+//        String game_id = QyLoginRequest.GAMW_ID;
+        String game_id = ApiFacade.getInstance().getCurrentGameID();
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         params.put("user_id", user_id);
         params.put("token", token);
@@ -160,7 +161,8 @@ class SecurityManager implements ISecurityApi {
         String user_id = info.userID+"";
         String token = info.accessToken;
         String mobile_phone = info.phone;
-        String game_id = QyLoginRequest.GAMW_ID;
+//        String game_id = QyLoginRequest.GAMW_ID;
+        String game_id = ApiFacade.getInstance().getCurrentGameID();
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         params.put("user_id", user_id);
         params.put("token",token );

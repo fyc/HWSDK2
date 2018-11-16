@@ -15,6 +15,7 @@ import com.android.volley1.toolbox.HttpHeaderParser;
 import com.google.gson1.Gson;
 import com.google.gson1.JsonSyntaxException;
 import com.mobilegamebar.rsdk.outer.util.Log;
+import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.utils.HttpErrorCodeDef;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.util.ByteUtils;
@@ -116,7 +117,8 @@ public class QyLoginRequest<T> extends Request<T> {
         } else {
             // sign
             Map<String, String> header = new TreeMap<>();
-            String sign = ByteUtils.generateMd5(src + SDK_KEY).toLowerCase();
+            String sdkkey = ApiFacade.getInstance().getSdkKey();
+            String sign = ByteUtils.generateMd5(src + sdkkey).toLowerCase();
             header.put("sign", sign);
             Log.d(TAG, "getHeaders:sign= " + sign);
             mHeader = header;

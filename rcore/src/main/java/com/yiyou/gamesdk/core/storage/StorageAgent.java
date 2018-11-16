@@ -43,7 +43,7 @@ public class StorageAgent {
         return configAgent;
     }
 
-    public static void init(Context context, int gameId) {
+    public static void init(Context context, String gameId) {
         synchronized (initLock) {
             if (dbAgent == null) {
                 configAgent = new ConfigAgent();
@@ -150,7 +150,7 @@ public class StorageAgent {
 
         }
 
-        public void init(int gameId) {
+        public void init(String gameId) {
             configRootPath = StorageConfig.getGameDirPath(gameId) + "/";
         }
 

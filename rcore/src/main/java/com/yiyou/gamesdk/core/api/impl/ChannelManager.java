@@ -14,7 +14,7 @@ import com.mobilegamebar.rsdk.outer.util.StringUtils;
 class ChannelManager implements IChannelApi {
 
     private static final String TAG = "RSDK:ChannelManager";
-    private int currentGameID = 0;
+    private String currentGameID = "";
     private String currentGameName = "";
     private String SdkKey = "";
     private String channel = "";
@@ -42,7 +42,7 @@ class ChannelManager implements IChannelApi {
      * @param gameID 游戏Id
      */
     @Override
-    public void setCurrentGameID(int gameID) {
+    public void setCurrentGameID(String gameID) {
         currentGameID = gameID;
     }
 
@@ -52,7 +52,7 @@ class ChannelManager implements IChannelApi {
      * @return 当前游戏ID
      */
     @Override
-    public int getCurrentGameID() {
+    public String getCurrentGameID() {
         return currentGameID;
     }
 

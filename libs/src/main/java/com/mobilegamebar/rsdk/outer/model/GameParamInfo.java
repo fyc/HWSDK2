@@ -6,14 +6,14 @@ package com.mobilegamebar.rsdk.outer.model;
  */
 public class GameParamInfo {
 
-    private int    gameId = 0;
+    private String    gameId = "";
     private String SdkKey = "";
 
-    public int getGameId() {
+    public String getGameId() {
         return gameId;
     }
 
-    public void setGameId(int gameId) {
+    public void setGameId(String gameId) {
         this.gameId = gameId;
     }
 

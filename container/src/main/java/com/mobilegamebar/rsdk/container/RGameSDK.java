@@ -121,7 +121,7 @@ public class RGameSDK implements IRSDK {
         LoadPlugin.getInstance().submitExtendData(activity,params);
     }
 
-    private String getLogDir(Context context, int gameId) {
+    private String getLogDir(Context context, String gameId) {
         return StorageConfig.getGameLogDirPath(gameId);
     }
 }

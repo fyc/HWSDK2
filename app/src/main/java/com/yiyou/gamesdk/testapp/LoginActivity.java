@@ -52,8 +52,8 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
 //        paramInfo.setSdkKey("c9f3532184ecd7e2ddb7ac9bcac35c7c");
         //测试环境
 //        paramInfo.setSdkKey("c32538c00d360d505eca2290eafeac7f");
-        paramInfo.setGameId(10001);
-        paramInfo.setSdkKey("ba004a68f0dc487c623191c5b17af8fa");
+        paramInfo.setGameId("2018111415564890400010102c2");
+        paramInfo.setSdkKey("7dc18ce3418bcfb6ffa6e72ba1943884");
 
         mCurrentView = 0;  //0:LoginActivity,1:MainFragment ,2:PayFragmen
 
@@ -71,11 +71,11 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
 
     private void loginImpl() {
         GameParamInfo paramInfo = new GameParamInfo();
-        paramInfo.setGameId(10000);
+        paramInfo.setGameId("2018111415564890400010102c2");
 //        正式环境
 //        paramInfo.setSdkKey("c9f3532184ecd7e2ddb7ac9bcac35c7c");
         //测试环境
-        paramInfo.setSdkKey("c32538c00d360d505eca2290eafeac7f");
+        paramInfo.setSdkKey("7dc18ce3418bcfb6ffa6e72ba1943884");
         int orientation = this.getResources().getConfiguration().orientation;
         Log.d(TAG, "当前orientation = " + orientation);
         RGameSDK.getInstance().init(this, paramInfo, true, orientation == Configuration.ORIENTATION_LANDSCAPE ?

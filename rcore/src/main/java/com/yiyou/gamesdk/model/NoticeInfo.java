@@ -6,16 +6,16 @@ import java.util.Arrays;
  * Created by win on 2016-4-8.
  */
 public class NoticeInfo {
-    private int[] gameIds;
+    private String[] gameIds;
     private String[] cpIds;
     private String title;
     private String htmlText;
 
-    public int[] getGameid() {
+    public String[] getGameid() {
         return gameIds;
     }
 
-    public void setGameid(int[] gameids) {
+    public void setGameid(String[] gameids) {
         this.gameIds = gameids;
     }
 

@@ -63,13 +63,13 @@ public class StorageConfig {
         return path;
     }
 
-    public static String getGameDirPath(long gameId) {
+    public static String getGameDirPath(String gameId) {
         String path = SDKRootDirPath + File.separator + gameId;
         createDirIfNeed(path);
         return path;
     }
 
-    public static String getGameLogDirPath(long gameId) {
+    public static String getGameLogDirPath(String gameId) {
         String path = SDKRootDirPath + File.separator + gameId + File.separator + TAG_LOG;
         createDirIfNeed(path);
         return path;

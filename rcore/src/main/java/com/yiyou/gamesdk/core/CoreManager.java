@@ -196,7 +196,7 @@ public class CoreManager implements ICoreManager {
     }
 
     @Override
-    public int getGameId() {
+    public String getGameId() {
         return ApiFacade.getInstance().getCurrentGameID();
     }
 

@@ -81,15 +81,15 @@ public class NoticeInterceptor implements InitInterceptor {
         RequestManager.getInstance(chain.getData().getContext()).addRequest(request,null);
     }
 
-    private boolean isPopup(int[] gid){
-        int ClientGameId = ApiFacade.getInstance().getCurrentGameID();
+    private boolean isPopup(String[] gid){
+        String ClientGameId = ApiFacade.getInstance().getCurrentGameID();
         if(gid.length ==0){
             return true;
         }
         if(gid.length >0){
 
             for(int i = 0; i< gid.length;i++){
-                if(ClientGameId == gid[i]){
+                if(ClientGameId.equals(gid[i])){
                     return true;
                 }
             }

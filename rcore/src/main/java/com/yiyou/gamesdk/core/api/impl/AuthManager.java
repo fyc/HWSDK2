@@ -156,7 +156,8 @@ class AuthManager implements IAuthApi {
     public void requestVerificationCode2(String phone, int type, int retry, QyRespListener<String> callback) {
         Map<String, String> params = new TreeMap<>();
 //        String game_id = String.valueOf(ApiFacade.getInstance().getCurrentGameID() + "");
-        String game_id = QyLoginRequest.GAMW_ID;
+//        String game_id = QyLoginRequest.GAMW_ID;
+        String game_id = ApiFacade.getInstance().getCurrentGameID();
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         params.put("mobile_phone", phone);
         params.put("game_id", game_id);
@@ -245,7 +246,8 @@ class AuthManager implements IAuthApi {
 
         Map<String, String> params = new TreeMap<>();
 //        RequestHelper.buildParamsWithBaseInfo(params);
-        String game_id = QyLoginRequest.GAMW_ID;
+//        String game_id = QyLoginRequest.GAMW_ID;
+        String game_id = ApiFacade.getInstance().getCurrentGameID();
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         params.put("mobile_phone", account);
         params.put("game_id", game_id);
@@ -262,7 +264,8 @@ class AuthManager implements IAuthApi {
     @Override
     public void loginVisitors(QyRespListener<LoginBean> callback) {
         Map<String, String> params = new TreeMap<>();
-        String game_id = QyLoginRequest.GAMW_ID;
+//        String game_id = QyLoginRequest.GAMW_ID;
+        String game_id = ApiFacade.getInstance().getCurrentGameID();
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         params.put("game_id", game_id);
         params.put("channel", "1002");
@@ -279,7 +282,8 @@ class AuthManager implements IAuthApi {
     @Override
     public void loginAuto(QyRespListener<LoginBean> callback) {
         Map<String, String> params = new TreeMap<>();
-        String game_id = QyLoginRequest.GAMW_ID;
+//        String game_id = QyLoginRequest.GAMW_ID;
+        String game_id = ApiFacade.getInstance().getCurrentGameID();
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         List<AccountHistoryInfo> allGameAuthHistories
                 = ApiFacade.getInstance().getAccountHistories();
