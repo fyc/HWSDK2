@@ -240,4 +240,10 @@ public class Urlpath {
 
     public static final String GET_COUPON_BY_RULE = CoreManager.isDebug() ? "https://sdktest.52hwgame.com:8005/portal/rest/api/coupon/grantByRule.shtml"
             : "https://sdk.52tzgame.com/coupon/rest/api/coupon/grantByRule.shtml";
+
+
+    /**
+     * 用户激活
+     */
+    public static final String USER_ACTIVATION = HEAD + "/rest/event/do_post";
 }

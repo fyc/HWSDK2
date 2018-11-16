@@ -186,12 +186,12 @@ public class AnnouncementManager implements IAnnouncementApi {
         Map<String, String> params = new TreeMap<>();
         String game_id = QyLoginRequest.GAMW_ID;
 //        String channel = ApiFacade.getInstance().getChannel();
-        String channel = QyLoginRequest.CHANNEL_ID;
-        params.put("channel", channel);
+//        String channel = QyLoginRequest.CHANNEL_ID;
+//        params.put("channel", channel);
         String ctime = String.valueOf(System.currentTimeMillis() / 1000);
         params.put("game_id", game_id);
         params.put("ctime", ctime);
-        String src = String.format("channel=%s&ctime=%s&game_id=%s", channel, ctime, game_id);
+        String src = String.format("ctime=%s&game_id=%s", ctime, game_id);
         params.put("src", src);
 
         QyLoginRequest request = new QyLoginRequest(Urlpath.ANNOUNCEMENT, params, AnnouncementBean.class, new QyRespListener<AnnouncementBean>() {

@@ -39,7 +39,7 @@ public class QyLoginRequest<T> extends Request<T> {
     private static final int KEY = 123123123;
     private static final String SDK_KEY = "7dc18ce3418bcfb6ffa6e72ba1943884";
     public static final String GAMW_ID = "2018111415564890400010102c2";
-    public static final String CHANNEL_ID = "100";
+//    public static final String CHANNEL_ID = "100";
     /**
      * 超时时间
      */
