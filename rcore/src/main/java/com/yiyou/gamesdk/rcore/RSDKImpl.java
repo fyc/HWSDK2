@@ -161,8 +161,8 @@ public class RSDKImpl implements IRSDK {
     }
 
     @Override
-    public void pay2(Activity activity,String s,IOperateCallback<String> rsdkCallback) {
-        ApiFacade.getInstance().orderH5(s, activity, rsdkCallback);
+    public void payH5(Activity activity, String s, String s1, IOperateCallback<String> iOperateCallback) {
+        ApiFacade.getInstance().orderH5(activity, s, s1, iOperateCallback);
     }
 
     @Override

@@ -54,5 +54,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     // 支付宝 SDK AAR 包所需的配置
-    compile(name: 'alipaySdk-15.5.7-20181023110930-noUtdid', ext: 'aar')
+//    compile(name: 'alipaySdk-15.5.7-20181023110930-noUtdid', ext: 'aar')
 }

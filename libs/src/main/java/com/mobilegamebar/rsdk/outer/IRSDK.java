@@ -64,7 +64,7 @@ public interface IRSDK {
      */
     void pay(Activity activity, PaymentInfo payInfo, IOperateCallback<String> callback);
 
-    void pay2(Activity activity, String payUrl, IOperateCallback<String> callback);
+    void payH5(Activity activity, String referer, String payUrl, IOperateCallback<String> callback);
 
     /**
      * 判断是否登陆

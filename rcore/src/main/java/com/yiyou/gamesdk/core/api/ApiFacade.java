@@ -53,6 +53,7 @@ public class ApiFacade implements IApiFacade {
 
     private static final String TAG = "RSDK:APIFacade ";
     private static ApiFacade ourInstance = null;
+
     /**
      * API实例尽量使用lazy-load;
      * 重要模块可以在preload方法进行预加载
@@ -168,52 +169,56 @@ public class ApiFacade implements IApiFacade {
      */
 
     // **************************** Auth Begin ************************************ //
-
-
     @Override
     public void registerByUserName(String password, String userName, QyRespListener<AuthModel> callback) {
-        authApi().registerByUserName(password,userName,callback);
+        authApi().registerByUserName(password, userName, callback);
     }
+
     @Override
     public void registerByPhone(String phone, String password, String verificationCode, QyRespListener<AuthModel> callback) {
-        authApi().registerByPhone(phone,password,verificationCode,callback);
+        authApi().registerByPhone(phone, password, verificationCode, callback);
     }
 
     @Override
     public void registerChildAccount(String childUserName, QyRespListener<AuthModel.childAccount> callback) {
-        authApi().registerChildAccount(childUserName,callback);
+        authApi().registerChildAccount(childUserName, callback);
     }
 
     @Override
     public void requestVerificationCode(String phone, int type, QyRespListener<Void> callback) {
-        authApi().requestVerificationCode(phone,type,callback);
+        authApi().requestVerificationCode(phone, type, callback);
     }
 
     @Override
     public void requestVerificationCode(String phone, int type, int retry, QyRespListener<Void> callback) {
-        authApi().requestVerificationCode(phone,type,retry,callback);
+        authApi().requestVerificationCode(phone, type, retry, callback);
     }
+
     @Override
     public void requestVerificationCode2(String phone, int type, int retry, QyRespListener<String> callback) {
-        authApi().requestVerificationCode2(phone,type,retry,callback);
+        authApi().requestVerificationCode2(phone, type, retry, callback);
     }
 
     @Override
     public void login(String account, String pwd, QyRespListener<AuthModel> callback) {
-        authApi().login(account,pwd,callback);
+        authApi().login(account, pwd, callback);
     }
+
     @Override
     public void login2(String account, String pwd, QyRespListener<LoginBean> callback) {
-        authApi().login2(account,pwd,callback);
+        authApi().login2(account, pwd, callback);
     }
+
     @Override
     public void loginVisitors(QyRespListener<LoginBean> callback) {
         authApi().loginVisitors(callback);
     }
+
     @Override
     public void loginAuto(QyRespListener<LoginBean> callback) {
         authApi().loginAuto(callback);
     }
+
     @Override
     public void logout(IOperateCallback<String> iOperateCallback) {
         authApi().logout(iOperateCallback);
@@ -231,7 +236,7 @@ public class ApiFacade implements IApiFacade {
 
     @Override
     public void getCouponInfos(String type, QyRespListener<CouponInfo> callback) {
-        authApi().getCouponInfos(type,callback);
+        authApi().getCouponInfos(type, callback);
     }
 
     @Override
@@ -384,7 +389,7 @@ public class ApiFacade implements IApiFacade {
      */
     @Override
     public List<ChildrenAccountHistoryInfo> getChildrenAccountHistory(String userId, String gameId) {
-        return childrenAccountHistoryApi().getChildrenAccountHistory(userId,gameId);
+        return childrenAccountHistoryApi().getChildrenAccountHistory(userId, gameId);
     }
 
     @Override
@@ -415,41 +420,44 @@ public class ApiFacade implements IApiFacade {
      */
     @Override
     public void modifyPayPassword(String oldPwd, String newPwd, QyRespListener callback) {
-        securityApi().modifyPayPassword(oldPwd,newPwd,callback);
+        securityApi().modifyPayPassword(oldPwd, newPwd, callback);
     }
 
     @Override
     public void modifyPassword(String oldPwd, String newPwd, QyRespListener callback) {
-        securityApi().modifyPassword(oldPwd,newPwd,callback);
+        securityApi().modifyPassword(oldPwd, newPwd, callback);
     }
 
     @Override
     public void forgetPayPassword(String mobile, String newPwd, String vcode, QyRespListener callback) {
-        securityApi().forgetPayPassword(mobile,newPwd,vcode,callback);
+        securityApi().forgetPayPassword(mobile, newPwd, vcode, callback);
     }
 
     @Override
     public void forgetPassword(String mobile, String newPwd, String vcode, QyRespListener callback) {
-        securityApi().forgetPassword(mobile,newPwd,vcode,callback);
+        securityApi().forgetPassword(mobile, newPwd, vcode, callback);
     }
 
     @Override
     public void bindPhone(String phoneNum, String smsVCode, QyRespListener callback) {
-        securityApi().bindPhone(phoneNum,smsVCode,callback);
+        securityApi().bindPhone(phoneNum, smsVCode, callback);
     }
+
     @Override
     public void bindPhone2(String phoneNum, String smsVCode, QyRespListener callback) {
-        securityApi().bindPhone2(phoneNum,smsVCode,callback);
+        securityApi().bindPhone2(phoneNum, smsVCode, callback);
     }
 
     @Override
     public void unbindPhone(String phoneNum, String smsVCode, QyRespListener callback) {
-        securityApi().unbindPhone(phoneNum,smsVCode,callback);
+        securityApi().unbindPhone(phoneNum, smsVCode, callback);
     }
+
     @Override
     public void realNameAuth(String real_name, String card_no, QyRespListener callback) {
-        securityApi().realNameAuth(real_name,card_no,callback);
+        securityApi().realNameAuth(real_name, card_no, callback);
     }
+
     @Override
     public void setPayPassword(String password, QyRespListener callback) {
         securityApi().setPayPassword(password, callback);
@@ -500,17 +508,17 @@ public class ApiFacade implements IApiFacade {
 
     @Override
     public void feedback(String content, QyRespListener<Void> callback) {
-        reportApi().feedback(content,callback);
+        reportApi().feedback(content, callback);
     }
 
     @Override
-    public void reportActivate(Activity activity,IOperateCallback<QyDataBean> callback) {
-        reportApi().reportActivate(activity,callback);
+    public void reportActivate(Activity activity, IOperateCallback<QyDataBean> callback) {
+        reportApi().reportActivate(activity, callback);
     }
 
     @Override
-    public void onLineEvent( IOperateCallback<Void> callback) {
-        reportApi().onLineEvent( callback);
+    public void onLineEvent(IOperateCallback<Void> callback) {
+        reportApi().onLineEvent(callback);
     }
 
     @Override
@@ -523,7 +531,6 @@ public class ApiFacade implements IApiFacade {
      * ===================================reportApi end  ===========================================
      * =============================================================================================
      */
-
 
 
     /**
@@ -650,8 +657,8 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void orderH5(String payUrl, @Nullable Activity startUpActivity, IOperateCallback<String> orderCallback) {
-        paymentApi().orderH5(payUrl, startUpActivity, orderCallback);
+    public void orderH5(@Nullable Activity startUpActivity, String referer, String payUrl, IOperateCallback<String> orderCallback) {
+        paymentApi().orderH5(startUpActivity, referer, payUrl, orderCallback);
     }
 
     @Override
@@ -680,13 +687,13 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void getOrderFromApp(Map<String,String> params){
+    public void getOrderFromApp(Map<String, String> params) {
         paymentApi().getOrderFromApp(params);
     }
 
     @Override
     public void orderPay(Map<String, String> params, QyRespListener<String> callback) {
-        paymentApi().orderPay(params,callback);
+        paymentApi().orderPay(params, callback);
     }
 
     @Override
@@ -763,7 +770,6 @@ public class ApiFacade implements IApiFacade {
     }
 
 
-
     /**
      * =============================================================================================
      * =========================================Channel Api End=====================================
@@ -778,11 +784,12 @@ public class ApiFacade implements IApiFacade {
 
     @Override
     public void requestAnnouncement(int from, IOperateCallback<List<AnnouncementInfo>> callback) {
-        announcementApi().requestAnnouncement(from,callback);
+        announcementApi().requestAnnouncement(from, callback);
     }
+
     @Override
     public void requestAnnouncement2(int from, IOperateCallback<List<AnnouncementInfo>> callback) {
-        announcementApi().requestAnnouncement2(from,callback);
+        announcementApi().requestAnnouncement2(from, callback);
     }
 
     @Override
@@ -795,28 +802,29 @@ public class ApiFacade implements IApiFacade {
      * =========================================Announcement Api Begin===================================
      * =============================================================================================
      */
-    public void setLastLoginChildAccount(AuthModel.childAccount lastLoginChildAccount){
-        if (lastLoginChildAccount!= null){
-            SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid()+"", Context.MODE_PRIVATE);
-            preferences.edit().putLong("rsdk_childUserID",lastLoginChildAccount.getChildUserID()).apply();
-            preferences.edit().putString("rsdk_childUserName",lastLoginChildAccount.getChildUserName()).apply();
-            preferences.edit().putString("rsdk_QYAccount",lastLoginChildAccount.getQYAccount()).apply();
-            Log.d(TAG,"setLastLoginChildAccount: " + lastLoginChildAccount.toString());
-        }
-    }
-    public void setLastLoginChildAccount(long childUserId, String childUserName, String childQYAcount){
-        if (childUserId!=0){
-            SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid()+"", Context.MODE_PRIVATE);
-            preferences.edit().putLong("rsdk_childUserID",childUserId).apply();
-            preferences.edit().putString("rsdk_childUserName",childUserName).apply();
-            preferences.edit().putString("rsdk_QYAccount",childQYAcount).apply();
+    public void setLastLoginChildAccount(AuthModel.childAccount lastLoginChildAccount) {
+        if (lastLoginChildAccount != null) {
+            SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
+            preferences.edit().putLong("rsdk_childUserID", lastLoginChildAccount.getChildUserID()).apply();
+            preferences.edit().putString("rsdk_childUserName", lastLoginChildAccount.getChildUserName()).apply();
+            preferences.edit().putString("rsdk_QYAccount", lastLoginChildAccount.getQYAccount()).apply();
+            Log.d(TAG, "setLastLoginChildAccount: " + lastLoginChildAccount.toString());
         }
     }
 
-    public void setLastLoginAccount(AuthModel lastLoginAccount){
-        if (lastLoginAccount!= null){
-            SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid()+"", Context.MODE_PRIVATE);
-            preferences.edit().putLong("rsdk_childUserID",lastLoginAccount.getUserID()).apply();
+    public void setLastLoginChildAccount(long childUserId, String childUserName, String childQYAcount) {
+        if (childUserId != 0) {
+            SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
+            preferences.edit().putLong("rsdk_childUserID", childUserId).apply();
+            preferences.edit().putString("rsdk_childUserName", childUserName).apply();
+            preferences.edit().putString("rsdk_QYAccount", childQYAcount).apply();
+        }
+    }
+
+    public void setLastLoginAccount(AuthModel lastLoginAccount) {
+        if (lastLoginAccount != null) {
+            SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
+            preferences.edit().putLong("rsdk_childUserID", lastLoginAccount.getUserID()).apply();
         }
     }
 
