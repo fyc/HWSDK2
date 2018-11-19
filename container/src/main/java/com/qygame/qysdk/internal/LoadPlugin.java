@@ -41,8 +41,8 @@ public class LoadPlugin {
             callback.onResult(0, "sdk already init");
             return;
         }
-        RVersionManager rVersionManager = new RVersionManager(context, RootDir.getInstance(context));
-        VersionDir versionDir = rVersionManager.getVersionPath();
+        QYVersionManager qyVersionManager = new QYVersionManager(context, RootDir.getInstance(context));
+        VersionDir versionDir = qyVersionManager.getVersionPath();
         contextWrapper = new ContextWrapper(context, versionDir);
         contextWrapper.init();
         try {

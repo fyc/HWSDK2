@@ -17,13 +17,13 @@ import java.util.Map;
 /**
  * Created by Win on 2017/4/13.
  */
-public class RVersionManager {
-    private static final String TAG = "RSDK:RVersionManager";
+public class QYVersionManager {
+    private static final String TAG = "RSDK:QYVersionManager";
     private static final String CORE_VERSION = "core_version";
     private static final String SDK_VERSION = "sdk_version";
     private VersionDir versionPath;
 
-    public RVersionManager(Context context, @NonNull RootDir rootDir) {
+    public QYVersionManager(Context context, @NonNull RootDir rootDir) {
         checkNeedPackageUpdate(context, rootDir);
 
         List<VersionDir> files = rootDir.listFile();
