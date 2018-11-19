@@ -37,7 +37,7 @@ public class CommonTitlePrimaryFragment extends Fragment implements OnClickListe
 
     public static final String TITLE_BAR_ARG = "title_bar_arg";
 
-    private static final String TAG = "RSDK:CommonTitlePrimary";
+    private static final String TAG = "QYSDK:CommonTitlePrimary";
 
     private View rootView;
     private TextView tvTitleContent;

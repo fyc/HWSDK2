@@ -25,7 +25,7 @@ import java.util.Set;
  * Created by levyyoung on 14/7/28.
  */
 public class ResourceHelper {
-    private static final String TAG = "RSDK: "+"ResourceHelper";
+    private static final String TAG = "QYSDK: "+"ResourceHelper";
 
     private static Context sContextHolder = null;
 

@@ -17,7 +17,7 @@ import com.yiyou.gamesdk.util.ExtraDef;
  */
 public class PayFragment extends WebFragment {
     //    private IEventListener backListener;
-    private static final String TAG = "RSDK:PayFragment";
+    private static final String TAG = "QYSDK:PayFragment";
 
     @Override
     protected void afterSetFragmentContent(Context context, Fragment titleBarFragment) {

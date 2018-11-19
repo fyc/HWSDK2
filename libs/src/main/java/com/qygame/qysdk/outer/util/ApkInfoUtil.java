@@ -17,7 +17,7 @@ public class ApkInfoUtil {
     private static final String CPU_X86 = "x86";
     private static final String CPU_X86_64 = "x86_64";
     private static final String ARM64_V8A = "arm64-v8a";
-    private static final String TAG = "RSDK:ApkInfoUtil ";
+    private static final String TAG = "QYSDK:ApkInfoUtil ";
 
     /**
      * get cpu name, according cpu type parse relevant so lib

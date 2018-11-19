@@ -30,7 +30,7 @@ import java.util.Locale;
  * {@code <android-sdk>/platform-tools/adb shell setprop log.tag.Volley VERBOSE}
  */
 public class VolleyLog {
-    public static String TAG = "RSDK: "+"Volley";
+    public static String TAG = "QYSDK: "+"Volley";
 
     public static boolean DEBUG = Log.isLoggable(TAG, Log.VERBOSE);
 

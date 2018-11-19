@@ -30,7 +30,7 @@ public class PayCenterTitleFragment extends Fragment implements View.OnClickList
 
     public static final String TITLE_BAR_ARG = "title_bar_arg";
 
-    private static final String TAG = "RSDK:PayCenterTitleFragment";
+    private static final String TAG = "QYSDK:PayCenterTitleFragment";
 
     private View rootView;
     private TextView tvTitleContent;

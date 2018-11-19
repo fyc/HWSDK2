@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import com.qygame.qysdk.outer.ContextWrapper;
 import com.qygame.qysdk.outer.IOperateCallback;
 import com.qygame.qysdk.outer.IQYSDK;
-import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.QYSDKSpace;
 import com.qygame.qysdk.outer.event.AuthEvent;
 import com.qygame.qysdk.outer.event.EventDispatcherAgent;
 import com.qygame.qysdk.outer.model.GameParamInfo;
@@ -41,7 +41,7 @@ import java.util.TreeMap;
  */
 public class RSDKImpl implements IQYSDK {
 
-    private static final String TAG = "RSDK:RSDKImpl";
+    private static final String TAG = "QYSDK:QYSDKImpl";
     private IOperateCallback<String> logoutCallback;
 
     @Override
@@ -65,7 +65,7 @@ public class RSDKImpl implements IQYSDK {
                 alertDialogView.setListener(new ExitAlertDialogView.DialogClickListener() {
                     @Override
                     public void onEnsureClick() {
-                        RSDKSpace.getInstance(context.getApplicationContext()).uninit();
+                        QYSDKSpace.getInstance(context.getApplicationContext()).uninit();
                         exit();
                         PluginManager.getInstance().uninit(rsdkCallback);
                     }

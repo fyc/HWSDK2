@@ -13,7 +13,7 @@ import com.qygame.qysdk.outer.util.Log;
  * Created by Orange on 15/6/9.
  */
 public final class QYMainDialog extends Dialog {
-    private static final String TAG = "RSDK:QYMainDialog ";
+    private static final String TAG = "QYSDK:QYMainDialog ";
 
     private IDialogContent mShowingDialogContent;
 

@@ -9,7 +9,7 @@ import com.yiyou.gamesdk.core.base.http.RequestHelper;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.PatchUpdateBean;
-import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.QYSDKSpace;
 import com.qygame.qysdk.outer.model.RootDir;
 import com.qygame.qysdk.outer.model.VersionDir;
 import com.qygame.qysdk.outer.util.Log;
@@ -24,7 +24,7 @@ import java.util.TreeMap;
 public class DefaultUpdateImpl implements IHotfixUpdate {
 
 
-    public static final String TAG = "RSDK:UpdateHelper";
+    public static final String TAG = "QYSDK:UpdateHelper";
     private static final String UPADTE_ZIP_NAME = "update.zip";
     private String sdk_version;
     private String core_version;
@@ -35,9 +35,9 @@ public class DefaultUpdateImpl implements IHotfixUpdate {
 
         RequestHelper.buildParamsWithBaseInfo(params);
 
-        SharedPreferences sharePreferences = RSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
-        sdk_version = sharePreferences.getString(RSDKSpace.KEY_SDK_VERSION, "");
-        core_version = sharePreferences.getString(RSDKSpace.KEY_CUR_VERSION, "");
+        SharedPreferences sharePreferences = QYSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
+        sdk_version = sharePreferences.getString(QYSDKSpace.KEY_SDK_VERSION, "");
+        core_version = sharePreferences.getString(QYSDKSpace.KEY_CUR_VERSION, "");
 
         params.put("sdkVersion", sdk_version);
         params.put("coreVersion", core_version);

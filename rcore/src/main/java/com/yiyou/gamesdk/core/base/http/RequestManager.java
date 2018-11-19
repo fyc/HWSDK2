@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class RequestManager {
 
-    private static final String TAG = "RSDK:RequestManager";
+    private static final String TAG = "QYSDK:RequestManager";
     public static final int FIVE_SECOND = 5 * 1000;
     private static RequestManager instance;
     private RequestQueue mRequestQueue;

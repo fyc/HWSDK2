@@ -9,7 +9,7 @@ import com.qygame.qysdk.outer.util.Log;
  */
 public class TempLibHelper {
 
-    private static final String TAG = "RSDK: TempLibHelper";
+    private static final String TAG = "QYSDK: TempLibHelper";
     private static TempLibHelper instance;
     private String lib_temp = "lib-temp";
 

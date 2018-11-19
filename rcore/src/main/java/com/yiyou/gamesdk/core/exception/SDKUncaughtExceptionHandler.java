@@ -16,7 +16,7 @@ import java.util.Date;
  * Created by chenshuide on 15/7/20.
  */
 public class SDKUncaughtExceptionHandler implements UncaughtExceptionHandler {
-    private static final String TAG = "RSDK:SDKUncaughtExceptionHandler ";
+    private static final String TAG = "QYSDK:SDKUncaughtExceptionHandler ";
     private UncaughtExceptionHandler defaultHandler;
 
 

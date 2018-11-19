@@ -10,7 +10,7 @@ import java.io.File;
  */
 public class StorageConfig {
 
-    private static final String TAG = "RSDK:StorageConfig ";
+    private static final String TAG = "QYSDK:StorageConfig ";
     private static final Object lock = new Object();
     private static boolean isDebug = false;
 

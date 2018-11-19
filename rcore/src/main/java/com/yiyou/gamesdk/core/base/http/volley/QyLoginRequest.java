@@ -28,7 +28,7 @@ import java.util.TreeMap;
 
 public class QyLoginRequest<T> extends Request<T> {
 
-    private static final String TAG = "RSDK: QyLoginRequest";
+    private static final String TAG = "QYSDK: QyLoginRequest";
     private final Gson gson = new Gson();
     protected QyRespListener<T> mListener;
     protected Map<String, String> mParams, mHeader;

@@ -60,7 +60,7 @@ import java.util.TreeMap;
  */
 class AuthManager implements IAuthApi {
 
-    private static final String TAG = "RSDK:AuthManager ";
+    private static final String TAG = "QYSDK:AuthManager ";
     private static final String MD5_PWD_PREFIX = "\u0d62\u0d63\u135f";
     private AuthModel authModel = null;
     private LoginBean loginBean = null;

@@ -25,7 +25,7 @@ import com.yiyou.gamesdk.util.ViewUtils;
 import java.util.Map;
 
 public class BindPhoneViewController extends BaseAuthViewController {
-    private static final String TAG = "RSDK:BindPhoneViewController ";
+    private static final String TAG = "QYSDK:BindPhoneViewController ";
     Context mContext;
     private TextView titleTv;
     private TextView closeTitleContainerBtn;

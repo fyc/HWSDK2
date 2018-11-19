@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class StorageAgent {
 
-    public static final String TAG = "RSDK:StorageAgent ";
+    public static final String TAG = "QYSDK:StorageAgent ";
 
     private static final Object initLock = new Object();
     private static final Object sourceTag = new Object();

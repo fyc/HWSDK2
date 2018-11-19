@@ -49,7 +49,7 @@ import java.util.List;
  * @author Luoweiqiang
  */
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
-    private static final String TAG = "RSDK: " + "MainActivity";
+    private static final String TAG = "QYSDK: " + "MainActivity";
     public static final String EXTRA_FRAGMENT_NAME = "EXTRA_FRAGMENT_NAME";
     public static final String EXTRA_FRAGMENT_BUNDLE = "EXTRA_FRAGMENT_BUNDLE";
     public static final String EXTRA_DISPLAY_TYPE = "EXTRA_DISPLAY_TYPE";

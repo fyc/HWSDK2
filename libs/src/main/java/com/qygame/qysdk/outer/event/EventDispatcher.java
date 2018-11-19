@@ -32,7 +32,7 @@ public class EventDispatcher implements IEventDispatcher {
             60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>());
 
-    private static final String TAG = "RSDK:EventDispatcher ";
+    private static final String TAG = "QYSDK:EventDispatcher ";
 
     private ArrayMap<String, IEventDispatcher> subDispatchers = new ArrayMap<>();
     private Handler dispatchHandler = null;

@@ -25,7 +25,7 @@ import java.util.Map;
  */
 class AccountHistoryManager implements IAccountHistoryApi {
 
-    private static final String TAG = "RSDK:AccountHistoryManager ";
+    private static final String TAG = "QYSDK:AccountHistoryManager ";
     private static final Object lock = new Object();
 
     private Map<String, AccountHistoryInfo> cache = new LinkedHashMap<>();

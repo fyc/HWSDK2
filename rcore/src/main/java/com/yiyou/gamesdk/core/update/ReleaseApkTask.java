@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.yiyou.gamesdk.core.CoreManager;
-import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.QYSDKSpace;
 import com.qygame.qysdk.outer.model.RootDir;
 import com.qygame.qysdk.outer.model.VersionDir;
 import com.qygame.qysdk.outer.util.FileUtils;
@@ -23,7 +23,7 @@ import java.util.zip.ZipFile;
  * Created by chenshuide on 2015/11/2.
  */
 public class ReleaseApkTask implements Runnable {
-    private static final String TAG = "RSDK: "+ DefaultUpdateImpl.TAG;
+    private static final String TAG = "QYSDK: "+ DefaultUpdateImpl.TAG;
     public static final String ZIP_REGULAR_SUFFIX = "/";
     private static final String APK_SUFFIX = ".apk";
 
@@ -55,12 +55,12 @@ public class ReleaseApkTask implements Runnable {
 
         //3.校验文件成功之后 更新配置文件 设置当前版本 newV->curVer curV->oldVer
 
-        SharedPreferences sharePreferences = RSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
-        String cur_version = sharePreferences.getString(RSDKSpace.KEY_CUR_VERSION, "");
+        SharedPreferences sharePreferences = QYSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
+        String cur_version = sharePreferences.getString(QYSDKSpace.KEY_CUR_VERSION, "");
         Log.d(TAG, "cur_version=" + cur_version);
         Log.d(TAG, "new_version=" + version);
-        sharePreferences.edit().putString(RSDKSpace.KEY_CUR_VERSION, version).commit();
-        String newCur_version = sharePreferences.getString(RSDKSpace.KEY_CUR_VERSION, "");
+        sharePreferences.edit().putString(QYSDKSpace.KEY_CUR_VERSION, version).commit();
+        String newCur_version = sharePreferences.getString(QYSDKSpace.KEY_CUR_VERSION, "");
         Log.d(TAG, "newCur_version=" + newCur_version);
 
         //4.删掉 老版本

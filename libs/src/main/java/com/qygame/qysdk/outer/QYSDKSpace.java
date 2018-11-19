@@ -15,9 +15,9 @@ import java.util.Map;
 /**
  * Created by win on 2017/4/27.
  */
-public class RSDKSpace {
+public class QYSDKSpace {
 
-    private static final String TAG = "RSDK:RSDKSpace";
+    private static final String TAG = "QYSDK:QYSDKSpace";
 
     private static final String ASSETS_VERSUIN_CONFIG = "haowan_rsdk_config/version.config";
     public static final String ASSETS_APK_DIR = "apk" + File.separator;
@@ -29,17 +29,17 @@ public class RSDKSpace {
     public static final String KEY_FIRST_VERSION = "key_first_version";
     public static final String KEY_SDK_VERSION = "sdk_version";
 
-    private static RSDKSpace instance;
+    private static QYSDKSpace instance;
 
     private Context mContext;//application context get file form assets
 
-    private RSDKSpace(Context context) {
+    private QYSDKSpace(Context context) {
         mContext = context.getApplicationContext();
     }
 
-    public synchronized static RSDKSpace getInstance(Context context) {
+    public synchronized static QYSDKSpace getInstance(Context context) {
         if (instance == null)
-            instance = new RSDKSpace(context);
+            instance = new QYSDKSpace(context);
 
         return instance;
     }

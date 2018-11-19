@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public class ApiLoader {
 
-    private static final String TAG = "RSDK:ApiLoader ";
+    private static final String TAG = "QYSDK:ApiLoader ";
 
     /**
      * 预加载结果缓存

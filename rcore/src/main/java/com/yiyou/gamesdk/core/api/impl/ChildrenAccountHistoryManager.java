@@ -34,7 +34,7 @@ import java.util.Map;
 
 class ChildrenAccountHistoryManager implements IChildrenAccountHistoryApi {
 
-    private static final String TAG = "RSDK: "+"ChildrenAccountHistoryManager";
+    private static final String TAG = "QYSDK: "+"ChildrenAccountHistoryManager";
     private static final Object lock = new Object();
 
     private Map<String, ChildrenAccountHistoryInfo> cache = new LinkedHashMap<>();

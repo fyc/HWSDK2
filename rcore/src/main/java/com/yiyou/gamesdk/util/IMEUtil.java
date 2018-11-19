@@ -18,7 +18,7 @@ public class IMEUtil {
                 = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         boolean ret = ims.hideSoftInputFromWindow(view.getApplicationWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
-        Log.d("[RSDK-IMEUtil]", String.format("win-id: %d hide ret : %b",
+        Log.d("[QYSDK-IMEUtil]", String.format("win-id: %d hide ret : %b",
                 view.getApplicationWindowToken().hashCode(), ret));
     }
 }

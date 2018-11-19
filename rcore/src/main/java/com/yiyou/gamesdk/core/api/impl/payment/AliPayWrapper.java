@@ -16,7 +16,7 @@ import com.yiyou.gamesdk.util.ToastUtils;
  * Created by LY on 2015/9/29.
  */
 public class AliPayWrapper implements IPaySDKWrapper {
-    private static final String TAG = "RSDK:AliPay";
+    private static final String TAG = "QYSDK:AliPay";
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_CHECK_FLAG = 2;
     private Handler mHandler = new Handler() {

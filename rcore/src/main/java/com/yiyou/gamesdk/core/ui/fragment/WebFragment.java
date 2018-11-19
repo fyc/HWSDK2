@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
  */
 public abstract class WebFragment extends BaseFragment implements IBackPressedHandler, QYCompactDelegate {
 
-    private static final String TAG = "RSDK:WebFragment";
+    private static final String TAG = "QYSDK:WebFragment";
     private WebView webView;
     QYCompactJSAPI compactQYJS;
     private ProgressBar progressBar;

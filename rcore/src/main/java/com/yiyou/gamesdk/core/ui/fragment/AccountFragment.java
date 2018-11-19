@@ -40,7 +40,7 @@ import java.util.Map;
  * 账号
  */
 public class AccountFragment extends BaseFragment implements View.OnClickListener {
-    private static final String TAG = "RSDK:AccountFragment";
+    private static final String TAG = "QYSDK:AccountFragment";
     private AccountLayout walletAl, /*purchaseHistoryAl,*/
             childrenAccountAl, resetPasswordAl, paymentPasswordAl, feedbackAl, couponAl;
     private CommDialog alertDialog;

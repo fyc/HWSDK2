@@ -33,7 +33,7 @@ public class FileDownLoadRequest extends Request<Void> {
      */
     private static final int DEFAULT_MAX_RETRIES = 1;
 
-    private static final String TAG = "RSDK: " + "FileDownLoadRequest";
+    private static final String TAG = "QYSDK: " + "FileDownLoadRequest";
     private static final String TEMP = "temp";
     private static final int MAX_BUFFER_SIZE = 1024 * 10;
     private File mSavePath, mSaveFile, tempFile;

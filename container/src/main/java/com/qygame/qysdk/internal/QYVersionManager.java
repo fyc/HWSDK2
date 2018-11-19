@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.QYSDKSpace;
 import com.qygame.qysdk.outer.model.RootDir;
 import com.qygame.qysdk.outer.model.VersionDir;
 import com.qygame.qysdk.outer.util.Log;
@@ -18,7 +18,7 @@ import java.util.Map;
  * Created by Win on 2017/4/13.
  */
 public class QYVersionManager {
-    private static final String TAG = "RSDK:QYVersionManager";
+    private static final String TAG = "QYSDK:QYVersionManager";
     private static final String CORE_VERSION = "core_version";
     private static final String SDK_VERSION = "sdk_version";
     private VersionDir versionPath;
@@ -48,8 +48,8 @@ public class QYVersionManager {
     private void checkNeedPackageUpdate(Context context, @NonNull RootDir rootDir) {
         List<VersionDir> files = rootDir.listFile();
 
-        String pre_sdk_version = RSDKSpace.getInstance(context).getSharePreferences().getString(RSDKSpace.KEY_SDK_VERSION, "");
-        Map<String, String> versions = RSDKSpace.getInstance(context).parseConfig();
+        String pre_sdk_version = QYSDKSpace.getInstance(context).getSharePreferences().getString(QYSDKSpace.KEY_SDK_VERSION, "");
+        Map<String, String> versions = QYSDKSpace.getInstance(context).parseConfig();
         String assets_sdk_version = versions.get(SDK_VERSION);
         if (!pre_sdk_version.equals(assets_sdk_version)) {
             //整包更新
@@ -73,7 +73,7 @@ public class QYVersionManager {
     private void firstInstall(Context context, File rootFile) {
         Log.d(TAG, "install");
         //第一次安装
-        Map<String, String> versions = RSDKSpace.getInstance(context).parseConfig();
+        Map<String, String> versions = QYSDKSpace.getInstance(context).parseConfig();
 
         String core_version = versions.get(CORE_VERSION);
         String sdk_version = versions.get(SDK_VERSION);
@@ -92,8 +92,8 @@ public class QYVersionManager {
         versionPath = versionDir;
 
         setCurVersion(context, core_version);
-        RSDKSpace.getInstance(context).getSharePreferences().edit().putString(RSDKSpace.KEY_FIRST_VERSION,core_version).commit();
-        RSDKSpace.getInstance(context).getSharePreferences().edit().putString(RSDKSpace.KEY_SDK_VERSION, sdk_version).commit();
+        QYSDKSpace.getInstance(context).getSharePreferences().edit().putString(QYSDKSpace.KEY_FIRST_VERSION,core_version).commit();
+        QYSDKSpace.getInstance(context).getSharePreferences().edit().putString(QYSDKSpace.KEY_SDK_VERSION, sdk_version).commit();
     }
 
     /**
@@ -104,8 +104,8 @@ public class QYVersionManager {
      */
     private void switchVersion(Context context, List<VersionDir> files) {
 
-        SharedPreferences sharePreferences = RSDKSpace.getInstance(context).getSharePreferences();
-        String current_ver = sharePreferences.getString(RSDKSpace.KEY_CUR_VERSION, "");
+        SharedPreferences sharePreferences = QYSDKSpace.getInstance(context).getSharePreferences();
+        String current_ver = sharePreferences.getString(QYSDKSpace.KEY_CUR_VERSION, "");
         Log.d(TAG, "current core version: " + current_ver);
         if (TextUtils.isEmpty(current_ver)) {
             loadFirstVersion(files);
@@ -141,7 +141,7 @@ public class QYVersionManager {
      * @param version cur_version
      */
     private void setCurVersion(Context context, String version) {
-        RSDKSpace.getInstance(context).getSharePreferences().edit().putString(RSDKSpace.KEY_CUR_VERSION, version).commit();
+        QYSDKSpace.getInstance(context).getSharePreferences().edit().putString(QYSDKSpace.KEY_CUR_VERSION, version).commit();
     }
 
 

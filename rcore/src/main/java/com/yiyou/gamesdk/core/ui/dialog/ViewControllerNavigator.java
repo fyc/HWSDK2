@@ -33,7 +33,7 @@ import java.util.List;
 public class ViewControllerNavigator {
 
 
-    private static final String TAG = "RSDK:ViewControllerNavigator ";
+    private static final String TAG = "QYSDK:ViewControllerNavigator ";
 
     private static ViewControllerNavigator _instance;
 

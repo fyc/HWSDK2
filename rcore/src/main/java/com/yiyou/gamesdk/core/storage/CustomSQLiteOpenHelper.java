@@ -47,7 +47,7 @@ import java.lang.reflect.Method;
  * monotonically increasing version numbers for upgrades.</p>
  */
 public abstract class CustomSQLiteOpenHelper {
-    private static final String TAG = "RSDK: "+CustomSQLiteOpenHelper.class.getSimpleName();
+    private static final String TAG = "QYSDK: "+CustomSQLiteOpenHelper.class.getSimpleName();
 
     // When true, getReadableDatabase returns a read-only database if it is just being opened.
     // The database handle is reopened in read/write mode when getWritableDatabase is called.

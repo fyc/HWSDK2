@@ -34,7 +34,7 @@ import java.util.Map;
  */
 public abstract class Database {
 
-    private static final String TAG = "RSDK:Database";
+    private static final String TAG = "QYSDK:Database";
 
 
     public interface DatabaseTask {

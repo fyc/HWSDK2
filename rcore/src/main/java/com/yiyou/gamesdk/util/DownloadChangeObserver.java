@@ -17,7 +17,7 @@ import com.qygame.qysdk.outer.util.Log;
 
 public class DownloadChangeObserver extends ContentObserver {
 
-    private static final String TAG = "RSDK: "+"DownloadChangeObserver";
+    private static final String TAG = "QYSDK: "+"DownloadChangeObserver";
 
     public DownloadChangeObserver(Handler handler) {
         super(handler);

@@ -59,7 +59,7 @@ import java.util.Map;
  */
 public class PaymentManager implements IPaymentApi {
 
-    private static final String TAG = "RSDK:PaymentManager";
+    private static final String TAG = "QYSDK:PaymentManager";
 
     private class OrderCache {
         public IOperateCallback<String> callback = null;

@@ -27,7 +27,7 @@ import java.util.Map;
  */
 class UpgradeManager implements IUpgradeApi {
 	
-	private static final String TAG = "RSDK: "+"[IUpgradeApi]";
+	private static final String TAG = "QYSDK: "+"[IUpgradeApi]";
 
 	@Override
 	public void upgradeRequest(String cpId, String gameId,String versionName,String versionCode ,

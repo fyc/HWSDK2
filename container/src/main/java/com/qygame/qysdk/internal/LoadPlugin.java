@@ -22,7 +22,7 @@ public class LoadPlugin {
     private static LoadPlugin instance = null;
     private ContextWrapper contextWrapper;
     private static final String ENTER_CLASS_NAME = "com.yiyou.gamesdk.rcore.RSDKImpl";
-    private IQYSDK RSDKApi;
+    private IQYSDK QYSDKApi;
     private boolean isInit = false;
 
     private LoadPlugin() {
@@ -47,9 +47,9 @@ public class LoadPlugin {
         contextWrapper.init();
         try {
             Class<?> localClass = contextWrapper.getClassLoader().loadClass(ENTER_CLASS_NAME);
-            RSDKApi = (IQYSDK) localClass.newInstance();
-            RSDKApi.attach(contextWrapper, versionDir);
-            RSDKApi.init(context, info, isDebug, orientation, new IOperateCallback<String>() {
+            QYSDKApi = (IQYSDK) localClass.newInstance();
+            QYSDKApi.attach(contextWrapper, versionDir);
+            QYSDKApi.init(context, info, isDebug, orientation, new IOperateCallback<String>() {
                 @Override
                 public void onResult(int i, String s) {
                     if (i == 0) {
@@ -70,102 +70,102 @@ public class LoadPlugin {
 
     public void uninit(Context context, IOperateCallback<String> callback) {
         if (isInit) {
-            RSDKApi.uninit(context, callback);
+            QYSDKApi.uninit(context, callback);
         }
     }
 
     public void login(Activity activity, IOperateCallback<String> callback) {
         if (isInit) {
-            RSDKApi.login(activity, callback);
+            QYSDKApi.login(activity, callback);
         }
     }
 
     public void loginVisitors(Activity activity, IOperateCallback<String> callback) {
         if (isInit) {
-            RSDKApi.loginVisitors(activity, callback);
+            QYSDKApi.loginVisitors(activity, callback);
         }
     }
 
     public void loginAuto(Activity activity, IOperateCallback<String> callback) {
         if (isInit) {
-            RSDKApi.loginAuto(activity, callback);
+            QYSDKApi.loginAuto(activity, callback);
         }
     }
 
     public void setLogoutListener(IOperateCallback<String> callback) {
         if (isInit) {
-            RSDKApi.setLogoutListener(callback);
+            QYSDKApi.setLogoutListener(callback);
         }
     }
 
     public void logout() {
         if (isInit) {
-            RSDKApi.logout();
+            QYSDKApi.logout();
         }
     }
 
     public void showFloatView(Activity activity) {
         if (isInit) {
-            RSDKApi.showFloatView(activity);
+            QYSDKApi.showFloatView(activity);
         }
     }
 
     public void hideFloatView(Activity activity) {
         if (isInit) {
-            RSDKApi.hideFloatView(activity);
+            QYSDKApi.hideFloatView(activity);
         }
     }
 
     public void pay(Activity activity, PaymentInfo payInfo, IOperateCallback<String> callback) {
         if (isInit) {
-            RSDKApi.pay(activity, payInfo, callback);
+            QYSDKApi.pay(activity, payInfo, callback);
         }
     }
 
     public void payH5(Activity activity, String referer, String payUrl, IOperateCallback<String> callback) {
         if (isInit) {
-            RSDKApi.payH5(activity, referer, payUrl, callback);
+            QYSDKApi.payH5(activity, referer, payUrl, callback);
         }
     }
 
     public boolean isLogin() {
         if (isInit) {
-            return RSDKApi.isLogin();
+            return QYSDKApi.isLogin();
         }
         return false;
     }
 
     public String getGameId() {
         if (isInit) {
-            return RSDKApi.getGameId();
+            return QYSDKApi.getGameId();
         }
         return "";
     }
 
     public String getUid() {
         if (isInit) {
-            return RSDKApi.getUid();
+            return QYSDKApi.getUid();
         }
         return "";
     }
 
     public String getSession() {
         if (isInit) {
-            return RSDKApi.getSession();
+            return QYSDKApi.getSession();
         }
         return "";
     }
 
     public void submitGameRoleInfo(Activity activity, String type, String serverName, String roleID, String roleName, int roleLevel, String exInfo) {
         if (isInit) {
-            RSDKApi.submitGameRoleInfo(activity, type, serverName, roleID, roleName, roleLevel, exInfo);
+            QYSDKApi.submitGameRoleInfo(activity, type, serverName, roleID, roleName, roleLevel, exInfo);
         }
 
     }
 
     public void submitExtendData(Activity activity, Map<String, String> params) {
         if (isInit) {
-            RSDKApi.submitExtendData(activity, params);
+            QYSDKApi.submitExtendData(activity, params);
         }
 
     }

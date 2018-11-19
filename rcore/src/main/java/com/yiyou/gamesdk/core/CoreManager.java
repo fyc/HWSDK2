@@ -50,7 +50,7 @@ public class CoreManager implements ICoreManager {
 
     private static Context mContext;//todo 注意这个指向Service
 
-    protected static final String TAG = "RSDK:CoreManager ";
+    protected static final String TAG = "QYSDK:CoreManager ";
 
     private static boolean isDebugMode = false;
     private InitParams mInitParams;

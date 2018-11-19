@@ -22,7 +22,7 @@ import java.util.Random;
 public class NoticeInterceptor implements InitInterceptor {
 
     private CommDialog NoticeDialog;
-    private static final String TAG = "RSDK: NoticeInterceptor";
+    private static final String TAG = "QYSDK: NoticeInterceptor";
 
     @Override
     public void intercept(Chain<InitParams> chain) {

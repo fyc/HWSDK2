@@ -26,7 +26,7 @@ import java.util.Map;
  * 修改密码、绑定手机、重置密码
  */
 class SecurityManager implements ISecurityApi {
-    private static final String TAG = "RSDK:SecurityManager ";
+    private static final String TAG = "QYSDK:SecurityManager ";
 
     @Override
     public void modifyPayPassword(String oldPwd, String newPwd, QyRespListener callback) {

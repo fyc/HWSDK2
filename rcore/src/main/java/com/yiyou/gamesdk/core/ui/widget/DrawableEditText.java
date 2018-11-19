@@ -17,7 +17,7 @@ import android.widget.EditText;
  * naive !!!
  */
 public final class DrawableEditText extends EditText {
-    private static final String TAG = "RSDK:DrawableEditText ";
+    private static final String TAG = "QYSDK:DrawableEditText ";
 
 //    public interface OnLeftDrawableClickListener extends OnDrawableClickListener {}
 

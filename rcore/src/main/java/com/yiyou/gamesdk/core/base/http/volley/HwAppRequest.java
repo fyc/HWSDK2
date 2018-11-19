@@ -34,7 +34,7 @@ import java.util.Map;
  */
 public class HwAppRequest<T> extends Request<Result<T>> {
 
-    private static final String TAG = "RSDK: HwAppRequest";
+    private static final String TAG = "QYSDK: HwAppRequest";
     protected QyRespListener<T> mListener;
     protected Map<String, String> mParams, mHeader;
     private String mUrl;

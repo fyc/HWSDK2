@@ -22,7 +22,7 @@ import com.yiyou.gamesdk.util.ToastUtils;
  */
 public class InitStorageInterceptor implements InitInterceptor {
 
-    private static final String TAG = "RSDK:InitStorageInterceptor";
+    private static final String TAG = "QYSDK:InitStorageInterceptor";
 
     @Override
     public void intercept(final Chain<InitParams> chain) {

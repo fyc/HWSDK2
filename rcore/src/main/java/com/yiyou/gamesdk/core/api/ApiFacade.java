@@ -51,7 +51,7 @@ import java.util.Map;
 public class ApiFacade implements IApiFacade {
 
 
-    private static final String TAG = "RSDK:APIFacade ";
+    private static final String TAG = "QYSDK:APIFacade ";
     private static ApiFacade ourInstance = null;
 
     /**

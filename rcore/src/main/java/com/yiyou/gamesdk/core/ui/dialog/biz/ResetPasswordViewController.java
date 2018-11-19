@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
  */
 
 public class ResetPasswordViewController extends BaseAuthViewController {
-    private static final String TAG = "RSDK:ResetPasswordViewContro";
+    private static final String TAG = "QYSDK:ResetPasswordViewContro";
 
     private static final long AUTO_REGISTER_VERIFY_MODE_EXPIRATION = 60 * 60 * 1000; //验证模式持续时间
     private boolean waitingVerifyCode = false;

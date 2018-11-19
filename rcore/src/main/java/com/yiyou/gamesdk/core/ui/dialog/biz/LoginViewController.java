@@ -44,7 +44,7 @@ import java.util.Map;
  */
 public class LoginViewController extends BaseAuthViewController {
 
-    private static final String TAG = "RSDK:LoginViewController ";
+    private static final String TAG = "QYSDK:LoginViewController ";
     private static final String MD5_PWD_PREFIX = "\u0d62\u0d63\u135f";
     Context context;
     private InputFilter[] phoneLengthFilter = new InputFilter[]{

@@ -19,7 +19,7 @@ import java.lang.ref.WeakReference;
  */
 public class ToastUtils {
 
-    private static final String TAG = "RSDK:ToastUtils ";
+    private static final String TAG = "QYSDK:ToastUtils ";
     private static WeakReference<Toast> toastInstanceHolder;
 
     /**

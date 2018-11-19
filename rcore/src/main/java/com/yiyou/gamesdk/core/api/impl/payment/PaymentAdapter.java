@@ -14,7 +14,7 @@ public class PaymentAdapter {
     public static final int PAY_WAY_ALI_PAY = 0;//支付宝
     public static final int PAY_WAY_IPAYNOW = 1;//现在支付
 
-    private static final String TAG = "RSDK:PaymentAdapter";
+    private static final String TAG = "QYSDK:PaymentAdapter";
     private static PaymentAdapter _instance;
 
     ///////////////////////////////////////////////////////////////////////////

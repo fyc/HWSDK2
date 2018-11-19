@@ -13,7 +13,7 @@ import com.qygame.qysdk.outer.util.StringUtils;
  */
 class ChannelManager implements IChannelApi {
 
-    private static final String TAG = "RSDK:ChannelManager";
+    private static final String TAG = "QYSDK:ChannelManager";
     private String currentGameID = "";
     private String currentGameName = "";
     private String SdkKey = "";

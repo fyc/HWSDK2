@@ -19,7 +19,7 @@ import dalvik.system.DexClassLoader;
  * Created by chenshuide on 15/6/2.
  */
 public class ContextWrapper {
-    private static final String TAG = "RSDK: "+"ContextWrapper";
+    private static final String TAG = "QYSDK: "+"ContextWrapper";
     private IApkInfo mApkinfo;
     private Context mContext;
 

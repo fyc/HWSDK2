@@ -7,7 +7,7 @@ import com.qygame.qysdk.outer.util.Log;
  * Created by chenshuide on 15/6/4.
  */
 public class Urlpath {
-    private static final String TAG = "RSDK:UrlPath ";
+    private static final String TAG = "QYSDK:UrlPath ";
 
     /**
      * 内网测试环境

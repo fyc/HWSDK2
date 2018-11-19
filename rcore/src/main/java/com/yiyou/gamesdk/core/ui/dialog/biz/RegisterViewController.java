@@ -45,7 +45,7 @@ import java.util.regex.Pattern;
  * 注册，手机号注册，一键注册
  */
 public class RegisterViewController extends BaseAuthViewController {
-    private static final String TAG = "RSDK:RegisterViewController ";
+    private static final String TAG = "QYSDK:RegisterViewController ";
 
     private static final int STATE_REGISTER_PHONE = 1;
     private static final int STATE_REGISTER_ACCOUNT = 2;

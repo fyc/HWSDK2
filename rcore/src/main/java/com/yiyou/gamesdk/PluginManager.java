@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class PluginManager {
     private static PluginManager sInstance = null;
-    private static final String TAG = "RSDK:PluginManager";
+    private static final String TAG = "QYSDK:PluginManager";
     private FloatService floatService;
     private Map<String, ContextWrapper> plugins = new HashMap<>();
     private boolean isDebug = false;

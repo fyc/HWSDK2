@@ -37,7 +37,7 @@ public class HttpUtils {
 
 	private static final String DEFAULT_CHAREST = "UTF-8";
 	private static final Uri URI_PREFERAPN = Uri.parse("content://telephony/carriers/preferapn");;
-	private static final String TAG = "RSDK:HttpUtils";
+	private static final String TAG = "QYSDK:HttpUtils";
 
 //	public static boolean isMultipart(List<HttpParameter> params) {
 //		for (HttpParameter httpParameter : params) {

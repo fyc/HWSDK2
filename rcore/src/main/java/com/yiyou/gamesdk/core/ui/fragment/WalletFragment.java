@@ -26,7 +26,7 @@ import java.util.Map;
 
 public class WalletFragment extends WebFragment {
 
-    private static final String TAG = "RSDK: WalletFragment";
+    private static final String TAG = "QYSDK: WalletFragment";
 
     public static WalletFragment newInstance() {
         WalletFragment fragment = new WalletFragment();

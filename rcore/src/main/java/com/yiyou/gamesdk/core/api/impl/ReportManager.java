@@ -38,7 +38,7 @@ import java.util.zip.GZIPOutputStream;
  */
 class ReportManager implements IReportApi {
 
-    private final static String TAG = "RSDK: " + ReportManager.class.getSimpleName();
+    private final static String TAG = "QYSDK: " + ReportManager.class.getSimpleName();
 
     private final static String TYPE_ACTIVATE = "ACTIVATE";
     private final static String TYPE_ONLINE = "ONLINE";

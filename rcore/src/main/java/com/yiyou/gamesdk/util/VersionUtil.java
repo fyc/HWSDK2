@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
 
-import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.QYSDKSpace;
 import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.core.CoreManager;
 
@@ -176,16 +176,16 @@ public class VersionUtil {
     }
 
     public static String getSdkVersion(){
-        SharedPreferences sharePreferences = RSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
-        return   sharePreferences.getString(RSDKSpace.KEY_SDK_VERSION, "");
+        SharedPreferences sharePreferences = QYSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
+        return   sharePreferences.getString(QYSDKSpace.KEY_SDK_VERSION, "");
 
     }
 
 
     public static String getCoreVersion(){
         if (TextUtils.isEmpty(CORE_VERSION)) {
-            SharedPreferences sharePreferences = RSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
-            CORE_VERSION = sharePreferences.getString(RSDKSpace.KEY_CUR_VERSION, "");
+            SharedPreferences sharePreferences = QYSDKSpace.getInstance(CoreManager.getContext()).getSharePreferences();
+            CORE_VERSION = sharePreferences.getString(QYSDKSpace.KEY_CUR_VERSION, "");
         }
         return CORE_VERSION;
 

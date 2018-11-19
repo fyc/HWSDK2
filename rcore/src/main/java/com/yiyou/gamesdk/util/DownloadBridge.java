@@ -23,7 +23,7 @@ import java.net.URLEncoder;
 
 public class DownloadBridge {
 
-	private static final String TAG = "RSDK: "+"DownloadBridge";
+	private static final String TAG = "QYSDK: "+"DownloadBridge";
 	private static DownloadBridge downloadBridge;
 	private static final String DL_ID = "downloadId1234567";
 	public static final Uri CONTENT_URI = Uri

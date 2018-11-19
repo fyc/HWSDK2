@@ -19,7 +19,7 @@ import java.util.Set;
  */
 public class PropertiesManager {
 
-    private static final String TAG = "RSDK:PropertiesManager";
+    private static final String TAG = "QYSDK:PropertiesManager";
 
     private static PropertiesManager instance;
 

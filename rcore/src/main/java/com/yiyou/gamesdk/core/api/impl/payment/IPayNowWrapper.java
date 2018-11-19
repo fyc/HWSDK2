@@ -16,7 +16,7 @@ import com.yiyou.gamesdk.util.ToastUtils;
  * Created by LY on 2015/10/12.
  */
 public class IPayNowWrapper implements IPaySDKWrapper{
-    private static final String TAG = "RSDK:IPayNow";
+    private static final String TAG = "QYSDK:IPayNow";
     private static Activity act = null;
     @Override
     public void startPay(Activity startUpActivity, String paymentData, IOperateCallback<String> callback) {

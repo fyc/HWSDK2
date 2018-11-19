@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.annotation.NonNull;
 
-import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.QYSDKSpace;
 import com.qygame.qysdk.outer.TempLibHelper;
 import com.qygame.qysdk.outer.util.ApkInfoUtil;
 import com.qygame.qysdk.outer.util.FileUtils;
@@ -40,7 +40,7 @@ public class VersionDir extends File implements IApkInfo {
     /**
      * app name
      */
-    protected static final String TAG = "RSDK: "+"VersionDir";
+    protected static final String TAG = "QYSDK: "+"VersionDir";
     public static final String PLUGIN_APK_NAME = "rplugin.apk";
     protected static final String ASSETS_APK_NAME = "apk/rplugin.apk";
     protected String mVersion;
@@ -101,7 +101,7 @@ public class VersionDir extends File implements IApkInfo {
         try {
 
             AssetManager assets = context.getAssets();
-            String[] listFileName = assets.list(RSDKSpace.ASSETS_APK);
+            String[] listFileName = assets.list(QYSDKSpace.ASSETS_APK);
             if (listFileName.length == 0)
                 return false;
 
@@ -112,7 +112,7 @@ public class VersionDir extends File implements IApkInfo {
                 if (!fileName.endsWith(END_SUFFIX))//only copy apk
                     continue;
 
-                InputStream inputStream = context.getAssets().open(RSDKSpace.ASSETS_APK_DIR + fileName);
+                InputStream inputStream = context.getAssets().open(QYSDKSpace.ASSETS_APK_DIR + fileName);
                 isSucc = copyApk2Path(context, inputStream, fileName);
                 if (!isSucc) {
                     Log.d(TAG, "copy fail " + isSucc + "filename " + fileName);

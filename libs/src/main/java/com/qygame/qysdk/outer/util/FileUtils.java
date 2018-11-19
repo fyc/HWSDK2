@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class FileUtils {
     private static final int MAX_BUFFER_SIZE = 10 * 1024;
-    private static final String TAG = "RSDK: "+"FileUtils";
+    private static final String TAG = "QYSDK: "+"FileUtils";
 
     /**
      * copy file

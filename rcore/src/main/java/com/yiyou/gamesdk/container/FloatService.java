@@ -23,7 +23,7 @@ public class FloatService extends Service {
 
     private Handler handler;
 
-    private static final String TAG = "RSDK:FloatService ";
+    private static final String TAG = "QYSDK:FloatService ";
 
     @Override
     public IBinder onBind(Intent intent) {

@@ -36,7 +36,7 @@ import java.util.TreeMap;
  */
 public class HwRequest<T> extends Request<Result<T>> {
 
-    private static final String TAG = "RSDK: HwRequest";
+    private static final String TAG = "QYSDK: HwRequest";
     protected QyRespListener<T> mListener;
     protected Map<String, String> mParams, mHeader;
     private String mUrl;

@@ -46,8 +46,8 @@ import java.util.TreeMap;
  */
 public class QYCompactJSAPI {
 
-    public static final String NAME = "RSDKJSBridge";
-    public static final String TAG = "RSDK:QYCompactJSAPI ";
+    public static final String NAME = "QYSDKJSBridge";
+    public static final String TAG = "QYSDK:QYCompactJSAPI ";
 
     private QYCompactDelegate delegate;
     private Context mContext;

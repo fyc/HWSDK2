@@ -28,7 +28,7 @@ import com.yiyou.gamesdk.core.ui.fragment.GameFragment;
 import com.yiyou.gamesdk.util.FloatWinCompatHelper;
 
 class FloatViewController implements IViewController {
-    private static final String TAG = "RSDK:FloatViewController";
+    private static final String TAG = "QYSDK:FloatViewController";
 
     public static final int HEDE_FLOAT_VIEW_TIME = 3000;//靠边隐藏时间
     private View moveView;

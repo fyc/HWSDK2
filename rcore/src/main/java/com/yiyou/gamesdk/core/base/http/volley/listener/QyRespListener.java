@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class QyRespListener<T> {
 
-    private static final String TAG = "RSDK:QyRespListener ";
+    private static final String TAG = "QYSDK:QyRespListener ";
 
 
     /**
