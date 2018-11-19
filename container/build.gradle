@@ -54,7 +54,7 @@ build.dependsOn makeJar
 task wirteVersionFile(){
 
 
-    File f = file('../output-libs/release/merge/assets/haowan_rsdk_config/version.config')
+    File f = file('../output-libs/release/merge/assets/qiyuan_qysdk_config/version.config')
 
     if (!f.getParentFile().exists()){
         f.getParentFile().mkdirs();

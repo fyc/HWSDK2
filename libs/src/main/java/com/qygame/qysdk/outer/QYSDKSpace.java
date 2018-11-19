@@ -19,7 +19,7 @@ public class QYSDKSpace {
 
     private static final String TAG = "QYSDK:QYSDKSpace";
 
-    private static final String ASSETS_VERSUIN_CONFIG = "haowan_rsdk_config/version.config";
+    private static final String ASSETS_VERSUIN_CONFIG = "qiyuan_qysdk_config/version.config";
     public static final String ASSETS_APK_DIR = "apk" + File.separator;
     public static final String ASSETS_APK = "apk";
 

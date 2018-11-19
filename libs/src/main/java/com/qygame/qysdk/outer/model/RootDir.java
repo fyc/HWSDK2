@@ -12,7 +12,7 @@ import java.util.List;
  * Created by chenshuide on 15/8/4.
  */
 public class RootDir extends File {
-    private static final String ROOT_PATH_FOR_R = "haowansdk";
+    private static final String ROOT_PATH_FOR_R = "qiyuansdk";
     List<VersionDir> list = new ArrayList<>();
 
     private static RootDir instance;

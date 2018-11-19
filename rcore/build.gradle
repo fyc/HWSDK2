@@ -75,7 +75,7 @@ task output(type: Copy) {
     from 'build/outputs/apk'
     into '../output-libs/release/merge/assets/apk'
     include 'rcore-release.apk'
-    rename 'rcore-release.apk','rplugin.apk'
+    rename 'rcore-release.apk','qyplugin.apk'
 }
 
 build.dependsOn output

@@ -41,8 +41,8 @@ public class VersionDir extends File implements IApkInfo {
      * app name
      */
     protected static final String TAG = "QYSDK: "+"VersionDir";
-    public static final String PLUGIN_APK_NAME = "rplugin.apk";
-    protected static final String ASSETS_APK_NAME = "apk/rplugin.apk";
+    public static final String PLUGIN_APK_NAME = "qyplugin.apk";
+    protected static final String ASSETS_APK_NAME = "apk/qyplugin.apk";
     protected String mVersion;
     protected File resourceDir;
     public void setResourceDir(File resourceDir) {
