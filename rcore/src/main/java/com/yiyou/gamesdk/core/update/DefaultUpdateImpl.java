@@ -9,10 +9,10 @@ import com.yiyou.gamesdk.core.base.http.RequestHelper;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.PatchUpdateBean;
-import com.mobilegamebar.rsdk.outer.RSDKSpace;
-import com.mobilegamebar.rsdk.outer.model.RootDir;
-import com.mobilegamebar.rsdk.outer.model.VersionDir;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.model.RootDir;
+import com.qygame.qysdk.outer.model.VersionDir;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.io.File;
 import java.util.Map;

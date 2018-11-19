@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;

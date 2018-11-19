@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
 
-import com.mobilegamebar.rsdk.outer.RSDKSpace;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.core.CoreManager;
 
 public class VersionUtil {

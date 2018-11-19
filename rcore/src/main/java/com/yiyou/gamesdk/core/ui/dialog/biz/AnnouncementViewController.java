@@ -3,8 +3,8 @@ package com.yiyou.gamesdk.core.ui.dialog.biz;
 import android.app.Activity;
 import android.content.Context;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.event.IDialogParam;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.event.IDialogParam;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.yiyou.gamesdk.model.AnnouncementInfo;

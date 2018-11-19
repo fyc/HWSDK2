@@ -11,8 +11,8 @@ import com.android.volley1.VolleyError;
 import com.android.volley1.toolbox.HttpHeaderParser;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
 import com.yiyou.gamesdk.core.base.http.volley.listener.ProgressListener;
-import com.mobilegamebar.rsdk.outer.util.FileUtils;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.FileUtils;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;

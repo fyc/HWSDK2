@@ -10,7 +10,7 @@ import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;
 import com.yiyou.gamesdk.core.ui.widget.dialog.YunWeiDialogView;
 import com.yiyou.gamesdk.model.NoticeInfo;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.util.VersionUtil;
 
 import java.util.Map;

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yiyou.gamesdk.R;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 
 /**
  * Created by levyyoung on 15/7/29.

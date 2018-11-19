@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 /**
  * Created by levyyoung on 15/8/24.

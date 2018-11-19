@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.yiyou.gamesdk.core.CoreManager;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 /**
  * Created by levyyoung on 15/12/16.

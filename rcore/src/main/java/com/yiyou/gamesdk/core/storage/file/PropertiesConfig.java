@@ -1,7 +1,7 @@
 package com.yiyou.gamesdk.core.storage.file;
 
 import android.support.annotation.NonNull;
-import com.mobilegamebar.rsdk.outer.util.StorageConfig;
+import com.qygame.qysdk.outer.util.StorageConfig;
 
 import java.io.File;
 import java.io.IOException;

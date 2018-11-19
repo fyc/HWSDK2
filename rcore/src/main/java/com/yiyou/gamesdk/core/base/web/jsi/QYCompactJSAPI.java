@@ -9,9 +9,9 @@ import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;

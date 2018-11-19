@@ -8,10 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.event.IDialogParam;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.event.IDialogParam;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAuthApi;

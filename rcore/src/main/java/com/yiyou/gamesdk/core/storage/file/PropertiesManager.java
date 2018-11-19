@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.storage.file;
 import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;

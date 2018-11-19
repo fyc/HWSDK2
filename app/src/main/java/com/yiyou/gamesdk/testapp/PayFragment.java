@@ -14,9 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.gamesdk.shouyouba.tzsy.R;
-import com.mobilegamebar.rsdk.container.RGameSDK;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.model.PaymentInfo;
+import com.qygame.qysdk.container.RGameSDK;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.model.PaymentInfo;
 
 import java.util.Date;
 

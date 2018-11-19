@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.event.FinishFragmentEvent;
-import com.mobilegamebar.rsdk.outer.event.IEventListener;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.FinishFragmentEvent;
+import com.qygame.qysdk.outer.event.IEventListener;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.storage.events.NativeTitleBarTitleContentEvent;

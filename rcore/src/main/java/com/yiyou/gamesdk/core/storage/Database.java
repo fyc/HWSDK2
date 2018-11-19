@@ -17,10 +17,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.util.Log;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcher;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.event.IEventListener;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.event.EventDispatcher;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.IEventListener;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.storage.events.InternalStorageEvent;
 import com.yiyou.gamesdk.core.storage.events.StorageEvent;

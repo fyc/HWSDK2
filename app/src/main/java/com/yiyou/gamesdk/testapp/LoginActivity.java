@@ -13,12 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.gamesdk.shouyouba.tzsy.R;
-import com.mobilegamebar.rsdk.container.RGameSDK;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.OrientationDef;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.model.GameParamInfo;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.container.RGameSDK;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.OrientationDef;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.model.GameParamInfo;
+import com.qygame.qysdk.outer.util.Log;
 
 
 public class LoginActivity extends FragmentActivity implements MainFragment.MainFragmentBtnClickListener, View.OnClickListener {

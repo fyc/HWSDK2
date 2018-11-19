@@ -77,7 +77,7 @@ task mergeJar(type : Jar){
 
     from '../output-libs/release/merge'
     destinationDir = file('../app/libs')
-    baseName = 'MobileGameBAR-RSDK-V'+SDK_VERSION + '-R'+CORE_VERSION
+    baseName = 'QYGame-QYSDK-V'+SDK_VERSION + '-R'+CORE_VERSION
 
 
 

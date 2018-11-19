@@ -15,8 +15,8 @@ import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
 import com.yiyou.gamesdk.model.PatchUpdateBean;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.io.File;
 import java.util.Map;

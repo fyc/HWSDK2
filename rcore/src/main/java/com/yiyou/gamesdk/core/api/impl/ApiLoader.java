@@ -13,7 +13,7 @@ import com.yiyou.gamesdk.core.api.def.IPaymentApi;
 import com.yiyou.gamesdk.core.api.def.IReportApi;
 import com.yiyou.gamesdk.core.api.def.ISecurityApi;
 import com.yiyou.gamesdk.core.api.def.IUpgradeApi;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.util.Arrays;
 import java.util.Map;

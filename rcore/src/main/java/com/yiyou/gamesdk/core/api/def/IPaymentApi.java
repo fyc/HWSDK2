@@ -3,8 +3,8 @@ package com.yiyou.gamesdk.core.api.def;
 import android.app.Activity;
 import android.support.annotation.Nullable;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.model.PaymentInfo;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.model.PaymentInfo;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
 
 import java.util.Map;

@@ -25,12 +25,12 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
--keep  class com.mobilegamebar.rsdk.outer.model.**{*;}
--keep  class com.mobilegamebar.rsdk.outer.**{
+-keep  class com.qygame.qysdk.outer.model.**{*;}
+-keep  class com.qygame.qysdk.outer.**{
  public <methods>;
  public <fields>;
 }
--keep  class com.mobilegamebar.rsdk.events.**{
+-keep  class com.qygame.qysdk.events.**{
  public <methods>;
  public <fields>;
 }

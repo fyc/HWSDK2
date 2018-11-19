@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.util.ArrayMap;
 import android.view.View;
 
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.utils.HttpUtils;
 import com.yiyou.gamesdk.core.base.http.utils.Urlpath;

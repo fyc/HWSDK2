@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 

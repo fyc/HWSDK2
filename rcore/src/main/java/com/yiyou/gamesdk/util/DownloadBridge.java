@@ -15,8 +15,8 @@ import android.webkit.MimeTypeMap;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.storage.events.GameDownloadEvent;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

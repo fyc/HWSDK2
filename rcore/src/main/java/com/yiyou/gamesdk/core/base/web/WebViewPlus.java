@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 /**
  * Created by levyyoung on 15/8/4.

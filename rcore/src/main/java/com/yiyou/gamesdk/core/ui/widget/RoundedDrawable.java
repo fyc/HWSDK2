@@ -18,7 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.widget.ImageView.ScaleType;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 @SuppressWarnings("UnusedDeclaration")
 public class RoundedDrawable extends Drawable {

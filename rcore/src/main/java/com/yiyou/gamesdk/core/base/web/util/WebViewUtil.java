@@ -6,8 +6,8 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.webkit.WebView;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 /**
  * Created by levyyoung on 15/6/5.

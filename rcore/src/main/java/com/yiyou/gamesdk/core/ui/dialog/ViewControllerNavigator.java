@@ -5,10 +5,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.event.IDialogParam;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.event.IDialogParam;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.ui.dialog.biz.BindPhoneViewController;

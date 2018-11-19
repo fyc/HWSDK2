@@ -9,7 +9,7 @@ import android.support.v4.util.ArrayMap;
 import android.view.View;
 import android.webkit.WebView;
 
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.utils.HttpUtils;

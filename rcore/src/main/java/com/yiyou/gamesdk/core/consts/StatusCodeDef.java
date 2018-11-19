@@ -2,8 +2,8 @@ package com.yiyou.gamesdk.core.consts;
 
 import android.support.v4.util.ArrayMap;
 
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 /**
  * Created by levyyoung on 15/4/30.

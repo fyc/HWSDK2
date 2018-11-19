@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.container.MainActivity;
 import com.yiyou.gamesdk.core.base.http.RequestManager;

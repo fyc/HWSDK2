@@ -10,7 +10,7 @@ import android.view.animation.AnimationUtils;
 
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 
 /**
  * Created by shui on 15-8-20.

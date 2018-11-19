@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.yiyou.gamesdk.R;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

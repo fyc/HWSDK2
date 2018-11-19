@@ -4,7 +4,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.util.ViewUtils;
 

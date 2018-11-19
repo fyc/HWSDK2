@@ -9,9 +9,9 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.yiyou.gamesdk.core.ui.dialog.BaseViewController;
 import com.yiyou.gamesdk.model.AuthModel;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.event.IDialogParam;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.event.IDialogParam;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 
 /**
  * Created by Orange on 15/6/15.

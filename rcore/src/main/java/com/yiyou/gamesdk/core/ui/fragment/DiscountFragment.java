@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson1.Gson;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;

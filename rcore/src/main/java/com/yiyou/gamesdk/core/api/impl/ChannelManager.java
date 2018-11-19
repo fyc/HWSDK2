@@ -5,8 +5,8 @@ import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IChannelApi;
 import com.yiyou.gamesdk.core.storage.file.PropertiesConfig;
 import com.yiyou.gamesdk.core.storage.file.PropertiesManager;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 /**
  * Created by levyyoung on 15/6/15.

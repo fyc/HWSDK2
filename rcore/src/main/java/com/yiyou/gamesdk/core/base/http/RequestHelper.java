@@ -2,7 +2,7 @@ package com.yiyou.gamesdk.core.base.http;
 
 import android.os.Build;
 
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.util.PhoneUtils;

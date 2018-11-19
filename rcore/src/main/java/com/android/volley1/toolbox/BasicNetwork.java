@@ -34,7 +34,7 @@ import com.android.volley1.VolleyLog;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.base.http.RequestManager;
 import com.yiyou.gamesdk.core.base.http.volley.listener.ProgressListener;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;

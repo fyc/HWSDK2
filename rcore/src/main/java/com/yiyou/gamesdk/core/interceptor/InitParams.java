@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.yiyou.gamesdk.model.GameUpdateInfo;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.model.GameParamInfo;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.model.GameParamInfo;
 
 public class InitParams {
     GameUpdateInfo gameUpdateInfo;

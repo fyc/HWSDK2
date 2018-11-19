@@ -7,9 +7,9 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.model.PaymentInfo;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.model.PaymentInfo;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.def.IAccountHistoryApi;
 import com.yiyou.gamesdk.core.api.def.IAnnouncementApi;

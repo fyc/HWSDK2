@@ -7,9 +7,9 @@ import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.storage.db.global.GameSDKDatabase;
 import com.yiyou.gamesdk.core.storage.db.global.QiYuanSdkDatabase;
 import com.yiyou.gamesdk.core.storage.events.StorageEvent;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.event.IEventListener;
-import com.mobilegamebar.rsdk.outer.util.StorageConfig;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.IEventListener;
+import com.qygame.qysdk.outer.util.StorageConfig;
 
 import java.io.File;
 import java.io.FileInputStream;

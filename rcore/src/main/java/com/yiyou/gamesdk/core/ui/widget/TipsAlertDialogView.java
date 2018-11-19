@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.ui.dialog.BaseViewController;
 

@@ -11,8 +11,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.mobilegamebar.rsdk.container.RGameSDK;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.container.RGameSDK;
+import com.qygame.qysdk.outer.util.Log;
 import com.gamesdk.shouyouba.tzsy.R;
 
 public class MainFragment extends Fragment implements View.OnClickListener {

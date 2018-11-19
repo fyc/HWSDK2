@@ -19,10 +19,10 @@
 
 -printmapping container-mapping.map
 
--keep public class com.mobilegamebar.rsdk.container.**{
+-keep public class com.qygame.qysdk.container.**{
   *;
 }
 
--keep public class com.mobilegamebar.rsdk.internal.**{
+-keep public class com.qygame.qysdk.internal.**{
   *;
 }

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.support.annotation.NonNull;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.io.File;
 import java.io.FileReader;

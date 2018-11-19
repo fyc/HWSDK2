@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import com.yiyou.gamesdk.R;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 
 public class ScalableImageView extends ImageView {

@@ -2,7 +2,7 @@ package com.yiyou.gamesdk.core.api.impl.payment;
 
 import android.app.Activity;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.IOperateCallback;
 
 /**
  * Created by levyyoung on 15/9/16.

@@ -10,8 +10,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.event.StartActivityEvent;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.StartActivityEvent;
 import com.yiyou.gamesdk.container.MainActivity;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;

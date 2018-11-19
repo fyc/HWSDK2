@@ -10,11 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley1.AuthFailureError;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;

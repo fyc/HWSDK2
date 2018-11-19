@@ -1,6 +1,6 @@
 package com.yiyou.gamesdk.util;
 
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 /**
  * Created by parry on 17/7/7.

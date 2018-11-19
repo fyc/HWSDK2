@@ -18,7 +18,7 @@ import com.google.gson1.Gson;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.base.http.utils.HttpErrorCodeDef;
 import com.yiyou.gamesdk.core.base.http.volley.listener.QyRespListener;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.util.ByteUtils;
 
 import org.json.JSONArray;

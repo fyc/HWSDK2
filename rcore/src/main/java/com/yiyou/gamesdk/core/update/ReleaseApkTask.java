@@ -5,11 +5,11 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.yiyou.gamesdk.core.CoreManager;
-import com.mobilegamebar.rsdk.outer.RSDKSpace;
-import com.mobilegamebar.rsdk.outer.model.RootDir;
-import com.mobilegamebar.rsdk.outer.model.VersionDir;
-import com.mobilegamebar.rsdk.outer.util.FileUtils;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.RSDKSpace;
+import com.qygame.qysdk.outer.model.RootDir;
+import com.qygame.qysdk.outer.model.VersionDir;
+import com.qygame.qysdk.outer.util.FileUtils;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.io.File;
 import java.io.IOException;

@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 
 /**
  * Created by Orange on 15/6/11.

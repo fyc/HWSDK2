@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 
 /**

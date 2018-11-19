@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
 import com.yiyou.gamesdk.PluginManager;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;

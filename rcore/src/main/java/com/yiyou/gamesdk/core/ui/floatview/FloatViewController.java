@@ -20,9 +20,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.event.StartActivityEvent;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.StartActivityEvent;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.ui.fragment.GameFragment;
 import com.yiyou.gamesdk.util.FloatWinCompatHelper;

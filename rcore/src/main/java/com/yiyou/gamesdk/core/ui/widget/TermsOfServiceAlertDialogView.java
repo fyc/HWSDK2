@@ -5,7 +5,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
-import com.mobilegamebar.rsdk.outer.event.IDialogParam;
+import com.qygame.qysdk.outer.event.IDialogParam;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.ui.dialog.BaseViewController;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;

@@ -2,7 +2,7 @@ package com.yiyou.gamesdk.core.storage.events;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mobilegamebar.rsdk.outer.event.BaseEventParam;
+import com.qygame.qysdk.outer.event.BaseEventParam;
 
 /**
  * Created by levyyoung on 15/5/12.

@@ -12,7 +12,7 @@ import android.webkit.MimeTypeMap;
 
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.base.http.volley.listener.FileDownListener;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.util.PackageUtil;
 import com.yiyou.gamesdk.util.ToastUtils;
 

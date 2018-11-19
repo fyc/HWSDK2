@@ -2,7 +2,7 @@ package com.yiyou.gamesdk.core.base.http.volley.listener;
 
 import android.text.TextUtils;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.util.ToastUtils;
 
 import java.util.List;

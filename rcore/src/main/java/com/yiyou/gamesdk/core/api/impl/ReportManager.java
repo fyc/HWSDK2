@@ -4,7 +4,7 @@ package com.yiyou.gamesdk.core.api.impl;
 import android.app.Activity;
 import android.os.Build;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.IOperateCallback;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IReportApi;

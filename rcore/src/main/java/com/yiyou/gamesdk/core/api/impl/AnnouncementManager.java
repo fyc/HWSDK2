@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import com.google.gson1.Gson;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.def.IAnnouncementApi;

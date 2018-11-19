@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;

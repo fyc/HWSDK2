@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;

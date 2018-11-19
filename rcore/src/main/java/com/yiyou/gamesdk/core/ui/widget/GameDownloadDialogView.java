@@ -19,8 +19,8 @@ import com.yiyou.gamesdk.core.storage.events.GameDownloadEvent.GameDownloadEvent
 import com.yiyou.gamesdk.core.storage.sharepref.Constant;
 import com.yiyou.gamesdk.core.ui.dialog.BaseViewController;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.event.IEventListener;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.IEventListener;
 import com.yiyou.gamesdk.util.DownloadBridge;
 
 

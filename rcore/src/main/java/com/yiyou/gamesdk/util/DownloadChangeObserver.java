@@ -12,8 +12,8 @@ import android.os.Handler;
 
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.consts.EventConstant;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.util.Log;
 
 public class DownloadChangeObserver extends ContentObserver {
 

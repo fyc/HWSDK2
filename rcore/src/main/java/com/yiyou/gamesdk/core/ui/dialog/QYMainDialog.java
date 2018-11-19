@@ -7,7 +7,7 @@ import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 /**
  * Created by Orange on 15/6/9.

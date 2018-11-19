@@ -1,6 +1,6 @@
 package com.yiyou.gamesdk.core.storage.db.global;
 
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.core.storage.ITable;
 
 /**

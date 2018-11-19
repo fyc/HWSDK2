@@ -2,9 +2,9 @@ package com.yiyou.gamesdk.core.api.impl.payment;
 
 import android.app.Activity;
 import android.support.v4.util.SparseArrayCompat;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.util.Log;
 
 /**
  * Created by levyyoung on 15/9/16.

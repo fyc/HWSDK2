@@ -10,11 +10,11 @@ import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.mobilegamebar.rsdk.outer.ICoreManager;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.event.EventDispatcherAgent;
-import com.mobilegamebar.rsdk.outer.model.GameParamInfo;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.ICoreManager;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.model.GameParamInfo;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.api.impl.payment.PaymentAdapter;
 import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;

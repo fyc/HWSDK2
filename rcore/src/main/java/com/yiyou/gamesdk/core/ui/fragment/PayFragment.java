@@ -9,7 +9,7 @@ import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.yiyou.gamesdk.model.NativeTitleBarUpdateInfo;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.util.ExtraDef;
 
 /**

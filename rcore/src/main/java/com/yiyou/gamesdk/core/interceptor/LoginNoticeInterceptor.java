@@ -1,7 +1,7 @@
 package com.yiyou.gamesdk.core.interceptor;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 import com.yiyou.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.yiyou.gamesdk.core.ui.widget.dialog.CommDialog;

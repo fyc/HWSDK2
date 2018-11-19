@@ -1,6 +1,6 @@
 package com.yiyou.gamesdk.core.interceptor;
 
-import com.mobilegamebar.rsdk.outer.event.AuthEvent;
+import com.qygame.qysdk.outer.event.AuthEvent;
 
 /**
  * Created by charles on 12/7/16.

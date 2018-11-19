@@ -7,7 +7,7 @@ import com.yiyou.gamesdk.core.storage.sharepref.Constant;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.yiyou.gamesdk.core.ui.widget.GameDownloadDialogView;
 import com.yiyou.gamesdk.model.GameUpdateInfo;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 /**
  * show force dialog interceptor

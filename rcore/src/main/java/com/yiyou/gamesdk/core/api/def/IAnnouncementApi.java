@@ -1,6 +1,6 @@
 package com.yiyou.gamesdk.core.api.def;
 
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.IOperateCallback;
 import com.yiyou.gamesdk.model.AnnouncementInfo;
 
 import java.util.List;

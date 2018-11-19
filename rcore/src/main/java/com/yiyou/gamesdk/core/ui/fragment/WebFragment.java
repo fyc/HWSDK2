@@ -15,7 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.mobilegamebar.rsdk.outer.util.IBackPressedHandler;
+import com.qygame.qysdk.outer.util.IBackPressedHandler;
 import com.yiyou.gamesdk.R;
 import com.yiyou.gamesdk.core.base.web.WebViewBuilder;
 import com.yiyou.gamesdk.core.base.web.jsi.JSBridge;

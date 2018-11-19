@@ -12,8 +12,8 @@ import com.yiyou.gamesdk.core.storage.Database;
 import com.yiyou.gamesdk.core.storage.StorageAgent;
 import com.yiyou.gamesdk.core.storage.db.global.AccountTable;
 import com.yiyou.gamesdk.model.AccountHistoryInfo;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

@@ -5,7 +5,7 @@ import android.support.v4.util.ArrayMap;
 
 import com.yiyou.gamesdk.core.storage.Database;
 import com.yiyou.gamesdk.core.storage.ITable;
-import com.mobilegamebar.rsdk.outer.util.StorageConfig;
+import com.qygame.qysdk.outer.util.StorageConfig;
 
 import java.util.Map;
 

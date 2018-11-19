@@ -1,7 +1,7 @@
 package com.yiyou.gamesdk.core.base.http.utils;
 
 import com.yiyou.gamesdk.core.CoreManager;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.Log;
 
 /**
  * Created by chenshuide on 15/6/4.

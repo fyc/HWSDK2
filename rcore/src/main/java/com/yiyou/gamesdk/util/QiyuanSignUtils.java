@@ -1,8 +1,8 @@
 package com.yiyou.gamesdk.util;
 
-import com.mobilegamebar.rsdk.outer.util.Base64Utils;
-import com.mobilegamebar.rsdk.outer.util.Log;
-import com.mobilegamebar.rsdk.outer.util.StringUtils;
+import com.qygame.qysdk.outer.util.Base64Utils;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.StringUtils;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 
 import java.security.InvalidKeyException;

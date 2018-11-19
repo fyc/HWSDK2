@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.storage.db.global;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 
-import com.mobilegamebar.rsdk.outer.util.StorageConfig;
+import com.qygame.qysdk.outer.util.StorageConfig;
 import com.yiyou.gamesdk.core.storage.Database;
 import com.yiyou.gamesdk.core.storage.ITable;
 

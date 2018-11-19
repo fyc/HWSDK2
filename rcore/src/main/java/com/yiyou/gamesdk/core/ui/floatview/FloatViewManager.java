@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.ui.floatview;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.mobilegamebar.rsdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.yiyou.gamesdk.core.api.ApiFacade;
 
 public class FloatViewManager {

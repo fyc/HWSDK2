@@ -3,7 +3,7 @@ package com.yiyou.gamesdk.core.exception;
 
 import com.yiyou.gamesdk.core.CoreManager;
 import com.yiyou.gamesdk.core.api.ApiFacade;
-import com.mobilegamebar.rsdk.outer.util.StorageConfig;
+import com.qygame.qysdk.outer.util.StorageConfig;
 import com.yiyou.gamesdk.util.PhoneUtils;
 import com.yiyou.gamesdk.util.TimeUtils;
 

@@ -6,9 +6,9 @@ import android.os.AsyncTask;
 import com.ipaynow.plugin.api.IpaynowPlugin;
 import com.ipaynow.plugin.manager.route.dto.ResponseParams;
 import com.ipaynow.plugin.manager.route.impl.ReceivePayResult;
-import com.mobilegamebar.rsdk.outer.IOperateCallback;
-import com.mobilegamebar.rsdk.outer.consts.QYCodeDef;
-import com.mobilegamebar.rsdk.outer.util.Log;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.util.Log;
 import com.yiyou.gamesdk.util.ToastUtils;
 
 
