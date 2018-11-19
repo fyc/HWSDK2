@@ -23,7 +23,7 @@ public class QYSDKSpace {
     public static final String ASSETS_APK_DIR = "apk" + File.separator;
     public static final String ASSETS_APK = "apk";
 
-    public static final String SHAREP_NAME = "rsdk_update_config";
+    public static final String SHAREP_NAME = "qysdk_update_config";
     public static final String KEY_CUR_VERSION = "key_cur_version";
     public static final String KEY_OLD_VERSION = "key_old_version";
     public static final String KEY_FIRST_VERSION = "key_first_version";

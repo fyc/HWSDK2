@@ -805,9 +805,9 @@ public class ApiFacade implements IApiFacade {
     public void setLastLoginChildAccount(AuthModel.childAccount lastLoginChildAccount) {
         if (lastLoginChildAccount != null) {
             SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
-            preferences.edit().putLong("rsdk_childUserID", lastLoginChildAccount.getChildUserID()).apply();
-            preferences.edit().putString("rsdk_childUserName", lastLoginChildAccount.getChildUserName()).apply();
-            preferences.edit().putString("rsdk_QYAccount", lastLoginChildAccount.getQYAccount()).apply();
+            preferences.edit().putLong("qysdk_childUserID", lastLoginChildAccount.getChildUserID()).apply();
+            preferences.edit().putString("qysdk_childUserName", lastLoginChildAccount.getChildUserName()).apply();
+            preferences.edit().putString("qysdk_QYAccount", lastLoginChildAccount.getQYAccount()).apply();
             Log.d(TAG, "setLastLoginChildAccount: " + lastLoginChildAccount.toString());
         }
     }
@@ -815,16 +815,16 @@ public class ApiFacade implements IApiFacade {
     public void setLastLoginChildAccount(long childUserId, String childUserName, String childQYAcount) {
         if (childUserId != 0) {
             SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
-            preferences.edit().putLong("rsdk_childUserID", childUserId).apply();
-            preferences.edit().putString("rsdk_childUserName", childUserName).apply();
-            preferences.edit().putString("rsdk_QYAccount", childQYAcount).apply();
+            preferences.edit().putLong("qysdk_childUserID", childUserId).apply();
+            preferences.edit().putString("qysdk_childUserName", childUserName).apply();
+            preferences.edit().putString("qysdk_QYAccount", childQYAcount).apply();
         }
     }
 
     public void setLastLoginAccount(AuthModel lastLoginAccount) {
         if (lastLoginAccount != null) {
             SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
-            preferences.edit().putLong("rsdk_childUserID", lastLoginAccount.getUserID()).apply();
+            preferences.edit().putLong("qysdk_childUserID", lastLoginAccount.getUserID()).apply();
         }
     }
 

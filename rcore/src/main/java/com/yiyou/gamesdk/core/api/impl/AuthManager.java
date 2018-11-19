@@ -408,7 +408,7 @@ class AuthManager implements IAuthApi {
     @Override
     public long getSubUid() {
         SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
-        Long uid = preferences.getLong("rsdk_childUserID", 0);
+        Long uid = preferences.getLong("qysdk_childUserID", 0);
         return uid;
     }
 
@@ -420,7 +420,7 @@ class AuthManager implements IAuthApi {
     @Override
     public String getSubUserName() {
         SharedPreferences preferences = CoreManager.getContext().getSharedPreferences(getMainUid() + "", Context.MODE_PRIVATE);
-        String UserName = preferences.getString("rsdk_childUserName", "");
+        String UserName = preferences.getString("qysdk_childUserName", "");
         return UserName;
     }
 

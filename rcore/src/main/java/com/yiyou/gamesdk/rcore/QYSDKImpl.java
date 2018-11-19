@@ -50,12 +50,12 @@ public class QYSDKImpl implements IQYSDK {
     }
 
     @Override
-    public void init(Activity context, GameParamInfo rGameInfo, boolean debugMode, int orientation, IOperateCallback<String> rsdkCallback) {
-        PluginManager.getInstance().init(context, debugMode, rGameInfo, orientation, rsdkCallback);
+    public void init(Activity context, GameParamInfo rGameInfo, boolean debugMode, int orientation, IOperateCallback<String> qysdkCallback) {
+        PluginManager.getInstance().init(context, debugMode, rGameInfo, orientation, qysdkCallback);
     }
 
     @Override
-    public void uninit(final Context context, final IOperateCallback<String> rsdkCallback) {
+    public void uninit(final Context context, final IOperateCallback<String> qysdkCallback) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
@@ -67,7 +67,7 @@ public class QYSDKImpl implements IQYSDK {
                     public void onEnsureClick() {
                         QYSDKSpace.getInstance(context.getApplicationContext()).uninit();
                         exit();
-                        PluginManager.getInstance().uninit(rsdkCallback);
+                        PluginManager.getInstance().uninit(qysdkCallback);
                     }
                 });
             }
@@ -103,7 +103,7 @@ public class QYSDKImpl implements IQYSDK {
         }
         ApiFacade.getInstance().setupChannelInfo();
 
-        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, callback, "RSDK");
+        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, callback, "QYSDK");
         final AuthEvent.LoginParams loginParamsProxy = new AuthEvent.LoginParams(activity,
                 new IOperateCallback<String>() {
                     @Override
@@ -115,7 +115,7 @@ public class QYSDKImpl implements IQYSDK {
                         LoginChain loginChain = new LoginChain(params, 0, interceptors);
                         loginChain.proceed(params);
                     }
-                }, "RSDK");
+                }, "QYSDK");
         FloatViewManager.getInstance().hide();
 //        ViewControllerNavigator.getInstance().toLogin(loginParamsProxy);
         ViewControllerNavigator.getInstance().beforeLogin(loginParams);
@@ -130,9 +130,9 @@ public class QYSDKImpl implements IQYSDK {
     }
 
     @Override
-    public void setLogoutListener(IOperateCallback<String> rsdkCallback) {
-        logoutCallback = rsdkCallback;
-        PluginManager.getInstance().setLogoutCallback(rsdkCallback);
+    public void setLogoutListener(IOperateCallback<String> qysdkCallback) {
+        logoutCallback = qysdkCallback;
+        PluginManager.getInstance().setLogoutCallback(qysdkCallback);
     }
 
     @Override
@@ -156,8 +156,8 @@ public class QYSDKImpl implements IQYSDK {
     }
 
     @Override
-    public void pay(Activity activity, PaymentInfo payOrderInfo, IOperateCallback<String> rsdkCallback) {
-        ApiFacade.getInstance().order(payOrderInfo, activity, rsdkCallback);
+    public void pay(Activity activity, PaymentInfo payOrderInfo, IOperateCallback<String> qysdkCallback) {
+        ApiFacade.getInstance().order(payOrderInfo, activity, qysdkCallback);
     }
 
     @Override
