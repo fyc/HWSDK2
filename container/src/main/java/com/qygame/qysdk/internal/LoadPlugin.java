@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.qygame.qysdk.outer.ContextWrapper;
 import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.IRSDK;
+import com.qygame.qysdk.outer.IQYSDK;
 import com.qygame.qysdk.outer.model.GameParamInfo;
 import com.qygame.qysdk.outer.model.PaymentInfo;
 import com.qygame.qysdk.outer.model.RootDir;
@@ -22,7 +22,7 @@ public class LoadPlugin {
     private static LoadPlugin instance = null;
     private ContextWrapper contextWrapper;
     private static final String ENTER_CLASS_NAME = "com.yiyou.gamesdk.rcore.RSDKImpl";
-    private IRSDK RSDKApi;
+    private IQYSDK RSDKApi;
     private boolean isInit = false;
 
     private LoadPlugin() {
@@ -47,7 +47,7 @@ public class LoadPlugin {
         contextWrapper.init();
         try {
             Class<?> localClass = contextWrapper.getClassLoader().loadClass(ENTER_CLASS_NAME);
-            RSDKApi = (IRSDK) localClass.newInstance();
+            RSDKApi = (IQYSDK) localClass.newInstance();
             RSDKApi.attach(contextWrapper, versionDir);
             RSDKApi.init(context, info, isDebug, orientation, new IOperateCallback<String>() {
                 @Override

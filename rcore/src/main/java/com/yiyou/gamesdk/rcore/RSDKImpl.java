@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 
 import com.qygame.qysdk.outer.ContextWrapper;
 import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.IRSDK;
+import com.qygame.qysdk.outer.IQYSDK;
 import com.qygame.qysdk.outer.RSDKSpace;
 import com.qygame.qysdk.outer.event.AuthEvent;
 import com.qygame.qysdk.outer.event.EventDispatcherAgent;
@@ -39,7 +39,7 @@ import java.util.TreeMap;
 /**
  * Created by Win on 2017/4/13.
  */
-public class RSDKImpl implements IRSDK {
+public class RSDKImpl implements IQYSDK {
 
     private static final String TAG = "RSDK:RSDKImpl";
     private IOperateCallback<String> logoutCallback;

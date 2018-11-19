@@ -6,7 +6,7 @@ import android.content.Context;
 import com.qygame.qysdk.internal.LoadPlugin;
 import com.qygame.qysdk.outer.ContextWrapper;
 import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.IRSDK;
+import com.qygame.qysdk.outer.IQYSDK;
 import com.qygame.qysdk.outer.model.GameParamInfo;
 import com.qygame.qysdk.outer.model.PaymentInfo;
 import com.qygame.qysdk.outer.model.VersionDir;
@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Created by Win on 2017/4/13.
  */
-public class QYGameSDK implements IRSDK {
+public class QYGameSDK implements IQYSDK {
 
     private static QYGameSDK instance = null;
 

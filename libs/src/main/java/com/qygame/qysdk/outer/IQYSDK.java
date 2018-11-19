@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by Win on 2017/4/13.
  */
-public interface IRSDK {
+public interface IQYSDK {
 
     void attach(ContextWrapper contextWrapper, VersionDir versionDir);
 
