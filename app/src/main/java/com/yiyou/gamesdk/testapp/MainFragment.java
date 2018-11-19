@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.qygame.qysdk.container.RGameSDK;
+import com.qygame.qysdk.container.QYGameSDK;
 import com.qygame.qysdk.outer.util.Log;
 import com.gamesdk.shouyouba.tzsy.R;
 
@@ -123,9 +123,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             } else if (v == OrientationButton) {
                 ((MainFragmentBtnClickListener) getActivity()).onMainFragmentChangeOrientationClick();
             } else if (v.getId() == R.id.show) {
-                RGameSDK.getInstance().showFloatView(getActivity());
+                QYGameSDK.getInstance().showFloatView(getActivity());
             } else{
-                RGameSDK.getInstance().hideFloatView(getActivity());
+                QYGameSDK.getInstance().hideFloatView(getActivity());
             }
         }
 

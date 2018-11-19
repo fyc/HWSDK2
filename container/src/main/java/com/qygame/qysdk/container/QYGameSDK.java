@@ -18,13 +18,13 @@ import java.util.Map;
 /**
  * Created by Win on 2017/4/13.
  */
-public class RGameSDK implements IRSDK {
+public class QYGameSDK implements IRSDK {
 
-    private static RGameSDK instance = null;
+    private static QYGameSDK instance = null;
 
-    public static synchronized RGameSDK getInstance() {
+    public static synchronized QYGameSDK getInstance() {
         if (instance == null) {
-            instance = new RGameSDK();
+            instance = new QYGameSDK();
         }
         return instance;
     }

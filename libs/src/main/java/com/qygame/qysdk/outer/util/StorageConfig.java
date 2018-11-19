@@ -17,7 +17,7 @@ public class StorageConfig {
     //PATHS FIELD BEGIN
     private static String SDKRootDirPath;
 
-    private static final String TAG_DEBUG_ROOT_DIR = "HaoWanRGameSDK";
+    private static final String TAG_DEBUG_ROOT_DIR = "HaoWanQYGameSDK";
     private static final String TAG_PUBLIC = "public";
     private static final String TAG_ROOT_DIR = "QiYuanGameSDK";
     private static final String TAG_DB = "db";

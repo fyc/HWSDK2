@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.gamesdk.shouyouba.tzsy.R;
-import com.qygame.qysdk.container.RGameSDK;
+import com.qygame.qysdk.container.QYGameSDK;
 import com.qygame.qysdk.outer.IOperateCallback;
 import com.qygame.qysdk.outer.consts.OrientationDef;
 import com.qygame.qysdk.outer.consts.QYCodeDef;
@@ -52,7 +52,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
 
         mCurrentView = 0;  //0:LoginActivity,1:MainFragment ,2:PayFragmen
 
-        RGameSDK.getInstance().init(this, paramInfo, false, this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ?
+        QYGameSDK.getInstance().init(this, paramInfo, false, this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ?
                 Configuration.ORIENTATION_LANDSCAPE : Configuration.ORIENTATION_PORTRAIT, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String s) {
@@ -73,19 +73,19 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
         paramInfo.setSdkKey("7dc18ce3418bcfb6ffa6e72ba1943884");
         int orientation = this.getResources().getConfiguration().orientation;
         Log.d(TAG, "当前orientation = " + orientation);
-        RGameSDK.getInstance().init(this, paramInfo, true, orientation == Configuration.ORIENTATION_LANDSCAPE ?
+        QYGameSDK.getInstance().init(this, paramInfo, true, orientation == Configuration.ORIENTATION_LANDSCAPE ?
                 Configuration.ORIENTATION_LANDSCAPE : Configuration.ORIENTATION_PORTRAIT, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String s) {
                 if (i == 0) {
-                    RGameSDK.getInstance().setLogoutListener(new IOperateCallback<String>() {
+                    QYGameSDK.getInstance().setLogoutListener(new IOperateCallback<String>() {
                         @Override
                         public void onResult(int code, String msg) {
                             if (code == QYCodeDef.LOGOUT_NO_INIT || code == QYCodeDef.LOGOUT_FAIL) {
                                 Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG)
                                         .show();
                             } else if (code == QYCodeDef.LOGOUT_NO_LOGIN || code == QYCodeDef.SUCCESS) {
-                                RGameSDK.getInstance().hideFloatView(LoginActivity.this);
+                                QYGameSDK.getInstance().hideFloatView(LoginActivity.this);
                                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                                 ft.remove(mainFragment);
                                 ft.commitAllowingStateLoss();
@@ -99,7 +99,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
                 }
             }
         });
-        RGameSDK.getInstance().login(this, new IOperateCallback<String>() {
+        QYGameSDK.getInstance().login(this, new IOperateCallback<String>() {
             @Override
             public void onResult(int code, String s) {
                 if (code == QYCodeDef.SUCCESS) {
@@ -109,17 +109,17 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
                     findViewById(R.id.choose).setVisibility(View.GONE);
                     findViewById(R.id.file).setVisibility(View.GONE);
                     mCurrentView = 1;  //0:LoginActivity,1:MainFragment ,2:PayFragment
-                    RGameSDK.getInstance().showFloatView(LoginActivity.this);
+                    QYGameSDK.getInstance().showFloatView(LoginActivity.this);
                     // TODO: cp可以在这里检验login
-                    Log.d(TAG, "session: " + RGameSDK.getInstance().getSession());
-                    Toast.makeText(LoginActivity.this, "session: " + RGameSDK.getInstance().getSession() + "\n" + "uid: " + RGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
+                    Log.d(TAG, "session: " + QYGameSDK.getInstance().getSession());
+                    Toast.makeText(LoginActivity.this, "session: " + QYGameSDK.getInstance().getSession() + "\n" + "uid: " + QYGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     private void loginVisitorsImpl() {
-        RGameSDK.getInstance().loginVisitors(this, new IOperateCallback<String>() {
+        QYGameSDK.getInstance().loginVisitors(this, new IOperateCallback<String>() {
             @Override
             public void onResult(int code, String s) {
                 if (code == QYCodeDef.SUCCESS) {
@@ -129,17 +129,17 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
                     findViewById(R.id.choose).setVisibility(View.GONE);
                     findViewById(R.id.file).setVisibility(View.GONE);
                     mCurrentView = 1;  //0:LoginActivity,1:MainFragment ,2:PayFragment
-                    RGameSDK.getInstance().showFloatView(LoginActivity.this);
+                    QYGameSDK.getInstance().showFloatView(LoginActivity.this);
                     // TODO: cp可以在这里检验login
-                    Log.d(TAG, "session: " + RGameSDK.getInstance().getSession());
-                    Toast.makeText(LoginActivity.this, "session: " + RGameSDK.getInstance().getSession() + "\n" + "uid: " + RGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
+                    Log.d(TAG, "session: " + QYGameSDK.getInstance().getSession());
+                    Toast.makeText(LoginActivity.this, "session: " + QYGameSDK.getInstance().getSession() + "\n" + "uid: " + QYGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     private void loginAuto() {
-        RGameSDK.getInstance().loginAuto(this, new IOperateCallback<String>() {
+        QYGameSDK.getInstance().loginAuto(this, new IOperateCallback<String>() {
             @Override
             public void onResult(int code, String s) {
                 if (code == QYCodeDef.SUCCESS) {
@@ -149,17 +149,17 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
                     findViewById(R.id.choose).setVisibility(View.GONE);
                     findViewById(R.id.file).setVisibility(View.GONE);
                     mCurrentView = 1;  //0:LoginActivity,1:MainFragment ,2:PayFragment
-                    RGameSDK.getInstance().showFloatView(LoginActivity.this);
+                    QYGameSDK.getInstance().showFloatView(LoginActivity.this);
                     // TODO: cp可以在这里检验login
-                    Log.d(TAG, "session: " + RGameSDK.getInstance().getSession());
-                    Toast.makeText(LoginActivity.this, "session: " + RGameSDK.getInstance().getSession() + "\n" + "uid: " + RGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
+                    Log.d(TAG, "session: " + QYGameSDK.getInstance().getSession());
+                    Toast.makeText(LoginActivity.this, "session: " + QYGameSDK.getInstance().getSession() + "\n" + "uid: " + QYGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     private void exitImpl() {
-        RGameSDK.getInstance().uninit(LoginActivity.this, new IOperateCallback<String>() {
+        QYGameSDK.getInstance().uninit(LoginActivity.this, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String s) {
                 if (i == QYCodeDef.SUCCESS) {
@@ -170,7 +170,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
     }
 
     private void logoutImpl() {
-        RGameSDK.getInstance().logout();
+        QYGameSDK.getInstance().logout();
         mCurrentView = 0;  //0:LoginActivity,1:MainFragment ,2:PayFragment
     }
 
@@ -247,14 +247,14 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
     @Override
     protected void onPause() {
         Log.d(TAG, "onPause");
-        RGameSDK.getInstance().hideFloatView(LoginActivity.this);
+        QYGameSDK.getInstance().hideFloatView(LoginActivity.this);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         Log.d(TAG, "onResume");
-        RGameSDK.getInstance().showFloatView(LoginActivity.this);
+        QYGameSDK.getInstance().showFloatView(LoginActivity.this);
         super.onResume();
     }
 

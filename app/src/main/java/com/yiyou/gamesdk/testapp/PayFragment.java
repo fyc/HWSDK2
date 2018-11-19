@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.gamesdk.shouyouba.tzsy.R;
-import com.qygame.qysdk.container.RGameSDK;
+import com.qygame.qysdk.container.QYGameSDK;
 import com.qygame.qysdk.outer.IOperateCallback;
 import com.qygame.qysdk.outer.model.PaymentInfo;
 
@@ -119,7 +119,7 @@ public class PayFragment extends Fragment implements View.OnClickListener {
         paymentInfo.setPayMethod(PaymentInfo.PAY_METHOD_ALL);
         paymentInfo.setCpCallbackUrl("http://120.132.68.148/r-imitateCpServer/callback.jsp");
         paymentInfo.setChargeDate(new Date().getTime());
-        RGameSDK.getInstance().pay(getActivity(), paymentInfo, new IOperateCallback<String>() {
+        QYGameSDK.getInstance().pay(getActivity(), paymentInfo, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String orderInfo) {
                 Log.d(TAG, "onResult: " + i + " ; " + Thread.currentThread().getName());
@@ -131,6 +131,6 @@ public class PayFragment extends Fragment implements View.OnClickListener {
         payUrl = "http://www.373yx.com/payment/preview?cliBuyerId=19000&cliSellerId=2018111415564890400010102c2&" +
                 "cpOrderNo=" + System.currentTimeMillis() +
                 "&cpPrice=0.01&cpOrderTitle=%E9%A6%96%E5%85%851";
-        RGameSDK.getInstance().payH5(getActivity(), "http://www.373yx.com", payUrl, null);
+        QYGameSDK.getInstance().payH5(getActivity(), "http://www.373yx.com", payUrl, null);
     }
 }
