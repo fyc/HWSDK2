@@ -39,7 +39,7 @@ import java.util.TreeMap;
 /**
  * Created by Win on 2017/4/13.
  */
-public class RSDKImpl implements IQYSDK {
+public class QYSDKImpl implements IQYSDK {
 
     private static final String TAG = "QYSDK:QYSDKImpl";
     private IOperateCallback<String> logoutCallback;

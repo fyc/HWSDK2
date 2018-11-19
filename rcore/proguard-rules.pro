@@ -33,7 +33,7 @@
 -keep public class com.yiyou.gamesdk.core.base.http.volley.bean.**{*;}
 -keep public class com.yiyou.gamesdk.core.base.web.jsi.QYSDKJSAPI{*;}
 -keep public class com.yiyou.gamesdk.core.base.web.jsi.QYCompactJSAPI{*;}
--keep public class com.yiyou.gamesdk.rcore.RSDKImpl{
+-keep public class com.yiyou.gamesdk.rcore.QYSDKImpl{
   public <methods>;
 }
 -keep public class com.yiyou.gamesdk.core.ui.fragment.**{
