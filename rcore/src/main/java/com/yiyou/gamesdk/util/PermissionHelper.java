@@ -15,15 +15,17 @@ import android.support.v4.content.ContextCompat;
 
 public class PermissionHelper {
     public static final String LOG_TAG = "permission";
-
+    public static final int REQUEST_CODE_PERMISSION = 100;
     @TargetApi(16)
     public static boolean requestNecessaryPermission(Activity activity, int requestCode) {
         String[] permissions =
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ? new String[] {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_PHONE_STATE
                 } : new String[] {
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_PHONE_STATE
                 };
         return requestDangerousPermission(activity, permissions, requestCode);
     }

@@ -73,7 +73,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
         paramInfo.setSdkKey("7dc18ce3418bcfb6ffa6e72ba1943884");
         int orientation = this.getResources().getConfiguration().orientation;
         Log.d(TAG, "当前orientation = " + orientation);
-        QYGameSDK.getInstance().init(this, paramInfo, true, orientation == Configuration.ORIENTATION_LANDSCAPE ?
+        QYGameSDK.getInstance().init(this, paramInfo, false, orientation == Configuration.ORIENTATION_LANDSCAPE ?
                 Configuration.ORIENTATION_LANDSCAPE : Configuration.ORIENTATION_PORTRAIT, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String s) {

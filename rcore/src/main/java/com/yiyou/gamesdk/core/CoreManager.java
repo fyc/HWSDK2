@@ -21,14 +21,10 @@ import com.yiyou.gamesdk.core.base.http.volley.bean.QyDataBean;
 import com.yiyou.gamesdk.core.consts.StatusCodeDef;
 import com.yiyou.gamesdk.core.exception.SDKUncaughtExceptionHandler;
 import com.yiyou.gamesdk.core.interceptor.DismissSplashInterceptor;
-import com.yiyou.gamesdk.core.interceptor.ForceInterceptor;
-import com.yiyou.gamesdk.core.interceptor.HotfixInterceptor;
 import com.yiyou.gamesdk.core.interceptor.InitInterceptor;
 import com.yiyou.gamesdk.core.interceptor.InitParams;
 import com.yiyou.gamesdk.core.interceptor.InitStorageInterceptor;
 import com.yiyou.gamesdk.core.interceptor.Interceptor;
-import com.yiyou.gamesdk.core.interceptor.NoticeInterceptor;
-import com.yiyou.gamesdk.core.interceptor.ShowForceDialogInterceptor;
 import com.yiyou.gamesdk.core.storage.StorageAgent;
 import com.yiyou.gamesdk.core.storage.sharepref.Constant;
 import com.yiyou.gamesdk.core.ui.dialog.ViewControllerNavigator;
@@ -106,6 +102,7 @@ public class CoreManager implements ICoreManager {
     }
 
     private void doChains(Activity activity) {
+        PermissionHelper.requestNecessaryPermission(activity, PermissionHelper.REQUEST_CODE_PERMISSION);
         WindowManager manager = activity.getWindowManager();
         DisplayMetrics outMetrics = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(outMetrics);
@@ -125,9 +122,9 @@ public class CoreManager implements ICoreManager {
 //        interceptors.add(new HotfixInterceptor()); //热更检查
 //        interceptors.add(new ForceInterceptor());// 游戏强更检查
         interceptors.add(new DismissSplashInterceptor(splashDialog));// 关闭闪屏
-        interceptors.add(new NoticeInterceptor());//运维公告
-        interceptors.add(new ShowForceDialogInterceptor()); //显示强更提示框
-        PermissionHelper.requestNecessaryPermission(activity, REQUEST_CODE_PERMISSION);
+//        interceptors.add(new NoticeInterceptor());//运维公告
+//        interceptors.add(new ShowForceDialogInterceptor()); //显示强更提示框
+//        PermissionHelper.requestNecessaryPermission(activity, REQUEST_CODE_PERMISSION);
         new InitChainImpl(interceptors, 0, mInitParams).proceed(mInitParams);
     }
 
@@ -149,9 +146,9 @@ public class CoreManager implements ICoreManager {
 
         @Override
         public void proceed(InitParams params) {
-
+            Log.d(TAG, "InitChainImpl开始interceptors.size()=" + interceptors.size());
             if (index < interceptors.size()) {
-
+                Log.d(TAG, "InitChainImpl开始 index=" + index);
                 InitChainImpl iml = new InitChainImpl(interceptors, index + 1, params);
                 InitInterceptor interceptor = (InitInterceptor) interceptors.get(index);
                 interceptor.intercept(iml);
@@ -169,6 +166,7 @@ public class CoreManager implements ICoreManager {
      * 上报激活事件
      */
     private void reportActiveEvent(Activity activity) {
+        Log.d(TAG, "上报事件");
         final SharedPreferences preferences = mContext.getApplicationContext()
                 .getSharedPreferences(Constant.KEY_DB_NAME, Context.MODE_PRIVATE);
 

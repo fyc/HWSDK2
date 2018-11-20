@@ -33,7 +33,6 @@ public class InitStorageInterceptor implements InitInterceptor {
 
         final IOperateCallback<String> sdkInitCallback = data.getSdkInitCallback();
 
-
         IEventListener<Integer> dbPreListener = new IEventListener<Integer>() {
             @Override
             public void onEvent(String s, Integer code) {
@@ -48,9 +47,11 @@ public class InitStorageInterceptor implements InitInterceptor {
 
 
                 } else {
+                    if (sdkInitCallback != null) {
+                        sdkInitCallback.onResult(StatusCodeDef.FAIL_INIT_SDK_DB_OPEN_ERROR,
+                                mContext.getResources().getString(R.string.fail_init_sdk_db_error));
+                    }
 
-                    sdkInitCallback.onResult(StatusCodeDef.FAIL_INIT_SDK_DB_OPEN_ERROR,
-                            mContext.getResources().getString(R.string.fail_init_sdk_db_error));
                 }
             }
         };
@@ -59,8 +60,10 @@ public class InitStorageInterceptor implements InitInterceptor {
                 StorageEvent.TYPE_ALL_DB_PREPARED, dbPreListener);
         String sdkGameId = peekGameId(gameParamInfo);
         if (TextUtils.isEmpty(sdkGameId)) {
-            sdkInitCallback.onResult(QYCodeDef.ERROR_INIT_INVALID_GAME_ID,
-                    mContext.getResources().getString(R.string.error_init_invaild_gameid));
+            if (sdkInitCallback != null) {
+                sdkInitCallback.onResult(QYCodeDef.ERROR_INIT_INVALID_GAME_ID,
+                        mContext.getResources().getString(R.string.error_init_invaild_gameid));
+            }
             return;
         }
 

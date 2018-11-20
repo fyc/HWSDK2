@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
@@ -365,7 +366,7 @@ public class PaymentManager implements IPaymentApi {
         RequestManager.getInstance(CoreManager.getContext()).addRequest(jsonResquest, null);
     }
 
-    WebView payWebView;
+    static WebView payWebView;
 
     protected void initPayWebView(final Activity activity, final String Referer, String payUrl) {
         payWebView = new WebView(activity);
@@ -481,6 +482,29 @@ public class PaymentManager implements IPaymentApi {
         final ViewGroup view = (ViewGroup) activity.getWindow().getDecorView();
         view.addView(payWebView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
 //        MainActivity.payWebView.addJavascriptInterface(new JavaCallObject(), "javaCallJs");
-//        MainActivity.payWebView.addJavascriptInterface(new JavaPayCallObject(mainActivity), "payCallJs");
+        payWebView.addJavascriptInterface(new JavaPayCallObject(activity), "payCallJs");
+    }
+
+    public static class JavaPayCallObject {
+        public Activity activity;
+
+        public JavaPayCallObject(Activity activity) {
+            this.activity = activity;
+        }
+
+        @JavascriptInterface
+        public void close() {
+            (activity).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (payWebView != null) {
+                        payWebView.removeAllViews();
+                        payWebView.destroy();
+                        payWebView = null;
+                    }
+                }
+            });
+
+        }
     }
 }

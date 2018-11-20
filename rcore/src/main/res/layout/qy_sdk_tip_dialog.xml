@@ -4,6 +4,7 @@
     android:layout_width="@dimen/margin_580px"
     android:layout_height="wrap_content"
     android:background="@drawable/qy_sdk_shape_dialog_border_bg"
+    android:layout_gravity="center"
     android:paddingBottom="@dimen/margin_32px">
 
     <TextView

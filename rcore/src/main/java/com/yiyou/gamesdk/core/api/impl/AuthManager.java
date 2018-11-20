@@ -231,19 +231,6 @@ class AuthManager implements IAuthApi {
 
     @Override
     public void login2(String account, String code, QyRespListener<LoginBean> callback) {
-//        if (StringUtils.isBlank(account)) {
-//            if (callback != null) {
-//                callback.onFail(StatusCodeDef.LOGIN_FAIL_INVALID_PWD, ResourceHelper.getString(R.string.account_null));
-//            }
-//            return;
-//        }
-//        if (StringUtils.isBlank(code) || code.length() < 4) {
-//            if (callback != null) {
-//                callback.onFail(StatusCodeDef.LOGIN_FAIL_INVALID_PWD, ResourceHelper.getString(R.string.please_input_at_least_6_len));
-//            }
-//            return;
-//        }
-
         Map<String, String> params = new TreeMap<>();
 //        RequestHelper.buildParamsWithBaseInfo(params);
 //        String game_id = QyLoginRequest.GAMW_ID;

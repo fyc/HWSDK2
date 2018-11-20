@@ -17,6 +17,7 @@ public class QYCodeDef {
 
     //init
     public static final int ERROR_INIT_INVALID_GAME_ID = -110104;
+    public static final int ERROR_INIT_NO_PERMISSION = -110212;
 
     //payment
     public static final int ERROR_PAY_WAY_NOT_SUPPORT = -110200;
