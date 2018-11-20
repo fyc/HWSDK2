@@ -48,7 +48,7 @@ public class TermsOfServiceAlertDialogView extends BaseViewController implements
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.qy_sdk_container_terms_of_service;
+        return R.layout.qy_sdk_container_terms_of_service2;
     }
 
     @Override
