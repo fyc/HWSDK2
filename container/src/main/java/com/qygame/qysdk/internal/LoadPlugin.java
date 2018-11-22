@@ -21,7 +21,7 @@ public class LoadPlugin {
 
     private static LoadPlugin instance = null;
     private ContextWrapper contextWrapper;
-    private static final String ENTER_CLASS_NAME = "com.qiyuan.gamesdk.rcore.QYSDKImpl";
+    private static final String ENTER_CLASS_NAME = "com.qiyuan.gamesdk.qycore.QYSDKImpl";
     private IQYSDK QYSDKApi;
     private boolean isInit = false;
 

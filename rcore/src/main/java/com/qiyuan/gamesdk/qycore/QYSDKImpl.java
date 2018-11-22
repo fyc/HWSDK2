@@ -1,4 +1,4 @@
-package com.qiyuan.gamesdk.rcore;
+package com.qiyuan.gamesdk.qycore;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,18 +21,13 @@ import com.qygame.qysdk.outer.model.GameParamInfo;
 import com.qygame.qysdk.outer.model.PaymentInfo;
 import com.qygame.qysdk.outer.model.VersionDir;
 import com.qygame.qysdk.outer.util.Log;
-import com.qiyuan.gamesdk.PluginManager;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.interceptor.Interceptor;
 import com.qiyuan.gamesdk.core.interceptor.LoginInterceptor;
 import com.qiyuan.gamesdk.core.interceptor.LoginNoticeInterceptor;
-import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.core.ui.floatview.FloatViewManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
-import com.qiyuan.gamesdk.model.AccountHistoryInfo;
-import com.qiyuan.gamesdk.util.PermissionHelper;
-import com.qiyuan.gamesdk.util.ToastUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

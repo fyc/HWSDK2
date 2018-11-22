@@ -33,7 +33,7 @@
 -keep public class com.qiyuan.gamesdk.core.base.http.volley.bean.**{*;}
 -keep public class com.qiyuan.gamesdk.core.base.web.jsi.QYSDKJSAPI{*;}
 -keep public class com.qiyuan.gamesdk.core.base.web.jsi.QYCompactJSAPI{*;}
--keep public class com.qiyuan.gamesdk.rcore.QYSDKImpl{
+-keep public class com.qiyuan.gamesdk.qycore.QYSDKImpl{
   public <methods>;
 }
 -keep public class com.qiyuan.gamesdk.core.ui.fragment.**{
