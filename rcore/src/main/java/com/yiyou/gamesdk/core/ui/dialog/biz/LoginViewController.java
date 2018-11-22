@@ -435,12 +435,12 @@ public class LoginViewController extends BaseAuthViewController {
             AccountHistoryInfo historyInfo = allGameAuthHistories
                     .get(0);
             if (!TextUtils.isEmpty(historyInfo.guest) && historyInfo.guest.equals("false")) {
-                loginVisitorsImpl();
+                loginVisitorsImpl();//进入游客登录流程
             } else {
-                loginAutoImpl();
+                loginAutoImpl();//进入自动登录流程
             }
         } else {
-            loginVisitorsImpl();
+            loginVisitorsImpl();//进入游客登录流程
         }
     }
 
@@ -455,8 +455,6 @@ public class LoginViewController extends BaseAuthViewController {
             public void onNetSucc(String url, Map<String, String> params, LoginBean result) {
                 hideLoading();
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
-//                String str = "游客：" + result.getData().getUser_id() + "欢迎进入游戏";
-//                String str = ResourceHelper.getString(R.string.str_visitors_welcome, result.getData().getUser_id(), "欢迎");
                 PopUtil.get((Activity) context).showNoButton(result.getData().getUser_id() + "，");
                 close();
             }
@@ -488,8 +486,6 @@ public class LoginViewController extends BaseAuthViewController {
                 notifyAuthResult2(StatusCodeDef.SUCCESS, "", result);
                 if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("true")) { //游客，进入手机绑定
                     final PopUtil popUtil = PopUtil.get((Activity) context);
-//                    String str ="游客：" + result.getData().getUser_id() + "欢迎进入游戏";
-//                    String str = ResourceHelper.getString(R.string.str_visitors_welcome, result.getData().getUser_id(), "3s");
                     popUtil.showHasButton("游客：" + result.getData().getUser_id() + "，",
                             new PopUtil.PopOnListener() {
                                 @Override
@@ -516,17 +512,6 @@ public class LoginViewController extends BaseAuthViewController {
                                                 public void onNegative() {
                                                 }
                                             });
-
-//                                    QySdkTipDialog.show((FragmentActivity) context, new QySdkTipDialog.Onclick() {
-//                                        @Override
-//                                        public void onPositive() {
-//                                            ViewControllerNavigator.getInstance().toBindPhone(getDialogParam());
-//                                        }
-//
-//                                        @Override
-//                                        public void onNegative() {
-//                                        }
-//                                    });
                                 }
                             });
                 } else if (!TextUtils.isEmpty(result.getData().getGuest()) && result.getData().getGuest().equals("false")) {//手机用户，进入实名认证
@@ -586,7 +571,7 @@ public class LoginViewController extends BaseAuthViewController {
     }
 
     private void putHistoryAccount2Input(AccountHistoryInfo historyInfo) {
-        if (!TextUtils.isEmpty(historyInfo.phone)) {
+        if (!TextUtils.isEmpty(historyInfo.phone) && !historyInfo.phone.equals("0")) {
             autoFillCache = historyInfo.phone;
             accountEdit.setText(historyInfo.phone);
             accountEdit.setSelection(historyInfo.phone.length());

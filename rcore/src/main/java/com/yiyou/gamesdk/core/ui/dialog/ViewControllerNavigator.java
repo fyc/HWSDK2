@@ -59,9 +59,6 @@ public class ViewControllerNavigator {
     // ************ Interface ************** //
 
     /**
-     * 宝爷说先不要纠结。做了再说。。
-     * 吉：好吧……不好用再说嘛！！
-     *
      * @param params
      * @return
      */
