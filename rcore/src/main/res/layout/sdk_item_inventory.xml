@@ -6,7 +6,7 @@
                 android:background="@color/gray_bg"
                 android:orientation="vertical">
 
-    <com.yiyou.gamesdk.core.base.http.volley.view.HttpImageView
+    <com.qiyuan.gamesdk.core.base.http.volley.view.HttpImageView
         android:id="@+id/img_cover"
         android:layout_width="80dp"
         android:layout_height="60dp"

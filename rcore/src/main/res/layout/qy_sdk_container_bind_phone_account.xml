@@ -13,7 +13,7 @@
         android:textColor="@color/d_gray_2"
         android:textSize="@dimen/text_size_t3" />
 
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_bind_phone_container_account"
         style="@style/DialogEditText"
         android:digits="@string/account_digits"
@@ -34,7 +34,7 @@
         android:background="@drawable/qy_sdk_edt_bg"
         android:orientation="horizontal">
 
-        <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+        <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
             android:id="@+id/edit_bind_phone_container_verification_code"
             style="@style/DialogEditText"
             android:layout_width="0dp"

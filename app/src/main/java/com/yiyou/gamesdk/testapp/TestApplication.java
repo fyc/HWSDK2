@@ -3,7 +3,7 @@
  * @date 2015年5月22日 上午11:54:44
  * @version V1.0
  */
-package com.yiyou.gamesdk.testapp;
+package com.qiyuan.gamesdk.testapp;
 
 import android.app.Application;
 import android.os.Build;

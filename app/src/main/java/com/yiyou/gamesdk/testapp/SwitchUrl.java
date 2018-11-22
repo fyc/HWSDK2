@@ -1,4 +1,4 @@
-package com.yiyou.gamesdk.testapp;
+package com.qiyuan.gamesdk.testapp;
 
 /**
  * Created by chenshuide on 15/8/14.

@@ -42,7 +42,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView
+        <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundTextView
             android:id="@+id/sell"
             android:layout_width="80dp"
             android:layout_height="36dp"

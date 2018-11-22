@@ -1,4 +1,4 @@
-package com.yiyou.gamesdk.testapp;
+package com.qiyuan.gamesdk.testapp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -19,8 +19,8 @@ package com.android.volley1.toolbox;
 import com.android.volley1.AuthFailureError;
 import com.android.volley1.Request;
 import com.android.volley1.Request.Method;
-import com.yiyou.gamesdk.core.CoreManager;
-import com.yiyou.gamesdk.core.base.http.utils.HttpUtils;
+import com.qiyuan.gamesdk.core.CoreManager;
+import com.qiyuan.gamesdk.core.base.http.utils.HttpUtils;
 import com.qygame.qysdk.outer.util.Log;
 
 import org.apache.http.Header;

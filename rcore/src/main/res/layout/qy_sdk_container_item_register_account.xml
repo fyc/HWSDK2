@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_register_container_account"
         android:drawableLeft="@drawable/login_icon_user"
         android:drawableStart="@drawable/login_icon_user"
@@ -18,7 +18,7 @@
         android:singleLine="true"
         android:maxLines="1" />
 
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:layout_marginTop="@dimen/margin_6px"
         android:layout_marginBottom="@dimen/margin_6px"
         android:id="@+id/edit_register_container_account_password"

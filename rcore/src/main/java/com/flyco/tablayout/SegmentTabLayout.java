@@ -27,7 +27,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.FragmentChangeManager;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
-import com.yiyou.gamesdk.R;
+import com.qiyuan.gamesdk.R;
 
 import java.util.ArrayList;
 

@@ -6,7 +6,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.yiyou.gamesdk.core.ui.widget.roundview.RoundRelativeLayout
+    <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundRelativeLayout
         android:id="@+id/container_pay_coupon_rr"
         android:layout_width="match_parent"
         android:layout_height="64dp"
@@ -52,7 +52,7 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView
+        <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundTextView
             android:id="@+id/btn_select"
             style="@style/t1_2_bold_white"
             android:layout_width="38dp"
@@ -101,5 +101,5 @@
                 tools:text="2017-08-09前可用"/>
 
         </LinearLayout>
-    </com.yiyou.gamesdk.core.ui.widget.roundview.RoundRelativeLayout>
+    </com.qiyuan.gamesdk.core.ui.widget.roundview.RoundRelativeLayout>
 </LinearLayout>

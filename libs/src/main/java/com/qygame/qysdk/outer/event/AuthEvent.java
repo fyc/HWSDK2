@@ -9,10 +9,10 @@ import com.qygame.qysdk.outer.IOperateCallback;
  * Created by levyyoung on 15/6/8.
  */
 public class AuthEvent {
-    public static final String TYPE_LOGOUT = "com.yiyou.gamesdk.event.type.logout";
-    public static final String TYPE_LOGIN = "com.yiyou.gamesdk.event.type.login";
-    public static final String TYPE_GET_VERIFICATION_CODE = "com.yiyou.gamesdk.event.type.get_verification_code";
-    public static final String TYPE_CHECK_VERIFICATION_CODE = "com.yiyou.gamesdk.event.type.check_verification_code";
+    public static final String TYPE_LOGOUT = "com.qiyuan.gamesdk.event.type.logout";
+    public static final String TYPE_LOGIN = "com.qiyuan.gamesdk.event.type.login";
+    public static final String TYPE_GET_VERIFICATION_CODE = "com.qiyuan.gamesdk.event.type.get_verification_code";
+    public static final String TYPE_CHECK_VERIFICATION_CODE = "com.qiyuan.gamesdk.event.type.check_verification_code";
 
     public static class LoginParams implements IDialogParam {
         public Activity activity;

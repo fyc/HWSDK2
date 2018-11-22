@@ -1,4 +1,4 @@
-package com.yiyou.gamesdk.testapp;
+package com.qiyuan.gamesdk.testapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

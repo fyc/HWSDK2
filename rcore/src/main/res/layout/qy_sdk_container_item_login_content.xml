@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingTop="@dimen/margin_32px">
 
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_login_container_account"
         style="@style/DialogEditText"
         android:drawableLeft="@drawable/login_icon_phone"
@@ -25,7 +25,7 @@
         android:background="@drawable/qy_sdk_edt_bg"
         android:orientation="horizontal">
 
-        <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+        <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
             android:id="@+id/edit_login_container_verification_code"
             style="@style/DialogEditText"
             android:layout_width="0dp"

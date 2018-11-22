@@ -16,27 +16,27 @@
 #   public *;
 #}
 -printmapping rcore-mapping.map
--keep  class com.yiyou.gamesdk.container.**{
+-keep  class com.qiyuan.gamesdk.container.**{
   *;
 }
--keep  class com.yiyou.gamesdk.util.**{
+-keep  class com.qiyuan.gamesdk.util.**{
   *;
 }
 -keepattributes Signature
 
--keep public class com.yiyou.gamesdk.core.CoreManager{
+-keep public class com.qiyuan.gamesdk.core.CoreManager{
   public <methods>;
 }
 
 -keep  class com.android.volley1.**{*;}
--keep public class com.yiyou.gamesdk.model.**{*;}
--keep public class com.yiyou.gamesdk.core.base.http.volley.bean.**{*;}
--keep public class com.yiyou.gamesdk.core.base.web.jsi.QYSDKJSAPI{*;}
--keep public class com.yiyou.gamesdk.core.base.web.jsi.QYCompactJSAPI{*;}
--keep public class com.yiyou.gamesdk.rcore.QYSDKImpl{
+-keep public class com.qiyuan.gamesdk.model.**{*;}
+-keep public class com.qiyuan.gamesdk.core.base.http.volley.bean.**{*;}
+-keep public class com.qiyuan.gamesdk.core.base.web.jsi.QYSDKJSAPI{*;}
+-keep public class com.qiyuan.gamesdk.core.base.web.jsi.QYCompactJSAPI{*;}
+-keep public class com.qiyuan.gamesdk.rcore.QYSDKImpl{
   public <methods>;
 }
--keep public class com.yiyou.gamesdk.core.ui.fragment.**{
+-keep public class com.qiyuan.gamesdk.core.ui.fragment.**{
 }
 -keepattributes *Annotation*
 -keepattributes *JavascriptInterface*
@@ -72,4 +72,4 @@
 -keep class com.UCMobile.PayPlugin.*{*;}
 -keep class com.unionpay.*{*;}
 -dontwarn com.unionpay.**
--keep class com.yiyou.gamesdk.util.MetaUtil{*;}
+-keep class com.qiyuan.gamesdk.util.MetaUtil{*;}

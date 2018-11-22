@@ -11,7 +11,7 @@
         android:layout_marginBottom="@dimen/margin_16px"
         android:textSize="@dimen/text_size_t3"
         android:text="@string/str_real_name_red_hint" />
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_real_name_container_name"
         android:drawableLeft="@drawable/login_icon_user"
         android:drawableStart="@drawable/login_icon_user"
@@ -21,7 +21,7 @@
         android:maxLines="1"
         android:imeOptions="actionNext|flagNoExtractUi" />
 
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_real_name_container_id_card"
         style="@style/DialogEditText"
         android:layout_marginBottom="@dimen/margin_16px"
@@ -31,7 +31,7 @@
         android:hint="@string/edt_id_card_hint"
         android:imeOptions="actionNext|flagNoExtractUi"
         android:maxLines="1" />
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_real_name_container_card_number"
         android:digits="@string/account_digits"
         android:drawableLeft="@drawable/login_icon_password"

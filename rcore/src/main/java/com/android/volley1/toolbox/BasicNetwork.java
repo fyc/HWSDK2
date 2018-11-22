@@ -31,9 +31,9 @@ import com.android.volley1.ServerError;
 import com.android.volley1.TimeoutError;
 import com.android.volley1.VolleyError;
 import com.android.volley1.VolleyLog;
-import com.yiyou.gamesdk.core.CoreManager;
-import com.yiyou.gamesdk.core.base.http.RequestManager;
-import com.yiyou.gamesdk.core.base.http.volley.listener.ProgressListener;
+import com.qiyuan.gamesdk.core.CoreManager;
+import com.qiyuan.gamesdk.core.base.http.RequestManager;
+import com.qiyuan.gamesdk.core.base.http.volley.listener.ProgressListener;
 import com.qygame.qysdk.outer.util.Log;
 
 import org.apache.http.Header;

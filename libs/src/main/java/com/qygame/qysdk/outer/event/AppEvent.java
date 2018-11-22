@@ -9,10 +9,10 @@ import com.qygame.qysdk.outer.IOperateCallback;
  * Created by levyyoung on 15/6/8.
  */
 public class AppEvent {
-    public static final String TYPE_SET_ORIENTATION = "com.yiyou.gamesdk.event.type.setOrientation";
-    public static final String TYPE_ENTER_UI = "com.yiyou.gamesdk.event.type.enterUI";
-    public static final String TYPE_EXIT_SDK = "com.yiyou.gamesdk.event.type.exitSDK";
-    public static final String TYPE_EXIT_SDK_WITH_UI = "com.yiyou.gamesdk.event.type.exitSDKWithUI";
+    public static final String TYPE_SET_ORIENTATION = "com.qiyuan.gamesdk.event.type.setOrientation";
+    public static final String TYPE_ENTER_UI = "com.qiyuan.gamesdk.event.type.enterUI";
+    public static final String TYPE_EXIT_SDK = "com.qiyuan.gamesdk.event.type.exitSDK";
+    public static final String TYPE_EXIT_SDK_WITH_UI = "com.qiyuan.gamesdk.event.type.exitSDKWithUI";
 
     public static class ExitWithUIParams<T>{
         public ExitWithUIParams() {

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
 
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:background="@null"
         android:id="@+id/input"
         android:layout_width="match_parent"

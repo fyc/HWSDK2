@@ -1,4 +1,4 @@
-package com.yiyou.gamesdk.testapp;
+package com.qiyuan.gamesdk.testapp;
 
 import android.content.Context;
 import android.os.Bundle;

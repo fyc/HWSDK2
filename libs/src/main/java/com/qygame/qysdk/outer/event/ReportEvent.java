@@ -9,9 +9,9 @@ import java.util.Map;
  */
 public class ReportEvent {
 
-    public static final String TYPE_SUBMIT_ROLE_INFO = "com.yiyou.gamesdk.event.type.submitRoleInfo";
-    public static final String TYPE_SUBMIT_EXTEND_DATA = "com.yiyou.gamesdk.event.type.submitExtendData";
-    public static final String TYPE_REPORT_ACTIVE = "com.yiyou.gamesdk.event.type.report_active";
+    public static final String TYPE_SUBMIT_ROLE_INFO = "com.qiyuan.gamesdk.event.type.submitRoleInfo";
+    public static final String TYPE_SUBMIT_EXTEND_DATA = "com.qiyuan.gamesdk.event.type.submitExtendData";
+    public static final String TYPE_REPORT_ACTIVE = "com.qiyuan.gamesdk.event.type.report_active";
     public static class ReportEventParam {
         public Map<String, String> data = new ArrayMap<>();
 

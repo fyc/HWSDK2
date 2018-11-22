@@ -27,7 +27,7 @@ import com.android.volley1.RequestQueue;
 import com.android.volley1.Response.ErrorListener;
 import com.android.volley1.Response.Listener;
 import com.android.volley1.VolleyError;
-import com.yiyou.gamesdk.core.base.http.volley.listener.ProgressListener;
+import com.qiyuan.gamesdk.core.base.http.volley.listener.ProgressListener;
 
 import java.util.HashMap;
 import java.util.LinkedList;

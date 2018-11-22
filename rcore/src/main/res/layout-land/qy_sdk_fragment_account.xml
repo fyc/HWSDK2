@@ -23,34 +23,34 @@
         <!--android:textSize="@dimen/text_size_t5"-->
         <!--android:textStyle="bold"/>-->
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/tv_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             sdk:left_text="@string/user_account"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/ll_bind_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             sdk:divider="true"
             sdk:left_text="绑定手机"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/ll_wallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             sdk:left_text="@string/my_wallet"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/ll_coupon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             sdk:left_text="@string/coupon"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/ll_children_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,14 +59,14 @@
             sdk:left_text="@string/my_child_account"
             sdk:right_text="@string/str_children_account_manager"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/ll_resetpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             sdk:left_text="@string/account_reset_passwd"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/ll_payment_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             sdk:divider="true"
             sdk:left_text="@string/account_payment_password"/>
 
-        <com.yiyou.gamesdk.core.ui.widget.AccountLayout
+        <com.qiyuan.gamesdk.core.ui.widget.AccountLayout
             android:id="@+id/ll_feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

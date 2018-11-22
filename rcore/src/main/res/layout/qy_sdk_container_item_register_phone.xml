@@ -4,7 +4,7 @@
              android:layout_height="wrap_content"
              android:orientation="vertical">
 
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_register_container_phone"
         android:drawableLeft="@drawable/login_icon_phone"
         android:drawableStart="@drawable/login_icon_phone"
@@ -22,7 +22,7 @@
         android:orientation="horizontal"
         android:background="@drawable/qy_sdk_edt_bg"
         android:layout_marginBottom="@dimen/margin_16px">
-        <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+        <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
             android:id="@+id/edit_register_container_verification_code"
             android:drawableLeft="@drawable/login_icon_verificationcode"
             android:drawableStart="@drawable/login_icon_verificationcode"
@@ -44,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"/>
     </LinearLayout>
-    <com.yiyou.gamesdk.core.ui.widget.DrawableEditText
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_register_container_password"
         android:digits="@string/register_password_digits"
         android:drawableLeft="@drawable/login_icon_password"

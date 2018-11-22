@@ -65,7 +65,7 @@
             android:layout_alignParentEnd="true"
             tool:text="-¥0.00"/>
     </RelativeLayout>
-    <com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView
+    <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundTextView
         android:id="@+id/btn_select_coupon"
         android:text="选择"
         android:layout_marginLeft="8dp"
@@ -125,7 +125,7 @@
         android:layout_below="@+id/container_remain_fee"
         android:layout_marginTop="15dp"
         style="@style/PayWapContainerItemLand">
-        <com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView
+        <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundTextView
             android:id="@+id/btn_wechat_pay"
             android:text="微信支付"
             android:gravity="center"
@@ -136,7 +136,7 @@
             android:textColor="@color/white"
             app:rv_cornerRadius="6dp"
             app:rv_backgroundColor="@color/green_wechat"/>
-        <com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView
+        <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundTextView
             android:id="@+id/btn_alipay"
             android:text="支付宝支付"
             android:layout_weight="1"
@@ -147,7 +147,7 @@
             android:textColor="@color/white"
             app:rv_cornerRadius="6dp"
             app:rv_backgroundColor="@color/blue_alipay"/>
-        <com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView
+        <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundTextView
             android:visibility="gone"
             android:id="@+id/btn_rcoin_pay"
             android:text="确认支付"

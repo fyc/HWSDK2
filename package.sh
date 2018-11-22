@@ -14,7 +14,7 @@ mkdir output
 
 
 
-cp app/libs/yiyou-*.jar output
+cp app/libs/qiyuan-*.jar output
 
 cp output-libs/release/merge/assets/apk/*.apk output/
 cd output

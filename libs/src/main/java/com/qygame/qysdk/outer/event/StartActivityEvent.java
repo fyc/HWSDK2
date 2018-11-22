@@ -6,7 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 public class StartActivityEvent {
-    public static final String TYPE_START_ACTIVITY_ENVENT = "com.yiyou.gamesdk.event.start.activity";
+    public static final String TYPE_START_ACTIVITY_ENVENT = "com.qiyuan.gamesdk.event.start.activity";
     public static final int DISPLAY_TYPE_FULLSCREEN = 0;
     public static final int DISPLAY_TYPE_DIALOG = 1;
 

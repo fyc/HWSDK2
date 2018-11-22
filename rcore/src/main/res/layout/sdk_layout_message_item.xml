@@ -16,7 +16,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp" />
-    <com.yiyou.gamesdk.core.ui.widget.roundview.RoundTextView
+    <com.qiyuan.gamesdk.core.ui.widget.roundview.RoundTextView
         android:id="@+id/message_type"
         android:layout_below="@+id/message_title"
         style="@style/t1_2_bold_d2"

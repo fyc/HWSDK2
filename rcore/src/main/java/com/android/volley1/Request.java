@@ -24,7 +24,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 
 import com.android.volley1.VolleyLog.MarkerLog;
-import com.yiyou.gamesdk.core.base.http.volley.listener.ProgressListener;
+import com.qiyuan.gamesdk.core.base.http.volley.listener.ProgressListener;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
