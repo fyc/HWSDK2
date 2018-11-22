@@ -9,6 +9,7 @@ import android.net.http.SslError;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
@@ -20,29 +21,6 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
 import com.google.gson1.Gson;
-import com.qiyuan.gamesdk.core.CoreManager;
-import com.qiyuan.gamesdk.core.api.impl.payment.PaymentAdapter;
-import com.qiyuan.gamesdk.core.base.http.RequestHelper;
-import com.qiyuan.gamesdk.core.base.http.RequestManager;
-import com.qiyuan.gamesdk.core.base.http.utils.HttpUtils;
-import com.qiyuan.gamesdk.core.base.http.utils.Urlpath;
-import com.qiyuan.gamesdk.core.base.http.volley.HwJsonResquest;
-import com.qiyuan.gamesdk.core.base.http.volley.HwRequest;
-import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
-import com.qiyuan.gamesdk.core.consts.StatusCodeDef;
-import com.qiyuan.gamesdk.model.InternalOrderInfo;
-import com.qiyuan.gamesdk.model.PayInfo;
-import com.qiyuan.gamesdk.util.ExtraDef;
-import com.qiyuan.gamesdk.util.ToastUtils;
-import com.qiyuan.gamesdk.util.VersionUtil;
-import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.consts.QYCodeDef;
-import com.qygame.qysdk.outer.event.BackToMainFragmentEvent;
-import com.qygame.qysdk.outer.event.EventDispatcherAgent;
-import com.qygame.qysdk.outer.event.StartActivityEvent;
-import com.qygame.qysdk.outer.model.PaymentInfo;
-import com.qygame.qysdk.outer.util.Log;
-import com.qygame.qysdk.outer.util.StringUtils;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.api.def.IPaymentApi;
@@ -62,6 +40,14 @@ import com.qiyuan.gamesdk.model.PayInfo;
 import com.qiyuan.gamesdk.util.ExtraDef;
 import com.qiyuan.gamesdk.util.ToastUtils;
 import com.qiyuan.gamesdk.util.VersionUtil;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.event.BackToMainFragmentEvent;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.StartActivityEvent;
+import com.qygame.qysdk.outer.model.PaymentInfo;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 import org.json.JSONObject;
 
@@ -140,8 +126,8 @@ public class PaymentManager implements IPaymentApi {
     }
 
     @Override
-    public void orderH5(@Nullable Activity startUpActivity, String referer, String payUrl, IOperateCallback<String> orderCallback) {
-        initPayWebView(startUpActivity, referer, payUrl);
+    public void orderH5(@Nullable Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice) {
+        initPayWebView(activity, cliBuyerId, cliSellerId, cpOrderNo, cpOrderTitle, cpPrice);
     }
 
     @Override
@@ -383,7 +369,18 @@ public class PaymentManager implements IPaymentApi {
 
     static WebView payWebView;
 
-    protected void initPayWebView(final Activity activity, final String Referer, String payUrl) {
+    protected void initPayWebView(final Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice) {
+//        if (cliBuyerId <= 0 || TextUtils.isEmpty(cliSellerId) || TextUtils.isEmpty(cpOrderNo) || TextUtils.isEmpty(cpOrderTitle) || cpPrice <= 0) {
+////            Log.d(TAG, "支付所需参数错误！");
+////            return;
+////        }
+        String payUrl = "http://www.373yx.com/payment/preview?" +
+                "cliBuyerId=" + cliBuyerId +
+                "&cliSellerId=" + cliSellerId +
+                "&cpOrderNo=" + cpOrderNo +
+                "&cpPrice=" + cpPrice +
+                "&cpOrderTitle=" + cpOrderTitle;
+        Log.d(TAG, "payUrl=" + payUrl);
         payWebView = new WebView(activity);
         payWebView.setBackgroundColor(2);
         payWebView.requestFocus();
@@ -457,7 +454,7 @@ public class PaymentManager implements IPaymentApi {
                     return true;
                 } else {
                     Map<String, String> extraHeaders = new HashMap<String, String>();
-                    extraHeaders.put("Referer", Referer);
+                    extraHeaders.put("Referer", "http://www.373yx.com");
                     view.loadUrl(url, extraHeaders);
                     Log.e(TAG, "url=>5");
                 }

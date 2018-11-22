@@ -682,8 +682,8 @@ public class ApiFacade implements IApiFacade {
     }
 
     @Override
-    public void orderH5(@Nullable Activity startUpActivity, String referer, String payUrl, IOperateCallback<String> orderCallback) {
-        paymentApi().orderH5(startUpActivity, referer, payUrl, orderCallback);
+    public void orderH5(@Nullable Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice) {
+        paymentApi().orderH5(activity, cliBuyerId, cliSellerId, cpOrderNo,cpOrderTitle,cpPrice);
     }
 
     @Override

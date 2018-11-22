@@ -7,7 +7,14 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 
 import com.qiyuan.gamesdk.PluginManager;
+import com.qiyuan.gamesdk.R;
+import com.qiyuan.gamesdk.core.api.ApiFacade;
+import com.qiyuan.gamesdk.core.interceptor.Interceptor;
+import com.qiyuan.gamesdk.core.interceptor.LoginInterceptor;
+import com.qiyuan.gamesdk.core.interceptor.LoginNoticeInterceptor;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
+import com.qiyuan.gamesdk.core.ui.floatview.FloatViewManager;
+import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.model.AccountHistoryInfo;
 import com.qiyuan.gamesdk.util.PermissionHelper;
 import com.qiyuan.gamesdk.util.ToastUtils;
@@ -21,13 +28,6 @@ import com.qygame.qysdk.outer.model.GameParamInfo;
 import com.qygame.qysdk.outer.model.PaymentInfo;
 import com.qygame.qysdk.outer.model.VersionDir;
 import com.qygame.qysdk.outer.util.Log;
-import com.qiyuan.gamesdk.R;
-import com.qiyuan.gamesdk.core.api.ApiFacade;
-import com.qiyuan.gamesdk.core.interceptor.Interceptor;
-import com.qiyuan.gamesdk.core.interceptor.LoginInterceptor;
-import com.qiyuan.gamesdk.core.interceptor.LoginNoticeInterceptor;
-import com.qiyuan.gamesdk.core.ui.floatview.FloatViewManager;
-import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -161,8 +161,8 @@ public class QYSDKImpl implements IQYSDK {
     }
 
     @Override
-    public void payH5(Activity activity, String s, String s1, IOperateCallback<String> iOperateCallback) {
-        ApiFacade.getInstance().orderH5(activity, s, s1, iOperateCallback);
+    public void payH5(Activity activity, Long aLong, String s, String s1, String s2, float v) {
+        ApiFacade.getInstance().orderH5(activity, aLong, s, s1, s2, v);
     }
 
     @Override

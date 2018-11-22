@@ -131,6 +131,6 @@ public class PayFragment extends Fragment implements View.OnClickListener {
         payUrl = "http://www.373yx.com/payment/preview?cliBuyerId=19000&cliSellerId=2018111415564890400010102c2&" +
                 "cpOrderNo=" + System.currentTimeMillis() +
                 "&cpPrice=0.01&cpOrderTitle=%E9%A6%96%E5%85%851";
-        QYGameSDK.getInstance().payH5(getActivity(), "http://www.373yx.com", payUrl, null);
+        QYGameSDK.getInstance().payH5(getActivity(), 19000L, "2018111415564890400010102c2", System.currentTimeMillis() + "", "%E9%A6%96%E5%85%851", 0.01f);
     }
 }

@@ -122,9 +122,9 @@ public class LoadPlugin {
         }
     }
 
-    public void payH5(Activity activity, String referer, String payUrl, IOperateCallback<String> callback) {
+    public void payH5(Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice) {
         if (isInit) {
-            QYSDKApi.payH5(activity, referer, payUrl, callback);
+            QYSDKApi.payH5(activity, cliBuyerId, cliSellerId, cpOrderNo, cpOrderTitle, cpPrice);
         }
     }
 

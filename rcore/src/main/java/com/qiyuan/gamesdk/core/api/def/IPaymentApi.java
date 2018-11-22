@@ -25,7 +25,9 @@ public interface IPaymentApi extends IApiWrapping {
      */
     void order(PaymentInfo paymentInfo, @Nullable Activity startUpActivity, IOperateCallback<String> orderCallback);
 
-    void orderH5(@Nullable Activity startUpActivity, String referer, String payUrl, IOperateCallback<String> orderCallback);
+//    void orderH5(@Nullable Activity startUpActivity, String referer, String payUrl, IOperateCallback<String> orderCallback);
+
+    void orderH5(@Nullable Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice);
 
     /**
      * 支付操作部分在webview中进行，sdk-client会一直持有orderCallback,直到支付页面调用js接口

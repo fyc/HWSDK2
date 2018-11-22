@@ -98,16 +98,10 @@ public class QYGameSDK implements IQYSDK {
         LoadPlugin.getInstance().pay(activity, payInfo, callback);
     }
 
-    /**
-     *
-     * @param activity  当前Activity
-     * @param s   referer  支付域名
-     * @param s1  payUrl  支付链接地址
-     * @param iOperateCallback  回调，当前版本设置为null
-     */
+
     @Override
-    public void payH5(Activity activity, String s, String s1, IOperateCallback<String> iOperateCallback) {
-        LoadPlugin.getInstance().payH5(activity, s, s1, iOperateCallback);
+    public void payH5(Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice) {
+        LoadPlugin.getInstance().payH5(activity, cliBuyerId, cliSellerId, cpOrderNo, cpOrderTitle, cpPrice);
     }
 
 

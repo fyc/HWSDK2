@@ -1,10 +1,5 @@
 package com.qiyuan.gamesdk.core.api;
 
-import com.qiyuan.gamesdk.core.api.def.IAuthApi;
-import com.qiyuan.gamesdk.core.api.def.IChildrenAccountHistoryApi;
-import com.qiyuan.gamesdk.core.api.def.IPaymentApi;
-import com.qiyuan.gamesdk.core.api.def.ISecurityApi;
-import com.qiyuan.gamesdk.core.api.def.IUpgradeApi;
 import com.qiyuan.gamesdk.core.api.def.IAccountHistoryApi;
 import com.qiyuan.gamesdk.core.api.def.IAnnouncementApi;
 import com.qiyuan.gamesdk.core.api.def.IAuthApi;

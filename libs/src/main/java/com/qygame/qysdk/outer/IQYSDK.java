@@ -64,7 +64,9 @@ public interface IQYSDK {
      */
     void pay(Activity activity, PaymentInfo payInfo, IOperateCallback<String> callback);
 
-    void payH5(Activity activity, String referer, String payUrl, IOperateCallback<String> callback);
+//    void payH5(Activity activity, String referer, String payUrl, IOperateCallback<String> callback);
+
+    void payH5(Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice);
 
     /**
      * 判断是否登陆
