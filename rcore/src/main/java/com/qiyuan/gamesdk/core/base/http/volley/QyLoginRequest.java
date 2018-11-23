@@ -77,7 +77,8 @@ public class QyLoginRequest<T> extends Request<T> {
         this(Method.POST, url, null);
         mListener = listener;
         mParams = params;
-        src = mParams.get("src");
+//        src = mParams.get("src");
+        src = mParams.remove("src");
         mUrl = url;
         mClazz = clazz;
         mContentType = CONTENT_TYPE_RAW_JSON;

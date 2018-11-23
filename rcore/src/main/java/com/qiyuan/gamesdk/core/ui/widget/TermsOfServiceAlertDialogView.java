@@ -37,7 +37,9 @@ public class TermsOfServiceAlertDialogView extends BaseViewController implements
 //        lp.width=(int) (display.getWidth() * 0.8); // 宽度设置为屏幕的0.95
 //        lp.height=(int) (display.getHeight() * 0.6); // 高度设置为屏幕的0.6
 //        webview_content.setLayoutParams(lp);
-        webview_content.loadUrl(AssetsUtil.getHtml("terms_of_service.html"));
+//        webview_content.loadUrl(AssetsUtil.getHtml("terms_of_service.html"));
+        webview_content.loadUrl("https://files.373yx.com/sdk/service.html");
+
     }
 
     @Override

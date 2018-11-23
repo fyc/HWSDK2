@@ -242,7 +242,7 @@ public class NetworkUtil {
      * @return 中国移动/中国联通/中国电信/未知
      */
     public static String getProviderCode(Context context) {
-        String providerCode = "未知";
+        String providerCode = "0";//未知
         try {
             TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             String IMSI = telephonyManager.getSubscriberId();
