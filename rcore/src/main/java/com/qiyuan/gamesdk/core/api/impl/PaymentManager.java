@@ -51,7 +51,9 @@ import com.qygame.qysdk.outer.util.StringUtils;
 
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -370,10 +372,15 @@ public class PaymentManager implements IPaymentApi {
     static WebView payWebView;
 
     protected void initPayWebView(final Activity activity, Long cliBuyerId, String cliSellerId, String cpOrderNo, String cpOrderTitle, float cpPrice) {
-//        if (cliBuyerId <= 0 || TextUtils.isEmpty(cliSellerId) || TextUtils.isEmpty(cpOrderNo) || TextUtils.isEmpty(cpOrderTitle) || cpPrice <= 0) {
-////            Log.d(TAG, "支付所需参数错误！");
-////            return;
-////        }
+        if (cliBuyerId <= 0 || TextUtils.isEmpty(cliSellerId) || TextUtils.isEmpty(cpOrderNo) || TextUtils.isEmpty(cpOrderTitle) || cpPrice <= 0) {
+            Log.d(TAG, "支付所需参数错误！");
+            return;
+        }
+        try {
+            cpOrderTitle = URLEncoder.encode(cpOrderTitle, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         String payUrl = "http://www.373yx.com/payment/preview?" +
                 "cliBuyerId=" + cliBuyerId +
                 "&cliSellerId=" + cliSellerId +
