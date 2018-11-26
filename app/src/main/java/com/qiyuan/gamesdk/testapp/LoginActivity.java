@@ -118,45 +118,6 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
         });
     }
 
-    private void loginVisitorsImpl() {
-        QYGameSDK.getInstance().loginVisitors(this, new IOperateCallback<String>() {
-            @Override
-            public void onResult(int code, String s) {
-                if (code == QYCodeDef.SUCCESS) {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.add(R.id.container, mainFragment);
-                    ft.commitAllowingStateLoss();
-                    findViewById(R.id.choose).setVisibility(View.GONE);
-                    findViewById(R.id.file).setVisibility(View.GONE);
-                    mCurrentView = 1;  //0:LoginActivity,1:MainFragment ,2:PayFragment
-                    QYGameSDK.getInstance().showFloatView(LoginActivity.this);
-                    // TODO: cp可以在这里检验login
-                    Log.d(TAG, "session: " + QYGameSDK.getInstance().getSession());
-                    Toast.makeText(LoginActivity.this, "session: " + QYGameSDK.getInstance().getSession() + "\n" + "uid: " + QYGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
-
-    private void loginAuto() {
-        QYGameSDK.getInstance().loginAuto(this, new IOperateCallback<String>() {
-            @Override
-            public void onResult(int code, String s) {
-                if (code == QYCodeDef.SUCCESS) {
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.add(R.id.container, mainFragment);
-                    ft.commitAllowingStateLoss();
-                    findViewById(R.id.choose).setVisibility(View.GONE);
-                    findViewById(R.id.file).setVisibility(View.GONE);
-                    mCurrentView = 1;  //0:LoginActivity,1:MainFragment ,2:PayFragment
-                    QYGameSDK.getInstance().showFloatView(LoginActivity.this);
-                    // TODO: cp可以在这里检验login
-                    Log.d(TAG, "session: " + QYGameSDK.getInstance().getSession());
-                    Toast.makeText(LoginActivity.this, "session: " + QYGameSDK.getInstance().getSession() + "\n" + "uid: " + QYGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
 
     private void exitImpl() {
         QYGameSDK.getInstance().uninit(LoginActivity.this, new IOperateCallback<String>() {
