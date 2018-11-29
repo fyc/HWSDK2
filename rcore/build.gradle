@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
+def isApp = true
+
 android {
+
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
@@ -8,9 +11,21 @@ android {
         abortOnError false
     }
 
-    sourceSets{
-        main{
+//    sourceSets{
+//        main{
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+    /*java插件引入了一个概念叫做SourceSets，通过修改SourceSets中的属性，可以指定哪些源文件
+    （或文件夹下的源文件）要被编译，哪些源文件要被排除。*/
+    sourceSets {
+        main {
             jniLibs.srcDirs = ['libs']
+            if (isApp) {
+                manifest.srcFile 'src/main/java/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
         }
     }
 
@@ -31,6 +46,7 @@ android {
     }
 
     defaultConfig {
+        buildConfigField "boolean","isApp","true"
         applicationId "com.qiyuan.gamesdk.rcore"
         minSdkVersion 16
         targetSdkVersion 22
@@ -54,20 +70,24 @@ android {
 //}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    provided files("../output-libs/release/libs.jar")
+    //    compile fileTree(include: ['*.jar'], dir: 'libs')
+    provided files('../output-libs/release/libs.jar')
     provided files('../third-party-libs/android-support-v4.jar')
-//    provided files('../third-party-libs/alipaySDK-20150724.jar')
+    //    provided files('../third-party-libs/alipaySDK-20150724.jar')
     provided files('../third-party-libs/ipaynow_base_v2.0.1.jar')
     provided files('../third-party-libs/ipaynow_upmp_assist_v1.0.4.jar')
     provided files('../third-party-libs/ipaynow_upmp_plugin_v1.0.4.jar')
     provided files('../third-party-libs/ipaynow_wechatwp_v2.0.0.jar')
     provided files('../third-party-libs/ipaynow_view_v2.0.1.jar')
-//    compile(name:'recyclerview-v7-23.0.0', ext:'aar')
+    //    compile(name:'recyclerview-v7-23.0.0', ext:'aar')
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.1.3'
     // 支付宝 SDK AAR 包所需的配置
     compile(name: 'alipaySdk-15.5.7-20181023110930-noUtdid', ext: 'aar')
+    if(isApp){
+    compile files('libs/android-support-v4.jar')
+    compile files('libs/libs.jar')
+    }
 }
 
 task output(type: Copy) {

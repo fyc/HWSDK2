@@ -24,6 +24,7 @@ import com.qygame.qysdk.outer.util.Log;
 import com.qiyuan.gamesdk.container.FloatService;
 import com.qiyuan.gamesdk.container.MainActivity;
 import com.qiyuan.gamesdk.core.CoreManager;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -78,6 +79,9 @@ public class PluginManager {
             wr = new WeakReference((Activity) context);
         }
         isInit = true;
+        if(BuildConfig.isApp){
+            ResourceHelper.prepare(context);
+        }
         startFloatService(context);
         addEvent();
 

@@ -10,6 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.qiyuan.gamesdk.BuildConfig;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qygame.qysdk.outer.ICoreManager;
 import com.qygame.qysdk.outer.IOperateCallback;
@@ -46,7 +47,7 @@ import java.util.List;
 public class CoreManager implements ICoreManager {
 
     private static Context mContext;//todo 注意这个指向Service
-
+    private static Context mActivity;
     protected static final String TAG = "QYSDK:CoreManager ";
 
     private static boolean isDebugMode = false;
@@ -57,7 +58,11 @@ public class CoreManager implements ICoreManager {
     }
 
     public static Context getContext() {
-        return mContext;
+        if(BuildConfig.isApp){
+            return mActivity;
+        }else {
+            return mContext;
+        }
     }
 
     private final static int MSG_EXIT = 1;
@@ -93,6 +98,7 @@ public class CoreManager implements ICoreManager {
         initEvent();
         myHandler = new MyHandler();
         mContext = context;
+        mActivity = activity;
         isDebugMode = debugMode;
         Log.d(TAG, "init  " + debugMode + " gameinfo =" + gameParamInfo + " orientation = " + orientation);
         /**

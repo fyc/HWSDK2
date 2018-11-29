@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 
+import com.qiyuan.gamesdk.BuildConfig;
 import com.qiyuan.gamesdk.PluginManager;
 import com.qygame.qysdk.outer.util.Log;
 import com.qygame.qysdk.outer.util.ResourceHelper;
@@ -30,7 +31,10 @@ public class FloatService extends Service {
     public IBinder onBind(Intent intent) {
 
         PluginManager pluginManager = PluginManager.getInstance();
-        ResourceHelper.prepare(this);
+        if(!BuildConfig.isApp){
+            ResourceHelper.prepare(this);
+        }
+//
         pluginManager.setFloatService(this);
         if (pluginManager.isInit()) {
             Log.d(TAG, "callback");
