@@ -38,6 +38,8 @@ public interface IQYSDK {
      */
     void login(Activity activity, IOperateCallback<String> callback);
 
+    void regist(Activity activity, IOperateCallback<String> callback);
+
     void loginVisitors(Activity activity, IOperateCallback<String> callback);
 
     void loginAuto(Activity activity, IOperateCallback<String> callback);

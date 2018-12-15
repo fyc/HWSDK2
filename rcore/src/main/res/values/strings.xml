@@ -175,4 +175,10 @@
     <!--欢迎进入游戏tips-->
     <string name="str_visitors_welcome" formatted="false">游客:%d,%s进入游戏</string>
     <string name="str_phone_welcome" formatted="false">%d, %s进入游戏</string>
+
+    <!--起源游戏平台2.0-->
+    <string name="str_bind_phone_title2">起源游戏平台</string>
+    <string name="str_tip_to_login">如已有账号，请选择登录方式</string>
+    <string name="str_phone_account">手机号</string>
+    <string name="str_qiyuan_account">起源账号</string>
 </resources>

@@ -51,10 +51,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.qiyuan.gamesdk.container.RMainActivity2"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:screenOrientation="sensor"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
 
-        <service
-            android:name="com.qiyuan.gamesdk.container.FloatService"
-             />
+        <service android:name="com.qiyuan.gamesdk.container.FloatService" />
     </application>
 
 </manifest>

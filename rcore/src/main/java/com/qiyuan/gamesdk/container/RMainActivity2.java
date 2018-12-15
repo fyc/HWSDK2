@@ -1,5 +1,7 @@
 package com.qiyuan.gamesdk.container;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -13,25 +15,36 @@ import com.qygame.qysdk.outer.consts.QYCodeDef;
 import com.qygame.qysdk.outer.model.GameParamInfo;
 import com.qygame.qysdk.outer.util.StorageConfig;
 
-public class RMainActivity extends FragmentActivity {
+public class RMainActivity2 extends FragmentActivity {
     public static final String TAG = "QYGAMESDK:MAINACTIVITY";
     //    IQYSDK iQYSDK;
-    Button init, login, payH5, to_RMainActivity2;
+    Button init, regist, login, payH5;
+
+    public static void openActivity(Activity act) {
+        Intent i = new Intent(act, RMainActivity2.class);
+        act.startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.r_activity_main);
+        setContentView(R.layout.r_activity_main2);
         init = (Button) findViewById(R.id.init);
+        regist = (Button) findViewById(R.id.regist);
         login = (Button) findViewById(R.id.login);
         payH5 = (Button) findViewById(R.id.payH5);
-        to_RMainActivity2 = (Button) findViewById(R.id.to_RMainActivity2);
         init.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 initSdk();
 //                RMainActivity2.openActivity(RMainActivity.this);
+            }
+        });
+        regist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registImpl();
             }
         });
         login.setOnClickListener(new View.OnClickListener() {
@@ -49,12 +62,7 @@ public class RMainActivity extends FragmentActivity {
                 payH5(payUrl);
             }
         });
-        to_RMainActivity2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RMainActivity2.openActivity(RMainActivity.this);
-            }
-        });
+
     }
 
     private void initSdk() {
@@ -93,6 +101,26 @@ public class RMainActivity extends FragmentActivity {
 //        });
     }
 
+    private void registImpl() {
+        LoadPlugin.getInstance().regist(
+                this, new IOperateCallback<String>() {
+                    @Override
+                    public void onResult(int code, String s) {
+                        if (code == QYCodeDef.SUCCESS) {
+                            Log.d(TAG, "QYGameSDK登录成功！");
+                            login.setText("退出");
+                            login.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    logoutImpl();
+                                }
+                            });
+                        } else {
+                            Log.d(TAG, "QYGameSDK登录失败！");
+                        }
+                    }
+                });
+    }
 
     private void loginImpl() {
         LoadPlugin.getInstance().login(this, new IOperateCallback<String>() {
@@ -145,7 +173,7 @@ public class RMainActivity extends FragmentActivity {
         String cpOrderNo = System.currentTimeMillis() + "";
         String cpOrderTitle = "首充一";
         float cpPrice = 0.01f;
-        LoadPlugin.getInstance().payH5(RMainActivity.this, cliBuyerId, cliSellerId, cpOrderNo, cpOrderTitle, cpPrice);
+        LoadPlugin.getInstance().payH5(RMainActivity2.this, cliBuyerId, cliSellerId, cpOrderNo, cpOrderTitle, cpPrice);
     }
 
     @Override
@@ -154,7 +182,7 @@ public class RMainActivity extends FragmentActivity {
     }
 
     private void exitImpl() {
-        LoadPlugin.getInstance().uninit(RMainActivity.this, new IOperateCallback<String>() {
+        LoadPlugin.getInstance().uninit(RMainActivity2.this, new IOperateCallback<String>() {
             @Override
             public void onResult(int i, String s) {
                 if (i == QYCodeDef.SUCCESS) {

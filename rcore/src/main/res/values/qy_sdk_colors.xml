@@ -132,4 +132,10 @@
     <color name="login_blue">#09b0dd</color>
     <color name="login_white">#ffffff</color>
     <color name="login_light_grey">#F4F5F9</color>
+
+    <!--起源游戏平台2.0-->
+    <color name="qy_sdk_dialog_bg">#F2F2F2</color>
+    <color name="qy_sdk_dialog_blue">#0F8FF2</color>
+    <color name="qy_sdk_dialog_white">#ffffff</color>
+    <color name="qy_sdk_dialog_gray">#5D5D5D</color>
 </resources>

@@ -5,22 +5,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 
-import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
-import com.qiyuan.gamesdk.core.ui.widget.GameDownloadDialogView;
-import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.event.IDialogParam;
-import com.qygame.qysdk.outer.util.Log;
-import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
@@ -30,6 +20,10 @@ import com.qiyuan.gamesdk.core.ui.widget.TipsAlertDialogView;
 import com.qiyuan.gamesdk.model.AccountHistoryInfo;
 import com.qiyuan.gamesdk.model.AnnouncementInfo;
 import com.qiyuan.gamesdk.model.GameUpdateInfo;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.event.IDialogParam;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
 
 import java.util.List;
 
@@ -107,7 +101,6 @@ public class ViewControllerNavigator {
         });
     }
 
-
     public boolean loginPhone(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())
@@ -127,10 +120,13 @@ public class ViewControllerNavigator {
         new LoginViewController(params.getActivityContext(), params).loginAutoImpl();
     }
 
+    /**
+     * 2.0版本--注册
+     * */
     public boolean toRegister(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())
-                .show(new RegisterViewController(params.getActivityContext(), params));
+                .show(new RegisterViewController2(params.getActivityContext(), params));
     }
 
     public boolean toRealNameAuth(IDialogParam params) {

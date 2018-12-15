@@ -62,11 +62,16 @@
     <dimen name="margin_120px">60dp</dimen>
     <dimen name="margin_28px">14dp</dimen>
     <dimen name="margin_324px">162dp</dimen>
+    <dimen name="margin_30px">15dp</dimen>
+    <dimen name="margin_60px">30dp</dimen>
 
     <dimen name="edt_resetpwd_height">44dp</dimen>
     
     <!-- 一键注册图形验证码 -->
     <dimen name="btn_width_120">60dp</dimen>
     <dimen name="btn_width_160">80dp</dimen>
+
+    <!--起源游戏平台2.0-->
+    <dimen name="dialog_title_container_height">30dp</dimen>
 
 </resources>

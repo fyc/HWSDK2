@@ -73,7 +73,11 @@ public class LoadPlugin {
             QYSDKApi.uninit(context, callback);
         }
     }
-
+    public void regist(Activity activity, IOperateCallback<String> callback) {
+        if (isInit) {
+            QYSDKApi.regist(activity, callback);
+        }
+    }
     public void login(Activity activity, IOperateCallback<String> callback) {
         if (isInit) {
             QYSDKApi.login(activity, callback);
