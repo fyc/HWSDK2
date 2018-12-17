@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_32px"
         android:layout_marginRight="@dimen/margin_32px"
-        android:visibility="visible" />
+        android:visibility="gone" />
     <Button
         android:id="@+id/btn_login_container_login"
         style="@style/DialogConfirmButton"

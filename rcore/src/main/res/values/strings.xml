@@ -179,11 +179,14 @@
     <!--起源游戏平台2.0-->
     <string name="str_bind_phone_title2">起源游戏平台</string>
     <string name="str_a_key_to_regist">一键注册</string>
+    <string name="str_set_register_password_hint">设置密码</string>
+    <string name="str_set_register_password_tip">仅需一步，即可快速注册，密码长度为6位以上</string>
     <string name="str_tip_to_login">如已有账号，请选择登录方式</string>
     <string name="str_phone_account">手机号</string>
     <string name="str_phone_account_login">手机号登录</string>
     <string name="str_qiyuan_account">起源账号</string>
     <string name="str_qiyuan_account_login">账号登录</string>
     <string name="str_enter_game">进入游戏</string>
+    <string name="str_complete_the_registration">完成注册</string>
     <string name="str_back_to_regist">返回注册</string>
 </resources>

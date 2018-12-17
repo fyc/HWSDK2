@@ -4,15 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_register_container_register"
-        style="@style/DialogConfirmButton"
-        android:layout_marginLeft="@dimen/margin_60px"
-        android:layout_marginRight="@dimen/margin_60px"
-        android:background="@drawable/sdk_selector_dialog_btn_login2"
-        android:gravity="center"
-        android:text="@string/str_enter_game" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

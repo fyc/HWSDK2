@@ -1,9 +1,6 @@
 package com.qiyuan.gamesdk.core.ui.dialog.biz;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.Editable;
@@ -16,64 +13,61 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.qiyuan.gamesdk.R;
-import com.qiyuan.gamesdk.core.api.ApiFacade;
-import com.qiyuan.gamesdk.core.api.def.IAuthApi;
-import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
-import com.qiyuan.gamesdk.core.consts.StatusCodeDef;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.RegisterViewControllerPresenter2;
 import com.qiyuan.gamesdk.core.ui.widget.StandardDialog;
-import com.qiyuan.gamesdk.model.AuthModel;
 import com.qiyuan.gamesdk.model.UserInfo;
 import com.qiyuan.gamesdk.util.IMEUtil;
 import com.qiyuan.gamesdk.util.ToastUtils;
 import com.qiyuan.gamesdk.util.ViewUtils;
 import com.qygame.qysdk.outer.event.IDialogParam;
-import com.qygame.qysdk.outer.util.Log;
 import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.qygame.qysdk.outer.util.StringUtils;
 
-import java.util.Map;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Orange on 15/6/11.
  * 注册，手机号注册，一键注册
  */
 public class RegisterViewController2 extends BaseAuthViewController {
-    private static final String TAG = "QYSDK:RegisterViewController ";
+    public static final String TAG = "QYSDK:RegisterViewController ";
 
-    private static final int STATE_REGISTER_PHONE = 1;
-    private static final int STATE_REGISTER_ACCOUNT = 2;
+    public static final int STATE_REGISTER_PHONE = 1;
+    public static final int STATE_REGISTER_ACCOUNT = 2;
 
-    private boolean waitingVerifyCode = false;
+    RegisterViewControllerPresenter2 registerViewControllerPresenter2;
+    public boolean waitingVerifyCode = false;
 
-    private int currentState;
-    private int retryTime = 0;
+    public int currentState;
+    public int retryTime = 0;
 
     //header
     private ViewGroup registerTypeRadioGroup;
     private RadioButton registerPhoneRadioButton;
     private RadioButton registerAccountRadioButton;
 
-    private View registerPhoneContainer;
-    private View registerAccountContainer;
-    private EditText phoneEdit;
-    private EditText phonePasswordEdit;
-    private EditText accountEdit;
-    private EditText accountPasswordEdit;
-    private Button getVerificationCodeButton;
+    public View registerPhoneContainer;
+    public View registerAccountContainer;
+    public EditText phoneEdit;
+    public EditText phonePasswordEdit;
+    //    private EditText accountEdit;
+    public EditText accountPasswordEdit;
+    public Button getVerificationCodeButton;
     //    private Button backTitleContainerBtn;
 //    private Button closeTitleContainerBtn;
-    private EditText verificationCodeEdit;
-    private Button registerButton;
+    public EditText verificationCodeEdit;
+    public Button registerButton;
+
+    private View registerPhoneBottom;
+    private View registerAccountBottom;
+
     //    private TextView serviceTermsBtn;
     private TextView titleTv;
     //    private View titleImg;
     private TextView tv_phone_account, tv_qiyuan_account;
-    ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
-    SmsVerificationCode smsObserver;
+    public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
+    public RegisterViewControllerPresenter2.SmsVerificationCode smsObserver;
 
 
     //data
@@ -83,15 +77,16 @@ public class RegisterViewController2 extends BaseAuthViewController {
     private String requestingAccountMd5Pwd;
     private Stack<UserInfo> registerUserCache = new Stack<>();
 
-    Context mContext;
+    public Context mContext;
 
     public RegisterViewController2(Context context, IDialogParam params) {
         super(context, params);
         mContext = context;
+        registerViewControllerPresenter2 = new RegisterViewControllerPresenter2(this);
         initView();
         switchRegisterTypeState(STATE_REGISTER_PHONE);
         //注册短信变化监听
-        smsObserver = new SmsVerificationCode(new Handler());
+        smsObserver = registerViewControllerPresenter2.newHistoryPickerController(new Handler());
         mContext.getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, smsObserver);
     }
 
@@ -133,7 +128,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
         ViewUtils.setViewEnable(registerButton, false);
         phoneEdit = (EditText) findViewById(R.id.edit_register_container_phone);
         phonePasswordEdit = (EditText) findViewById(R.id.edit_register_container_password);
-        accountEdit = (EditText) findViewById(R.id.edit_register_container_account);
+//        accountEdit = (EditText) findViewById(R.id.edit_register_container_account);
         accountPasswordEdit = (EditText) findViewById(R.id.edit_register_container_account_password);
         reGetVerifyCodeButtonController = new ReGetVerifyCodeButtonController(getVerificationCodeButton);
         verificationCodeEdit = (EditText) findViewById(R.id.edit_register_container_verification_code);
@@ -143,53 +138,8 @@ public class RegisterViewController2 extends BaseAuthViewController {
         tv_qiyuan_account = (TextView) findViewById(R.id.tv_qiyuan_account);
 //        backTitleContainerBtn.setVisibility(VISIBLE);
         titleTv.setVisibility(VISIBLE);
-//        titleTv.setText(R.string.register);
-//        titleImg.setVisibility(GONE);
-//        serviceTermsBtn.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(TAG, "onClick: ");
-//                EventDispatcherAgent.defaultAgent().broadcast(StartActivityEvent.TYPE_START_ACTIVITY_ENVENT,
-//                        new StartActivityEvent.FragmentParam(0, mContext,
-//                                StartActivityEvent.DISPLAY_TYPE_FULLSCREEN,
-//                                null, LicenseFragment.class.getName(), null));
-//            }
-//        });
-//        closeTitleContainerBtn.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                warningExitRegister(new TwoChoiceJob() {
-//                    @Override
-//                    public void jobOnChoose() {
-//                        waitingVerifyCode = false;
-//                        close();
-//                    }
-//
-//                    @Override
-//                    public void jobDefault() {
-//                        close();
-//                    }
-//                });
-//            }
-//        });
-//        backTitleContainerBtn.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                IMEUtil.hideIME(RegisterViewController2.this);
-//                warningLeaveRegister(new TwoChoiceJob() {
-//                    @Override
-//                    public void jobOnChoose() {
-//                        waitingVerifyCode = false;
-//                        ViewControllerNavigator.getInstance().toLogin( getDialogParam());
-//                    }
-//
-//                    @Override
-//                    public void jobDefault() {
-//                        ViewControllerNavigator.getInstance().toLogin(getDialogParam());
-//                    }
-//                });
-//            }
-//        });
+        registerPhoneBottom = findViewById(R.id.container_item_register_phone_bottom);
+        registerAccountBottom = findViewById(R.id.container_item_register_account_bottom);
 
         registerAccountRadioButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -229,7 +179,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
                 }
                 IMEUtil.hideIME(RegisterViewController2.this);
                 //获取验证码
-                getVerificationCodeButtonImpl(phone);
+                registerViewControllerPresenter2.getVerificationCodeButtonImpl(phone);
             }
         });
 
@@ -238,12 +188,12 @@ public class RegisterViewController2 extends BaseAuthViewController {
             public void onClick(View view) {
                 IMEUtil.hideIME(RegisterViewController2.this);
                 if (currentState == STATE_REGISTER_PHONE) {
-                    if (checkPhoneInput(phoneEdit.getText().toString(), phonePasswordEdit.getText().toString())) {
-                        registerByPhoneImpl(requestingPhoneNumber, requestingPhoneMd5Pwd, verificationCodeEdit.getText().toString());
+                    if (registerViewControllerPresenter2.checkPhoneInput(phoneEdit.getText().toString(), phonePasswordEdit.getText().toString())) {
+                        registerViewControllerPresenter2.registerByPhoneImpl(requestingPhoneNumber, requestingPhoneMd5Pwd, verificationCodeEdit.getText().toString());
                     }
                 } else if (currentState == STATE_REGISTER_ACCOUNT) {
-                    if (checkAccountInput(accountEdit.getText().toString(), accountPasswordEdit.getText().toString()))
-                        registerByAccountImpl(requestingAccount, requestingAccountMd5Pwd);
+                    if (registerViewControllerPresenter2.checkAccountInput(accountPasswordEdit.getText().toString()))
+                        registerViewControllerPresenter2.registerByAccountImpl(requestingAccount, requestingAccountMd5Pwd);
                 }
             }
         });
@@ -269,84 +219,20 @@ public class RegisterViewController2 extends BaseAuthViewController {
         ViewUtils.bindEditWithButton(accountPasswordEdit, registerButton);
         ViewUtils.bindEditWithButton(phonePasswordEdit, registerButton);
 
-        addTextWatcher(phoneEdit, phonePasswordEdit, accountEdit, accountPasswordEdit, verificationCodeEdit);
+        registerViewControllerPresenter2.addTextWatcher(phoneEdit, phonePasswordEdit, accountPasswordEdit, verificationCodeEdit);
 
         tv_phone_account.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(),LoginViewController2.STATE_LOGIN_PHONE);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
             }
         });
         tv_qiyuan_account.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(),LoginViewController2.STATE_LOGIN_ACCOUNT);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_ACCOUNT);
             }
         });
-    }
-
-    private void updateRegisterButtonState() {
-        if (currentState == STATE_REGISTER_PHONE) {
-            if (phoneEdit.length() == 0 || phonePasswordEdit.length() == 0
-                    || verificationCodeEdit.length() == 0) {
-                registerButton.setEnabled(false);
-            } else {
-                registerButton.setEnabled(true);
-            }
-        } else if (currentState == STATE_REGISTER_ACCOUNT) {
-            if (accountEdit.length() == 0 || accountPasswordEdit.length() == 0) {
-                registerButton.setEnabled(false);
-            } else {
-                registerButton.setEnabled(true);
-            }
-        }
-    }
-
-    private void addTextWatcher(EditText... editTexts) {
-        for (final EditText editText : editTexts) {
-            editText.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    updateRegisterButtonState();
-                }
-            });
-        }
-    }
-
-    private boolean checkPhoneInput(String phone, String password) {
-        if (phone.length() != 11) {
-            ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_valid_11_phone_num));
-            return false;
-        }
-        if (password.length() < 6 || password.length() > 16) {
-            ToastUtils.showMsg(ResourceHelper.getString(R.string.register_password_hint));
-            return false;
-        }
-        putRegisterPhoneInfo(phone, password);
-        return true;
-    }
-
-    private boolean checkAccountInput(String account, String password) {
-        if (account.length() < 4 || account.length() > 16) {
-            ToastUtils.showMsg(ResourceHelper.getString(R.string.register_account_hint));
-            return false;
-        }
-        if (password.length() < 6 || password.length() > 16) {
-            ToastUtils.showMsg(ResourceHelper.getString(R.string.register_password_hint));
-            return false;
-        }
-        putRegisterAccountInfo(account, password);
-        return true;
     }
 
     @Override
@@ -418,143 +304,17 @@ public class RegisterViewController2 extends BaseAuthViewController {
         }
     }
 
-    /**
-     * 获取短信验证码
-     *
-     * @param phone 手机号码
-     */
-    private void getVerificationCodeButtonImpl(String phone) {
-        showLoading();
-        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new QyRespListener<Void>() {
-            @Override
-            public void onNetSucc(String url, Map<String, String> params, Void result) {
-                hideLoading();
-                retryTime++;
-                if (params != null) {
-                    waitingVerifyCode = true;
-                    Log.d(TAG, "success request verify code ");
-                    ToastUtils.showMsg(R.string.already_sent_verification_tips);
-                    reGetVerifyCodeButtonController.prepare();
-                    reGetVerifyCodeButtonController.startCountDown();
-                } else {
-                    Log.d(TAG, "error request verify code.");
-                }
-            }
-
-            @Override
-            public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
-                super.onNetError(url, params, errno, errmsg);
-                hideLoading();
-            }
-
-            @Override
-            public void onFail(int errorNo, String errmsg) {
-                super.onFail(errorNo, errmsg);
-                hideLoading();
-            }
-        });
-    }
-
-    private void registerByPhoneImpl(final String phone, final String password, final String vCode) {
-        showLoading();
-        QyRespListener<AuthModel> callback = new QyRespListener<AuthModel>() {
-            @Override
-            public void onNetSucc(String url, Map params, AuthModel result) {
-                if (params != null) {
-                    Log.d(TAG, "registerByPhone " + result.toString());
-                    notifyAuthResult(StatusCodeDef.SUCCESS, "", result);
-                    close();
-                } else {
-                    Log.d(TAG, "registerByPhone return null;");
-                }
-            }
-
-            @Override
-            public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
-                super.onNetError(url, params, errno, errmsg);
-                hideLoading();
-            }
-
-            @Override
-            public void onFail(int errorNo, String errmsg) {
-                super.onFail(errorNo, errmsg);
-                hideLoading();
-            }
-        };
-
-        ApiFacade.getInstance().registerByPhone(phone, password,
-                vCode, callback);
-
-    }
-
-    private void invokeRegisterByPhone(String phone, String password, String vCode) {
-        showLoading();
-        QyRespListener<AuthModel> callback = new QyRespListener<AuthModel>() {
-            @Override
-            public void onNetSucc(String url, Map params, AuthModel result) {
-                if (params != null) {
-                    Log.d(TAG, "registerByPhone " + result.toString());
-                    notifyAuthResult(StatusCodeDef.SUCCESS, "", result);
-                    close();
-                } else {
-                    Log.d(TAG, "registerByPhone return null;");
-                }
-            }
-
-            @Override
-            public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
-                super.onNetError(url, params, errno, errmsg);
-                hideLoading();
-            }
-
-            @Override
-            public void onFail(int errorNo, String errmsg) {
-                super.onFail(errorNo, errmsg);
-                hideLoading();
-            }
-        };
-
-        ApiFacade.getInstance().registerByPhone(phone, password,
-                vCode, callback);
-    }
-
-    private void registerByAccountImpl(final String account, final String password) {
-        showLoading();
-        ApiFacade.getInstance().registerByUserName(password, account, new QyRespListener<AuthModel>() {
-            @Override
-            public void onNetworkComplete() {
-                super.onNetworkComplete();
-                hideLoading();
-            }
-
-            @Override
-            public void onNetSucc(String url, Map<String, String> params, AuthModel result) {
-                if (params != null) {
-                    Log.d(TAG, "registerByPhone " + result.toString());
-                    notifyAuthResult(StatusCodeDef.SUCCESS, "", result);
-                    close();
-                } else {
-                    Log.d(TAG, "registerByPhone return null;");
-                }
-            }
-        });
-    }
-
-    private void tipTologin() {
-        ToastUtils.showMsg("提示前往登录页面吧");
-    }
-
     private void clearRegisterPhoneInfo() {
         requestingPhoneNumber = "";
         requestingPhoneMd5Pwd = "";
     }
 
-    private void putRegisterPhoneInfo(String phone, String md5Pwd) {
+    public void putRegisterPhoneInfo(String phone, String md5Pwd) {
         requestingPhoneNumber = phone;
         requestingPhoneMd5Pwd = md5Pwd;
     }
 
-    private void putRegisterAccountInfo(String account, String md5Pwd) {
+    public void putRegisterAccountInfo(String account, String md5Pwd) {
         requestingAccount = account;
         requestingAccountMd5Pwd = md5Pwd;
     }
@@ -567,7 +327,6 @@ public class RegisterViewController2 extends BaseAuthViewController {
             case STATE_REGISTER_PHONE:
                 registerPhoneContainer.setVisibility(View.VISIBLE);
                 registerAccountContainer.setVisibility(View.GONE);
-                registerTypeRadioGroup.setVisibility(View.VISIBLE);
                 registerPhoneRadioButton.setSelected(true);
                 registerAccountRadioButton.setSelected(false);
                 registerPhoneRadioButton
@@ -577,6 +336,9 @@ public class RegisterViewController2 extends BaseAuthViewController {
                         .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0,
                                 R.drawable.qy_sdk_shape_dialog_radio_button_bg_empty);
 
+                registerPhoneBottom.setVisibility(View.VISIBLE);
+                registerAccountBottom.setVisibility(View.GONE);
+                registerButton.setText(R.string.str_enter_game);
                 break;
             case STATE_REGISTER_ACCOUNT:
                 registerPhoneContainer.setVisibility(View.GONE);
@@ -589,55 +351,16 @@ public class RegisterViewController2 extends BaseAuthViewController {
                 registerAccountRadioButton
                         .setCompoundDrawablesWithIntrinsicBounds(0, 0, 0,
                                 R.drawable.qy_sdk_shape_dialog_radio_button_bg2);
+
+                registerPhoneBottom.setVisibility(View.GONE);
+                registerAccountBottom.setVisibility(View.VISIBLE);
+                registerButton.setText(R.string.str_complete_the_registration);
                 break;
             default:
                 return;
         }
         currentState = state;
-        updateRegisterButtonState();
-    }
-
-
-    /*
-     * 监听短信数据库
-     */
-    public class SmsVerificationCode extends ContentObserver {
-
-        private Uri SMS_ALL = Uri.parse("content://sms/");
-        private Cursor cursor = null;
-
-        public SmsVerificationCode(Handler handler) {
-            super(handler);
-        }
-
-
-        public void getSmsFromPhone() {
-            ContentResolver cr = mContext.getContentResolver();
-            String[] projection = new String[]{"body"};
-            // 读取短信内容
-            cursor = cr.query(SMS_ALL, projection, null, null, null);
-            if (null == cursor) {
-                return;
-            }
-            if (cursor.moveToNext()) {
-                String body = cursor.getString(cursor.getColumnIndex("body")); //获取短信的内容
-                //根据正则分组表达式获取验证码  // TODO: 2017/8/10  改成起源的
-                Pattern pattern = Pattern.compile("(【QY语音】|【趣丸网】)(\\s*验证码\\s*)([0-9]{4})");
-                Matcher matcher = pattern.matcher(body);
-                if (matcher.find()) {
-                    verificationCodeEdit.setText(matcher.group(3));
-                }
-            }
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            super.onChange(selfChange);
-            getSmsFromPhone();
-        }
+        registerViewControllerPresenter2.updateRegisterButtonState();
     }
 
 }

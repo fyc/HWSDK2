@@ -68,23 +68,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_32px"
-        android:layout_marginRight="@dimen/margin_32px" />
+        android:layout_marginRight="@dimen/margin_32px"
+        android:visibility="visible" />
 
     <include
         android:id="@+id/container_item_register_account"
-        layout="@layout/qy_sdk_container_item_register_account"
+        layout="@layout/qy_sdk_container_item_register_key"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_32px"
         android:layout_marginRight="@dimen/margin_32px"
         android:visibility="gone" />
 
+    <Button
+        android:id="@+id/btn_register_container_register"
+        style="@style/DialogConfirmButton"
+        android:layout_marginLeft="@dimen/margin_60px"
+        android:layout_marginRight="@dimen/margin_60px"
+        android:layout_marginTop="@dimen/margin_32px"
+        android:background="@drawable/sdk_selector_dialog_btn_login2"
+        android:gravity="center"
+        android:text="@string/str_enter_game" />
+
     <!-- Bottom -->
     <include
-        android:id="@+id/container_item_register_bottom"
+        android:id="@+id/container_item_register_phone_bottom"
         layout="@layout/qy_sdk_container_item_register_bottom2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_8"
         android:layout_marginTop="@dimen/space_8" />
+    <!-- Bottom -->
+    <include
+        android:id="@+id/container_item_register_account_bottom"
+        layout="@layout/qy_sdk_container_item_login_bottom2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:visibility="gone" />
 </LinearLayout>
