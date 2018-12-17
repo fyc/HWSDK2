@@ -11,38 +11,6 @@ import android.widget.Toast;
 
 import com.android.volley1.AuthFailureError;
 import com.qiyuan.gamesdk.PluginManager;
-import com.qiyuan.gamesdk.core.CoreManager;
-import com.qiyuan.gamesdk.core.base.http.RequestHelper;
-import com.qiyuan.gamesdk.core.base.http.RequestManager;
-import com.qiyuan.gamesdk.core.base.http.utils.HttpUtils;
-import com.qiyuan.gamesdk.core.base.http.utils.Urlpath;
-import com.qiyuan.gamesdk.core.base.http.volley.HwAppRequest;
-import com.qiyuan.gamesdk.core.base.http.volley.HwRequest;
-import com.qiyuan.gamesdk.core.base.http.volley.QyLoginRequest;
-import com.qiyuan.gamesdk.core.base.http.volley.bean.LoginBean;
-import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
-import com.qiyuan.gamesdk.core.consts.StatusCodeDef;
-import com.qiyuan.gamesdk.core.memcache.LoginInfo;
-import com.qiyuan.gamesdk.core.storage.db.global.AccountTable;
-import com.qiyuan.gamesdk.model.AccountHistoryInfo;
-import com.qiyuan.gamesdk.model.AuthModel;
-import com.qiyuan.gamesdk.model.BalanceInfo;
-import com.qiyuan.gamesdk.model.ChildrenAccountHistoryInfo;
-import com.qiyuan.gamesdk.model.CouponCountInfo;
-import com.qiyuan.gamesdk.model.CouponInfo;
-import com.qiyuan.gamesdk.model.GameDiscountInfo;
-import com.qiyuan.gamesdk.model.GamePackages;
-import com.qiyuan.gamesdk.model.GetCouponInfo;
-import com.qiyuan.gamesdk.model.InventoriesInfo;
-import com.qiyuan.gamesdk.util.ByteUtils;
-import com.qiyuan.gamesdk.util.PhoneUtils;
-import com.qiyuan.gamesdk.util.QiyuanSignUtils;
-import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.consts.QYCodeDef;
-import com.qygame.qysdk.outer.util.Log;
-import com.qygame.qysdk.outer.util.ResourceHelper;
-import com.qygame.qysdk.outer.util.StringUtils;
-import com.qiyuan.gamesdk.PluginManager;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
@@ -73,6 +41,11 @@ import com.qiyuan.gamesdk.model.InventoriesInfo;
 import com.qiyuan.gamesdk.util.ByteUtils;
 import com.qiyuan.gamesdk.util.PhoneUtils;
 import com.qiyuan.gamesdk.util.QiyuanSignUtils;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.consts.QYCodeDef;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -314,6 +287,16 @@ class AuthManager implements IAuthApi {
             QyLoginRequest hwRequest = new QyLoginRequest(Urlpath.LOGIN_AUTO, params, LoginBean.class, newAuthModelRespListenerWrapper2(LoginAuto, callback));
             RequestManager.getInstance(CoreManager.getContext()).addRequest(hwRequest, null);
         }
+
+    }
+
+    @Override
+    public void loginByUserName(String account, String pwd, QyRespListener<AuthModel> callback) {
+
+    }
+
+    @Override
+    public void loginByPhone(String account, String pwd, QyRespListener<AuthModel> callback) {
 
     }
 

@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.qiyuan.gamesdk.core.ui.dialog.BaseViewController;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.base.http.volley.bean.LoginBean;
 import com.qiyuan.gamesdk.core.ui.dialog.BaseViewController;
@@ -50,7 +49,7 @@ public abstract class BaseAuthViewController extends BaseViewController {
         loading.setVisibility(View.INVISIBLE);
     }
 
-    void notifyAuthResult(int code, String resultMsg, AuthModel authModel) {
+    public void notifyAuthResult(int code, String resultMsg, AuthModel authModel) {
         willCloseByAuthResult = true;
         if(dialogParam != null) {
             if(dialogParam.getAppCallback() != null) {
@@ -68,7 +67,7 @@ public abstract class BaseAuthViewController extends BaseViewController {
      * @param resultMsg
      * @param loginBean
      */
-    void notifyAuthResult2(int code, String resultMsg, LoginBean loginBean) {
+    public void notifyAuthResult2(int code, String resultMsg, LoginBean loginBean) {
         willCloseByAuthResult = true;
         if(dialogParam != null) {
             if(dialogParam.getAppCallback() != null) {
@@ -89,7 +88,7 @@ public abstract class BaseAuthViewController extends BaseViewController {
         }
     }
 
-    IDialogParam getDialogParam() {
+    public IDialogParam getDialogParam() {
         return dialogParam;
     }
 }

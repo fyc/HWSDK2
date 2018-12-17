@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/margin_16px">
+
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
+        android:id="@+id/edit_login_container_account"
+        style="@style/DialogEditText"
+        android:layout_marginBottom="@dimen/margin_6px"
+        android:layout_marginTop="@dimen/margin_6px"
+        android:digits="@string/account_digits"
+        android:drawableLeft="@drawable/login_icon_user"
+        android:drawableStart="@drawable/login_icon_user"
+        android:hint="@string/register_account_hint"
+        android:imeOptions="actionNext|flagNoExtractUi"
+        android:inputType="text"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
+        android:id="@+id/edit_login_container_account_password"
+        style="@style/DialogEditText"
+        android:layout_marginBottom="@dimen/margin_16px"
+        android:layout_marginTop="@dimen/margin_16px"
+        android:digits="@string/register_password_digits"
+        android:drawableLeft="@drawable/login_icon_password"
+        android:drawableStart="@drawable/login_icon_password"
+        android:hint="@string/register_password_hint"
+        android:inputType="textPassword"
+        android:maxLines="1" />
+</LinearLayout>

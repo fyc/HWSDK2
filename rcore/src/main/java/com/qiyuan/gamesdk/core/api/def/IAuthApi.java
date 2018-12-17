@@ -11,16 +11,6 @@ import com.qiyuan.gamesdk.model.GamePackages;
 import com.qiyuan.gamesdk.model.GetCouponInfo;
 import com.qiyuan.gamesdk.model.InventoriesInfo;
 import com.qygame.qysdk.outer.IOperateCallback;
-import com.qiyuan.gamesdk.core.base.http.volley.bean.LoginBean;
-import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
-import com.qiyuan.gamesdk.model.AuthModel;
-import com.qiyuan.gamesdk.model.BalanceInfo;
-import com.qiyuan.gamesdk.model.CouponCountInfo;
-import com.qiyuan.gamesdk.model.CouponInfo;
-import com.qiyuan.gamesdk.model.GameDiscountInfo;
-import com.qiyuan.gamesdk.model.GamePackages;
-import com.qiyuan.gamesdk.model.GetCouponInfo;
-import com.qiyuan.gamesdk.model.InventoriesInfo;
 
 /**
  * Created by win on 17/4/26.
@@ -79,6 +69,9 @@ public interface IAuthApi extends IApiWrapping {
     void login2(String account, String code,QyRespListener<LoginBean> callback);
     void loginVisitors(QyRespListener<LoginBean> callback);
     void loginAuto(QyRespListener<LoginBean> callback);
+
+    void loginByUserName(String account, String pwd,QyRespListener<AuthModel> callback);
+    void loginByPhone(String account, String pwd,QyRespListener<AuthModel> callback);
     /**
      * 登出当前账号带CP回调
      */

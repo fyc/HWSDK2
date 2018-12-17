@@ -48,9 +48,8 @@
             android:layout_weight="1"
             android:button="@null"
             android:drawableBottom="@drawable/qy_sdk_shape_dialog_radio_button_bg_empty"
-            android:drawablePadding="@dimen/margin_6px"
             android:gravity="center"
-            android:text="@string/register_by_account"
+            android:text="@string/str_a_key_to_regist"
             android:textColor="@color/qy_sdk_selector_text_color_dialog_register_container_tab_radio_button2"
             android:textSize="@dimen/text_size_t6"
             android:textStyle="normal|bold" />
@@ -59,11 +58,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginBottom="6dp"
         android:background="@color/radio_button_divider" />
 
-    <View
-        style="@style/DialogDivider.Horizontal"
-        android:layout_marginBottom="6dp" />
     <!-- center -->
     <include
         android:id="@+id/container_item_register_phone"

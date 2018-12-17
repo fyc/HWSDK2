@@ -18,6 +18,7 @@
     <dimen name="reset_edt_padding">16dp</dimen>
     <dimen name="bind_phone_edt_height">44dp</dimen>
     <dimen name="bind_phone_input_margin_lr">16dp</dimen>
+    <dimen name="login_bottom_layout_height2">85dp</dimen>
 
     <dimen name="space_32">32dp</dimen>
     <dimen name="space_12">12dp</dimen>
@@ -64,6 +65,7 @@
     <dimen name="margin_324px">162dp</dimen>
     <dimen name="margin_30px">15dp</dimen>
     <dimen name="margin_60px">30dp</dimen>
+    <dimen name="margin_160px">80dp</dimen>
 
     <dimen name="edt_resetpwd_height">44dp</dimen>
     

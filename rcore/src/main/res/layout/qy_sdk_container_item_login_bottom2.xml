@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_marginTop="@dimen/margin_16px"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/radio_button_divider" />
+
+    <TextView
+        android:id="@+id/str_tip_to_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_32px"
+        android:background="@null"
+        android:gravity="center"
+        android:lines="1"
+        android:text="@string/str_tip_to_login"
+        android:textColor="@color/qy_sdk_dialog_gray"
+        android:textSize="@dimen/text_size_t3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/str_tip_to_login"
+        android:layout_marginBottom="@dimen/margin_30px"
+        android:layout_marginTop="@dimen/margin_20px"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_qiyuan_phone_login"
+            android:layout_width="@dimen/margin_160px"
+            android:layout_height="@dimen/margin_60px"
+            android:background="@drawable/sdk_selector_dialog_btn_login2"
+            android:drawableLeft="@drawable/login_icon_phone"
+            android:drawableStart="@drawable/login_icon_phone"
+            android:gravity="center"
+            android:text="@string/str_phone_account"
+            android:textColor="@color/qy_sdk_dialog_white"
+            android:textSize="@dimen/text_size_t3" />
+
+        <Button
+            android:id="@+id/btn_qiyuan_account_login"
+            android:layout_width="@dimen/margin_160px"
+            android:layout_height="@dimen/margin_60px"
+            android:layout_marginLeft="@dimen/margin_30px"
+            android:layout_marginStart="@dimen/margin_30px"
+            android:background="@drawable/sdk_selector_dialog_btn_login2"
+            android:drawableLeft="@drawable/login_icon_phone"
+            android:drawableStart="@drawable/login_icon_phone"
+            android:gravity="center"
+            android:text="@string/str_qiyuan_account"
+            android:textColor="@color/qy_sdk_dialog_white"
+            android:textSize="@dimen/text_size_t3" />
+
+        <Button
+            android:id="@+id/btn_back_to_regist"
+            android:layout_width="@dimen/margin_160px"
+            android:layout_height="@dimen/margin_60px"
+            android:layout_marginLeft="@dimen/margin_30px"
+            android:layout_marginStart="@dimen/margin_30px"
+            android:background="@drawable/sdk_shape_dialog_btn_login_disable2"
+            android:gravity="center"
+            android:text="@string/str_back_to_regist"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t3" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

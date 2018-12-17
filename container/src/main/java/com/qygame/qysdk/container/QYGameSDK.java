@@ -64,6 +64,16 @@ public class QYGameSDK implements IQYSDK {
     }
 
     @Override
+    public void regist(Activity activity, IOperateCallback<String> iOperateCallback) {
+
+    }
+
+    @Override
+    public void tologinPhone2(Activity activity, IOperateCallback<String> iOperateCallback) {
+
+    }
+
+    @Override
     public void loginVisitors(Activity activity, IOperateCallback<String> callback) {
         LoadPlugin.getInstance().loginVisitors(activity, callback);
     }

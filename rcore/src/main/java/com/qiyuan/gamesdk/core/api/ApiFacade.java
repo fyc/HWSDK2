@@ -8,34 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.qiyuan.gamesdk.core.CoreManager;
-import com.qiyuan.gamesdk.core.api.def.IAnnouncementApi;
-import com.qiyuan.gamesdk.core.api.def.IAuthApi;
-import com.qiyuan.gamesdk.core.api.def.IChildrenAccountHistoryApi;
-import com.qiyuan.gamesdk.core.api.def.IPaymentApi;
-import com.qiyuan.gamesdk.core.api.def.ISecurityApi;
-import com.qiyuan.gamesdk.core.api.def.IUpgradeApi;
-import com.qiyuan.gamesdk.core.api.impl.ApiLoader;
-import com.qiyuan.gamesdk.core.base.http.volley.bean.LoginBean;
-import com.qiyuan.gamesdk.core.base.http.volley.bean.QyDataBean;
-import com.qiyuan.gamesdk.core.base.http.volley.listener.FileDownListener;
-import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
-import com.qiyuan.gamesdk.model.AccountHistoryInfo;
-import com.qiyuan.gamesdk.model.AnnouncementInfo;
-import com.qiyuan.gamesdk.model.AuthModel;
-import com.qiyuan.gamesdk.model.BalanceInfo;
-import com.qiyuan.gamesdk.model.ChildrenAccountHistoryInfo;
-import com.qiyuan.gamesdk.model.CouponCountInfo;
-import com.qiyuan.gamesdk.model.CouponInfo;
-import com.qiyuan.gamesdk.model.GameDiscountInfo;
-import com.qiyuan.gamesdk.model.GamePackages;
-import com.qiyuan.gamesdk.model.GameUpdateInfo;
-import com.qiyuan.gamesdk.model.GetCouponInfo;
-import com.qiyuan.gamesdk.model.InventoriesInfo;
-import com.qiyuan.gamesdk.model.PatchUpdateBean;
-import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.model.PaymentInfo;
-import com.qygame.qysdk.outer.util.Log;
-import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.def.IAccountHistoryApi;
 import com.qiyuan.gamesdk.core.api.def.IAnnouncementApi;
 import com.qiyuan.gamesdk.core.api.def.IApiWrapping;
@@ -64,6 +36,9 @@ import com.qiyuan.gamesdk.model.GameUpdateInfo;
 import com.qiyuan.gamesdk.model.GetCouponInfo;
 import com.qiyuan.gamesdk.model.InventoriesInfo;
 import com.qiyuan.gamesdk.model.PatchUpdateBean;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.model.PaymentInfo;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.io.File;
 import java.util.List;
@@ -242,6 +217,16 @@ public class ApiFacade implements IApiFacade {
     @Override
     public void loginAuto(QyRespListener<LoginBean> callback) {
         authApi().loginAuto(callback);
+    }
+
+    @Override
+    public void loginByUserName(String account, String pwd, QyRespListener<AuthModel> callback) {
+        authApi().loginByUserName(account, pwd, callback);
+    }
+
+    @Override
+    public void loginByPhone(String account, String pwd, QyRespListener<AuthModel> callback) {
+        authApi().loginByPhone(account, pwd, callback);
     }
 
     @Override

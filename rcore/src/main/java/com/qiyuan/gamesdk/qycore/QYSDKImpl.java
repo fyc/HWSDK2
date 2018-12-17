@@ -13,6 +13,7 @@ import com.qiyuan.gamesdk.core.interceptor.Interceptor;
 import com.qiyuan.gamesdk.core.interceptor.LoginInterceptor;
 import com.qiyuan.gamesdk.core.interceptor.LoginNoticeInterceptor;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.FloatViewManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.model.AccountHistoryInfo;
@@ -132,7 +133,21 @@ public class QYSDKImpl implements IQYSDK {
 
         final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, iOperateCallback, "QYSDK");
         FloatViewManager.getInstance().hide();
-        ViewControllerNavigator.getInstance().toRegister(loginParams);
+        ViewControllerNavigator.getInstance().toRegister2(loginParams);
+    }
+
+    @Override
+    public void tologinPhone2(Activity activity, IOperateCallback<String> iOperateCallback) {
+        if (!PermissionHelper.Storage.hasStoragePermission(activity)) {
+            ToastUtils.showMsg("未获得文件存储权限，请前往权限管理打开。");
+            iOperateCallback.onResult(1, "登录失败");
+            return;
+        }
+        ApiFacade.getInstance().setupChannelInfo();
+
+        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, iOperateCallback, "QYSDK");
+        FloatViewManager.getInstance().hide();
+        ViewControllerNavigator.getInstance().tologinPhone2(loginParams, LoginViewController2.STATE_LOGIN_PHONE);
     }
 
     @Override

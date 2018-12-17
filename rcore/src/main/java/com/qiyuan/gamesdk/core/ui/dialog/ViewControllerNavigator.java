@@ -9,7 +9,9 @@ import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
@@ -94,7 +96,7 @@ public class ViewControllerNavigator {
                             toLogin(params);
                         }
                     });
-                }else {
+                } else {
                     toLogin(params);
                 }
             }
@@ -120,13 +122,28 @@ public class ViewControllerNavigator {
         new LoginViewController(params.getActivityContext(), params).loginAutoImpl();
     }
 
-    /**
-     * 2.0版本--注册
-     * */
     public boolean toRegister(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())
+                .show(new RegisterViewController(params.getActivityContext(), params));
+    }
+
+    /**
+     * 2.0版本--注册
+     */
+    public boolean toRegister2(IDialogParam params) {
+        checkParam(params);
+        return getDialog(params.getActivityContext())
                 .show(new RegisterViewController2(params.getActivityContext(), params));
+    }
+
+    /**
+     * 2.0版本--手机登录
+     */
+    public boolean tologinPhone2(IDialogParam params, int login_state) {
+        checkParam(params);
+        return getDialog(params.getActivityContext())
+                .show(new LoginViewController2(params.getActivityContext(), params, login_state));
     }
 
     public boolean toRealNameAuth(IDialogParam params) {
