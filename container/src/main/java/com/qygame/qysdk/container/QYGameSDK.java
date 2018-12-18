@@ -69,6 +69,11 @@ public class QYGameSDK implements IQYSDK {
     }
 
     @Override
+    public void hasRegist(Activity activity, IOperateCallback<String> iOperateCallback) {
+
+    }
+
+    @Override
     public void tologinPhone2(Activity activity, IOperateCallback<String> iOperateCallback) {
 
     }

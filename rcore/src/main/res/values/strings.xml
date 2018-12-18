@@ -184,9 +184,14 @@
     <string name="str_tip_to_login">如已有账号，请选择登录方式</string>
     <string name="str_phone_account">手机号</string>
     <string name="str_phone_account_login">手机号登录</string>
-    <string name="str_qiyuan_account">起源账号</string>
+    <string name="str_qiyuan_account">账号</string>
     <string name="str_qiyuan_account_login">账号登录</string>
     <string name="str_enter_game">进入游戏</string>
     <string name="str_complete_the_registration">完成注册</string>
     <string name="str_back_to_regist">返回注册</string>
+
+    <string name="str_user_name">盖伦盖伦</string>
+    <string name="str_has_registred_tip">改手机号已经注册以上起源游戏账\n户，请确认是否是你的账号。</string>
+    <string name="str_has_registred_botton_">是我的，立刻进入游戏</string>
+    <string name="str_change_phone_to_register">换个手机号重新注册</string>
 </resources>

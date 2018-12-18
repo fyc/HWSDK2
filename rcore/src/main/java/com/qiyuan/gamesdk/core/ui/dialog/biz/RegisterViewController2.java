@@ -61,10 +61,11 @@ public class RegisterViewController2 extends BaseAuthViewController {
 
     private View registerPhoneBottom;
     private View registerAccountBottom;
+    public View loginPhoneButton; //跳转至手机登录界面
+    public View loginAccountButton; //跳转至账号登录界面
+    public View backRegisterButton; //跳转至注册
 
-    //    private TextView serviceTermsBtn;
     private TextView titleTv;
-    //    private View titleImg;
     private TextView tv_phone_account, tv_qiyuan_account;
     public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
     public RegisterViewControllerPresenter2.SmsVerificationCode smsObserver;
@@ -136,10 +137,13 @@ public class RegisterViewController2 extends BaseAuthViewController {
 //        closeTitleContainerBtn = (Button)findViewById(R.id.btn_title_container_close);
         tv_phone_account = (TextView) findViewById(R.id.tv_phone_account);
         tv_qiyuan_account = (TextView) findViewById(R.id.tv_qiyuan_account);
-//        backTitleContainerBtn.setVisibility(VISIBLE);
-        titleTv.setVisibility(VISIBLE);
         registerPhoneBottom = findViewById(R.id.container_item_register_phone_bottom);
         registerAccountBottom = findViewById(R.id.container_item_register_account_bottom);
+
+        loginPhoneButton = findViewById(R.id.btn_qiyuan_phone_login);
+        loginAccountButton = findViewById(R.id.btn_qiyuan_account_login);
+        backRegisterButton = findViewById(R.id.btn_back_to_regist);
+        backRegisterButton.setVisibility(View.GONE);
 
         registerAccountRadioButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -228,6 +232,19 @@ public class RegisterViewController2 extends BaseAuthViewController {
             }
         });
         tv_qiyuan_account.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_ACCOUNT);
+            }
+        });
+
+        loginPhoneButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
+            }
+        });
+        loginAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_ACCOUNT);

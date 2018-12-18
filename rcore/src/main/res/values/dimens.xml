@@ -75,5 +75,6 @@
 
     <!--起源游戏平台2.0-->
     <dimen name="dialog_title_container_height">30dp</dimen>
-
+    <dimen name="has_registered_head_img_width_height">40dp</dimen>
+    <dimen name="has_registered_tip_width">162dp</dimen>
 </resources>

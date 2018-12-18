@@ -18,7 +18,7 @@ import com.qygame.qysdk.outer.util.StorageConfig;
 public class RMainActivity2 extends FragmentActivity {
     public static final String TAG = "QYGAMESDK:MAINACTIVITY";
     //    IQYSDK iQYSDK;
-    Button init, regist, login, payH5;
+    Button init, regist, login, payH5,has_registered;
 
     public static void openActivity(Activity act) {
         Intent i = new Intent(act, RMainActivity2.class);
@@ -34,6 +34,7 @@ public class RMainActivity2 extends FragmentActivity {
         regist = (Button) findViewById(R.id.regist);
         login = (Button) findViewById(R.id.login);
         payH5 = (Button) findViewById(R.id.payH5);
+        has_registered = (Button) findViewById(R.id.has_registered);
         init.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +63,12 @@ public class RMainActivity2 extends FragmentActivity {
                 payH5(payUrl);
             }
         });
-
+        has_registered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hasRegistImpl();
+            }
+        });
     }
 
     private void initSdk() {
@@ -122,6 +128,26 @@ public class RMainActivity2 extends FragmentActivity {
                 });
     }
 
+    private void hasRegistImpl() {
+        LoadPlugin.getInstance().hasRegist(
+                this, new IOperateCallback<String>() {
+                    @Override
+                    public void onResult(int code, String s) {
+                        if (code == QYCodeDef.SUCCESS) {
+                            Log.d(TAG, "QYGameSDK登录成功！");
+                            login.setText("退出");
+                            login.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    logoutImpl();
+                                }
+                            });
+                        } else {
+                            Log.d(TAG, "QYGameSDK登录失败！");
+                        }
+                    }
+                });
+    }
     private void loginImpl() {
         LoadPlugin.getInstance().login(this, new IOperateCallback<String>() {
             @Override

@@ -137,6 +137,20 @@ public class QYSDKImpl implements IQYSDK {
     }
 
     @Override
+    public void hasRegist(Activity activity, IOperateCallback<String> iOperateCallback) {
+        if (!PermissionHelper.Storage.hasStoragePermission(activity)) {
+            ToastUtils.showMsg("未获得文件存储权限，请前往权限管理打开。");
+            iOperateCallback.onResult(1, "登录失败");
+            return;
+        }
+        ApiFacade.getInstance().setupChannelInfo();
+
+        final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, iOperateCallback, "QYSDK");
+        FloatViewManager.getInstance().hide();
+        ViewControllerNavigator.getInstance().toHasRegister2(loginParams);
+    }
+
+    @Override
     public void tologinPhone2(Activity activity, IOperateCallback<String> iOperateCallback) {
         if (!PermissionHelper.Storage.hasStoragePermission(activity)) {
             ToastUtils.showMsg("未获得文件存储权限，请前往权限管理打开。");

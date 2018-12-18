@@ -8,6 +8,7 @@ import android.os.Build;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
@@ -136,7 +137,14 @@ public class ViewControllerNavigator {
         return getDialog(params.getActivityContext())
                 .show(new RegisterViewController2(params.getActivityContext(), params));
     }
-
+    /**
+     * 2.0版本--注册
+     */
+    public boolean toHasRegister2(IDialogParam params) {
+        checkParam(params);
+        return getDialog(params.getActivityContext())
+                .show(new HasRegisteredViewController2(params.getActivityContext(), params));
+    }
     /**
      * 2.0版本--手机登录
      */

@@ -78,6 +78,12 @@ public class LoadPlugin {
             QYSDKApi.regist(activity, callback);
         }
     }
+    public void hasRegist(Activity activity, IOperateCallback<String> callback) {
+        if (isInit) {
+            QYSDKApi.hasRegist(activity, callback);
+        }
+    }
+
     public void login(Activity activity, IOperateCallback<String> callback) {
         if (isInit) {
             QYSDKApi.login(activity, callback);
