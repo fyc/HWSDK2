@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.qiyuan.gamesdk.R;
+import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.util.FloatWinCompatHelper;
 import com.qygame.qysdk.outer.event.StartActivityEvent;
 import com.qygame.qysdk.outer.util.Log;
@@ -33,6 +34,7 @@ class FloatViewController2 implements IViewController {
     private View moveView;
     private ImageView imgFloatView;
     private LinearLayout floatview_user_center;
+    private LinearLayout user_account,user_message,user_help;
     private Context context;
     private int x;
     private int y;
@@ -163,6 +165,16 @@ class FloatViewController2 implements IViewController {
         moveView = LayoutInflater.from(context).inflate(R.layout.qy_sdk_float_view2, null);
         imgFloatView = (ImageView) moveView.findViewById(R.id.img_floatview);
         floatview_user_center = (LinearLayout) moveView.findViewById(R.id.floatview_user_center);
+
+        user_account= (LinearLayout) moveView.findViewById(R.id.user_account);
+        user_message= (LinearLayout) moveView.findViewById(R.id.user_message);
+        user_help= (LinearLayout) moveView.findViewById(R.id.user_help);
+        user_account.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewControllerNavigator.getInstance().toUserAccount2();
+            }
+        });
 
         int w1 = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int h1 = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);

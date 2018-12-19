@@ -189,13 +189,24 @@
     <string name="str_enter_game">进入游戏</string>
     <string name="str_complete_the_registration">完成注册</string>
     <string name="str_back_to_regist">返回注册</string>
+    <string name="str_logout">注销登录</string>
 
     <string name="str_user_name">盖伦盖伦</string>
     <string name="str_has_registred_tip">改手机号已经注册以上起源游戏账\n户，请确认是否是你的账号。</string>
     <string name="str_has_registred_botton_">是我的，立刻进入游戏</string>
     <string name="str_change_phone_to_register">换个手机号重新注册</string>
+    <string name="str_account_number">XX账号：1008666</string>
 
     <string name="str_user_account">账户</string>
     <string name="str_user_message">消息</string>
     <string name="str_user_help">帮助</string>
+
+    <string name="str_change_password">修改密码</string>
+    <string name="str_bind_phone">绑定手机</string>
+    <string name="str_no_bind_phone_tip">未绑定</string>
+    <string name="str_real_name_auth">实名认证</string>
+    <string name="str_no_real_name_auth_tip">未认证</string>
+    <string name="str_pay_record">充值记录</string>
+    <string name="str_auto_login_game">自动登录游戏</string>
+    <string name="str_auto_login_game_tip">开启后将启动使用最近登录的账号进入游戏</string>
 </resources>

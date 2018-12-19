@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Build;
 
 import com.qiyuan.gamesdk.R;
+import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
@@ -15,6 +16,7 @@ import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.UserAccountViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.core.ui.widget.GameDownloadDialogView;
@@ -144,6 +146,12 @@ public class ViewControllerNavigator {
         checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new HasRegisteredViewController2(params.getActivityContext(), params));
+    }
+
+    public boolean toUserAccount2() {
+//        checkParam(params);
+        return getDialog(CoreManager.getActivity())
+                .show(new UserAccountViewController2(CoreManager.getActivity(), null));
     }
     /**
      * 2.0版本--手机登录

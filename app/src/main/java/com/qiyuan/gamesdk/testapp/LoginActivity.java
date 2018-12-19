@@ -109,7 +109,7 @@ public class LoginActivity extends FragmentActivity implements MainFragment.Main
                     findViewById(R.id.choose).setVisibility(View.GONE);
                     findViewById(R.id.file).setVisibility(View.GONE);
                     mCurrentView = 1;  //0:LoginActivity,1:MainFragment ,2:PayFragment
-                    QYGameSDK.getInstance().showFloatView(LoginActivity.this);
+                    QYGameSDK.getInstance().showFloatView2(LoginActivity.this);
                     // TODO: cp可以在这里检验login
                     Log.d(TAG, "session: " + QYGameSDK.getInstance().getSession());
                     Toast.makeText(LoginActivity.this, "session: " + QYGameSDK.getInstance().getSession() + "\n" + "uid: " + QYGameSDK.getInstance().getUid(), Toast.LENGTH_LONG).show();

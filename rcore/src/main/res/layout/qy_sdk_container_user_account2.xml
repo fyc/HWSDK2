@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/login_layout_width"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/qy_sdk_dialog_white_bg_corner"
+    android:orientation="vertical">
+
+    <!-- Title -->
+    <!--<include
+        layout="@layout/qy_sdk_container_item_title4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_title_container_height" />-->
+
+    <com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4
+        android:id="@+id/containerItemTitle4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="@dimen/has_registered_head_img_width_height"
+            android:layout_height="@dimen/has_registered_head_img_width_height"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/margin_24px"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:layout_marginTop="@dimen/margin_24px"
+            android:src="@drawable/sdk_icon_portrait_selected" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/img_head"
+            android:layout_toRightOf="@id/img_head"
+            android:text="@string/str_user_name"
+            android:textColor="@color/qy_sdk_light_black"
+            android:textSize="@dimen/text_size_t4" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_user_name"
+            android:layout_marginTop="@dimen/margin_6px"
+            android:layout_toRightOf="@id/img_head"
+            android:text="@string/str_account_number"
+            android:textColor="@color/qy_sdk_user_center_account_number"
+            android:textSize="@dimen/text_size_t2" />
+
+        <Button
+            android:id="@+id/btn_back_to_regist"
+            android:layout_width="@dimen/margin_160px"
+            android:layout_height="@dimen/margin_60px"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:background="@drawable/sdk_shape_dialog_btn_login_disable2"
+            android:gravity="center"
+            android:text="@string/str_logout"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t3" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+
+    <!--修改密码-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/account_center_line_height">
+
+        <TextView
+            android:id="@+id/tv_change_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:text="@string/str_change_password"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t4" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:src="@drawable/sdk_ic_all_forward" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+    <!--绑定手机-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/account_center_line_height">
+
+        <TextView
+            android:id="@+id/tv_bind_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:text="@string/str_bind_phone"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:layout_toLeftOf="@+id/img_bind_phone_right_arrow"
+            android:text="@string/str_no_bind_phone_tip"
+            android:textColor="@color/qy_sdk_user_center_bing_phone_tip"
+            android:textSize="@dimen/text_size_t3" />
+
+        <ImageView
+            android:id="@+id/img_bind_phone_right_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:src="@drawable/sdk_ic_all_forward" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+    <!--实名认证-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/account_center_line_height">
+
+        <TextView
+            android:id="@+id/tv_real_name_auth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:text="@string/str_real_name_auth"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:layout_toLeftOf="@+id/img_real_name_auth_right_arrow"
+            android:text="@string/str_no_real_name_auth_tip"
+            android:textColor="@color/qy_sdk_user_center_bing_phone_tip"
+            android:textSize="@dimen/text_size_t3" />
+
+        <ImageView
+            android:id="@+id/img_real_name_auth_right_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:src="@drawable/sdk_ic_all_forward" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+    <!--充值记录-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/account_center_line_height">
+
+        <TextView
+            android:id="@+id/tv_pay_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:text="@string/str_pay_record"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t4" />
+
+
+        <ImageView
+            android:id="@+id/img_pay_record_right_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:src="@drawable/sdk_ic_all_forward" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+    <!--自动登录游戏-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/account_center_line_height">
+
+        <TextView
+            android:id="@+id/tv_auto_login_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:text="@string/str_auto_login_game"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t4" />
+
+        <com.qiyuan.gamesdk.core.ui.dialog.biz.View.SwitchButton
+            android:id="@+id/switch_button"
+            android:layout_width="39dp"
+            android:layout_height="19dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            app:sb_checked="true"
+            app:sb_show_indicator="false" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qy_sdk_user_center_line_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/account_center_line_height">
+
+        <TextView
+            android:id="@+id/tv_auto_login_game_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_18px"
+            android:layout_marginRight="@dimen/margin_18px"
+            android:layout_marginTop="@dimen/margin_10px"
+            android:text="@string/str_auto_login_game_tip"
+            android:textColor="@color/qy_sdk_user_center_bing_phone_tip"
+            android:textSize="@dimen/text_size_t3" />
+    </RelativeLayout>
+</LinearLayout>

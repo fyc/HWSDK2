@@ -8,8 +8,7 @@
     <dimen name="text_size_t5">22px</dimen>
     <dimen name="text_size_t4">20px</dimen>
     <dimen name="text_size_t3">18px</dimen>
-    <dimen name="text_size_t2_1">16px</dimen>
-    <dimen name="text_size_t2">14px</dimen>
+    <dimen name="text_size_t2">16px</dimen>
     <dimen name="text_size_t1">12px</dimen>
     <dimen name="text_size_t1_2">14px</dimen>
     <dimen name="text_size_t0">10px</dimen>

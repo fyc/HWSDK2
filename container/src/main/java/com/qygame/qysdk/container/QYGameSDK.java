@@ -109,6 +109,16 @@ public class QYGameSDK implements IQYSDK {
     }
 
     @Override
+    public void showFloatView2(Activity activity) {
+        LoadPlugin.getInstance().showFloatView2(activity);
+    }
+
+    @Override
+    public void hideFloatView2(Activity activity) {
+        LoadPlugin.getInstance().hideFloatView2(activity);
+    }
+
+    @Override
     public void pay(Activity activity, PaymentInfo payInfo, IOperateCallback<String> callback) {
         LoadPlugin.getInstance().pay(activity, payInfo, callback);
     }

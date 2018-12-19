@@ -30,6 +30,7 @@
             android:src="@drawable/sdk_float_window_normal" />
 
         <LinearLayout
+            android:id="@+id/user_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_20px"
@@ -51,6 +52,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/user_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_20px"
@@ -72,6 +74,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/user_help"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_20px"

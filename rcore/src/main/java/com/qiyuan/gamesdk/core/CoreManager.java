@@ -64,6 +64,9 @@ public class CoreManager implements ICoreManager {
             return mContext;
         }
     }
+    public static Context getActivity() {
+            return mActivity;
+    }
 
     private final static int MSG_EXIT = 1;
 

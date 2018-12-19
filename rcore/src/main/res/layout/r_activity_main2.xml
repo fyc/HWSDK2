@@ -63,4 +63,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/payH5" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/has_registered">
+
+        <com.qiyuan.gamesdk.core.ui.dialog.biz.View.SwitchButton
+            android:id="@+id/switch_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+        <com.qiyuan.gamesdk.core.ui.dialog.biz.View.SwitchButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:sb_checked="true" />
+
+
+        <com.qiyuan.gamesdk.core.ui.dialog.biz.View.SwitchButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:sb_checked="true"
+            app:sb_show_indicator="false" />
+
+        com.qiyuan.gamesdk.core.ui.dialog.biz.View.SwitchButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:sb_checked="true"
+            app:sb_checked_color="#fdc951" />
+
+        <com.qiyuan.gamesdk.core.ui.dialog.biz.View.SwitchButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:sb_background="#FFF"
+            app:sb_button_color="#db99c7"
+            app:sb_checked_color="#A36F95"
+            app:sb_checkline_color="#a5dc88"
+            app:sb_shadow_color="#A36F95"
+            app:sb_uncheckcircle_color="#A36F95" />
+
+        <com.qiyuan.gamesdk.core.ui.dialog.biz.View.SwitchButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:sb_enable_effect="false" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

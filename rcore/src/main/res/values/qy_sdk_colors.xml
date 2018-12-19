@@ -141,4 +141,7 @@
     <color name="qy_sdk_button_gray">#DCDCDC</color>
     <color name="qy_sdk_light_black">#161616</color>
     <color name="qy_sdk_user_center_bg">#929292</color>
+    <color name="qy_sdk_user_center_account_number">#8A8A8A</color>
+    <color name="qy_sdk_user_center_line_color">#B5B5B5</color>
+    <color name="qy_sdk_user_center_bing_phone_tip">#BFBFBF</color>
 </resources>
