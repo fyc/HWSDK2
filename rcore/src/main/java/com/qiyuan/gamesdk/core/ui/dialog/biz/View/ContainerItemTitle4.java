@@ -69,6 +69,14 @@ public class ContainerItemTitle4 extends RelativeLayout {
         });
     }
 
+    public void setTitle(int resid) {
+        titleTv.setText(resid);
+    }
+
+    public void setTitle(CharSequence text) {
+        titleTv.setText(text);
+    }
+
     public void setTitleOnclick(TitleOnclick titleOnclick) {
         this.titleOnclick = titleOnclick;
     }

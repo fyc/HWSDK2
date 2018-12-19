@@ -9,6 +9,7 @@ import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
@@ -139,6 +140,7 @@ public class ViewControllerNavigator {
         return getDialog(params.getActivityContext())
                 .show(new RegisterViewController2(params.getActivityContext(), params));
     }
+
     /**
      * 2.0版本--注册
      */
@@ -153,6 +155,7 @@ public class ViewControllerNavigator {
         return getDialog(CoreManager.getActivity())
                 .show(new UserAccountViewController2(CoreManager.getActivity(), null));
     }
+
     /**
      * 2.0版本--手机登录
      */
@@ -172,6 +175,14 @@ public class ViewControllerNavigator {
         checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new BindPhoneViewController(params.getActivityContext(), params));
+    }
+
+    /**
+     * 2.0版本--绑定手机
+     */
+    public boolean toBindPhone2() {
+        return getDialog(CoreManager.getActivity())
+                .show(new BindPhoneViewController2(CoreManager.getActivity(), null));
     }
 
     public boolean toResetPassword(IDialogParam params) {

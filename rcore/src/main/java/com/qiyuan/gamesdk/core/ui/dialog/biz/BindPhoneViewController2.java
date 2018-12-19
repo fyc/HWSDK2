@@ -6,29 +6,31 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.qygame.qysdk.outer.event.IDialogParam;
-import com.qygame.qysdk.outer.util.Log;
-import com.qygame.qysdk.outer.util.ResourceHelper;
-import com.qygame.qysdk.outer.util.StringUtils;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.api.def.IAuthApi;
 import com.qiyuan.gamesdk.core.base.http.volley.bean.BindPhoneBean;
 import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
+import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
 import com.qiyuan.gamesdk.model.AccountHistoryInfo;
 import com.qiyuan.gamesdk.util.IMEUtil;
 import com.qiyuan.gamesdk.util.ToastUtils;
 import com.qiyuan.gamesdk.util.ViewUtils;
+import com.qygame.qysdk.outer.event.IDialogParam;
+import com.qygame.qysdk.outer.util.Log;
+import com.qygame.qysdk.outer.util.ResourceHelper;
+import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.util.Map;
 
 public class BindPhoneViewController2 extends BaseAuthViewController {
     private static final String TAG = "QYSDK:BindPhoneViewController2 ";
     Context mContext;
-    private TextView titleTv;
-    private TextView closeTitleContainerBtn;
+    ContainerItemTitle4 containerItemTitle4;
+    //    private TextView titleTv;
+//    private TextView closeTitleContainerBtn;
     private EditText accountEdit; //输入号码框
     private EditText verificationCodeEdit; //验证码
     private Button getVerificationCodeButton; //获取验证码
@@ -45,7 +47,7 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.qy_sdk_container_bind_phone;
+        return R.layout.qy_sdk_container_bind_phone2;
     }
 
     @Override
@@ -59,9 +61,24 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
     }
 
     private void initView() {
-        titleTv = (TextView) findViewById(R.id.tv_title_container_title);
-        titleTv.setText(R.string.str_bind_phone_title);
-        closeTitleContainerBtn = (TextView) findViewById(R.id.btn_title_container_close);
+        containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
+        containerItemTitle4.setTitle(R.string.str_bind_phone_title2);
+        containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
+            @Override
+            public void toBack() {
+                ViewControllerNavigator.getInstance().toUserAccount2();
+            }
+
+            @Override
+            public void toRefresh() {
+
+            }
+
+            @Override
+            public void toClose() {
+                close();
+            }
+        });
         accountEdit = (EditText) findViewById(R.id.edit_bind_phone_container_account);
         verificationCodeEdit = (EditText) findViewById(R.id.edit_bind_phone_container_verification_code);
         getVerificationCodeButton = (Button) findViewById(R.id.btn_bind_phone_container_get_verification_code);
@@ -70,14 +87,7 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
         bindButton = (Button) findViewById(R.id.btn_bind_phone_container_bind);
         ViewUtils.setViewEnable(bindButton, false);
 
-        closeTitleContainerBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                close();
-            }
-        });
-
-        addTextWatcher();
+        addTextWatcher(accountEdit, verificationCodeEdit);
 
         getVerificationCodeButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -104,67 +114,12 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
             @Override
             public void onClick(View v) {
                 IMEUtil.hideIME(BindPhoneViewController2.this);
-                bindPhone();
+//                bindPhone();
+
             }
         });
     }
 
-    private void addTextWatcher(){
-        accountEdit.addTextChangedListener(new TextWatcher() {
-            boolean blankHit = false;
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-//                String str = accountEdit.getText().toString();
-//                if (!blankHit) {
-//                    if (StringUtils.isBlank(str)) {
-//                        blankHit = true;
-//                    }
-//                } else {
-//                    blankHit = false;
-//                }
-                ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() == 11 && reGetVerifyCodeButtonController.getmMillisUntilFinished() == 0);
-                ViewUtils.setViewEnable(bindButton, accountEdit.length() == 11 && verificationCodeEdit.length() == 4);
-            }
-        });
-        verificationCodeEdit.addTextChangedListener(new TextWatcher() {
-            boolean blankHit = false;
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-//                String str = accountEdit.getText().toString();
-//                if (!blankHit) {
-//                    if (StringUtils.isBlank(str)) {
-//                        blankHit = true;
-//                    }
-//                } else {
-//                    blankHit = false;
-//                }
-                ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() == 11 && reGetVerifyCodeButtonController.getmMillisUntilFinished() == 0);
-                ViewUtils.setViewEnable(bindButton, accountEdit.length() == 11 && verificationCodeEdit.length() == 4);
-            }
-        });
-    }
     private void addTextWatcher(EditText... editTexts) {
         for (final EditText editText : editTexts) {
             editText.addTextChangedListener(new TextWatcher() {
@@ -187,11 +142,13 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
     }
 
     private void updateButtonState() {
-        if (accountEdit.length() == 0 || verificationCodeEdit.length() == 0) {
-            ViewUtils.setViewEnable(bindButton, false);
-        } else {
-            ViewUtils.setViewEnable(bindButton, true);
-        }
+        ViewUtils.setViewEnable(getVerificationCodeButton, accountEdit.length() == 11 && reGetVerifyCodeButtonController.getmMillisUntilFinished() == 0);
+        ViewUtils.setViewEnable(bindButton, accountEdit.length() == 11 && verificationCodeEdit.length() == 4);
+//        if (accountEdit.length() == 0 || verificationCodeEdit.length() == 0) {
+//            ViewUtils.setViewEnable(bindButton, false);
+//        } else {
+//            ViewUtils.setViewEnable(bindButton, true);
+//        }
     }
 
     private void bindPhone() {

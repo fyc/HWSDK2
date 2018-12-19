@@ -4,10 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 
-import com.qiyuan.gamesdk.core.ui.dialog.BaseViewController;
-import com.qygame.qysdk.outer.util.Log;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.ui.dialog.BaseViewController;
+import com.qygame.qysdk.outer.util.Log;
 
 public class TipsAlertDialogView extends BaseViewController implements View.OnClickListener {
 

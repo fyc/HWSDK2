@@ -177,7 +177,7 @@
     <string name="str_phone_welcome" formatted="false">%d, %s进入游戏</string>
 
     <!--起源游戏平台2.0-->
-    <string name="str_bind_phone_title2">起源游戏平台</string>
+    <string name="str_qiyuan_sdk_game_title">起源游戏平台</string>
     <string name="str_a_key_to_regist">一键注册</string>
     <string name="str_set_register_password_hint">设置密码</string>
     <string name="str_set_register_password_tip">仅需一步，即可快速注册，密码长度为6位以上</string>
@@ -209,4 +209,8 @@
     <string name="str_pay_record">充值记录</string>
     <string name="str_auto_login_game">自动登录游戏</string>
     <string name="str_auto_login_game_tip">开启后将启动使用最近登录的账号进入游戏</string>
+
+    <string name="str_bind_phone_title2">绑定手机</string>
+    <string name="str_bind_phone_tips2">我们发现你的账号安全级别较低，建议绑定手机</string>
+    <string name="str_bind_phone_tips3">绑定手机后可以在忘记密码或者账号被盗时通过手机找回</string>
 </resources>
