@@ -6,18 +6,18 @@ import android.os.Looper;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qygame.qysdk.outer.util.ResourceHelper;
 
-public class FloatViewManager {
+public class FloatViewManager2 {
 
-    private static FloatViewManager instance;
-    private FloatViewController floatViewController;
+    private static FloatViewManager2 instance;
+    private FloatViewController2 floatViewController2;
 
-    private FloatViewManager() {
-        floatViewController = new FloatViewController(ResourceHelper.getContextHolder().get());
+    private FloatViewManager2() {
+        floatViewController2 = new FloatViewController2(ResourceHelper.getContextHolder().get());
     }
 
-    public static synchronized FloatViewManager getInstance() {
+    public static synchronized FloatViewManager2 getInstance() {
         if (instance == null) {
-            instance = new FloatViewManager();
+            instance = new FloatViewManager2();
         }
         return instance;
     }
@@ -28,9 +28,9 @@ public class FloatViewManager {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                if (floatViewController!=null) {
-                    floatViewController.hide();
-                    floatViewController = null;
+                if (floatViewController2!=null) {
+                    floatViewController2.hide();
+                    floatViewController2 = null;
                     instance =null;
                 }
             }
@@ -42,8 +42,8 @@ public class FloatViewManager {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                if (floatViewController != null && ApiFacade.getInstance().getMainUid() != 0) {
-                    floatViewController.show();
+                if (floatViewController2 != null && ApiFacade.getInstance().getMainUid() != 0) {
+                    floatViewController2.show();
                 }
             }
         });
@@ -53,8 +53,8 @@ public class FloatViewManager {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                if (floatViewController!=null) {
-                    floatViewController.hide();
+                if (floatViewController2!=null) {
+                    floatViewController2.hide();
                 }
             }
         });

@@ -194,4 +194,8 @@
     <string name="str_has_registred_tip">改手机号已经注册以上起源游戏账\n户，请确认是否是你的账号。</string>
     <string name="str_has_registred_botton_">是我的，立刻进入游戏</string>
     <string name="str_change_phone_to_register">换个手机号重新注册</string>
+
+    <string name="str_user_account">账户</string>
+    <string name="str_user_message">消息</string>
+    <string name="str_user_help">帮助</string>
 </resources>

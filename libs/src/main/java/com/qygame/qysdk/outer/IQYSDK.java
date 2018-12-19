@@ -61,6 +61,10 @@ public interface IQYSDK {
 
     void hideFloatView(Activity activity);
 
+    void showFloatView2(Activity activity);
+
+    void hideFloatView2(Activity activity);
+
 
     /**
      * pay

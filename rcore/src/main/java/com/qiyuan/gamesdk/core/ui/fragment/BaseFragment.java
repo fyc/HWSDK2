@@ -9,21 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.qiyuan.gamesdk.BuildConfig;
+import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.container.MainActivity;
+import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.base.http.RequestManager;
 import com.qiyuan.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
 import com.qiyuan.gamesdk.model.NativeTitleBarUpdateInfo;
 import com.qygame.qysdk.outer.event.EventDispatcherAgent;
 import com.qygame.qysdk.outer.util.Log;
-import com.qiyuan.gamesdk.R;
-import com.qiyuan.gamesdk.container.MainActivity;
-import com.qiyuan.gamesdk.core.base.http.RequestManager;
-import com.qiyuan.gamesdk.core.ui.common.CommonTitlePrimaryFragment;
-import com.qiyuan.gamesdk.model.NativeTitleBarUpdateInfo;
 
 public abstract class BaseFragment extends Fragment {
 
-    protected String myTag = ((Object)this).getClass().getSimpleName();
+    protected String myTag = ((Object) this).getClass().getSimpleName();
 
     private static final String TAG_FRAGMENT_TITLE_BAR = "TagFragmentTitleBar";
 
@@ -68,7 +66,7 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initVariable();
-        Log.i(myTag, myTag + " onCreate " + (savedInstanceState==null));
+        Log.i(myTag, myTag + " onCreate " + (savedInstanceState == null));
     }
 
     @Override
@@ -98,9 +96,9 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-    	super.onDestroyView();
+        super.onDestroyView();
         Log.i(myTag, myTag + " onDestroyView");
-      
+
     }
 
     @Override
@@ -144,15 +142,26 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private Fragment titleBarFragment;
+
     @Nullable
     @Override
     public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         int contentViewResId = getCustomFragmentLayoutResId();
         if (contentView == null) {
             if (contentViewResId > 0) {
-                contentView = inflater.inflate(contentViewResId, container,false);
-            }else {
-                contentView = inflater.inflate(getDefaultFragmentLayoutResId(), container,false);
+//                contentView = inflater.inflate(contentViewResId, container,false);
+                if (BuildConfig.isApp) {
+                    contentView = LayoutInflater.from(CoreManager.getContext()).inflate(contentViewResId, container, false);
+                } else {
+                    contentView = inflater.inflate(contentViewResId, container, false);
+                }
+            } else {
+//                contentView = inflater.inflate(getDefaultFragmentLayoutResId(), container, false);
+                if (BuildConfig.isApp) {
+                    contentView = LayoutInflater.from(CoreManager.getContext()).inflate(getDefaultFragmentLayoutResId(), container, false);
+                } else {
+                    contentView = inflater.inflate(getDefaultFragmentLayoutResId(), container, false);
+                }
             }
             titleContainer = (ViewGroup) contentView.findViewById(R.id.title_bar_container);
             titleBarFragment = getTitleBarFragment();
@@ -174,13 +183,13 @@ public abstract class BaseFragment extends Fragment {
             }
             beforeSetFragmentContent(contentView.getContext(), titleBarFragment);
             ViewGroup contentContainer = (ViewGroup) contentView.findViewById(R.id.content_container);
-            setFragmentContent(contentView.getContext(), contentContainer,titleBarFragment);
-            afterSetFragmentContent(contentView.getContext(),titleBarFragment);
+            setFragmentContent(contentView.getContext(), contentContainer, titleBarFragment);
+            afterSetFragmentContent(contentView.getContext(), titleBarFragment);
         }
 
         if (contentView.getParent() != null) {
-            ((ViewGroup)contentView.getParent()).removeView(contentView);
-            Log.e("QYViews", this+" contentView reuse. remove from parent.");
+            ((ViewGroup) contentView.getParent()).removeView(contentView);
+            Log.e("QYViews", this + " contentView reuse. remove from parent.");
         }
 
         return contentView;
@@ -201,7 +210,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
-     *
      * @return 自定义布局资源ID.
      */
     protected int getCustomFragmentLayoutResId() {
@@ -210,6 +218,7 @@ public abstract class BaseFragment extends Fragment {
 
     /**
      * 自定义资源无效时将使用
+     *
      * @return 默认布局资源ID.
      */
     protected int getDefaultFragmentLayoutResId() {
@@ -223,9 +232,10 @@ public abstract class BaseFragment extends Fragment {
 
     /**
      * 唯一标志每个framgent实例 用来取消与该实例相关的所有请求 see {@link com.android.volley1.Request#setTag(Object)}
+     *
      * @return hashcode
      */
-    protected int getVolleyTag(){
+    protected int getVolleyTag() {
         return hashCode();
     }
 
@@ -242,7 +252,8 @@ public abstract class BaseFragment extends Fragment {
 
 
     /**
-     *子类可以重写此方法来修改titlebar配置
+     * 子类可以重写此方法来修改titlebar配置
+     *
      * @return NativeTitleBarUpdateInfo
      */
     public NativeTitleBarUpdateInfo getTitleBarConfig() {
@@ -258,9 +269,9 @@ public abstract class BaseFragment extends Fragment {
 //        ft.commit();
 //    }
 
-     public String getTabName(){
-         return null;
-     }
+    public String getTabName() {
+        return null;
+    }
 
     private void initVariable() {
         isFirstVisible = true;
@@ -284,7 +295,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 去除setUserVisibleHint()多余的回调场景，保证只有当fragment可见状态发生变化时才回调
      * 回调时机在view创建完后，所以支持ui操作，解决在setUserVisibleHint()里进行ui操作有可能报null异常的问题
-     *
+     * <p>
      * 可在该回调方法里进行一些ui显示与隐藏，比如加载框的显示和隐藏
      *
      * @param isVisible true  不可见 -> 可见
@@ -309,19 +320,21 @@ public abstract class BaseFragment extends Fragment {
         return isFragmentVisible;
     }
 
-    public void startFragment(BaseFragment fragment){
+    public void startFragment(BaseFragment fragment) {
         startFragment(fragment, false);
     }
 
     /**
      * 打开新fragment
-     * @param fragment  目标fragment
-     * @param flag  是否需要关闭当前fragment， true：关闭当前fragment； false：不需要关闭当前fragment
+     *
+     * @param fragment 目标fragment
+     * @param flag     是否需要关闭当前fragment， true：关闭当前fragment； false：不需要关闭当前fragment
      */
-    public void startFragment(BaseFragment fragment, boolean flag){
-        ((MainActivity)getActivity()).startFragment(fragment, flag);
+    public void startFragment(BaseFragment fragment, boolean flag) {
+        ((MainActivity) getActivity()).startFragment(fragment, flag);
     }
-    public boolean onBackPressed(){
+
+    public boolean onBackPressed() {
         return false;
     }
 }

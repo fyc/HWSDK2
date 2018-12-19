@@ -13,21 +13,16 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.qiyuan.gamesdk.PluginManager;
-import com.qygame.qysdk.outer.consts.OrientationDef;
-import com.qygame.qysdk.outer.event.BackToMainFragmentEvent;
-import com.qygame.qysdk.outer.event.EventDispatcherAgent;
-import com.qygame.qysdk.outer.event.FinishFragmentEvent;
-import com.qygame.qysdk.outer.event.IEventListener;
-import com.qygame.qysdk.outer.event.StartActivityEvent;
-import com.qygame.qysdk.outer.util.Log;
+import com.qiyuan.gamesdk.BuildConfig;
 import com.qiyuan.gamesdk.PluginManager;
 import com.qiyuan.gamesdk.R;
+import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.ui.fragment.AccountFragment;
 import com.qiyuan.gamesdk.core.ui.fragment.BaseFragment;
 import com.qiyuan.gamesdk.core.ui.fragment.GameFragment;
@@ -35,6 +30,13 @@ import com.qiyuan.gamesdk.core.ui.fragment.MessageFragment;
 import com.qiyuan.gamesdk.core.ui.fragment.UnInternalLinkFragment;
 import com.qiyuan.gamesdk.util.CommonUtils;
 import com.qiyuan.gamesdk.util.ViewUtils;
+import com.qygame.qysdk.outer.consts.OrientationDef;
+import com.qygame.qysdk.outer.event.BackToMainFragmentEvent;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.event.FinishFragmentEvent;
+import com.qygame.qysdk.outer.event.IEventListener;
+import com.qygame.qysdk.outer.event.StartActivityEvent;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +89,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private View messageTab;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +99,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         filter_list.add(ACCOUNT_FRAGMENT);
         filter_list.add(MESSAGE_FRAGMENT);
         filter_list.add(UNINTERNAL_LINK_FRAGMENT);
-
 
 
         if (PluginManager.getInstance().getOrientation() == Configuration.ORIENTATION_LANDSCAPE) {
@@ -174,7 +174,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         isDefaultPage = filterFragment(fragmentName);
         if (isDefaultPage) {
-            setContentView(R.layout.sdk_activity_main);
+            if (BuildConfig.isApp) {
+                setContentView(LayoutInflater.from(CoreManager.getContext()).inflate(R.layout.sdk_activity_main, null));
+            } else {
+                setContentView(R.layout.sdk_activity_main);
+            }
+
             initDefaultView();
         } else {
             initNormalView();
@@ -207,7 +212,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             messageFragment = (MessageFragment) currentFgm;
             tabIndex = INDEX_MESSAGE_FRAGMENT;
         } else if (currentFgmName.equals(UNINTERNAL_LINK_FRAGMENT) && currentFgm instanceof UnInternalLinkFragment) {
-            unInternalLinkFragment = (UnInternalLinkFragment)currentFgm;
+            unInternalLinkFragment = (UnInternalLinkFragment) currentFgm;
             tabIndex = INDEX_UNINTERNAL_LINK_FRAGMENT;
         }
         ft.add(R.id.activity_content, currentFgm);
@@ -234,7 +239,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         if (messageFragment != null) {
             ft.hide(messageFragment);
         }
-        if (unInternalLinkFragment != null){
+        if (unInternalLinkFragment != null) {
             ft.hide(unInternalLinkFragment);
         }
         for (BaseFragment fragment : mFragments) {
@@ -319,19 +324,19 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
 
         if (displayType == StartActivityEvent.DISPLAY_TYPE_DIALOG) {
-            if (PluginManager.getInstance().getOrientation() == OrientationDef.LANDSCAPE){
+            if (PluginManager.getInstance().getOrientation() == OrientationDef.LANDSCAPE) {
                 ViewGroup.LayoutParams params = rootContainer.getLayoutParams();
                 int border = 50;
                 int screenWidth = getResources().getDisplayMetrics().widthPixels;
                 int leftRightBorder = (int) (screenWidth * 0.125f);
                 rootContainer.setLayoutParams(params);
                 rootContainer.setPadding(leftRightBorder, border, leftRightBorder, border);
-            }else {
+            } else {
                 ViewGroup.LayoutParams params = rootContainer.getLayoutParams();
-                int border = ViewUtils.dp2px(this,145);
+                int border = ViewUtils.dp2px(this, 145);
                 int screenHeight = getResources().getDisplayMetrics().heightPixels;
-                int bottomBorder = screenHeight - ViewUtils.dp2px( this, 350 + 145);
-                int leftRightBorder = ViewUtils.dp2px(this,20);
+                int bottomBorder = screenHeight - ViewUtils.dp2px(this, 350 + 145);
+                int leftRightBorder = ViewUtils.dp2px(this, 20);
                 rootContainer.setLayoutParams(params);
                 rootContainer.setPadding(leftRightBorder, border, leftRightBorder, bottomBorder);
             }

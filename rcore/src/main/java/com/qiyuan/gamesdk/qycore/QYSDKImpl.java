@@ -199,6 +199,16 @@ public class QYSDKImpl implements IQYSDK {
     }
 
     @Override
+    public void showFloatView2(Activity activity) {
+        PluginManager.getInstance().showFloatView2();
+    }
+
+    @Override
+    public void hideFloatView2(Activity activity) {
+        PluginManager.getInstance().hideFloatview2();
+    }
+
+    @Override
     public void pay(Activity activity, PaymentInfo payOrderInfo, IOperateCallback<String> qysdkCallback) {
         ApiFacade.getInstance().order(payOrderInfo, activity, qysdkCallback);
     }

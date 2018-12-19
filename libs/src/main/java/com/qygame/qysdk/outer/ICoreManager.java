@@ -30,4 +30,8 @@ public interface ICoreManager   {
 
     void hideFloatView();
 
+    void showFloatView2();
+
+    void hideFloatView2();
+
 }

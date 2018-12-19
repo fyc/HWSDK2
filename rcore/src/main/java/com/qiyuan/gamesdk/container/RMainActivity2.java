@@ -155,6 +155,8 @@ public class RMainActivity2 extends FragmentActivity {
                 if (code == QYCodeDef.SUCCESS) {
                     Log.d(TAG, "QYGameSDK登录成功！");
                     login.setText("退出");
+//                    LoadPlugin.getInstance().showFloatView(RMainActivity2.this);
+                    LoadPlugin.getInstance().showFloatView2(RMainActivity2.this);
                     login.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

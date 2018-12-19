@@ -11,12 +11,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.qiyuan.gamesdk.BuildConfig;
-import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
-import com.qygame.qysdk.outer.ICoreManager;
-import com.qygame.qysdk.outer.IOperateCallback;
-import com.qygame.qysdk.outer.event.EventDispatcherAgent;
-import com.qygame.qysdk.outer.model.GameParamInfo;
-import com.qygame.qysdk.outer.util.Log;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.api.impl.payment.PaymentAdapter;
 import com.qiyuan.gamesdk.core.base.http.volley.bean.QyDataBean;
@@ -32,11 +26,17 @@ import com.qiyuan.gamesdk.core.storage.sharepref.Constant;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.qiyuan.gamesdk.core.ui.floatview.FloatViewManager;
+import com.qiyuan.gamesdk.core.ui.floatview.FloatViewManager2;
 import com.qiyuan.gamesdk.core.ui.widget.dialog.CommDialog;
 import com.qiyuan.gamesdk.core.ui.widget.dialog.SplashDialogView;
 import com.qiyuan.gamesdk.util.DownloadBridge;
 import com.qiyuan.gamesdk.util.PermissionHelper;
 import com.qiyuan.gamesdk.util.ToastUtils;
+import com.qygame.qysdk.outer.ICoreManager;
+import com.qygame.qysdk.outer.IOperateCallback;
+import com.qygame.qysdk.outer.event.EventDispatcherAgent;
+import com.qygame.qysdk.outer.model.GameParamInfo;
+import com.qygame.qysdk.outer.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,9 +58,9 @@ public class CoreManager implements ICoreManager {
     }
 
     public static Context getContext() {
-        if(BuildConfig.isApp){
+        if (BuildConfig.isApp) {
             return mActivity;
-        }else {
+        } else {
             return mContext;
         }
     }
@@ -234,6 +234,19 @@ public class CoreManager implements ICoreManager {
         FloatViewManager.getInstance().hide();
         AnnouncementManager.getInstance().uninit();
 //        }
+    }
+
+    @Override
+    public void showFloatView2() {
+        if (getUid() != 0) {
+            FloatViewManager2.getInstance().show();
+        }
+    }
+
+    @Override
+    public void hideFloatView2() {
+        FloatViewManager2.getInstance().hide();
+        AnnouncementManager.getInstance().uninit();
     }
 
     public void uninit() {

@@ -140,4 +140,5 @@
     <color name="qy_sdk_dialog_gray">#5D5D5D</color>
     <color name="qy_sdk_button_gray">#DCDCDC</color>
     <color name="qy_sdk_light_black">#161616</color>
+    <color name="qy_sdk_user_center_bg">#929292</color>
 </resources>

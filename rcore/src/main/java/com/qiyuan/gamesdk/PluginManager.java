@@ -9,6 +9,8 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.IBinder;
 
+import com.qiyuan.gamesdk.container.FloatService;
+import com.qiyuan.gamesdk.container.MainActivity;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qygame.qysdk.outer.ContextWrapper;
 import com.qygame.qysdk.outer.ICoreManager;
@@ -21,9 +23,6 @@ import com.qygame.qysdk.outer.event.StartActivityEvent;
 import com.qygame.qysdk.outer.model.GameParamInfo;
 import com.qygame.qysdk.outer.model.VersionDir;
 import com.qygame.qysdk.outer.util.Log;
-import com.qiyuan.gamesdk.container.FloatService;
-import com.qiyuan.gamesdk.container.MainActivity;
-import com.qiyuan.gamesdk.core.CoreManager;
 import com.qygame.qysdk.outer.util.ResourceHelper;
 
 import java.lang.ref.WeakReference;
@@ -233,7 +232,17 @@ public class PluginManager {
             coreManager.hideFloatView();
         }
     }
+    public void showFloatView2(){
+        if (coreManager != null){
+            coreManager.showFloatView2();
+        }
+    }
 
+    public void hideFloatview2(){
+        if (coreManager != null){
+            coreManager.hideFloatView2();
+        }
+    }
     private void addEvent() {
         startActivityListener = new IEventListener<StartActivityEvent.FragmentParam>() {
 

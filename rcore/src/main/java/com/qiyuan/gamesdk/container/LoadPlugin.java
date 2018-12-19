@@ -125,6 +125,17 @@ public class LoadPlugin {
             QYSDKApi.hideFloatView(activity);
         }
     }
+    public void showFloatView2(Activity activity) {
+        if (isInit) {
+            QYSDKApi.showFloatView2(activity);
+        }
+    }
+
+    public void hideFloatView2(Activity activity) {
+        if (isInit) {
+            QYSDKApi.hideFloatView2(activity);
+        }
+    }
 
     public void pay(Activity activity, PaymentInfo payInfo, IOperateCallback<String> callback) {
         if (isInit) {
