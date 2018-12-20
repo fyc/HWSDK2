@@ -8,12 +8,15 @@ import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
 import com.qygame.qysdk.outer.event.IDialogParam;
 
-public class BindPhoneSuccessfulViewController2 extends BaseAuthViewController {
+/**
+ * 更换绑定手机页面1
+ */
+public class ChangeBindPhoneViewController2_1 extends BaseAuthViewController {
     Context mContext;
     ContainerItemTitle4 containerItemTitle4;
     TextView tv_phone_account;
 
-    public BindPhoneSuccessfulViewController2(Context context, IDialogParam params) {
+    public ChangeBindPhoneViewController2_1(Context context, IDialogParam params) {
         super(context, params);
         mContext = context;
         initView();
@@ -21,7 +24,7 @@ public class BindPhoneSuccessfulViewController2 extends BaseAuthViewController {
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.qy_sdk_container_bind_phone_successful2;
+        return R.layout.qy_sdk_container_change_bind_phone2_1;
     }
 
     private void initView() {

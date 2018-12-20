@@ -8,7 +8,7 @@ import android.os.Build;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneSuccessfulViewController2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.ChangeBindPhoneViewController2_1;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
@@ -191,7 +191,7 @@ public class ViewControllerNavigator {
      */
     public boolean toBindPhoneSuccessful2() {
         return getDialog(CoreManager.getActivity())
-                .show(new BindPhoneSuccessfulViewController2(CoreManager.getActivity(), null));
+                .show(new ChangeBindPhoneViewController2_1(CoreManager.getActivity(), null));
     }
 
     public boolean toResetPassword(IDialogParam params) {
