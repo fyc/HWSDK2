@@ -8,6 +8,7 @@ import android.os.Build;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneSuccessfulViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
@@ -183,6 +184,14 @@ public class ViewControllerNavigator {
     public boolean toBindPhone2() {
         return getDialog(CoreManager.getActivity())
                 .show(new BindPhoneViewController2(CoreManager.getActivity(), null));
+    }
+
+    /**
+     * 2.0版本--绑定手机成功
+     */
+    public boolean toBindPhoneSuccessful2() {
+        return getDialog(CoreManager.getActivity())
+                .show(new BindPhoneSuccessfulViewController2(CoreManager.getActivity(), null));
     }
 
     public boolean toResetPassword(IDialogParam params) {

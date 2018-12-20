@@ -13,9 +13,9 @@ import com.qiyuan.gamesdk.core.CoreManager;
 
 public class ContainerItemTitle4 extends RelativeLayout {
 
-    private TextView backTitleContainerBtn;
+    private TextView backTitleBtn;
     private TextView titleTv;
-    private TextView closeTitleContainerBtn;
+    private TextView closeTitleBtn;
     TitleOnclick titleOnclick;
 
     public interface TitleOnclick {
@@ -46,10 +46,10 @@ public class ContainerItemTitle4 extends RelativeLayout {
     }
 
     private void initView() {
-        backTitleContainerBtn = (TextView) findViewById(R.id.btn_title_container_back);
+        backTitleBtn = (TextView) findViewById(R.id.btn_title_container_back);
         titleTv = (TextView) findViewById(R.id.tv_title_container_title);
-        closeTitleContainerBtn = (TextView) findViewById(R.id.btn_title_container_close);
-        backTitleContainerBtn.setOnClickListener(new OnClickListener() {
+        closeTitleBtn = (TextView) findViewById(R.id.btn_title_container_close);
+        backTitleBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (titleOnclick != null) {
@@ -58,7 +58,7 @@ public class ContainerItemTitle4 extends RelativeLayout {
 //                ViewControllerNavigator.getInstance().close();
             }
         });
-        closeTitleContainerBtn.setOnClickListener(new OnClickListener() {
+        closeTitleBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (titleOnclick != null) {
@@ -75,6 +75,13 @@ public class ContainerItemTitle4 extends RelativeLayout {
 
     public void setTitle(CharSequence text) {
         titleTv.setText(text);
+    }
+
+    public void setBackTitleBtnVisibility(int visibility){
+        backTitleBtn.setVisibility(visibility);
+    }
+    public void setCloseTitleBtnVisibility(int visibility){
+        closeTitleBtn.setVisibility(visibility);
     }
 
     public void setTitleOnclick(TitleOnclick titleOnclick) {

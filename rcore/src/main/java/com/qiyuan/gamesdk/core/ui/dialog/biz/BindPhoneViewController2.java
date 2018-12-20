@@ -50,16 +50,6 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
         return R.layout.qy_sdk_container_bind_phone2;
     }
 
-    @Override
-    public void onShow() {
-
-    }
-
-    @Override
-    public void onHide() {
-
-    }
-
     private void initView() {
         containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
         containerItemTitle4.setTitle(R.string.str_bind_phone_title2);
@@ -115,7 +105,7 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
             public void onClick(View v) {
                 IMEUtil.hideIME(BindPhoneViewController2.this);
 //                bindPhone();
-
+                ViewControllerNavigator.getInstance().toBindPhoneSuccessful2();
             }
         });
     }

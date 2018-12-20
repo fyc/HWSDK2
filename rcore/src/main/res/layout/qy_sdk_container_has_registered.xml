@@ -20,7 +20,8 @@
         android:id="@+id/img_head"
         android:layout_width="@dimen/has_registered_head_img_width_height"
         android:layout_height="@dimen/has_registered_head_img_width_height"
-        android:layout_marginTop="@dimen/margin_24px" />
+        android:layout_marginTop="@dimen/margin_24px"
+        android:src="@drawable/sdk_icon_portrait_selected" />
 
     <TextView
         android:id="@+id/tv_user_name"

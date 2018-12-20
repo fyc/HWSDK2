@@ -80,6 +80,15 @@ public abstract class BaseAuthViewController extends BaseViewController {
     }
 
     @Override
+    public void onShow() {
+
+    }
+
+    @Override
+    public void onHide() {
+
+    }
+    @Override
     public void onDismiss() {
         if (!willCloseByAuthResult && dialogParam != null) {
             if (dialogParam.getAppCallback() != null) {
