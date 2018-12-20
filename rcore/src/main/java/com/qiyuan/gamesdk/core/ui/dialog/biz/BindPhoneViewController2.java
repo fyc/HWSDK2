@@ -56,7 +56,7 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
         containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
             @Override
             public void toBack() {
-                ViewControllerNavigator.getInstance().toUserAccount2();
+                ViewControllerNavigator.getInstance().toAccountCenter2();
             }
 
             @Override

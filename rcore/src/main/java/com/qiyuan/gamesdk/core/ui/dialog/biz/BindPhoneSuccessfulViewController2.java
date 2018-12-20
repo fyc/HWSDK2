@@ -47,7 +47,7 @@ public class BindPhoneSuccessfulViewController2 extends BaseAuthViewController {
         btn_return_account_center.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().toUserAccount2();
+                ViewControllerNavigator.getInstance().toAccountCenter2();
             }
         });
     }

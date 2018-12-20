@@ -19,7 +19,7 @@ import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.UserAccountViewController2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.AccountCenterViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.core.ui.widget.GameDownloadDialogView;
@@ -152,10 +152,13 @@ public class ViewControllerNavigator {
                 .show(new HasRegisteredViewController2(params.getActivityContext(), params));
     }
 
-    public boolean toUserAccount2() {
+    /**
+     * 2.0版本--账户中心
+     */
+    public boolean toAccountCenter2() {
 //        checkParam(params);
         return getDialog(CoreManager.getActivity())
-                .show(new UserAccountViewController2(CoreManager.getActivity(), null));
+                .show(new AccountCenterViewController2(CoreManager.getActivity(), null));
     }
 
     /**

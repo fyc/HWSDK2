@@ -9,13 +9,13 @@ import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
 import com.qygame.qysdk.outer.event.IDialogParam;
 
-public class UserAccountViewController2 extends BaseAuthViewController {
+public class AccountCenterViewController2 extends BaseAuthViewController {
     private static final String TAG = "QYSDK:UserAccountViewController2";
     Context mContext;
     ContainerItemTitle4 containerItemTitle4;
     RelativeLayout rl_change_password, rl_bind_phone, rl_real_name_auth, rl_pay_record;
 
-    public UserAccountViewController2(Context context, IDialogParam params) {
+    public AccountCenterViewController2(Context context, IDialogParam params) {
         super(context, params);
         mContext = context;
         initView();
@@ -23,7 +23,7 @@ public class UserAccountViewController2 extends BaseAuthViewController {
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.qy_sdk_container_user_account2;
+        return R.layout.qy_sdk_container_account_center2;
     }
 
     @Override

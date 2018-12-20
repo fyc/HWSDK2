@@ -172,7 +172,7 @@ class FloatViewController2 implements IViewController {
         user_account.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().toUserAccount2();
+                ViewControllerNavigator.getInstance().toAccountCenter2();
             }
         });
 
