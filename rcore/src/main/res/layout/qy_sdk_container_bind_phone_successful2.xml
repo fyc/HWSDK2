@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/login_layout_width"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/qy_sdk_dialog_white_bg_corner"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- Title -->
+    <!--<include
+        layout="@layout/qy_sdk_container_item_title4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_title_container_height" />-->
+
+    <com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4
+        android:id="@+id/containerItemTitle4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<View
+        style="@style/DialogDivider.Horizontal"
+        android:layout_marginBottom="6dp" />-->
+
+    <!-- 用户名密码 -->
+    <!--<include
+        layout="@layout/qy_sdk_container_bind_phone_account2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_32px"
+        android:layout_marginRight="@dimen/margin_32px" />-->
+
+    <!-- center -->
+
+    <ImageView
+        android:id="@+id/img_head"
+        android:layout_width="@dimen/has_registered_head_img_width_height"
+        android:layout_height="@dimen/has_registered_head_img_width_height"
+        android:layout_marginTop="@dimen/margin_24px"
+        android:src="@drawable/sdk_icon_portrait_selected" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_bind_phone_successful"
+        android:textColor="@color/qy_sdk_user_center_bing_phone_tip"
+        android:textSize="@dimen/text_size_t2" />
+
+    <Button
+        android:id="@+id/btn_return_account_center"
+        style="@style/DialogConfirmButton"
+        android:layout_width="@dimen/button_width_120dp"
+        android:layout_marginBottom="@dimen/margin_24px"
+        android:layout_marginTop="@dimen/margin_24px"
+        android:background="@drawable/sdk_selector_dialog_btn_login2"
+        android:gravity="center"
+        android:text="@string/str_return_account_center" />
+</LinearLayout>

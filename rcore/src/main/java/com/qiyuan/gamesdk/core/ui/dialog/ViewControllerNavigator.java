@@ -8,9 +8,10 @@ import android.os.Build;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.ChangeBindPhoneViewController2_1;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneSuccessfulViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.ChangeBindPhoneViewController2_1;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
@@ -190,6 +191,14 @@ public class ViewControllerNavigator {
      * 2.0版本--绑定手机成功
      */
     public boolean toBindPhoneSuccessful2() {
+        return getDialog(CoreManager.getActivity())
+                .show(new BindPhoneSuccessfulViewController2(CoreManager.getActivity(), null));
+    }
+
+    /**
+     * 2.0版本--更换绑定手机页面1
+     */
+    public boolean toChangeBindPhone2_1() {
         return getDialog(CoreManager.getActivity())
                 .show(new ChangeBindPhoneViewController2_1(CoreManager.getActivity(), null));
     }

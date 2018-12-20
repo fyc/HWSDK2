@@ -214,4 +214,6 @@
     <string name="str_bind_phone_tips2">我们发现你的账号安全级别较低，建议绑定手机</string>
     <string name="str_bind_phone_tips3">绑定手机后可以在忘记密码或者账号被盗时通过手机找回</string>
     <string name="str_has_bind_phone">已绑定手机: </string>
+    <string name="str_bind_phone_successful">手机号绑定成功</string>
+    <string name="str_return_account_center">返回账户首页</string>
 </resources>
