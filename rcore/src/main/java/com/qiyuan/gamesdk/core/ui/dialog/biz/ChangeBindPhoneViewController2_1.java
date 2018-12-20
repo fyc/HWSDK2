@@ -2,9 +2,11 @@ package com.qiyuan.gamesdk.core.ui.dialog.biz;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.qiyuan.gamesdk.R;
+import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
 import com.qygame.qysdk.outer.event.IDialogParam;
 
@@ -15,6 +17,7 @@ public class ChangeBindPhoneViewController2_1 extends BaseAuthViewController {
     Context mContext;
     ContainerItemTitle4 containerItemTitle4;
     TextView tv_phone_account;
+    Button btn_change_bind_phone;
 
     public ChangeBindPhoneViewController2_1(Context context, IDialogParam params) {
         super(context, params);
@@ -46,5 +49,12 @@ public class ChangeBindPhoneViewController2_1 extends BaseAuthViewController {
             }
         });
         tv_phone_account = (TextView) findViewById(R.id.tv_phone_account);
+        btn_change_bind_phone= (Button) findViewById(R.id.btn_change_bind_phone);
+        btn_change_bind_phone.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewControllerNavigator.getInstance().toChangeBindPhone2_2();
+            }
+        });
     }
 }

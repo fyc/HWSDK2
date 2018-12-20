@@ -72,6 +72,13 @@ public class AccountCenterViewController2 extends BaseAuthViewController {
                 ViewControllerNavigator.getInstance().toBindPhone2();
             }
         });
+        rl_bind_phone.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ViewControllerNavigator.getInstance().toChangeBindPhone2_1();
+                return false;
+            }
+        });
         rl_real_name_auth.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,10 +8,12 @@ import android.os.Build;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.CoreManager;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.AccountCenterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneSuccessfulViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ChangeBindPhoneViewController2_1;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.ChangeBindPhoneViewController2_2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
@@ -19,7 +21,6 @@ import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.AccountCenterViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.core.ui.widget.GameDownloadDialogView;
@@ -204,6 +205,14 @@ public class ViewControllerNavigator {
     public boolean toChangeBindPhone2_1() {
         return getDialog(CoreManager.getActivity())
                 .show(new ChangeBindPhoneViewController2_1(CoreManager.getActivity(), null));
+    }
+
+    /**
+     * 2.0版本--更换绑定手机页面2
+     */
+    public boolean toChangeBindPhone2_2() {
+        return getDialog(CoreManager.getActivity())
+                .show(new ChangeBindPhoneViewController2_2(CoreManager.getActivity(), null));
     }
 
     public boolean toResetPassword(IDialogParam params) {

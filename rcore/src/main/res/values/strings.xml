@@ -216,4 +216,6 @@
     <string name="str_has_bind_phone">已绑定手机: </string>
     <string name="str_bind_phone_successful">手机号绑定成功</string>
     <string name="str_return_account_center">返回账户首页</string>
+    <string name="str_change_bind_phone">更换手机号</string>
+    <string name="str_set_new_phone_account">设置新的手机号码</string>
 </resources>
