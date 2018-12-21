@@ -64,6 +64,7 @@ public class AccountCenterViewController2 extends BaseAuthViewController {
         rl_change_password.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                ViewControllerNavigator.getInstance().toResetPassword2();
             }
         });
         rl_bind_phone.setOnClickListener(new OnClickListener() {
@@ -82,6 +83,7 @@ public class AccountCenterViewController2 extends BaseAuthViewController {
         rl_real_name_auth.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                ViewControllerNavigator.getInstance().toRealNameAuth2();
             }
         });
         rl_pay_record.setOnClickListener(new OnClickListener() {

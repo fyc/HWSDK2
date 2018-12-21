@@ -18,9 +18,11 @@ import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.core.ui.widget.GameDownloadDialogView;
@@ -176,6 +178,13 @@ public class ViewControllerNavigator {
         return getDialog(params.getActivityContext())
                 .show(new RealNameAuthController(params.getActivityContext(), params));
     }
+    /**
+     * 2.0版本--实名认证
+     */
+    public boolean toRealNameAuth2() {
+        return getDialog(CoreManager.getActivity())
+                .show(new RealNameAuthController2(CoreManager.getActivity(), null));
+    }
 
     public boolean toBindPhone(IDialogParam params) {
         checkParam(params);
@@ -219,6 +228,10 @@ public class ViewControllerNavigator {
         checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new ResetPasswordViewController(params.getActivityContext(), params));
+    }
+    public boolean toResetPassword2() {
+        return getDialog(CoreManager.getActivity())
+                .show(new ResetPasswordViewController2(CoreManager.getActivity(), null));
     }
 
 

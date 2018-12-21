@@ -40,6 +40,15 @@
         <item name="android:textColorHint">@color/edt_hint</item>
     </style>
 
+    <style name="DialogTextInputBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dialog_edit_height</item>
+        <item name="android:paddingLeft">@dimen/margin_24px</item>
+        <item name="android:paddingRight">@dimen/margin_24px</item>
+        <item name="android:background">@drawable/qy_sdk_edt_bg</item>
+        <item name="android:imeOptions">flagNoExtractUi</item>
+    </style>
+
 
     <style name="DialogConfirmButton">
         <item name="android:layout_width">match_parent</item>
@@ -262,6 +271,7 @@
     <!--  字体样式 end-->
 
     <style name="Theme_Dialog_Fragment" parent="android:style/Theme.Dialog">
-        <item name="android:backgroundDimEnabled">true</item> //背景变暗
+        <item name="android:backgroundDimEnabled">true</item>
+        //背景变暗
     </style>
 </resources>

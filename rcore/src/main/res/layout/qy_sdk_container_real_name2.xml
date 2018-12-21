@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/login_layout_width"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/qy_sdk_dialog_white_bg_corner"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- Title -->
+   <!-- <include
+        layout="@layout/qy_sdk_container_item_title4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_title_container_height" />-->
+
+    <com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4
+        android:id="@+id/containerItemTitle4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        style="@style/DialogDivider.Horizontal"
+        android:layout_marginBottom="6dp" />
+    <!-- center -->
+    <include
+        layout="@layout/qy_sdk_container_item_real_name_account2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_32px"
+        android:layout_marginRight="@dimen/margin_32px" />
+
+    <Button
+        android:id="@+id/btn_real_name_container_ensure"
+        style="@style/DialogConfirmButton"
+        android:layout_marginBottom="@dimen/space_8"
+        android:layout_marginLeft="@dimen/margin_32px"
+        android:layout_marginRight="@dimen/margin_32px"
+        android:layout_marginTop="@dimen/margin_32px"
+        android:background="@drawable/sdk_selector_dialog_btn_login2"
+        android:gravity="center"
+        android:text="@string/ensure" />
+</LinearLayout>

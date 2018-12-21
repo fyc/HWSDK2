@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
+        android:id="@+id/edit_real_name_container_name"
+        style="@style/DialogEditText"
+        android:layout_marginBottom="@dimen/margin_16px"
+        android:drawableLeft="@drawable/login_icon_user"
+        android:drawableStart="@drawable/login_icon_user"
+        android:hint="@string/edt_real_name_hint"
+        android:imeOptions="actionNext|flagNoExtractUi"
+        android:maxLines="1" />
+
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
+        android:id="@+id/edit_real_name_container_id_card"
+        style="@style/DialogEditText"
+        android:layout_marginBottom="@dimen/margin_16px"
+        android:drawableLeft="@drawable/login_icon_verificationcode"
+        android:drawableStart="@drawable/login_icon_verificationcode"
+        android:enabled="false"
+        android:hint="@string/edt_id_card_hint"
+        android:imeOptions="actionNext|flagNoExtractUi"
+        android:maxLines="1" />
+
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
+        android:id="@+id/edit_real_name_container_card_number"
+        style="@style/DialogEditText"
+        android:layout_marginBottom="@dimen/margin_16px"
+        android:digits="@string/account_digits"
+        android:drawableLeft="@drawable/login_icon_password"
+        android:drawableStart="@drawable/login_icon_password"
+        android:hint="@string/edt_id_card_number_hint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+    <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
+        android:id="@+id/edit_real_name_container_phone"
+        style="@style/DialogEditText"
+        android:layout_marginBottom="@dimen/margin_16px"
+        android:drawableLeft="@drawable/login_icon_phone"
+        android:drawableStart="@drawable/login_icon_phone"
+        android:hint="@string/edt_phone_hint"
+        android:imeOptions="actionNext|flagNoExtractUi"
+        android:inputType="number"
+        android:maxLength="11"
+        android:maxLines="1" />
+</LinearLayout>

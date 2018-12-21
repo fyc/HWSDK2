@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_left_text"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|left"
+        android:text="左边："
+        tools:ignore="RtlHardcoded" />
+
+    <EditText
+        android:id="@+id/edt_input"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@id/tv_left_text"
+        android:layout_toRightOf="@id/tv_left_text"
+        android:background="@null"
+        android:gravity="center_vertical|left"
+        android:hint="右边输入框"
+        android:textColorHint="#BFBFBF"
+        android:textSize="12dp"
+        tools:ignore="RtlHardcoded" />
+</RelativeLayout>
