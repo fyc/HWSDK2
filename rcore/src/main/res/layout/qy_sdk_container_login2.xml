@@ -47,7 +47,10 @@
         android:gravity="center"
         android:text="@string/str_enter_game" />
     <!-- Bottom -->
-    <include layout="@layout/qy_sdk_container_item_login_bottom2" />
-
+    <!--<include layout="@layout/qy_sdk_container_item_login_bottom2" />-->
+    <com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemBottom2
+        android:id="@+id/containerItemBottom2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

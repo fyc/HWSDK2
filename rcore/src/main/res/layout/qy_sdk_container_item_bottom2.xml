@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/bottom_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_16px"
+        android:background="@color/radio_button_divider" />
+
+    <!--<TextView
+        android:id="@+id/str_tip_to_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/margin_32px"
+        android:background="@null"
+        android:gravity="center"
+        android:lines="1"
+        android:text="@string/str_tip_to_login"
+        android:textColor="@color/qy_sdk_dialog_gray"
+        android:textSize="@dimen/text_size_t3" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/bottom_divider"
+        android:layout_marginBottom="@dimen/margin_30px"
+        android:layout_marginTop="@dimen/margin_32px"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_to_login"
+            android:layout_width="@dimen/margin_160px"
+            android:layout_height="@dimen/margin_60px"
+            android:layout_marginEnd="@dimen/margin_60px"
+            android:layout_marginLeft="@dimen/margin_60px"
+            android:layout_marginRight="@dimen/margin_60px"
+            android:layout_marginStart="@dimen/margin_60px"
+            android:background="@drawable/sdk_selector_dialog_btn_login2"
+            android:drawableLeft="@drawable/login_icon_phone"
+            android:drawableStart="@drawable/login_icon_phone"
+            android:gravity="center"
+            android:text="@string/str_phone_account"
+            android:textColor="@color/qy_sdk_dialog_white"
+            android:textSize="@dimen/text_size_t3" />
+
+        <Button
+            android:id="@+id/btn_to_forget_password"
+            android:layout_width="@dimen/margin_160px"
+            android:layout_height="@dimen/margin_60px"
+            android:layout_marginEnd="@dimen/margin_60px"
+            android:layout_marginLeft="@dimen/margin_60px"
+            android:layout_marginRight="@dimen/margin_60px"
+            android:layout_marginStart="@dimen/margin_60px"
+            android:background="@drawable/sdk_selector_dialog_btn_login2"
+            android:drawableLeft="@drawable/login_icon_phone"
+            android:drawableStart="@drawable/login_icon_phone"
+            android:gravity="center"
+            android:text="@string/str_qiyuan_forger_password"
+            android:textColor="@color/qy_sdk_dialog_white"
+            android:textSize="@dimen/text_size_t3"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_back_to_regist"
+            android:layout_width="@dimen/margin_160px"
+            android:layout_height="@dimen/margin_60px"
+            android:layout_marginEnd="@dimen/margin_60px"
+            android:layout_marginLeft="@dimen/margin_60px"
+            android:layout_marginRight="@dimen/margin_60px"
+            android:layout_marginStart="@dimen/margin_60px"
+            android:background="@drawable/sdk_shape_dialog_btn_login_disable2"
+            android:gravity="center"
+            android:text="@string/str_back_to_regist"
+            android:textColor="@color/qy_sdk_dialog_gray"
+            android:textSize="@dimen/text_size_t3"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -228,26 +228,26 @@ public class RegisterViewController2 extends BaseAuthViewController {
         tv_phone_account.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
             }
         });
         tv_qiyuan_account.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_ACCOUNT);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
             }
         });
 
         loginPhoneButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
             }
         });
         loginAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_ACCOUNT);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
             }
         });
     }

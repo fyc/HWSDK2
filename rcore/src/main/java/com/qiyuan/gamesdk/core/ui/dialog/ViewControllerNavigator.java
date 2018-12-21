@@ -168,10 +168,10 @@ public class ViewControllerNavigator {
     /**
      * 2.0版本--手机登录
      */
-    public boolean tologinPhone2(IDialogParam params, int login_state) {
+    public boolean tologinPhone2(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())
-                .show(new LoginViewController2(params.getActivityContext(), params, login_state));
+                .show(new LoginViewController2(params.getActivityContext(), params));
     }
 
     public boolean toRealNameAuth(IDialogParam params) {

@@ -49,13 +49,13 @@ public class HasRegisteredViewController2 extends BaseAuthViewController {
         loginPhoneButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
             }
         });
         loginAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam(), LoginViewController2.STATE_LOGIN_ACCOUNT);
+                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
             }
         });
         backRegisterButton.setOnClickListener(new OnClickListener() {
@@ -72,13 +72,4 @@ public class HasRegisteredViewController2 extends BaseAuthViewController {
         return R.layout.qy_sdk_container_has_registered;
     }
 
-    @Override
-    public void onShow() {
-
-    }
-
-    @Override
-    public void onHide() {
-
-    }
 }

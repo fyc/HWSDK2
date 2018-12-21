@@ -185,6 +185,7 @@
     <string name="str_phone_account">手机号</string>
     <string name="str_phone_account_login">手机号登录</string>
     <string name="str_qiyuan_account">账号</string>
+    <string name="str_qiyuan_forger_password">忘记密码</string>
     <string name="str_qiyuan_account_login">账号登录</string>
     <string name="str_enter_game">进入游戏</string>
     <string name="str_complete_the_registration">完成注册</string>

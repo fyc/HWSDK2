@@ -13,7 +13,6 @@ import com.qiyuan.gamesdk.core.interceptor.Interceptor;
 import com.qiyuan.gamesdk.core.interceptor.LoginInterceptor;
 import com.qiyuan.gamesdk.core.interceptor.LoginNoticeInterceptor;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.FloatViewManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.model.AccountHistoryInfo;
@@ -161,7 +160,7 @@ public class QYSDKImpl implements IQYSDK {
 
         final AuthEvent.LoginParams loginParams = new AuthEvent.LoginParams(activity, iOperateCallback, "QYSDK");
         FloatViewManager.getInstance().hide();
-        ViewControllerNavigator.getInstance().tologinPhone2(loginParams, LoginViewController2.STATE_LOGIN_PHONE);
+        ViewControllerNavigator.getInstance().tologinPhone2(loginParams);
     }
 
     @Override

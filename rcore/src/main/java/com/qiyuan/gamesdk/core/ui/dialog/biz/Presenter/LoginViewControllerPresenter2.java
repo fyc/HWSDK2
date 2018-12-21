@@ -60,18 +60,10 @@ public class LoginViewControllerPresenter2 {
     }
 
     private void updateLoginButtonState() {
-        if (loginViewController2.currentState == loginViewController2.STATE_LOGIN_PHONE) {
-            if (loginViewController2.phoneEdit.length() == 0 || loginViewController2.phonePasswordEdit.length() == 0) {
-                loginViewController2.loginButton.setEnabled(false);
-            } else {
-                loginViewController2.loginButton.setEnabled(true);
-            }
-        } else if (loginViewController2.currentState == loginViewController2.STATE_LOGIN_ACCOUNT) {
-            if (loginViewController2.accountEdit.length() == 0 || loginViewController2.accountPasswordEdit.length() == 0) {
-                loginViewController2.loginButton.setEnabled(false);
-            } else {
-                loginViewController2.loginButton.setEnabled(true);
-            }
+        if (loginViewController2.accountEdit.length() == 0 || loginViewController2.passwordEdit.length() == 0) {
+            loginViewController2.loginButton.setEnabled(false);
+        } else {
+            loginViewController2.loginButton.setEnabled(true);
         }
     }
 
@@ -343,9 +335,11 @@ public class LoginViewControllerPresenter2 {
     public HistoryPickerController newHistoryPickerController(View anchorView) {
         return new HistoryPickerController(anchorView);
     }
+
     public AccountEditViewController newAccountEditViewController(DrawableEditText accountEditView) {
         return new AccountEditViewController(accountEditView);
     }
+
     public class HistoryPickerController {
 
         DataPicker picker = null;
@@ -434,6 +428,7 @@ public class LoginViewControllerPresenter2 {
         }
 
     }
+
     public class AccountEditViewController {
         DrawableEditText editView;
         int rightDrawableStateCount = 0;
