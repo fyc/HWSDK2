@@ -42,14 +42,11 @@ public class ResetPasswordViewController2 extends BaseAuthViewController {
         super(context, params);
         mContext = context;
         initView();
-        //注册短信变化监听
-//        smsObserver = new SmsVerificationCode(new Handler());
-//        mContext.getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, smsObserver);
     }
 
     private void initView() {
         containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
-        containerItemTitle4.setTitle(R.string.str_real_name_title);
+        containerItemTitle4.setTitle(R.string.account_reset_passwd);
         containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
             @Override
             public void toBack() {
@@ -76,9 +73,10 @@ public class ResetPasswordViewController2 extends BaseAuthViewController {
             @Override
             public void onClick(View v) {
                 IMEUtil.hideIME(ResetPasswordViewController2.this);
-                if (checkInput()) {
-                    resetPassword(edit_old_password.getText().toString(), edit_new_password.getText().toString());
-                }
+//                if (checkInput()) {
+////                    resetPassword(edit_old_password.getText().toString(), edit_new_password.getText().toString());
+////                }
+                ViewControllerNavigator.getInstance().toResetPasswordSuccessful2();
             }
         });
         addTextWatcher(edit_old_password.getEdt_input(), edit_new_password.getEdt_input(), edit_again_new_password.getEdt_input());

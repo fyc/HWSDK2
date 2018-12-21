@@ -21,6 +21,7 @@ import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordSuccessfulViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
@@ -229,11 +230,22 @@ public class ViewControllerNavigator {
         return getDialog(params.getActivityContext())
                 .show(new ResetPasswordViewController(params.getActivityContext(), params));
     }
+
+    /**
+     * 2.0版本--修改密码
+     */
     public boolean toResetPassword2() {
         return getDialog(CoreManager.getActivity())
                 .show(new ResetPasswordViewController2(CoreManager.getActivity(), null));
     }
 
+    /**
+     * 2.0版本--修改密码成功
+     */
+    public boolean toResetPasswordSuccessful2() {
+        return getDialog(CoreManager.getActivity())
+                .show(new ResetPasswordSuccessfulViewController2(CoreManager.getActivity(), null));
+    }
 
     public ExitAlertDialogView toExitAlertDialogView(Context context) {
         ExitAlertDialogView alertDialogView = new ExitAlertDialogView(context);
