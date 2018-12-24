@@ -14,7 +14,8 @@ import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BindPhoneViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ChangeBindPhoneViewController2_1;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ChangeBindPhoneViewController2_2;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredViewController2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredAndToLoginViewController2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.HasRegisteredAndToSetPasswordViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.LoginViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RealNameAuthController;
@@ -148,14 +149,21 @@ public class ViewControllerNavigator {
     }
 
     /**
-     * 2.0版本--注册
+     * 2.0版本--已经注册，并去登录
      */
-    public boolean toHasRegister2(IDialogParam params) {
+    public boolean toHasRegisterAndToLogin2(IDialogParam params) {
         checkParam(params);
         return getDialog(params.getActivityContext())
-                .show(new HasRegisteredViewController2(params.getActivityContext(), params));
+                .show(new HasRegisteredAndToLoginViewController2(params.getActivityContext(), params));
     }
-
+    /**
+     * 2.0版本--已经注册，并去设置密码
+     */
+    public boolean toHasRegisterAndToSetPassword2(IDialogParam params) {
+        checkParam(params);
+        return getDialog(params.getActivityContext())
+                .show(new HasRegisteredAndToSetPasswordViewController2(params.getActivityContext(), params));
+    }
     /**
      * 2.0版本--账户中心
      */

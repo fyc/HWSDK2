@@ -69,7 +69,12 @@ public class QYGameSDK implements IQYSDK {
     }
 
     @Override
-    public void hasRegist(Activity activity, IOperateCallback<String> iOperateCallback) {
+    public void hasRegistAndToLogin(Activity activity, IOperateCallback<String> iOperateCallback) {
+
+    }
+
+    @Override
+    public void hasRegistAndToSetPassword(Activity activity, IOperateCallback<String> iOperateCallback) {
 
     }
 

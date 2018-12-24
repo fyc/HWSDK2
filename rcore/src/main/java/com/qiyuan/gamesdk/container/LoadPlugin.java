@@ -78,9 +78,14 @@ public class LoadPlugin {
             QYSDKApi.regist(activity, callback);
         }
     }
-    public void hasRegist(Activity activity, IOperateCallback<String> callback) {
+    public void hasRegistAndToLogin(Activity activity, IOperateCallback<String> callback) {
         if (isInit) {
-            QYSDKApi.hasRegist(activity, callback);
+            QYSDKApi.hasRegistAndToLogin(activity, callback);
+        }
+    }
+    public void hasRegistAndToSetPassword(Activity activity, IOperateCallback<String> callback) {
+        if (isInit) {
+            QYSDKApi.hasRegistAndToSetPassword(activity, callback);
         }
     }
 

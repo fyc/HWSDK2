@@ -18,7 +18,7 @@ import com.qygame.qysdk.outer.util.StorageConfig;
 public class RMainActivity2 extends FragmentActivity {
     public static final String TAG = "QYGAMESDK:MAINACTIVITY";
     //    IQYSDK iQYSDK;
-    Button init, regist, login, payH5,has_registered;
+    Button init, regist, login, payH5,has_registered_to_login,has_registered_to_set_password;
 
     public static void openActivity(Activity act) {
         Intent i = new Intent(act, RMainActivity2.class);
@@ -34,7 +34,8 @@ public class RMainActivity2 extends FragmentActivity {
         regist = (Button) findViewById(R.id.regist);
         login = (Button) findViewById(R.id.login);
         payH5 = (Button) findViewById(R.id.payH5);
-        has_registered = (Button) findViewById(R.id.has_registered);
+        has_registered_to_login = (Button) findViewById(R.id.has_registered_to_login);
+        has_registered_to_set_password = (Button) findViewById(R.id.has_registered_to_set_password);
         init.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,10 +64,16 @@ public class RMainActivity2 extends FragmentActivity {
                 payH5(payUrl);
             }
         });
-        has_registered.setOnClickListener(new View.OnClickListener() {
+        has_registered_to_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hasRegistImpl();
+                hasRegistAntToLoginImpl();
+            }
+        });
+        has_registered_to_set_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hasRegistAntToSetPasswordImpl();
             }
         });
     }
@@ -128,8 +135,28 @@ public class RMainActivity2 extends FragmentActivity {
                 });
     }
 
-    private void hasRegistImpl() {
-        LoadPlugin.getInstance().hasRegist(
+    private void hasRegistAntToLoginImpl() {
+        LoadPlugin.getInstance().hasRegistAndToLogin(
+                this, new IOperateCallback<String>() {
+                    @Override
+                    public void onResult(int code, String s) {
+                        if (code == QYCodeDef.SUCCESS) {
+                            Log.d(TAG, "QYGameSDK登录成功！");
+                            login.setText("退出");
+                            login.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    logoutImpl();
+                                }
+                            });
+                        } else {
+                            Log.d(TAG, "QYGameSDK登录失败！");
+                        }
+                    }
+                });
+    }
+    private void hasRegistAntToSetPasswordImpl() {
+        LoadPlugin.getInstance().hasRegistAndToSetPassword(
                 this, new IOperateCallback<String>() {
                     @Override
                     public void onResult(int code, String s) {

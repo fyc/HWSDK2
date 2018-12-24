@@ -182,6 +182,7 @@
     <string name="str_a_key_to_regist">一键注册</string>
     <string name="str_set_register_password_hint">设置密码</string>
     <string name="str_set_register_password_tip">仅需一步，即可快速注册，密码长度为6位以上</string>
+    <string name="str_set_password_sub_title">输入密码</string>
     <string name="str_tip_to_login">如已有账号，请选择登录方式</string>
     <string name="str_phone_account">手机号</string>
     <string name="str_phone_account_login">手机号登录</string>
