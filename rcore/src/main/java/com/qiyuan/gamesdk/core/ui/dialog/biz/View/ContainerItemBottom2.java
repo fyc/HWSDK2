@@ -57,7 +57,7 @@ public class ContainerItemBottom2 extends RelativeLayout {
         btn_to_forget_password.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ViewControllerNavigator.getInstance().tologinPhone2(baseAuthViewController.getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
+                ViewControllerNavigator.getInstance().toRetrievePasswordViewController2(baseAuthViewController.getDialogParam());
             }
         });
         btn_back_to_regist.setOnClickListener(new OnClickListener() {

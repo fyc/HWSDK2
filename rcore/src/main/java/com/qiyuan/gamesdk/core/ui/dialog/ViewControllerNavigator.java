@@ -25,6 +25,7 @@ import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordSuccessfulViewController2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ResetPasswordViewController2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.RetrievePasswordViewController2;
 import com.qiyuan.gamesdk.core.ui.floatview.AnnouncementManager;
 import com.qiyuan.gamesdk.core.ui.widget.ExitAlertDialogView;
 import com.qiyuan.gamesdk.core.ui.widget.GameDownloadDialogView;
@@ -163,6 +164,15 @@ public class ViewControllerNavigator {
         checkParam(params);
         return getDialog(params.getActivityContext())
                 .show(new HasRegisteredAndToSetPasswordViewController2(params.getActivityContext(), params));
+    }
+
+    /**
+     * 2.0版本--找回密码
+     */
+    public boolean toRetrievePasswordViewController2(IDialogParam params) {
+        checkParam(params);
+        return getDialog(params.getActivityContext())
+                .show(new RetrievePasswordViewController2(params.getActivityContext(), params));
     }
     /**
      * 2.0版本--账户中心
