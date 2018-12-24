@@ -2,18 +2,19 @@ package com.qiyuan.gamesdk.core.ui.dialog.biz;
 
 import android.content.Context;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.qiyuan.gamesdk.R;
+import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemBottom2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
 import com.qygame.qysdk.outer.event.IDialogParam;
 
 public class HasRegisteredAndToSetPasswordViewController2 extends BaseAuthViewController {
 
     public Context context;
-    ImageView img_head;
-    TextView tv_user_name;
+    ContainerItemTitle4 containerItemTitle4;
+//    ImageView img_head;
+//    TextView tv_user_name;
     Button btn_enter_game;
 //    TextView tv_to_register;
 
@@ -26,8 +27,26 @@ public class HasRegisteredAndToSetPasswordViewController2 extends BaseAuthViewCo
     }
 
     private void initView() {
-        img_head = (ImageView) findViewById(R.id.img_head);
-        tv_user_name = (TextView) findViewById(R.id.tv_user_name);
+        containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
+        containerItemTitle4.setTitle(R.string.str_qiyuan_sdk_game_title);
+        containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
+            @Override
+            public void toBack() {
+                ViewControllerNavigator.getInstance().toRegister2(getDialogParam());
+            }
+
+            @Override
+            public void toRefresh() {
+
+            }
+
+            @Override
+            public void toClose() {
+                close();
+            }
+        });
+//        img_head = (ImageView) findViewById(R.id.img_head);
+//        tv_user_name = (TextView) findViewById(R.id.tv_user_name);
         btn_enter_game = (Button) findViewById(R.id.btn_has_registered_container_enter_game);
 //        tv_to_register = (TextView) findViewById(R.id.tv_to_register);
         containerItemBottom2 = (ContainerItemBottom2) findViewById(R.id.containerItemBottom2);
