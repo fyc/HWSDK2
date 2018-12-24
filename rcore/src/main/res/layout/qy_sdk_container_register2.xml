@@ -100,16 +100,16 @@
         android:layout_marginTop="@dimen/space_8" />
     <!-- Bottom -->
     <!--<include-->
-        <!--android:id="@+id/container_item_register_account_bottom"-->
-        <!--layout="@layout/qy_sdk_container_item_login_bottom2"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="@dimen/space_8"-->
-        <!--android:visibility="visible" />-->
+    <!--android:id="@+id/container_item_register_account_bottom"-->
+    <!--layout="@layout/qy_sdk_container_item_login_bottom2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/space_8"-->
+    <!--android:visibility="visible" />-->
     <com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemBottom2
         android:id="@+id/containerItemBottom2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_8"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 </LinearLayout>

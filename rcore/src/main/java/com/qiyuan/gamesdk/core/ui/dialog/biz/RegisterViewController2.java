@@ -55,20 +55,16 @@ public class RegisterViewController2 extends BaseAuthViewController {
     //    private EditText accountEdit;
     public EditText accountPasswordEdit;
     public Button getVerificationCodeButton;
-    //    private Button backTitleContainerBtn;
-//    private Button closeTitleContainerBtn;
     public EditText verificationCodeEdit;
     public Button registerButton;
 
     private View registerPhoneBottom;
     ContainerItemBottom2 containerItemBottom2;
-//    private View registerAccountBottom;
-//    public View loginPhoneButton; //跳转至手机登录界面
-//    public View loginAccountButton; //跳转至账号登录界面
-//    public View backRegisterButton; //跳转至注册
 
     private TextView titleTv;
-    private TextView tv_phone_account, tv_qiyuan_account;
+    //    private TextView tv_phone_account, tv_qiyuan_account;
+    private TextView btn_to_login;
+    private TextView btn_to_forget_password;
     public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
     public RegisterViewControllerPresenter2.SmsVerificationCode smsObserver;
 
@@ -117,8 +113,6 @@ public class RegisterViewController2 extends BaseAuthViewController {
 
     private void initView() {
         titleTv = (TextView) findViewById(R.id.tv_title_container_title);
-//        titleImg = findViewById(R.id.img_title_container_title);
-//        serviceTermsBtn = (TextView)findViewById(R.id.tv_service_terms);
         registerTypeRadioGroup = (ViewGroup) findViewById(R.id.radio_group_item_register_type);
         registerPhoneRadioButton = (RadioButton) findViewById(R.id.radio_item_register_phone);
         registerPhoneRadioButton.setSelected(true);
@@ -135,16 +129,11 @@ public class RegisterViewController2 extends BaseAuthViewController {
         accountPasswordEdit = (EditText) findViewById(R.id.edit_register_container_account_password);
         reGetVerifyCodeButtonController = new ReGetVerifyCodeButtonController(getVerificationCodeButton);
         verificationCodeEdit = (EditText) findViewById(R.id.edit_register_container_verification_code);
-//        backTitleContainerBtn = (Button)findViewById(R.id.btn_title_container_back);
-//        closeTitleContainerBtn = (Button)findViewById(R.id.btn_title_container_close);
-        tv_phone_account = (TextView) findViewById(R.id.tv_phone_account);
-        tv_qiyuan_account = (TextView) findViewById(R.id.tv_qiyuan_account);
+
+        btn_to_login = (TextView) findViewById(R.id.btn_to_login);
+        btn_to_forget_password = (TextView) findViewById(R.id.btn_to_forget_password);
+
         registerPhoneBottom = findViewById(R.id.container_item_register_phone_bottom);
-//        registerAccountBottom = findViewById(R.id.container_item_register_account_bottom);
-//        loginPhoneButton = findViewById(R.id.btn_qiyuan_phone_login);
-//        loginAccountButton = findViewById(R.id.btn_qiyuan_account_login);
-//        backRegisterButton = findViewById(R.id.btn_back_to_regist);
-//        backRegisterButton.setVisibility(View.GONE);
         containerItemBottom2 = (ContainerItemBottom2) findViewById(R.id.containerItemBottom2);
         containerItemBottom2.setBaseAuthViewController(this);
         containerItemBottom2.setBtnVisibility(true, true, false);
@@ -229,31 +218,18 @@ public class RegisterViewController2 extends BaseAuthViewController {
 
         registerViewControllerPresenter2.addTextWatcher(phoneEdit, phonePasswordEdit, accountPasswordEdit, verificationCodeEdit);
 
-        tv_phone_account.setOnClickListener(new OnClickListener() {
+        btn_to_login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
             }
         });
-        tv_qiyuan_account.setOnClickListener(new OnClickListener() {
+        btn_to_forget_password.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
+//                ViewControllerNavigator.getInstance().tologinPhone2(baseAuthViewController.getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
             }
         });
-
-//        loginPhoneButton.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
-//            }
-//        });
-//        loginAccountButton.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
-//            }
-//        });
     }
 
     @Override
