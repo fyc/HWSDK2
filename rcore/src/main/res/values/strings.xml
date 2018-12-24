@@ -178,6 +178,7 @@
 
     <!--起源游戏平台2.0-->
     <string name="str_qiyuan_sdk_game_title">起源游戏平台</string>
+    <string name="str_login">登录</string>
     <string name="str_a_key_to_regist">一键注册</string>
     <string name="str_set_register_password_hint">设置密码</string>
     <string name="str_set_register_password_tip">仅需一步，即可快速注册，密码长度为6位以上</string>

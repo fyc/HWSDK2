@@ -69,6 +69,9 @@ public class ContainerItemBottom2 extends RelativeLayout {
         });
     }
 
+    /**顺序为：
+     * 登录、忘记密码、返回注册
+    * */
     public void setBtnVisibility(boolean isVisibility1, boolean isVisibility2, boolean isVisibility3) {
         btn_to_login.setVisibility(isVisibility1 ? View.VISIBLE : View.GONE);
         btn_to_forget_password.setVisibility(isVisibility2 ? View.VISIBLE : View.GONE);

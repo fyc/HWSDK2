@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.RegisterViewControllerPresenter2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemBottom2;
 import com.qiyuan.gamesdk.core.ui.widget.StandardDialog;
 import com.qiyuan.gamesdk.model.UserInfo;
 import com.qiyuan.gamesdk.util.IMEUtil;
@@ -60,10 +61,11 @@ public class RegisterViewController2 extends BaseAuthViewController {
     public Button registerButton;
 
     private View registerPhoneBottom;
-    private View registerAccountBottom;
-    public View loginPhoneButton; //跳转至手机登录界面
-    public View loginAccountButton; //跳转至账号登录界面
-    public View backRegisterButton; //跳转至注册
+    ContainerItemBottom2 containerItemBottom2;
+//    private View registerAccountBottom;
+//    public View loginPhoneButton; //跳转至手机登录界面
+//    public View loginAccountButton; //跳转至账号登录界面
+//    public View backRegisterButton; //跳转至注册
 
     private TextView titleTv;
     private TextView tv_phone_account, tv_qiyuan_account;
@@ -138,12 +140,14 @@ public class RegisterViewController2 extends BaseAuthViewController {
         tv_phone_account = (TextView) findViewById(R.id.tv_phone_account);
         tv_qiyuan_account = (TextView) findViewById(R.id.tv_qiyuan_account);
         registerPhoneBottom = findViewById(R.id.container_item_register_phone_bottom);
-        registerAccountBottom = findViewById(R.id.container_item_register_account_bottom);
-
-        loginPhoneButton = findViewById(R.id.btn_qiyuan_phone_login);
-        loginAccountButton = findViewById(R.id.btn_qiyuan_account_login);
-        backRegisterButton = findViewById(R.id.btn_back_to_regist);
-        backRegisterButton.setVisibility(View.GONE);
+//        registerAccountBottom = findViewById(R.id.container_item_register_account_bottom);
+//        loginPhoneButton = findViewById(R.id.btn_qiyuan_phone_login);
+//        loginAccountButton = findViewById(R.id.btn_qiyuan_account_login);
+//        backRegisterButton = findViewById(R.id.btn_back_to_regist);
+//        backRegisterButton.setVisibility(View.GONE);
+        containerItemBottom2 = (ContainerItemBottom2) findViewById(R.id.containerItemBottom2);
+        containerItemBottom2.setBaseAuthViewController(this);
+        containerItemBottom2.setBtnVisibility(true, true, false);
 
         registerAccountRadioButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -238,18 +242,18 @@ public class RegisterViewController2 extends BaseAuthViewController {
             }
         });
 
-        loginPhoneButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
-            }
-        });
-        loginAccountButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
-            }
-        });
+//        loginPhoneButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
+//            }
+//        });
+//        loginAccountButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ViewControllerNavigator.getInstance().tologinPhone2(getDialogParam());
+//            }
+//        });
     }
 
     @Override
@@ -354,7 +358,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
                                 R.drawable.qy_sdk_shape_dialog_radio_button_bg_empty);
 
                 registerPhoneBottom.setVisibility(View.VISIBLE);
-                registerAccountBottom.setVisibility(View.GONE);
+                containerItemBottom2.setVisibility(View.GONE);
                 registerButton.setText(R.string.str_enter_game);
                 break;
             case STATE_REGISTER_ACCOUNT:
@@ -370,7 +374,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
                                 R.drawable.qy_sdk_shape_dialog_radio_button_bg2);
 
                 registerPhoneBottom.setVisibility(View.GONE);
-                registerAccountBottom.setVisibility(View.VISIBLE);
+                containerItemBottom2.setVisibility(View.VISIBLE);
                 registerButton.setText(R.string.str_complete_the_registration);
                 break;
             default:
