@@ -3,8 +3,6 @@ package com.qiyuan.gamesdk.core.ui.dialog.biz;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,16 +12,13 @@ import android.widget.TextView;
 
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.GetVerifyCodePresenter2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.RegisterViewControllerPresenter2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemBottom2;
-import com.qiyuan.gamesdk.core.ui.widget.StandardDialog;
 import com.qiyuan.gamesdk.model.UserInfo;
 import com.qiyuan.gamesdk.util.IMEUtil;
-import com.qiyuan.gamesdk.util.ToastUtils;
 import com.qiyuan.gamesdk.util.ViewUtils;
 import com.qygame.qysdk.outer.event.IDialogParam;
-import com.qygame.qysdk.outer.util.ResourceHelper;
-import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.util.Stack;
 
@@ -38,10 +33,9 @@ public class RegisterViewController2 extends BaseAuthViewController {
     public static final int STATE_REGISTER_ACCOUNT = 2;
 
     RegisterViewControllerPresenter2 registerViewControllerPresenter2;
-    public boolean waitingVerifyCode = false;
+//    public boolean waitingVerifyCode = false;
 
     public int currentState;
-    public int retryTime = 0;
 
     //header
     private ViewGroup registerTypeRadioGroup;
@@ -52,8 +46,10 @@ public class RegisterViewController2 extends BaseAuthViewController {
     public View registerAccountContainer;
     public EditText phoneEdit;
     public EditText phonePasswordEdit;
-        public Button getVerificationCodeButton;
+    public Button getVerificationCodeButton;
     public EditText verificationCodeEdit;
+
+    GetVerifyCodePresenter2 getVerifyCodePresenter2;//验证码助手类
 
     //    private EditText accountEdit;
     public EditText accountPasswordEdit;
@@ -66,7 +62,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
     //    private TextView tv_phone_account, tv_qiyuan_account;
     private TextView btn_to_login;
     private TextView btn_to_forget_password;
-    public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
+    //    public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
     public RegisterViewControllerPresenter2.SmsVerificationCode smsObserver;
 
 
@@ -101,7 +97,8 @@ public class RegisterViewController2 extends BaseAuthViewController {
 
     @Override
     public void onHide() {
-        reGetVerifyCodeButtonController.cancelCountDown();
+//        reGetVerifyCodeButtonController.cancelCountDown();
+        getVerifyCodePresenter2.cancelCountDown();
 
     }
 
@@ -126,8 +123,8 @@ public class RegisterViewController2 extends BaseAuthViewController {
         ViewUtils.setViewEnable(registerButton, false);
         phoneEdit = (EditText) findViewById(R.id.edit_register_container_phone);
         phonePasswordEdit = (EditText) findViewById(R.id.edit_register_container_password);
-        reGetVerifyCodeButtonController = new ReGetVerifyCodeButtonController(getVerificationCodeButton);
         verificationCodeEdit = (EditText) findViewById(R.id.edit_register_container_verification_code);
+        getVerifyCodePresenter2 = new GetVerifyCodePresenter2(this, phoneEdit, verificationCodeEdit, getVerificationCodeButton);
 
 //        accountEdit = (EditText) findViewById(R.id.edit_register_container_account);
         accountPasswordEdit = (EditText) findViewById(R.id.edit_register_container_account_password);
@@ -159,28 +156,6 @@ public class RegisterViewController2 extends BaseAuthViewController {
             }
         });
 
-        getVerificationCodeButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String phone = phoneEdit.getText().toString();
-                String pwd = phonePasswordEdit.getText().toString();
-                if (StringUtils.isBlank(phone)) {
-                    ToastUtils.showMsg(ResourceHelper.getString(R.string.phone_blank));
-                    return;
-                }
-                if (phone.length() != 11) {
-                    ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_11_phone_number));
-                    return;
-                }
-                if (!phone.startsWith("1") && !phone.startsWith("9")) {
-                    ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_valid_number));
-                    return;
-                }
-                IMEUtil.hideIME(RegisterViewController2.this);
-                //获取验证码
-                registerViewControllerPresenter2.getVerificationCodeButtonImpl(phone);
-            }
-        });
 
         registerButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -197,24 +172,6 @@ public class RegisterViewController2 extends BaseAuthViewController {
             }
         });
 
-        phoneEdit.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                ViewUtils.setViewEnable(getVerificationCodeButton, phoneEdit.length() != 0);
-            }
-        });
         ViewUtils.bindEditWithButton(accountPasswordEdit, registerButton);
         ViewUtils.bindEditWithButton(phonePasswordEdit, registerButton);
 
@@ -229,79 +186,16 @@ public class RegisterViewController2 extends BaseAuthViewController {
         btn_to_forget_password.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ViewControllerNavigator.getInstance().tologinPhone2(baseAuthViewController.getDialogParam(), LoginViewController2.STATE_LOGIN_PHONE);
+                ViewControllerNavigator.getInstance().toRetrievePasswordViewController2(getDialogParam());
             }
         });
     }
 
     @Override
     public boolean onBackPressed() {
-        boolean blockBackAction = waitingVerifyCode;
-        if (waitingVerifyCode) {
-            IMEUtil.hideIME(RegisterViewController2.this);
-            warningExitRegister(new TwoChoiceJob() {
-                @Override
-                public void jobOnChoose() {
-                    waitingVerifyCode = false;
-                    close();
-                }
-
-                @Override
-                public void jobDefault() {
-
-                }
-            });
-        }
-        return blockBackAction;
+        return getVerifyCodePresenter2.onBackPressed();
     }
 
-    private interface TwoChoiceJob {
-        void jobOnChoose();
-
-        void jobDefault();
-    }
-
-    private void warningLeaveRegister(final TwoChoiceJob job) {
-        if (waitingVerifyCode) {
-            StandardDialog dialog
-                    = new StandardDialog(getDialogParam().getActivityContext());
-            dialog.setMessageTip(R.string.warning_back_to_register);
-            dialog.setEnsureText(R.string.restart);
-            dialog.setCancelText(R.string.keep_waiting);
-            dialog.setListener(new StandardDialog.DialogClickListener() {
-                @Override
-                public void onEnsureClick() {
-                    verificationCodeEdit.setText("");
-                    reGetVerifyCodeButtonController.cancelCountDown();
-                    job.jobOnChoose();
-                }
-            });
-            dialog.show();
-        } else {
-            job.jobDefault();
-        }
-    }
-
-    private void warningExitRegister(final TwoChoiceJob job) {
-        if (waitingVerifyCode) {
-            StandardDialog dialog
-                    = new StandardDialog(getDialogParam().getActivityContext());
-            dialog.setMessageTip(R.string.warning_back_to_register);
-            dialog.setEnsureText(R.string.yes_i_wanna_exit);
-            dialog.setCancelText(R.string.keep_waiting);
-            dialog.setListener(new StandardDialog.DialogClickListener() {
-                @Override
-                public void onEnsureClick() {
-                    verificationCodeEdit.setText("");
-                    reGetVerifyCodeButtonController.cancelCountDown();
-                    job.jobOnChoose();
-                }
-            });
-            dialog.show();
-        } else {
-            job.jobDefault();
-        }
-    }
 
     private void clearRegisterPhoneInfo() {
         requestingPhoneNumber = "";

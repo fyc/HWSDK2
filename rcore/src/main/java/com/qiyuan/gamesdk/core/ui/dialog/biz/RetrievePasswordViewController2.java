@@ -1,23 +1,26 @@
 package com.qiyuan.gamesdk.core.ui.dialog.biz;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
-import com.qiyuan.gamesdk.core.api.def.IAuthApi;
 import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
+import com.qiyuan.gamesdk.core.consts.StatusCodeDef;
 import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.GetVerifyCodePresenter2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
+import com.qiyuan.gamesdk.model.AuthModel;
 import com.qiyuan.gamesdk.util.IMEUtil;
 import com.qiyuan.gamesdk.util.ToastUtils;
 import com.qiyuan.gamesdk.util.ViewUtils;
 import com.qygame.qysdk.outer.event.IDialogParam;
 import com.qygame.qysdk.outer.util.Log;
 import com.qygame.qysdk.outer.util.ResourceHelper;
-import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.util.Map;
 
@@ -29,11 +32,12 @@ public class RetrievePasswordViewController2 extends BaseAuthViewController {
     public EditText phonePasswordEdit;
     public Button getVerificationCodeButton;
     public EditText verificationCodeEdit;
-    private int retryTime = 0;
-    private boolean waitingVerifyCode = false;
-    public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
+    //    public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
+    GetVerifyCodePresenter2 getVerifyCodePresenter2;//验证码助手类
     Button btn_enter_game;
 
+    private String requestingPhoneNumber;
+    private String requestingPhoneMd5Pwd;
 //    ContainerItemBottom2 containerItemBottom2;
 
     public RetrievePasswordViewController2(Context context, IDialogParam params) {
@@ -66,59 +70,98 @@ public class RetrievePasswordViewController2 extends BaseAuthViewController {
         ViewUtils.setViewEnable(getVerificationCodeButton, false);
         phoneEdit = (EditText) findViewById(R.id.edit_register_container_phone);
         phonePasswordEdit = (EditText) findViewById(R.id.edit_register_container_password);
-        reGetVerifyCodeButtonController = new ReGetVerifyCodeButtonController(getVerificationCodeButton);
         verificationCodeEdit = (EditText) findViewById(R.id.edit_register_container_verification_code);
-        getVerificationCodeButton.setOnClickListener(new OnClickListener() {
+        getVerifyCodePresenter2 = new GetVerifyCodePresenter2(this, phoneEdit, verificationCodeEdit, getVerificationCodeButton);
+        btn_enter_game = (Button) findViewById(R.id.btn_ensure);
+        ViewUtils.bindEditWithButton(phonePasswordEdit, btn_enter_game);
+        ViewUtils.setViewEnable(btn_enter_game, false);
+        addTextWatcher(phoneEdit, phonePasswordEdit, verificationCodeEdit);
+        btn_enter_game.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String phone = phoneEdit.getText().toString();
-                String pwd = phonePasswordEdit.getText().toString();
-                if (StringUtils.isBlank(phone)) {
-                    ToastUtils.showMsg(ResourceHelper.getString(R.string.phone_blank));
-                    return;
-                }
-                if (phone.length() != 11) {
-                    ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_11_phone_number));
-                    return;
-                }
-                if (!phone.startsWith("1") && !phone.startsWith("9")) {
-                    ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_valid_number));
-                    return;
-                }
+            public void onClick(View v) {
                 IMEUtil.hideIME(RetrievePasswordViewController2.this);
-                //获取验证码
-                getVerificationCodeButtonImpl(phone);
+                if (checkPhoneInput(phoneEdit.getText().toString(), phonePasswordEdit.getText().toString())) {
+                    registerByPhoneImpl(requestingPhoneNumber, requestingPhoneMd5Pwd, verificationCodeEdit.getText().toString());
+                }
             }
         });
-
-        btn_enter_game = (Button) findViewById(R.id.btn_has_registered_container_enter_game);
     }
 
     @Override
     public int getLayoutResourceId() {
         return R.layout.qy_sdk_container_retrieve_password2;
     }
-    /**
-     * 获取短信验证码
-     *
-     * @param phone 手机号码
-     */
-    private void getVerificationCodeButtonImpl(String phone) {
+
+    @Override
+    public void onHide() {
+        getVerifyCodePresenter2.cancelCountDown();
+
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return getVerifyCodePresenter2.onBackPressed();
+    }
+
+    public void addTextWatcher(EditText... editTexts) {
+        for (final EditText editText : editTexts) {
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    updateRegisterButtonState();
+                }
+            });
+        }
+    }
+
+    public void updateRegisterButtonState() {
+        if (phoneEdit.length() == 0 || phonePasswordEdit.length() == 0
+                || verificationCodeEdit.length() == 0) {
+            btn_enter_game.setEnabled(false);
+        } else {
+            btn_enter_game.setEnabled(true);
+        }
+    }
+
+    public boolean checkPhoneInput(String phone, String password) {
+        if (phone.length() != 11) {
+            ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_valid_11_phone_num));
+            return false;
+        }
+        if (password.length() < 6 || password.length() > 16) {
+            ToastUtils.showMsg(ResourceHelper.getString(R.string.register_password_hint));
+            return false;
+        }
+        putRegisterPhoneInfo(phone, password);
+        return true;
+    }
+
+    public void putRegisterPhoneInfo(String phone, String md5Pwd) {
+        requestingPhoneNumber = phone;
+        requestingPhoneMd5Pwd = md5Pwd;
+    }
+
+    public void registerByPhoneImpl(final String phone, final String password, final String vCode) {
         showLoading();
-        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new QyRespListener<String>() {
+        QyRespListener<AuthModel> callback = new QyRespListener<AuthModel>() {
             @Override
-            public void onNetSucc(String url, Map<String, String> params, String result) {
-                hideLoading();
-                retryTime++;
+            public void onNetSucc(String url, Map params, AuthModel result) {
                 if (params != null) {
-                    waitingVerifyCode = true;
-                    Log.d(TAG, "success request verify code ");
-                    Log.d(TAG, "success request result " + result);
-                    ToastUtils.showMsg(R.string.already_sent_verification_tips);
-                    reGetVerifyCodeButtonController.prepare();
-                    reGetVerifyCodeButtonController.startCountDown();
+                    Log.d(TAG, "registerByPhone " + result.toString());
+                    notifyAuthResult(StatusCodeDef.SUCCESS, "", result);
+                    close();
                 } else {
-                    Log.d(TAG, "error request verify code.");
+                    Log.d(TAG, "registerByPhone return null;");
                 }
             }
 
@@ -133,6 +176,10 @@ public class RetrievePasswordViewController2 extends BaseAuthViewController {
                 super.onFail(errorNo, errmsg);
                 hideLoading();
             }
-        });
+        };
+
+        ApiFacade.getInstance().registerByPhone(phone, password,
+                vCode, callback);
+
     }
 }

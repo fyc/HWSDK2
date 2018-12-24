@@ -11,7 +11,6 @@ import android.widget.EditText;
 
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
-import com.qiyuan.gamesdk.core.api.def.IAuthApi;
 import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.qiyuan.gamesdk.core.consts.StatusCodeDef;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.RegisterViewController2;
@@ -99,42 +98,6 @@ public class RegisterViewControllerPresenter2 {
         ToastUtils.showMsg("提示前往登录页面吧");
     }
 
-    /**
-     * 获取短信验证码
-     *
-     * @param phone 手机号码
-     */
-    public void getVerificationCodeButtonImpl(String phone) {
-        registerViewController2.showLoading();
-        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, registerViewController2.retryTime, new QyRespListener<String>() {
-            @Override
-            public void onNetSucc(String url, Map<String, String> params, String result) {
-                registerViewController2.hideLoading();
-                registerViewController2.retryTime++;
-                if (params != null) {
-                    registerViewController2.waitingVerifyCode = true;
-                    Log.d(registerViewController2.TAG, "success request verify code ");
-                    ToastUtils.showMsg(R.string.already_sent_verification_tips);
-                    registerViewController2.reGetVerifyCodeButtonController.prepare();
-                    registerViewController2.reGetVerifyCodeButtonController.startCountDown();
-                } else {
-                    Log.d(registerViewController2.TAG, "error request verify code.");
-                }
-            }
-
-            @Override
-            public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
-                super.onNetError(url, params, errno, errmsg);
-                registerViewController2.hideLoading();
-            }
-
-            @Override
-            public void onFail(int errorNo, String errmsg) {
-                super.onFail(errorNo, errmsg);
-                registerViewController2.hideLoading();
-            }
-        });
-    }
 
     public void registerByPhoneImpl(final String phone, final String password, final String vCode) {
         registerViewController2.showLoading();

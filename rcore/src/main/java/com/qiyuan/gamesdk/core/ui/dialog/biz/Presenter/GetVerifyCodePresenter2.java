@@ -12,6 +12,7 @@ import com.qiyuan.gamesdk.core.api.def.IAuthApi;
 import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.BaseAuthViewController;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.ReGetVerifyCodeButtonController;
+import com.qiyuan.gamesdk.core.ui.widget.StandardDialog;
 import com.qiyuan.gamesdk.util.IMEUtil;
 import com.qiyuan.gamesdk.util.ToastUtils;
 import com.qiyuan.gamesdk.util.ViewUtils;
@@ -26,11 +27,12 @@ public class GetVerifyCodePresenter2 {
     private int retryTime = 0;
     private boolean waitingVerifyCode = false;
     public EditText phoneEdit;
+    EditText verificationCodeEdit;
     public Button getVerificationCodeButton;
     public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
     BaseAuthViewController baseAuthViewController;
 
-    public GetVerifyCodePresenter2(final BaseAuthViewController baseAuthViewController, final EditText phoneEdit, final Button getVerificationCodeButton) {
+    public GetVerifyCodePresenter2(final BaseAuthViewController baseAuthViewController, final EditText phoneEdit, EditText verificationCodeEdit, final Button getVerificationCodeButton) {
         this.baseAuthViewController = baseAuthViewController;
         this.phoneEdit = phoneEdit;
         this.getVerificationCodeButton = getVerificationCodeButton;
@@ -116,5 +118,74 @@ public class GetVerifyCodePresenter2 {
 
     public void cancelCountDown() {
         reGetVerifyCodeButtonController.cancelCountDown();
+    }
+
+    public boolean onBackPressed() {
+        boolean blockBackAction = waitingVerifyCode;
+        if (waitingVerifyCode) {
+            IMEUtil.hideIME(baseAuthViewController);
+            warningExitRegister(new TwoChoiceJob() {
+                @Override
+                public void jobOnChoose() {
+                    waitingVerifyCode = false;
+                    baseAuthViewController.close();
+                }
+
+                @Override
+                public void jobDefault() {
+
+                }
+            });
+        }
+        return blockBackAction;
+    }
+
+    private void warningLeaveRegister(final TwoChoiceJob job) {
+        if (waitingVerifyCode) {
+            StandardDialog dialog
+                    = new StandardDialog(baseAuthViewController.getDialogParam().getActivityContext());
+            dialog.setMessageTip(R.string.warning_back_to_register);
+            dialog.setEnsureText(R.string.restart);
+            dialog.setCancelText(R.string.keep_waiting);
+            dialog.setListener(new StandardDialog.DialogClickListener() {
+                @Override
+                public void onEnsureClick() {
+//                    verificationCodeEdit.setText("");
+                    cancelCountDown();
+                    job.jobOnChoose();
+                }
+            });
+            dialog.show();
+        } else {
+            job.jobDefault();
+        }
+    }
+
+    private void warningExitRegister(final TwoChoiceJob job) {
+        if (waitingVerifyCode) {
+            StandardDialog dialog
+                    = new StandardDialog(baseAuthViewController.getDialogParam().getActivityContext());
+            dialog.setMessageTip(R.string.warning_back_to_register);
+            dialog.setEnsureText(R.string.yes_i_wanna_exit);
+            dialog.setCancelText(R.string.keep_waiting);
+            dialog.setListener(new StandardDialog.DialogClickListener() {
+                @Override
+                public void onEnsureClick() {
+//                    verificationCodeEdit.setText("");
+//                    reGetVerifyCodeButtonController.cancelCountDown();
+                    cancelCountDown();
+                    job.jobOnChoose();
+                }
+            });
+            dialog.show();
+        } else {
+            job.jobDefault();
+        }
+    }
+
+    private interface TwoChoiceJob {
+        void jobOnChoose();
+
+        void jobDefault();
     }
 }
