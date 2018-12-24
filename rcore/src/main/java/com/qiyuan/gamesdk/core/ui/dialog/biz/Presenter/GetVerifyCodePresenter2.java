@@ -1,6 +1,7 @@
-package com.qiyuan.gamesdk.core.ui.dialog.biz;
+package com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter;
 
-import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,70 +10,35 @@ import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
 import com.qiyuan.gamesdk.core.api.def.IAuthApi;
 import com.qiyuan.gamesdk.core.base.http.volley.listener.QyRespListener;
-import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
-import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.BaseAuthViewController;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.ReGetVerifyCodeButtonController;
 import com.qiyuan.gamesdk.util.IMEUtil;
 import com.qiyuan.gamesdk.util.ToastUtils;
 import com.qiyuan.gamesdk.util.ViewUtils;
-import com.qygame.qysdk.outer.event.IDialogParam;
 import com.qygame.qysdk.outer.util.Log;
 import com.qygame.qysdk.outer.util.ResourceHelper;
 import com.qygame.qysdk.outer.util.StringUtils;
 
 import java.util.Map;
 
-public class RetrievePasswordViewController2 extends BaseAuthViewController {
-    private static final String TAG = "QYSDK:RetrievePasswordViewController2 ";
-    public Context context;
-    ContainerItemTitle4 containerItemTitle4;
-    public EditText phoneEdit;
-    public EditText phonePasswordEdit;
-    public Button getVerificationCodeButton;
-    public EditText verificationCodeEdit;
+public class GetVerifyCodePresenter2 {
+    private static final String TAG = "QYSDK:GetVerifyCodePresenter2 ";
     private int retryTime = 0;
     private boolean waitingVerifyCode = false;
+    public EditText phoneEdit;
+    public Button getVerificationCodeButton;
     public ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
-    Button btn_enter_game;
+    BaseAuthViewController baseAuthViewController;
 
-//    ContainerItemBottom2 containerItemBottom2;
-
-    public RetrievePasswordViewController2(Context context, IDialogParam params) {
-        super(context, params);
-        this.context = context;
-        initView();
-    }
-
-    private void initView() {
-        containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
-        containerItemTitle4.setTitle(R.string.str_qiyuan_sdk_game_title);
-        containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
-            @Override
-            public void toBack() {
-                ViewControllerNavigator.getInstance().toRegister2(getDialogParam());
-            }
-
-            @Override
-            public void toRefresh() {
-
-            }
-
-            @Override
-            public void toClose() {
-                close();
-            }
-        });
-
-        getVerificationCodeButton = (Button) findViewById(R.id.btn_register_container_get_verification_code);
-        ViewUtils.setViewEnable(getVerificationCodeButton, false);
-        phoneEdit = (EditText) findViewById(R.id.edit_register_container_phone);
-        phonePasswordEdit = (EditText) findViewById(R.id.edit_register_container_password);
+    public GetVerifyCodePresenter2(final BaseAuthViewController baseAuthViewController, final EditText phoneEdit, final Button getVerificationCodeButton) {
+        this.baseAuthViewController = baseAuthViewController;
+        this.phoneEdit = phoneEdit;
+        this.getVerificationCodeButton = getVerificationCodeButton;
         reGetVerifyCodeButtonController = new ReGetVerifyCodeButtonController(getVerificationCodeButton);
-        verificationCodeEdit = (EditText) findViewById(R.id.edit_register_container_verification_code);
-        getVerificationCodeButton.setOnClickListener(new OnClickListener() {
+        getVerificationCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String phone = phoneEdit.getText().toString();
-                String pwd = phonePasswordEdit.getText().toString();
                 if (StringUtils.isBlank(phone)) {
                     ToastUtils.showMsg(ResourceHelper.getString(R.string.phone_blank));
                     return;
@@ -85,30 +51,42 @@ public class RetrievePasswordViewController2 extends BaseAuthViewController {
                     ToastUtils.showMsg(ResourceHelper.getString(R.string.please_input_valid_number));
                     return;
                 }
-                IMEUtil.hideIME(RetrievePasswordViewController2.this);
+                IMEUtil.hideIME(baseAuthViewController);
                 //获取验证码
                 getVerificationCodeButtonImpl(phone);
             }
         });
+        phoneEdit.addTextChangedListener(new TextWatcher() {
 
-        btn_enter_game = (Button) findViewById(R.id.btn_has_registered_container_enter_game);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ViewUtils.setViewEnable(getVerificationCodeButton, phoneEdit.length() != 0);
+            }
+        });
     }
 
-    @Override
-    public int getLayoutResourceId() {
-        return R.layout.qy_sdk_container_retrieve_password2;
-    }
     /**
      * 获取短信验证码
      *
      * @param phone 手机号码
      */
     private void getVerificationCodeButtonImpl(String phone) {
-        showLoading();
+        baseAuthViewController.showLoading();
         ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, retryTime, new QyRespListener<String>() {
             @Override
             public void onNetSucc(String url, Map<String, String> params, String result) {
-                hideLoading();
+                baseAuthViewController.hideLoading();
                 retryTime++;
                 if (params != null) {
                     waitingVerifyCode = true;
@@ -125,14 +103,18 @@ public class RetrievePasswordViewController2 extends BaseAuthViewController {
             @Override
             public void onNetError(String url, Map<String, String> params, String errno, String errmsg) {
                 super.onNetError(url, params, errno, errmsg);
-                hideLoading();
+                baseAuthViewController.hideLoading();
             }
 
             @Override
             public void onFail(int errorNo, String errmsg) {
                 super.onFail(errorNo, errmsg);
-                hideLoading();
+                baseAuthViewController.hideLoading();
             }
         });
+    }
+
+    public void cancelCountDown() {
+        reGetVerifyCodeButtonController.cancelCountDown();
     }
 }

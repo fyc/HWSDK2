@@ -106,9 +106,9 @@ public class RegisterViewControllerPresenter2 {
      */
     public void getVerificationCodeButtonImpl(String phone) {
         registerViewController2.showLoading();
-        ApiFacade.getInstance().requestVerificationCode(phone, IAuthApi.VCODE_TYPE_REGISTER, registerViewController2.retryTime, new QyRespListener<Void>() {
+        ApiFacade.getInstance().requestVerificationCode2(phone, IAuthApi.VCODE_TYPE_REGISTER, registerViewController2.retryTime, new QyRespListener<String>() {
             @Override
-            public void onNetSucc(String url, Map<String, String> params, Void result) {
+            public void onNetSucc(String url, Map<String, String> params, String result) {
                 registerViewController2.hideLoading();
                 registerViewController2.retryTime++;
                 if (params != null) {

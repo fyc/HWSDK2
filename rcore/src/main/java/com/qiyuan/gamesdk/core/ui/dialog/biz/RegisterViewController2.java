@@ -52,12 +52,13 @@ public class RegisterViewController2 extends BaseAuthViewController {
     public View registerAccountContainer;
     public EditText phoneEdit;
     public EditText phonePasswordEdit;
+        public Button getVerificationCodeButton;
+    public EditText verificationCodeEdit;
+
     //    private EditText accountEdit;
     public EditText accountPasswordEdit;
-    public Button getVerificationCodeButton;
-    public EditText verificationCodeEdit;
-    public Button registerButton;
 
+    public Button registerButton;
     private View registerPhoneBottom;
     ContainerItemBottom2 containerItemBottom2;
 
@@ -100,7 +101,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
 
     @Override
     public void onHide() {
-//        reGetVerifyCodeButtonController.cancelCountDown();
+        reGetVerifyCodeButtonController.cancelCountDown();
 
     }
 
@@ -125,10 +126,11 @@ public class RegisterViewController2 extends BaseAuthViewController {
         ViewUtils.setViewEnable(registerButton, false);
         phoneEdit = (EditText) findViewById(R.id.edit_register_container_phone);
         phonePasswordEdit = (EditText) findViewById(R.id.edit_register_container_password);
-//        accountEdit = (EditText) findViewById(R.id.edit_register_container_account);
-        accountPasswordEdit = (EditText) findViewById(R.id.edit_register_container_account_password);
         reGetVerifyCodeButtonController = new ReGetVerifyCodeButtonController(getVerificationCodeButton);
         verificationCodeEdit = (EditText) findViewById(R.id.edit_register_container_verification_code);
+
+//        accountEdit = (EditText) findViewById(R.id.edit_register_container_account);
+        accountPasswordEdit = (EditText) findViewById(R.id.edit_register_container_account_password);
 
         btn_to_login = (TextView) findViewById(R.id.btn_to_login);
         btn_to_forget_password = (TextView) findViewById(R.id.btn_to_forget_password);
