@@ -15,6 +15,8 @@ public class ContainerItemTitle4 extends RelativeLayout {
 
     private TextView backTitleBtn;
     private TextView titleTv;
+    private TextView reFreshTitleBtn;
+    private View reFreshTitleLine;
     private TextView closeTitleBtn;
     TitleOnclick titleOnclick;
 
@@ -48,6 +50,8 @@ public class ContainerItemTitle4 extends RelativeLayout {
     private void initView() {
         backTitleBtn = (TextView) findViewById(R.id.btn_title_container_back);
         titleTv = (TextView) findViewById(R.id.tv_title_container_title);
+        reFreshTitleBtn = (TextView) findViewById(R.id.btn_title_container_refresh);
+        reFreshTitleLine = findViewById(R.id.btn_title_container_refresh_line);
         closeTitleBtn = (TextView) findViewById(R.id.btn_title_container_close);
         backTitleBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -55,7 +59,14 @@ public class ContainerItemTitle4 extends RelativeLayout {
                 if (titleOnclick != null) {
                     titleOnclick.toBack();
                 }
-//                ViewControllerNavigator.getInstance().close();
+            }
+        });
+        reFreshTitleBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (titleOnclick != null) {
+                    titleOnclick.toRefresh();
+                }
             }
         });
         closeTitleBtn.setOnClickListener(new OnClickListener() {
@@ -64,9 +75,19 @@ public class ContainerItemTitle4 extends RelativeLayout {
                 if (titleOnclick != null) {
                     titleOnclick.toClose();
                 }
-//                ViewControllerNavigator.getInstance().close();
             }
         });
+    }
+
+    /**
+     * 顺序为：
+     * 左边返回、刷新、右边关闭
+     */
+    public void setTitleBtnVisibility(boolean isVisibility1, boolean isVisibility2, boolean isVisibility3) {
+        backTitleBtn.setVisibility(isVisibility1 ? View.VISIBLE : View.GONE);
+        reFreshTitleBtn.setVisibility(isVisibility2 ? View.VISIBLE : View.GONE);
+        reFreshTitleLine.setVisibility(isVisibility2 ? View.VISIBLE : View.GONE);
+        closeTitleBtn.setVisibility(isVisibility3 ? View.VISIBLE : View.GONE);
     }
 
     public void setTitle(int resid) {
@@ -75,13 +96,6 @@ public class ContainerItemTitle4 extends RelativeLayout {
 
     public void setTitle(CharSequence text) {
         titleTv.setText(text);
-    }
-
-    public void setBackTitleBtnVisibility(int visibility){
-        backTitleBtn.setVisibility(visibility);
-    }
-    public void setCloseTitleBtnVisibility(int visibility){
-        closeTitleBtn.setVisibility(visibility);
     }
 
     public void setTitleOnclick(TitleOnclick titleOnclick) {

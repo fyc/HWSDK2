@@ -27,14 +27,26 @@
         android:visibility="visible" />
 
     <Button
+        android:id="@+id/btn_title_container_refresh"
         android:layout_width="@dimen/dialog_button_width"
         android:layout_height="@dimen/dialog_button_height"
-        android:layout_toLeftOf="@id/btn_title_container_close"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/margin_24px"
-        android:layout_marginRight="@dimen/margin_24px"
-        android:background="@drawable/nav_icon_close"
-        android:visibility="gone"/>
+        android:layout_marginEnd="@dimen/margin_36px"
+        android:layout_marginRight="@dimen/margin_36px"
+        android:layout_toLeftOf="@id/btn_title_container_close"
+        android:background="@drawable/nav_icon_refresh2"
+        android:visibility="visible" />
+
+    <View
+        android:id="@+id/btn_title_container_refresh_line"
+        android:layout_width="1dp"
+        android:layout_marginEnd="@dimen/margin_18px"
+        android:layout_marginRight="@dimen/margin_18px"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_10px"
+        android:layout_marginBottom="@dimen/margin_10px"
+        android:layout_toLeftOf="@id/btn_title_container_close"
+        android:background="@color/white"/>
 
     <Button
         android:id="@+id/btn_title_container_close"

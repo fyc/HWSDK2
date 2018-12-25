@@ -8,13 +8,12 @@
     android:orientation="vertical">
 
     <!-- Title -->
-    <include
-        layout="@layout/qy_sdk_container_item_title3"
+    <com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4
+        android:id="@+id/containerItemTitle4"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dialog_title_container_height" />
-
+        android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/qy_sdk_container_item_title_tip"
+        android:id="@+id/qy_sdk_container_item_sub_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_24px"

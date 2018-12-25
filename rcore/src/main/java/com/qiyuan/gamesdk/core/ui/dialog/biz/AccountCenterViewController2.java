@@ -26,19 +26,10 @@ public class AccountCenterViewController2 extends BaseAuthViewController {
         return R.layout.qy_sdk_container_account_center2;
     }
 
-    @Override
-    public void onShow() {
-
-    }
-
-    @Override
-    public void onHide() {
-
-    }
-
     private void initView() {
         containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
         containerItemTitle4.setTitle(R.string.str_user_account);
+        containerItemTitle4.setTitleBtnVisibility(true,true,true);
         containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
             @Override
             public void toBack() {

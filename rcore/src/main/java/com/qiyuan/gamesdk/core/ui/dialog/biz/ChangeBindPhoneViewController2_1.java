@@ -33,7 +33,7 @@ public class ChangeBindPhoneViewController2_1 extends BaseAuthViewController {
     private void initView() {
         containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
         containerItemTitle4.setTitle(R.string.str_bind_phone_title2);
-        containerItemTitle4.setBackTitleBtnVisibility(View.GONE);
+        containerItemTitle4.setTitleBtnVisibility(false,false,true);
         containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
             @Override
             public void toBack() {

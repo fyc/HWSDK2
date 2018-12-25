@@ -10,6 +10,7 @@ import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.consts.StatusCodeDef;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.LoginViewControllerPresenter2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemBottom2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
 import com.qiyuan.gamesdk.core.ui.widget.DrawableEditText;
 import com.qiyuan.gamesdk.model.AuthModel;
 import com.qiyuan.gamesdk.util.IMEUtil;
@@ -26,9 +27,10 @@ public class LoginViewController2 extends BaseAuthViewController {
 //    public static final int STATE_LOGIN_PHONE = 1;
 //    public static final int STATE_LOGIN_ACCOUNT = 2;
     public Context context;
+    ContainerItemTitle4 containerItemTitle4;
     LoginViewControllerPresenter2 loginViewControllerPresenter2;
     public int currentState;
-    public TextView titleTv, title_tip;
+    public TextView title_tip;
     public Button loginButton; //登录按钮
 
     ContainerItemBottom2 containerItemBottom2;
@@ -57,10 +59,12 @@ public class LoginViewController2 extends BaseAuthViewController {
     }
 
     private void initView() {
+        containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
+        containerItemTitle4.setTitle(R.string.str_qiyuan_sdk_game_title);
+        containerItemTitle4.setTitleBtnVisibility(false,false,false);
         loginButton = (Button) findViewById(R.id.btn_login_container_login);
         ViewUtils.setViewEnable(loginButton, false);
-        titleTv = (TextView) findViewById(R.id.tv_title_container_title);
-        title_tip = (TextView) findViewById(R.id.qy_sdk_container_item_title_tip);
+        title_tip = (TextView) findViewById(R.id.qy_sdk_container_item_sub_title);
 
 //        loginPhoneButton = findViewById(R.id.btn_qiyuan_phone_login);
 //        loginAccountButton = findViewById(R.id.btn_qiyuan_account_login);

@@ -54,6 +54,7 @@ public class RealNameAuthController2 extends BaseAuthViewController {
     private void initView() {
         containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
         containerItemTitle4.setTitle(R.string.str_real_name_title);
+        containerItemTitle4.setTitleBtnVisibility(true,false,true);
         containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
             @Override
             public void toBack() {

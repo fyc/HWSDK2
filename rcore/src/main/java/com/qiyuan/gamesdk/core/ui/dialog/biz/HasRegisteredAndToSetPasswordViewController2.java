@@ -29,6 +29,7 @@ public class HasRegisteredAndToSetPasswordViewController2 extends BaseAuthViewCo
     private void initView() {
         containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
         containerItemTitle4.setTitle(R.string.str_qiyuan_sdk_game_title);
+        containerItemTitle4.setTitleBtnVisibility(true,false,true);
         containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
             @Override
             public void toBack() {
@@ -45,8 +46,6 @@ public class HasRegisteredAndToSetPasswordViewController2 extends BaseAuthViewCo
                 close();
             }
         });
-//        img_head = (ImageView) findViewById(R.id.img_head);
-//        tv_user_name = (TextView) findViewById(R.id.tv_user_name);
         btn_enter_game = (Button) findViewById(R.id.btn_has_registered_container_enter_game);
 //        tv_to_register = (TextView) findViewById(R.id.tv_to_register);
         containerItemBottom2 = (ContainerItemBottom2) findViewById(R.id.containerItemBottom2);

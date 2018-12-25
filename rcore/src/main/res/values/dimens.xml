@@ -43,6 +43,7 @@
     <dimen name="account_edittext_margin_top">12dp</dimen>
     <dimen name="margin_32px">16dp</dimen>
     <dimen name="margin_34px">17dp</dimen>
+    <dimen name="margin_36px">18dp</dimen>
     <dimen name="margin_48px">24dp</dimen>
     <dimen name="account_button_height">40dp</dimen>
     <dimen name="margin_80px">40dp</dimen>

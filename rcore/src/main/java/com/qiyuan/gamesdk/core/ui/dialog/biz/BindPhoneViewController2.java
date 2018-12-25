@@ -53,6 +53,7 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
     private void initView() {
         containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
         containerItemTitle4.setTitle(R.string.str_bind_phone_title2);
+        containerItemTitle4.setTitleBtnVisibility(true,false,true);
         containerItemTitle4.setTitleOnclick(new ContainerItemTitle4.TitleOnclick() {
             @Override
             public void toBack() {

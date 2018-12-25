@@ -15,6 +15,7 @@ import com.qiyuan.gamesdk.core.ui.dialog.ViewControllerNavigator;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.GetVerifyCodePresenter2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.Presenter.RegisterViewControllerPresenter2;
 import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemBottom2;
+import com.qiyuan.gamesdk.core.ui.dialog.biz.View.ContainerItemTitle4;
 import com.qiyuan.gamesdk.model.UserInfo;
 import com.qiyuan.gamesdk.util.IMEUtil;
 import com.qiyuan.gamesdk.util.ViewUtils;
@@ -32,6 +33,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
     public static final int STATE_REGISTER_PHONE = 1;
     public static final int STATE_REGISTER_ACCOUNT = 2;
 
+    ContainerItemTitle4 containerItemTitle4;
     RegisterViewControllerPresenter2 registerViewControllerPresenter2;
 //    public boolean waitingVerifyCode = false;
 
@@ -58,7 +60,7 @@ public class RegisterViewController2 extends BaseAuthViewController {
     private View registerPhoneBottom;
     ContainerItemBottom2 containerItemBottom2;
 
-    private TextView titleTv;
+//    private TextView titleTv;
     //    private TextView tv_phone_account, tv_qiyuan_account;
     private TextView btn_to_login;
     private TextView btn_to_forget_password;
@@ -110,7 +112,9 @@ public class RegisterViewController2 extends BaseAuthViewController {
     }
 
     private void initView() {
-        titleTv = (TextView) findViewById(R.id.tv_title_container_title);
+        containerItemTitle4 = (ContainerItemTitle4) findViewById(R.id.containerItemTitle4);
+        containerItemTitle4.setTitle(R.string.str_qiyuan_sdk_game_title);
+        containerItemTitle4.setTitleBtnVisibility(false,false,false);
         registerTypeRadioGroup = (ViewGroup) findViewById(R.id.radio_group_item_register_type);
         registerPhoneRadioButton = (RadioButton) findViewById(R.id.radio_item_register_phone);
         registerPhoneRadioButton.setSelected(true);
