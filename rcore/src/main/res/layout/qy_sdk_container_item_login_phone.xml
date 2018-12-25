@@ -8,8 +8,8 @@
     <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_login_container_phone"
         style="@style/DialogEditText"
-        android:drawableLeft="@drawable/login_icon_phone"
-        android:drawableStart="@drawable/login_icon_phone"
+        android:drawableLeft="@drawable/login_icon_phone2"
+        android:drawableStart="@drawable/login_icon_phone2"
         android:hint="@string/login_account_hint"
         android:imeOptions="actionNext|flagNoExtractUi"
         android:inputType="number"
@@ -23,8 +23,8 @@
         android:layout_marginBottom="@dimen/margin_16px"
         android:layout_marginTop="@dimen/margin_16px"
         android:digits="@string/register_password_digits"
-        android:drawableLeft="@drawable/login_icon_password"
-        android:drawableStart="@drawable/login_icon_password"
+        android:drawableLeft="@drawable/login_icon_password2"
+        android:drawableStart="@drawable/login_icon_password2"
         android:hint="@string/register_password_hint"
         android:inputType="textPassword"
         android:maxLines="1" />

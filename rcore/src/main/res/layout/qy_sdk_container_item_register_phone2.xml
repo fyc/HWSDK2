@@ -6,8 +6,8 @@
 
     <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_register_container_phone"
-        android:drawableLeft="@drawable/login_icon_phone"
-        android:drawableStart="@drawable/login_icon_phone"
+        android:drawableLeft="@drawable/login_icon_phone2"
+        android:drawableStart="@drawable/login_icon_phone2"
         android:layout_marginBottom="@dimen/margin_16px"
         android:inputType="number"
         android:hint="@string/edt_phone_hint"
@@ -24,8 +24,8 @@
         android:layout_marginBottom="@dimen/margin_16px">
         <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
             android:id="@+id/edit_register_container_verification_code"
-            android:drawableLeft="@drawable/login_icon_verificationcode"
-            android:drawableStart="@drawable/login_icon_verificationcode"
+            android:drawableLeft="@drawable/login_icon_verificationcode2"
+            android:drawableStart="@drawable/login_icon_verificationcode2"
             android:inputType="number"
             android:hint="@string/input_verification_tips"
             style="@style/DialogEditText"
@@ -47,8 +47,8 @@
     <com.qiyuan.gamesdk.core.ui.widget.DrawableEditText
         android:id="@+id/edit_register_container_password"
         android:digits="@string/register_password_digits"
-        android:drawableLeft="@drawable/login_icon_password"
-        android:drawableStart="@drawable/login_icon_password"
+        android:drawableLeft="@drawable/login_icon_password2"
+        android:drawableStart="@drawable/login_icon_password2"
         android:inputType="textPassword"
         android:hint="@string/register_password_hint"
         android:maxLines="1"

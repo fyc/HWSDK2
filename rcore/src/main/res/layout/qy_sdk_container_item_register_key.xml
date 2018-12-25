@@ -10,8 +10,8 @@
         android:layout_marginBottom="@dimen/margin_6px"
         android:layout_marginTop="@dimen/margin_32px"
         android:digits="@string/register_password_digits"
-        android:drawableLeft="@drawable/login_icon_password"
-        android:drawableStart="@drawable/login_icon_password"
+        android:drawableLeft="@drawable/login_icon_password2"
+        android:drawableStart="@drawable/login_icon_password2"
         android:hint="@string/str_set_register_password_hint"
         android:inputType="textPassword"
         android:maxLines="1" />

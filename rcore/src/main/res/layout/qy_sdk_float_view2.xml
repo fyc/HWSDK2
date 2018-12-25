@@ -5,12 +5,12 @@
 
     <ImageView
         android:id="@+id/img_floatview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/floating_window_logo_width"
+        android:layout_height="@dimen/floating_window_logo_height"
         android:layout_weight="1"
         android:contentDescription="@null"
-        android:src="@drawable/sdk_float_window_normal"
-        android:visibility="gone" />
+        android:src="@drawable/sdk_float_window_normal2"
+        android:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/floatview_user_center"
@@ -23,11 +23,11 @@
         android:visibility="visible">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/floating_window_logo_width"
+            android:layout_height="@dimen/floating_window_logo_height"
             android:layout_weight="1"
             android:contentDescription="@null"
-            android:src="@drawable/sdk_float_window_normal" />
+            android:src="@drawable/sdk_float_window_normal2" />
 
         <LinearLayout
             android:id="@+id/user_account"
@@ -39,15 +39,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/floating_window_icon_width"
+                android:layout_height="@dimen/floating_window_icon_height"
                 android:contentDescription="@null"
-                android:src="@drawable/login_icon_phone" />
+                android:src="@drawable/floating_window_account2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/str_user_account" />
+                android:text="@string/str_user_account"
+                android:textSize="@dimen/text_size_t2" />
 
         </LinearLayout>
 
@@ -61,15 +62,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/floating_window_icon_width"
+                android:layout_height="@dimen/floating_window_icon_height"
                 android:contentDescription="@null"
-                android:src="@drawable/login_icon_phone" />
+                android:src="@drawable/floating_window_message2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/str_user_message" />
+                android:text="@string/str_user_message"
+                android:textSize="@dimen/text_size_t2" />
 
         </LinearLayout>
 
@@ -84,15 +86,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/floating_window_icon_width"
+                android:layout_height="@dimen/floating_window_icon_height"
                 android:contentDescription="@null"
-                android:src="@drawable/login_icon_phone" />
+                android:src="@drawable/floating_window_help2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/str_user_help" />
+                android:text="@string/str_user_help"
+                android:textSize="@dimen/text_size_t2" />
 
         </LinearLayout>
     </LinearLayout>

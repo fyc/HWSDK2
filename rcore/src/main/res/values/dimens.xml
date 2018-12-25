@@ -79,4 +79,11 @@
     <dimen name="has_registered_tip_width">162dp</dimen>
     <dimen name="account_center_line_height">32dp</dimen>
     <dimen name="button_width_120dp">120dp</dimen>
+    <dimen name="account_center_bing_phone_icon_width">49dp</dimen>
+    <dimen name="account_center_bing_phone_icon_height">73dp</dimen>
+
+    <dimen name="floating_window_logo_width">44dp</dimen>
+    <dimen name="floating_window_logo_height">44dp</dimen>
+    <dimen name="floating_window_icon_width">18dp</dimen>
+    <dimen name="floating_window_icon_height">18dp</dimen>
 </resources>

@@ -99,7 +99,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_18px"
             android:layout_marginRight="@dimen/margin_18px"
-            android:src="@drawable/sdk_ic_all_forward" />
+            android:src="@drawable/sdk_ic_all_forward2" />
     </RelativeLayout>
 
     <View
@@ -142,7 +142,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_18px"
             android:layout_marginRight="@dimen/margin_18px"
-            android:src="@drawable/sdk_ic_all_forward" />
+            android:src="@drawable/sdk_ic_all_forward2" />
     </RelativeLayout>
 
     <View
@@ -185,7 +185,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_18px"
             android:layout_marginRight="@dimen/margin_18px"
-            android:src="@drawable/sdk_ic_all_forward" />
+            android:src="@drawable/sdk_ic_all_forward2" />
     </RelativeLayout>
 
     <View
@@ -228,7 +228,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_18px"
             android:layout_marginRight="@dimen/margin_18px"
-            android:src="@drawable/sdk_ic_all_forward" />
+            android:src="@drawable/sdk_ic_all_forward2" />
     </RelativeLayout>
 
     <View
