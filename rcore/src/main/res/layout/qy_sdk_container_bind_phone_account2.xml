@@ -64,18 +64,29 @@
             android:textColor="@color/dk_gamesdk_white"
             android:textSize="@dimen/right_btn_str_size" />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/str_bind_phone_tips3"
         android:textColor="@color/qy_sdk_user_center_bing_phone_tip"
-        android:textSize="@dimen/text_size_t2" />
+        android:textSize="@dimen/text_size_t1_2" />
+
     <Button
         android:id="@+id/btn_bind_phone_container_bind"
         style="@style/DialogConfirmButton"
-        android:layout_marginTop="@dimen/margin_32px"
+        android:layout_marginTop="@dimen/margin_16px"
         android:background="@drawable/sdk_selector_dialog_btn_login2"
         android:gravity="center"
         android:text="@string/ensure" />
-
+    <TextView
+        android:id="@+id/warning_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_16px"
+        android:text="@string/str_bind_phone_warning_tip"
+        android:textColor="@color/qy_sdk_dialog_red"
+        android:textSize="@dimen/text_size_t1_2" />
 </LinearLayout>

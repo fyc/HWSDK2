@@ -85,5 +85,13 @@
         android:background="@drawable/sdk_selector_dialog_btn_login2"
         android:gravity="center"
         android:text="@string/ensure" />
-
+    <TextView
+        android:id="@+id/warning_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_16px"
+        android:text="@string/str_bind_phone_warning_tip"
+        android:textColor="@color/qy_sdk_dialog_red"
+        android:textSize="@dimen/text_size_t1_2" />
 </LinearLayout>

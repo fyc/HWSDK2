@@ -144,4 +144,5 @@
     <color name="qy_sdk_user_center_account_number">#8A8A8A</color>
     <color name="qy_sdk_user_center_line_color">#B5B5B5</color>
     <color name="qy_sdk_user_center_bing_phone_tip">#BFBFBF</color>
+    <color name="qy_sdk_dialog_red">#FF0000</color>
 </resources>

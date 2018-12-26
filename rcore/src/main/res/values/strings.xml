@@ -219,8 +219,10 @@
     <string name="str_bind_phone_tips3">绑定手机后可以在忘记密码或者账号被盗时通过手机找回</string>
     <string name="str_has_bind_phone">已绑定手机: </string>
     <string name="str_bind_phone_successful">手机号绑定成功</string>
+    <string name="str_bind_phone_warning_tip">手机已被绑定</string>
     <string name="str_return_account_center">返回账户首页</string>
     <string name="str_change_bind_phone">更换手机号</string>
     <string name="str_set_new_phone_account">设置新的手机号码</string>
     <string name="str_reset_password_successful">密码修改成功!</string>
+
 </resources>

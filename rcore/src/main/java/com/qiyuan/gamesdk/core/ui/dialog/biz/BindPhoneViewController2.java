@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.qiyuan.gamesdk.R;
 import com.qiyuan.gamesdk.core.api.ApiFacade;
@@ -35,6 +36,7 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
     private EditText verificationCodeEdit; //验证码
     private Button getVerificationCodeButton; //获取验证码
     private Button bindButton; //绑定按钮
+    private TextView warning_tip;
     ReGetVerifyCodeButtonController reGetVerifyCodeButtonController;
     private int retryTime = 0;
     private boolean waitingVerifyCode = false;
@@ -77,7 +79,7 @@ public class BindPhoneViewController2 extends BaseAuthViewController {
         reGetVerifyCodeButtonController = new ReGetVerifyCodeButtonController(getVerificationCodeButton);
         bindButton = (Button) findViewById(R.id.btn_bind_phone_container_bind);
         ViewUtils.setViewEnable(bindButton, false);
-
+        warning_tip = (TextView) findViewById(R.id.warning_tip);
         addTextWatcher(accountEdit, verificationCodeEdit);
 
         getVerificationCodeButton.setOnClickListener(new OnClickListener() {
